@@ -1,7 +1,12 @@
 import Button from "./components/Button/Button"
+import Landing from "./sections/Landing/Landing"
 
 function App() {
-	return <div className="App"></div>
+	return (
+		<>
+			<Landing />
+		</>
+	)
 }
 
 export default App
