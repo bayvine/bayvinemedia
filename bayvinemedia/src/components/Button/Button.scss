@@ -1,0 +1,68 @@
+@import "../../styles/breakpoints.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/colors.scss";
+
+button {
+	width: 150px;
+	height: 50px;
+	border-radius: 15px;
+	box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+	border: none;
+	transition: all 0.3s ease;
+	font-weight: bolder;
+	letter-spacing: 5px;
+	cursor: pointer;
+}
+
+.green-gradient {
+	color: black;
+	background: linear-gradient(142deg, #9ed195 0%, #ffcc9a 100%);
+
+	&:hover {
+		color: white;
+		background: #9ed195;
+	}
+}
+
+.yellow-gradient {
+	color: white;
+	background: linear-gradient(142deg, #ffbd27 0%, #e35a84 100%);
+
+	&:hover {
+		color: white;
+		background: #ffbd27;
+	}
+}
+
+.pink-gradient {
+	background: none;
+	border: 5px solid #e35a84;
+	color: #e35a84;
+	box-shadow: none;
+
+	&:hover {
+		background: linear-gradient(142deg, #ffbd27 0%, #e35a84 100%);
+		border: none;
+		color: white;
+	}
+}
+
+.purple-gradient {
+	color: black;
+	background: linear-gradient(142deg, #f2b9f7 0%, #abfa9d 100%);
+
+	&:hover {
+		color: white;
+		background: #f2b9f7;
+	}
+}
+
+.blue-gradient {
+	color: white;
+	background: linear-gradient(142deg, #244fe0 0%, #bd9dfa 100%);
+
+	&:hover {
+		color: white;
+		background: #244fe0;
+	}
+}
