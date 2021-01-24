@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar"
 import About from "./sections/About/About"
 import React, { useEffect } from "react"
 import Landing from "./sections/Landing/Landing"
+import Services from "./sections/Services/Services"
 
 function App() {
 	return (
@@ -10,6 +11,7 @@ function App() {
 			<Navbar />
 			<Landing />
 			<About />
+			<Services />
 		</>
 	)
 }

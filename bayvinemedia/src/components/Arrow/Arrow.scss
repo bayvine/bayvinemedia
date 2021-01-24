@@ -3,10 +3,15 @@
 	left: 0;
 	margin: 3em;
 	top: 60%;
+
 	.arrow-down {
 	}
+
 	span {
-		transform: rotateX(90deg);
+		display: block;
+		position: relative;
+		transform: rotate(-90deg) translateY(-35px) translateX(180px);
 		color: white;
+		transition: all 0.3s ease-in-out;
 	}
 }
