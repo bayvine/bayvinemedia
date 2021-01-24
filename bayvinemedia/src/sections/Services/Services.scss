@@ -3,10 +3,26 @@
 @import "../../styles/colors.scss";
 
 .services {
+	margin-top: 10em;
 	width: 100vw;
 	height: 100vh auto;
 
-	h2 {
+	h1 {
+		text-align: center;
 		color: white;
+	}
+
+	.services-block {
+		margin: 0 auto;
+		margin-top: 5em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.images {
+			.services-image {
+				height: 900px;
+			}
+		}
 	}
 }

@@ -1,0 +1,16 @@
+.service {
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	color: white;
+
+	img {
+		margin: 2em;
+		width: 60px;
+		height: 60px;
+	}
+
+	div {
+		width: 50%;
+	}
+}
