@@ -4,7 +4,10 @@ import "./Arrow.scss"
 
 const Arrow = () => {
 	return (
-		<img className="arrow-down" draggable="false" src={arrow} alt="arrow" />
+		<div className="arrow">
+			<img className="arrow-down" draggable="false" src={arrow} alt="arrow" />
+			<span>READ MORE</span>
+		</div>
 	)
 }
 

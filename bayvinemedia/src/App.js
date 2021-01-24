@@ -1,10 +1,15 @@
 import Button from "./components/Button/Button"
+import Navbar from "./components/Navbar/Navbar"
+import About from "./sections/About/About"
+import React, { useEffect } from "react"
 import Landing from "./sections/Landing/Landing"
 
 function App() {
 	return (
 		<>
+			<Navbar />
 			<Landing />
+			<About />
 		</>
 	)
 }

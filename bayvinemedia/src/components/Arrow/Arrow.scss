@@ -1,6 +1,12 @@
-.arrow-down {
+.arrow {
 	position: absolute;
 	left: 0;
 	margin: 3em;
 	top: 60%;
+	.arrow-down {
+	}
+	span {
+		transform: rotateX(90deg);
+		color: white;
+	}
 }
