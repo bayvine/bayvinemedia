@@ -1,0 +1,92 @@
+.reviews {
+	position: relative;
+	margin-top: 8em;
+	color: white;
+	.reviews-heading {
+		text-align: center;
+		h1 {
+		}
+		span {
+			font-size: 20px;
+		}
+	}
+
+	.reviews-cards {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+
+		.review-card {
+			margin-top: 5em;
+			width: 350px;
+			height: 500px;
+			border-radius: 50px;
+			color: white;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+
+			.picture {
+				height: 150px;
+				width: 150px;
+				border-radius: 50%;
+				background-color: Red;
+			}
+
+			p {
+				text-align: center;
+				width: 80%;
+			}
+
+			span {
+				font-weight: 900;
+				font-size: 18px;
+
+				&:nth-child(3) {
+					margin-top: 6em;
+				}
+			}
+		}
+
+		.orange {
+			background: linear-gradient(142deg, #ffbd27 0%, #e35a84 100%);
+		}
+
+		.blue {
+			background: linear-gradient(142deg, #9ed195 0%, #004eff 100%);
+		}
+
+		.green {
+			background: linear-gradient(142deg, #84ccbe 0%, #298014 100%);
+		}
+	}
+
+	.background-letters {
+		top: 0;
+		position: absolute;
+		z-index: -1;
+
+		.background {
+			white-space: nowrap;
+			overflow: hidden;
+			width: 100%;
+			margin: 0;
+			opacity: 15%;
+			font-size: 200px;
+
+			&:nth-child(1) {
+				text-align: center;
+			}
+
+			&:nth-child(2) {
+				text-align: right;
+			}
+
+			&:nth-child(3) {
+				text-align: left;
+			}
+		}
+	}
+}
