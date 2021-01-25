@@ -5,6 +5,7 @@ import React, { useEffect } from "react"
 import Landing from "./sections/Landing/Landing"
 import Services from "./sections/Services/Services"
 import Reviews from "./sections/Reviews/Reviews"
+import ExtraInformation from "./sections/ExtraInformation/ExtraInformation"
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 			<About />
 			<Services />
 			<Reviews />
+			<ExtraInformation />
 		</>
 	)
 }

@@ -1,0 +1,40 @@
+.extra {
+	margin-top: 10em;
+	width: 100%;
+
+	.level-up-today {
+		position: relative;
+		overflow: hidden;
+		margin: 0 auto;
+		color: white;
+		margin: 0 auto;
+		margin-top: 15em;
+		width: 85%;
+		height: 300px;
+		border-radius: 50px;
+		background: linear-gradient(142deg, #cbf5f0 0%, #ffbd27 100%);
+
+		display: flex;
+		// justify-content: center;
+		padding: 0 6em;
+		align-items: center;
+		justify-content: space-between;
+
+		.level-up-box {
+			color: black;
+			width: 50%;
+
+			button {
+				margin-right: 2em;
+			}
+		}
+
+		.level-up-image {
+			right: 0;
+			align-self: flex-end;
+			width: 40%;
+			height: 100%;
+			background-color: red;
+		}
+	}
+}
