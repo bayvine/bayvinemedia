@@ -45,7 +45,7 @@ const Services = () => {
 						title="Logo Design"
 						text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat, consequat viverra tempus et, porttitor id ante. Proin vel ante nec risus commodo dictum sit amet vel ex. Sed erat neque, efficitur at dignissim ac, tempus sit amet turpis."
 					/>
-					<Button className={"purple-gradient"} text={"LET'S CHAT"} />
+					{/* <Button className={"purple-gradient"} text={"READ MORE"} /> */}
 				</div>
 			</div>
 		</section>
