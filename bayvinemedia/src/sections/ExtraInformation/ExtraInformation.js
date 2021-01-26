@@ -1,6 +1,7 @@
 import React from "react"
 import "./ExtraInformation.scss"
 import LevelUp from "../../components/LevelUp/LevelUp"
+import BasedIn from "../../components/BasedIn/BasedIn"
 
 const ExtraInformation = () => {
 	return (
@@ -8,6 +9,7 @@ const ExtraInformation = () => {
 			{/*level up card */}
 			<LevelUp />
 			{/* Based in..? */}
+			<BasedIn />
 		</section>
 	)
 }

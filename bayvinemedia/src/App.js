@@ -6,6 +6,7 @@ import Landing from "./sections/Landing/Landing"
 import Services from "./sections/Services/Services"
 import Reviews from "./sections/Reviews/Reviews"
 import ExtraInformation from "./sections/ExtraInformation/ExtraInformation"
+import Contact from "./sections/Contact/Contact"
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 			<Services />
 			<Reviews />
 			<ExtraInformation />
+			<Contact />
 		</>
 	)
 }
