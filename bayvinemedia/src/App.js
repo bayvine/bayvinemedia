@@ -18,6 +18,7 @@ function App() {
 			<Reviews />
 			<ExtraInformation />
 			<Contact />
+			<footer>Designed and Developed with ♡ by Bay Vine Media 2021 ©</footer>
 		</>
 	)
 }
