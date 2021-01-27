@@ -1,0 +1,24 @@
+.contact-instructions {
+	display: flex;
+	flex-direction: column;
+	margin: 2em;
+	justify-content: center;
+	align-items: flex-start;
+
+	h3 {
+		width: 80%;
+		font-size: 25px;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			p {
+				width: 80%;
+			}
+		}
+	}
+}
