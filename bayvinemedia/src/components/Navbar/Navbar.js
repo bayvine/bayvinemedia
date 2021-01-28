@@ -1,7 +1,8 @@
 import React, { useEffect } from "react"
+import Menu from "../Menu/Menu"
 import "./Navbar.scss"
 
-const Navbar = () => {
+const Navbar = (props) => {
 	let userHasScrolled = false
 
 	let [attribute, setattribute] = React.useState("")
@@ -25,16 +26,19 @@ const Navbar = () => {
 	}, [])
 
 	return (
-		<nav className={attribute}>
-			{/* logo */}
-			<div className="logo"></div>
-			{/* hamburger menu */}
-			<div className="hamburger-menu">
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-		</nav>
+		<>
+			<nav className={attribute}>
+				{/* logo */}
+				<div className="logo"></div>
+
+				{/* hamburger menu */}
+				<div className="hamburger-menu" onClick={() => props.clicked()}>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</nav>
+		</>
 	)
 }
 

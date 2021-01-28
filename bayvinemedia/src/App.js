@@ -7,11 +7,20 @@ import Services from "./sections/Services/Services"
 import Reviews from "./sections/Reviews/Reviews"
 import ExtraInformation from "./sections/ExtraInformation/ExtraInformation"
 import Contact from "./sections/Contact/Contact"
+import Menu from "./components/Menu/Menu"
 
 function App() {
+	let [menu, setMenu] = React.useState(false)
+
+	function handleMenu() {
+		console.log("handling menu..")
+		setMenu((prevstate) => !prevstate)
+	}
+
 	return (
 		<>
-			<Navbar />
+			<Menu show={menu} clicked={handleMenu} />
+			<Navbar clicked={handleMenu} />
 			<Landing />
 			<About />
 			<Services />

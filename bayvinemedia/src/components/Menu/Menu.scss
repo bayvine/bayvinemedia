@@ -1,0 +1,19 @@
+.menu {
+	color: white;
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	background-color: black;
+	transition: transform 0.3s ease-out;
+}
+
+.open {
+	transform: translateX(0);
+}
+
+.closed {
+	transform: translateX(-100%);
+}
