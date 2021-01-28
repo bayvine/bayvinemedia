@@ -2,6 +2,9 @@ import React from "react"
 import "./Form.scss"
 
 const Form = () => {
+	const formHandler = (e) => {
+		e.preventDefault()
+	}
 	return (
 		<div className="form">
 			<h1>Contact</h1>
@@ -33,7 +36,9 @@ const Form = () => {
 					<textarea></textarea>
 				</div>
 
-				<button type="submit">S E N D</button>
+				<button type="submit" onClick={(e) => formHandler(e)}>
+					S E N D
+				</button>
 			</form>
 		</div>
 	)
