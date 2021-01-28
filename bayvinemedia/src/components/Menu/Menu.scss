@@ -14,6 +14,7 @@
 	align-items: flex-start;
 
 	.menu-items {
+		z-index: 101;
 		margin-left: 10em;
 
 		ul {
@@ -25,6 +26,24 @@
 				font-size: 80px;
 			}
 		}
+	}
+
+	img {
+		overflow: hidden;
+		position: absolute;
+		object-fit: cover;
+		opacity: 50%;
+		width: 120%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		opacity: 1;
+		transition: all 0.3s ease-in-out;
+		background-color: black;
+	}
+
+	.kenburn {
+		animation: kenburns 20s infinite;
 	}
 }
 
@@ -61,4 +80,22 @@
 
 .closed {
 	transform: translateX(100%);
+}
+
+@keyframes kenburns {
+	0% {
+		opacity: 0;
+	}
+	5% {
+		opacity: 1;
+	}
+	95% {
+		transform: scale3d(1.5, 1.5, 1.5) translate3d(-190px, -120px, 0px);
+		animation-timing-function: ease-in;
+		opacity: 1;
+	}
+	100% {
+		transform: scale3d(2, 2, 2) translate3d(-170px, -100px, 0px);
+		opacity: 0;
+	}
 }
