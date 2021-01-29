@@ -32,13 +32,13 @@ $screenxl: 1200px;
 }
 
 @mixin screenm {
-	@media (min-width: #{$screenm}) {
+	@media (max-width: #{$screenm}) {
 		@content;
 	}
 }
 
 @mixin screenl {
-	@media (min-width: #{$screenl}) {
+	@media (max-width: #{$screenl}) {
 		@content;
 	}
 }

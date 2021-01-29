@@ -22,6 +22,11 @@
 		margin-bottom: 2em;
 	}
 
+	@include screenm {
+		margin: 0;
+		margin-bottom: 2em;
+	}
+
 	.contact-part {
 		margin-top: 5em;
 		margin-left: 5em;
@@ -29,6 +34,15 @@
 		display: flex;
 		align-items: baseline;
 		justify-content: space-evenly;
+
+		@include screenm {
+			margin-top: 2em;
+			margin-left: 5em;
+			margin-right: 5em;
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+		}
 
 		@include screenxxs {
 			flex-direction: column;
@@ -75,6 +89,10 @@
 
 		@include screens {
 			margin-top: 3em;
+		}
+
+		@include screenm {
+			width: 60%;
 		}
 
 		h1,

@@ -59,6 +59,17 @@
 			margin-bottom: 0;
 		}
 
+		@include screenm {
+			justify-content: space-between;
+
+			margin-top: 15em;
+			width: 85%;
+			padding: 0;
+			padding-left: 5em;
+			padding-bottom: 0;
+			margin-bottom: 0;
+		}
+
 		.level-up-box {
 			color: black;
 			width: 50%;
