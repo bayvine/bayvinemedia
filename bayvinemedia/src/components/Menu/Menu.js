@@ -1,14 +1,58 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import "./Menu.scss"
 import sanfran from "../../media/menubackgroundsan.png"
 import statue from "../../media/statue.jpg"
 import beach from "../../media/beach.jpg"
 import together from "../../media/together.jpg"
+import gsap from "gsap"
+
+export const staggerText = (node1, node2, node3, node4) => {
+	gsap.from([node1, node2, node3, node4], {
+		duration: 0.8,
+		opacity: 0,
+		y: 100,
+		delay: 0.3,
+		ease: "power3.inOut",
+		stagger: {
+			amount: 0.3,
+		},
+	})
+}
+
+// adds city image once you hover on
+export const handleCity = (target) => {
+	gsap.from(target, {
+		duration: 0.4,
+		opacity: 0,
+		skewY: 2,
+	})
+}
+
+// adds city image once you hover on
+export const handleCityOut = (target) => {
+	gsap.to(target, {
+		duration: 0,
+		skewY: 0,
+	})
+	gsap.to(target, {
+		duration: 0.4,
+		opacity: 0,
+		skewY: 0,
+	})
+}
 
 const Menu = (props) => {
 	let attachedClasses = ["menu", "closed"]
 	let attachedClasses1 = ["menu2", "closed"]
 	let attachedClasses2 = ["menu3", "closed"]
+	let mainmenu = useRef(null)
+	let mainmenubackground = useRef(null)
+	let line1 = useRef(null)
+	let line2 = useRef(null)
+	let line3 = useRef(null)
+	let line4 = useRef(null)
+	let imageSelector = useRef(null)
+
 	let imageClass = ""
 
 	let [currentImage, setcurrentImage] = useState("")
@@ -21,21 +65,31 @@ const Menu = (props) => {
 
 	const backgroundHandler = (image) => {
 		setcurrentImage(image)
+		// handleCity(imageSelector)
 		imageClass = "kenburn"
 	}
 
+	useEffect(() => {
+		if (props.show) {
+			staggerText(line1, line2, line3, line4)
+		}
+		console.log("hi")
+	}, [props])
+
 	const resetImage = () => {
 		imageClass = ""
+		// handleCityOut(imageSelector)
 		setcurrentImage("")
 	}
 
 	return (
 		<>
-			<div className={attachedClasses.join(" ")}>
+			<div ref={(el) => (mainmenu = el)} className={attachedClasses.join(" ")}>
 				<div className="menu-items">
 					<ul>
 						<li>
 							<h1
+								ref={(el) => (line1 = el)}
 								onMouseLeave={resetImage}
 								onMouseOver={() => backgroundHandler(sanfran)}
 							>
@@ -44,6 +98,7 @@ const Menu = (props) => {
 						</li>
 						<li>
 							<h1
+								ref={(el) => (line2 = el)}
 								onMouseLeave={resetImage}
 								onMouseOver={() => backgroundHandler(statue)}
 							>
@@ -52,6 +107,7 @@ const Menu = (props) => {
 						</li>
 						<li>
 							<h1
+								ref={(el) => (line3 = el)}
 								onMouseLeave={resetImage}
 								onMouseOver={() => backgroundHandler(beach)}
 							>
@@ -60,6 +116,7 @@ const Menu = (props) => {
 						</li>
 						<li>
 							<h1
+								ref={(el) => (line4 = el)}
 								onMouseLeave={resetImage}
 								onMouseOver={() => backgroundHandler(together)}
 							>
@@ -69,10 +126,18 @@ const Menu = (props) => {
 					</ul>
 				</div>
 
-				<img className={imageClass} src={currentImage} />
+				<img
+					ref={(el) => (imageSelector = el)}
+					className={imageClass}
+					src={currentImage}
+					alt=""
+				/>
 			</div>
-			<div className={attachedClasses1.join(" ")}></div>
-			<div className={attachedClasses2.join(" ")}></div>
+			<div
+				ref={(el) => (mainmenubackground = el)}
+				className={attachedClasses1.join(" ")}
+			></div>
+			{/* <div className={attachedClasses2.join(" ")}></div> */}
 		</>
 	)
 }

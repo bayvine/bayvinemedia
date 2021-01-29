@@ -15,7 +15,7 @@
 
 	.menu-items {
 		z-index: 101;
-		margin-left: 10em;
+		margin-left: 15em;
 
 		ul {
 			margin: 0;
@@ -56,8 +56,11 @@
 	left: 0;
 	top: 0;
 	z-index: 90;
-	background-color: grey;
-	transition: all 0.7s ease-in-out;
+	background-color: rgb(255, 255, 255);
+	transition: all 1s ease-in-out;
+	animation-name: backgroundEffect;
+	animation-duration: 30s;
+	animation-iteration-count: infinite;
 }
 
 .menu3 {
@@ -97,5 +100,23 @@
 	100% {
 		transform: scale3d(2, 2, 2) translate3d(-170px, -100px, 0px);
 		opacity: 0;
+	}
+}
+
+@keyframes backgroundEffect {
+	0% {
+		background-position: 0% 0%;
+	}
+	25% {
+		background-position: 40% 10%;
+	}
+	50% {
+		background-position: 0 10%;
+	}
+	75% {
+		background-position: 10% 40%;
+	}
+	100% {
+		background-position: 0% 0%;
 	}
 }

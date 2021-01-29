@@ -13,7 +13,6 @@ function App() {
 	let [menu, setMenu] = React.useState(false)
 
 	function handleMenu() {
-		console.log("handling menu..")
 		setMenu((prevstate) => !prevstate)
 	}
 
