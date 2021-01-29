@@ -1,5 +1,5 @@
 // breakpoints variables
-$screenxxs: 360px;
+$screenxxs: 580px;
 $screenxs: 375px;
 $screens: 640px;
 $screenm: 768px;
@@ -8,7 +8,7 @@ $screenxl: 1200px;
 
 // Mixins
 @mixin screenxxs {
-	@media (min-width: #{$screenxxs}) {
+	@media (max-width: #{$screenxxs}) {
 		@content;
 	}
 }
