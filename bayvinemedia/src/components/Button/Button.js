@@ -6,7 +6,7 @@ export const showButton = (node1) => {
 	gsap.from(node1, {
 		duration: 0.8,
 		opacity: 0,
-
+		x: -100,
 		delay: 1,
 		ease: "power3.inOut",
 	})

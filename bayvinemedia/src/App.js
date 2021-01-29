@@ -1,23 +1,34 @@
 import Button from "./components/Button/Button"
 import Navbar from "./components/Navbar/Navbar"
 import About from "./sections/About/About"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Landing from "./sections/Landing/Landing"
 import Services from "./sections/Services/Services"
 import Reviews from "./sections/Reviews/Reviews"
 import ExtraInformation from "./sections/ExtraInformation/ExtraInformation"
 import Contact from "./sections/Contact/Contact"
 import Menu from "./components/Menu/Menu"
+import LoadingScreen from "./sections/LoadingScreen/LoadingScreen"
 
 function App() {
 	let [menu, setMenu] = React.useState(false)
+
+	const [shouldIntroExist, setShouldIntroExist] = useState(true)
+
+	useEffect(() => {
+		setTimeout(() => {
+			setShouldIntroExist(false)
+		}, 5000)
+	}, shouldIntroExist)
 
 	function handleMenu() {
 		setMenu((prevstate) => !prevstate)
 	}
 
-	return (
-		<>
+	return shouldIntroExist ? (
+		<LoadingScreen />
+	) : (
+		<div className="the-whole-app">
 			<Menu show={menu} clicked={handleMenu} />
 			<Navbar clicked={handleMenu} />
 			<Landing />
@@ -27,7 +38,7 @@ function App() {
 			<ExtraInformation />
 			<Contact />
 			<footer>Designed and Developed with ♡ by Bay Vine Media 2021 ©</footer>
-		</>
+		</div>
 	)
 }
 

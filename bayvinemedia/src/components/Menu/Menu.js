@@ -19,28 +19,6 @@ export const staggerText = (node1, node2, node3, node4) => {
 	})
 }
 
-// adds city image once you hover on
-export const handleCity = (target) => {
-	gsap.from(target, {
-		duration: 0.4,
-		opacity: 0,
-		skewY: 2,
-	})
-}
-
-// adds city image once you hover on
-export const handleCityOut = (target) => {
-	gsap.to(target, {
-		duration: 0,
-		skewY: 0,
-	})
-	gsap.to(target, {
-		duration: 0.4,
-		opacity: 0,
-		skewY: 0,
-	})
-}
-
 const Menu = (props) => {
 	let attachedClasses = ["menu", "closed"]
 	let attachedClasses1 = ["menu2", "closed"]
@@ -51,7 +29,6 @@ const Menu = (props) => {
 	let line2 = useRef(null)
 	let line3 = useRef(null)
 	let line4 = useRef(null)
-	let imageSelector = useRef(null)
 
 	let imageClass = ""
 
@@ -60,7 +37,6 @@ const Menu = (props) => {
 	if (props.show) {
 		attachedClasses = ["menu", "open"]
 		attachedClasses1 = ["menu2", "open"]
-		attachedClasses2 = ["menu3", "open"]
 	}
 
 	const backgroundHandler = (image) => {
@@ -135,7 +111,6 @@ const Menu = (props) => {
 				ref={(el) => (mainmenubackground = el)}
 				className={attachedClasses1.join(" ")}
 			></div>
-			{/* <div className={attachedClasses2.join(" ")}></div> */}
 		</>
 	)
 }
