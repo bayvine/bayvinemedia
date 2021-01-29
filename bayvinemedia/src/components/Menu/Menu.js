@@ -67,6 +67,8 @@ const Menu = (props) => {
 		setcurrentImage(image)
 		// handleCity(imageSelector)
 		imageClass = "kenburn"
+
+		console.log(imageClass)
 	}
 
 	useEffect(() => {
@@ -80,6 +82,7 @@ const Menu = (props) => {
 		imageClass = ""
 		// handleCityOut(imageSelector)
 		setcurrentImage("")
+		console.log(imageClass)
 	}
 
 	return (
@@ -126,12 +129,7 @@ const Menu = (props) => {
 					</ul>
 				</div>
 
-				<img
-					ref={(el) => (imageSelector = el)}
-					className={imageClass}
-					src={currentImage}
-					alt=""
-				/>
+				<img className={imageClass} src={currentImage} alt="" />
 			</div>
 			<div
 				ref={(el) => (mainmenubackground = el)}

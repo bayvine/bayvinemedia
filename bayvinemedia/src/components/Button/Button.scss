@@ -8,9 +8,10 @@ button {
 	border-radius: 15px;
 	box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 	border: none;
-	transition: all 0.3s linear;
+	transition: background 0.3s linear;
 	font-weight: bolder;
 	letter-spacing: 5px;
+	opacity: 1;
 
 	cursor: pointer;
 }
