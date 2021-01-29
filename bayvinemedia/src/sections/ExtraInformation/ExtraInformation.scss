@@ -37,11 +37,27 @@
 			padding: 2em 0;
 		}
 
+		@include screenxs {
+			flex-direction: column;
+			justify-content: center;
+			min-height: 80vh;
+			height: auto;
+			margin-top: 5em;
+			width: 85%;
+			padding: 2em 0;
+		}
+
 		.level-up-box {
 			color: black;
 			width: 50%;
 
 			@include screenxxs {
+				text-align: center;
+				width: 100%;
+				margin-bottom: 2em;
+			}
+
+			@include screenxs {
 				text-align: center;
 				width: 100%;
 				margin-bottom: 2em;
@@ -53,6 +69,11 @@
 						width: 100%;
 						padding: 0 1em;
 					}
+
+					@include screenxs {
+						width: 100%;
+						padding: 0 1em;
+					}
 				}
 			}
 
@@ -60,6 +81,10 @@
 				margin-right: 2em;
 
 				@include screenxxs {
+					margin: 1rem 2em;
+				}
+
+				@include screenxs {
 					margin: 1rem 2em;
 				}
 			}
@@ -78,6 +103,15 @@
 				width: 100%;
 				align-self: center;
 				height: 100%;
+			}
+
+			@include screenxs {
+				bottom: 0;
+				right: 50%;
+				width: 100%;
+				align-self: flex-end;
+				justify-self: flex-end;
+				height: 80%;
 			}
 		}
 	}

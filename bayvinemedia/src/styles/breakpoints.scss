@@ -1,9 +1,9 @@
 // breakpoints variables
-$screenxxs: 580px;
-$screenxs: 375px;
-$screens: 640px;
-$screenm: 768px;
-$screenl: 1024px;
+$screenxxs: 480px;
+$screenxs: 768px;
+$screens: 1024px;
+$screenm: 1200px;
+$screenl: 2000px;
 $screenxl: 1200px;
 
 // Mixins
@@ -14,19 +14,19 @@ $screenxl: 1200px;
 }
 
 @mixin screenxs {
-	@media (min-width: #{$screenxs}) {
+	@media (max-width: #{$screenxs}) {
 		@content;
 	}
 }
 
 @mixin screens {
-	@media (min-width: #{$screens}) {
+	@media (max-width: #{$screens}) {
 		@content;
 	}
 }
 
 @mixin screenxs {
-	@media (min-width: #{$screenxs}) {
+	@media (max-width: #{$screenxs}) {
 		@content;
 	}
 }
@@ -44,7 +44,7 @@ $screenxl: 1200px;
 }
 
 @mixin screenxl {
-	@media (min-width: #{$screenxl}) {
+	@media (max-width: #{$screenxl}) {
 		@content;
 	}
 }

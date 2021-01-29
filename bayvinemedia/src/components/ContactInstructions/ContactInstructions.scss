@@ -11,7 +11,13 @@
 
 	@include screenxxs {
 		align-items: center;
-		text-align: justify;
+		text-align: center;
+		margin: 0;
+	}
+
+	@include screenxs {
+		align-items: center;
+		text-align: center;
 		margin: 0;
 	}
 
@@ -20,6 +26,10 @@
 		font-size: 25px;
 
 		@include screenxxs {
+			width: 100%;
+		}
+
+		@include screenxs {
 			width: 100%;
 		}
 	}
@@ -34,6 +44,10 @@
 				width: 80%;
 
 				@include screenxxs {
+					width: 100%;
+				}
+
+				@include screenxs {
 					width: 100%;
 				}
 			}

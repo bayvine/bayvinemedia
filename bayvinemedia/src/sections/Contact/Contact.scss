@@ -12,6 +12,11 @@
 		margin-bottom: 2em;
 	}
 
+	@include screenxs {
+		margin: 0;
+		margin-bottom: 2em;
+	}
+
 	.contact-part {
 		margin-top: 5em;
 		margin-left: 5em;
@@ -21,6 +26,14 @@
 		justify-content: space-evenly;
 
 		@include screenxxs {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-left: 2em;
+			margin-right: 2em;
+		}
+
+		@include screenxs {
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
@@ -40,6 +53,12 @@
 			align-items: center;
 		}
 
+		@include screenxs {
+			width: 100%;
+			justify-content: center;
+			align-items: center;
+		}
+
 		form {
 			margin-top: 3em;
 			display: grid;
@@ -47,6 +66,12 @@
 			grid-gap: 2em;
 
 			@include screenxxs {
+				display: flex;
+				width: 85vw;
+				flex-direction: column;
+			}
+
+			@include screenxs {
 				display: flex;
 				width: 85vw;
 				flex-direction: column;
@@ -89,6 +114,12 @@
 						scrollbar-arrow-color: white;
 
 						@include screenxxs {
+							padding: 0;
+							padding-left: 1em;
+							padding-top: 1em;
+						}
+
+						@include screenxs {
 							padding: 0;
 							padding-left: 1em;
 							padding-top: 1em;

@@ -14,6 +14,10 @@
 		@include screenxxs {
 			text-align: center;
 		}
+
+		@include screenxs {
+			text-align: center;
+		}
 	}
 
 	.services-block {
@@ -26,6 +30,10 @@
 
 		.images {
 			@include screenxxs {
+				display: none;
+			}
+
+			@include screenxs {
 				display: none;
 			}
 

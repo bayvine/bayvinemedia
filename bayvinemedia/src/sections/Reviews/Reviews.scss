@@ -11,6 +11,10 @@
 		margin-top: 5em;
 	}
 
+	@include screenxs {
+		margin-top: 5em;
+	}
+
 	.reviews-heading {
 		text-align: center;
 
@@ -27,6 +31,11 @@
 		justify-content: space-evenly;
 
 		@include screenxxs {
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		@include screenxs {
 			flex-direction: column;
 			justify-content: center;
 		}
@@ -90,6 +99,10 @@
 
 		@include screenxxs {
 			top: 20%;
+		}
+
+		@include screenxs {
+			top: 30%;
 		}
 
 		.background {

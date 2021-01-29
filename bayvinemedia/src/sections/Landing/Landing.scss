@@ -33,6 +33,22 @@
 			left: 0;
 			width: 100vw;
 		}
+
+		@include screenxs {
+			position: absolute;
+			height: 100%;
+			top: 0;
+			left: 0;
+			width: 100vw;
+		}
+
+		@include screens {
+			position: absolute;
+			height: 100%;
+			top: 0;
+			left: 0;
+			width: 100vw;
+		}
 	}
 
 	.landing-garage-image {
@@ -51,6 +67,14 @@
 		@include screenxxs {
 			display: none;
 		}
+
+		@include screenxs {
+			display: none;
+		}
+
+		@include screens {
+			display: none;
+		}
 	}
 
 	.landing-heading {
@@ -59,6 +83,16 @@
 		margin-left: 28em;
 
 		@include screenxxs {
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		@include screenxs {
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		@include screens {
 			margin: 0 auto;
 			text-align: center;
 		}
@@ -72,6 +106,14 @@
 			@include screenxxs {
 				color: white;
 			}
+
+			@include screenxs {
+				color: white;
+			}
+
+			@include screens {
+				color: white;
+			}
 		}
 
 		p {
@@ -82,6 +124,16 @@
 
 			@include screenxxs {
 				width: 100%;
+			}
+
+			@include screenxs {
+				width: 100%;
+			}
+
+			@include screens {
+				width: 100%;
+				padding-right: 1em;
+				padding-left: 1em;
 			}
 		}
 	}
