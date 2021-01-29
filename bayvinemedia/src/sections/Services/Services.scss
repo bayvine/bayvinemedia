@@ -18,6 +18,10 @@
 		@include screenxs {
 			text-align: center;
 		}
+
+		@include screens {
+			text-align: center;
+		}
 	}
 
 	.services-block {
@@ -28,6 +32,11 @@
 		justify-content: center;
 		align-items: center;
 
+		@include screens {
+			align-items: center;
+			flex-direction: column-reverse;
+		}
+
 		.images {
 			@include screenxxs {
 				display: none;
@@ -37,9 +46,21 @@
 				display: none;
 			}
 
+			@include screens {
+				margin: 0 auto;
+			}
+
 			.services-image {
 				margin: 0 8em;
 				width: 80%;
+
+				@include screens {
+					width: 400px;
+					height: 600px;
+					margin-top: 5em;
+					object-fit: cover;
+					border-radius: 50px;
+				}
 			}
 		}
 

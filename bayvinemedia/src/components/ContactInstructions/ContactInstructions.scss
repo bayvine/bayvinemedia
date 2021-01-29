@@ -21,6 +21,12 @@
 		margin: 0;
 	}
 
+	@include screens {
+		align-items: center;
+		text-align: center;
+		margin: 0;
+	}
+
 	h3 {
 		width: 80%;
 		font-size: 25px;
@@ -30,6 +36,10 @@
 		}
 
 		@include screenxs {
+			width: 100%;
+		}
+
+		@include screens {
 			width: 100%;
 		}
 	}
@@ -48,6 +58,12 @@
 				}
 
 				@include screenxs {
+					width: 100%;
+				}
+
+				@include screens {
+					padding-left: 4em;
+					padding-right: 4em;
 					width: 100%;
 				}
 			}

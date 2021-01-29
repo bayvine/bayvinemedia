@@ -22,6 +22,10 @@
 			text-align: center;
 		}
 
+		@include screenxs {
+			text-align: center;
+		}
+
 		span {
 			color: rgba(255, 255, 255, 0.5);
 		}
@@ -32,6 +36,10 @@
 			color: rgba(255, 255, 255, 0.5);
 
 			@include screenxxs {
+				font-size: 60px;
+			}
+
+			@include screenxs {
 				font-size: 60px;
 			}
 		}

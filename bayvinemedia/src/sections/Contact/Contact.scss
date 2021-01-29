@@ -17,6 +17,11 @@
 		margin-bottom: 2em;
 	}
 
+	@include screens {
+		margin: 0;
+		margin-bottom: 2em;
+	}
+
 	.contact-part {
 		margin-top: 5em;
 		margin-left: 5em;
@@ -40,6 +45,15 @@
 			margin-left: 2em;
 			margin-right: 2em;
 		}
+
+		@include screens {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-top: 5em;
+			margin-left: 2em;
+			margin-right: 2em;
+		}
 	}
 
 	.form {
@@ -59,6 +73,17 @@
 			align-items: center;
 		}
 
+		@include screens {
+			margin-top: 3em;
+		}
+
+		h1,
+		span {
+			@include screens {
+				text-align: center;
+			}
+		}
+
 		form {
 			margin-top: 3em;
 			display: grid;
@@ -75,6 +100,10 @@
 				display: flex;
 				width: 85vw;
 				flex-direction: column;
+			}
+
+			@include screens {
+				margin-top: 2em;
 			}
 
 			div {

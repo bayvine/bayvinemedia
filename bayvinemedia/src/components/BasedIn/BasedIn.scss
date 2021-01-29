@@ -27,6 +27,14 @@
 		margin-top: 10em;
 	}
 
+	@include screens {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin-top: 10em;
+	}
+
 	.san-francisco-picture {
 		img {
 			height: 100%;
@@ -42,6 +50,12 @@
 				display: block;
 				height: 350px;
 
+				object-fit: contain;
+			}
+
+			@include screens {
+				display: block;
+				height: 450px;
 				object-fit: contain;
 			}
 		}
@@ -65,6 +79,13 @@
 			flex-direction: column-reverse;
 		}
 
+		@include screens {
+			align-items: center;
+			justify-content: center;
+			flex-direction: column-reverse;
+			margin-top: 2em;
+		}
+
 		div {
 			margin-bottom: 8em;
 
@@ -76,6 +97,12 @@
 
 			@include screenxs {
 				margin-top: 1em;
+				text-align: center;
+				width: 100%;
+			}
+
+			@include screens {
+				margin-top: 3em;
 				text-align: center;
 				width: 100%;
 			}
@@ -97,6 +124,11 @@
 					text-align: center;
 					font-size: 50px;
 				}
+
+				@include screens {
+					text-align: center;
+					font-size: 50px;
+				}
 			}
 		}
 		img {
@@ -109,6 +141,11 @@
 			}
 
 			@include screenxs {
+				display: block;
+				height: 350px;
+				object-fit: contain;
+			}
+			@include screens {
 				display: block;
 				height: 350px;
 				object-fit: contain;

@@ -38,6 +38,17 @@
 			justify-content: center;
 		}
 
+		@include screens {
+			border-radius: 50px;
+			margin: 0 auto;
+			margin-top: 10em;
+			width: 85vw;
+			height: auto;
+			overflow: hidden;
+			flex-direction: column;
+			justify-content: center;
+		}
+
 		.about-me-text {
 			width: 50%;
 
@@ -49,6 +60,13 @@
 			}
 
 			@include screenxs {
+				padding-left: 2em;
+				padding-right: 2em;
+				width: 100%;
+				text-align: center;
+			}
+
+			@include screens {
 				padding-left: 2em;
 				padding-right: 2em;
 				width: 100%;
@@ -69,6 +87,11 @@
 					width: 100%;
 					text-align: center;
 				}
+
+				@include screens {
+					width: 100%;
+					text-align: center;
+				}
 			}
 
 			.about-text-buttons {
@@ -82,6 +105,10 @@
 					margin-top: 2em;
 				}
 
+				@include screens {
+					margin-top: 2em;
+				}
+
 				button {
 					margin-right: 2em;
 
@@ -90,6 +117,10 @@
 					}
 
 					@include screenxs {
+						margin: 1em 1em;
+					}
+
+					@include screens {
 						margin: 1em 1em;
 					}
 				}
@@ -108,6 +139,10 @@
 
 			@include screenxs {
 				margin: 1em auto;
+			}
+
+			@include screens {
+				margin: 3em auto;
 			}
 
 			.about-image {
