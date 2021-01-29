@@ -1,8 +1,12 @@
 import React from "react"
 import Button from "../../components/Button/Button"
 import "./About.scss"
+import { ScrollTrigger } from "gsap/all"
+import gsap from "gsap"
 
 const About = () => {
+	gsap.registerPlugin(ScrollTrigger)
+
 	return (
 		<section className="about">
 			<div className="about-me-block">

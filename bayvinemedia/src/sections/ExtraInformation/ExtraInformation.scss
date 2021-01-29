@@ -1,3 +1,7 @@
+@import "../../styles/breakpoints.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/colors.scss";
+
 .extra {
 	width: 100%;
 	display: flex;
@@ -10,7 +14,7 @@
 		overflow: hidden;
 		margin: 0 auto;
 		color: white;
-		margin: 0 auto;
+
 		margin-top: 15em;
 		width: 80%;
 		height: 300px;
@@ -23,12 +27,41 @@
 		align-items: center;
 		justify-content: space-between;
 
+		@include screenxxs {
+			flex-direction: column;
+			justify-content: center;
+			min-height: 100vh;
+			height: auto;
+			margin-top: 5em;
+			width: 85%;
+			padding: 2em 0;
+		}
+
 		.level-up-box {
 			color: black;
 			width: 50%;
 
+			@include screenxxs {
+				text-align: center;
+				width: 100%;
+				margin-bottom: 2em;
+			}
+
+			.level-up-text {
+				p {
+					@include screenxxs {
+						width: 100%;
+						padding: 0 1em;
+					}
+				}
+			}
+
 			button {
 				margin-right: 2em;
+
+				@include screenxxs {
+					margin: 1rem 2em;
+				}
 			}
 		}
 
@@ -38,6 +71,14 @@
 			width: 40%;
 			height: 100%;
 			background-color: red;
+
+			@include screenxxs {
+				bottom: 0;
+				right: 50%;
+				width: 100%;
+				align-self: center;
+				height: 100%;
+			}
 		}
 	}
 }

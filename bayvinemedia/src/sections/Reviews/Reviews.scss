@@ -1,9 +1,19 @@
+@import "../../styles/breakpoints.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/colors.scss";
+
 .reviews {
 	position: relative;
 	margin-top: 8em;
 	color: white;
+
+	@include screenxxs {
+		margin-top: 5em;
+	}
+
 	.reviews-heading {
 		text-align: center;
+
 		h1 {
 		}
 		span {
@@ -16,6 +26,11 @@
 		align-items: center;
 		justify-content: space-evenly;
 
+		@include screenxxs {
+			flex-direction: column;
+			justify-content: center;
+		}
+
 		.review-card {
 			margin-top: 5em;
 			width: 350px;
@@ -27,6 +42,11 @@
 			justify-content: center;
 			align-items: center;
 			flex-wrap: wrap;
+
+			@include screenxxs {
+				width: 85%;
+				margin-top: 3em;
+			}
 
 			.picture {
 				height: 150px;
@@ -67,6 +87,10 @@
 		top: 0;
 		position: absolute;
 		z-index: -1;
+
+		@include screenxxs {
+			top: 20%;
+		}
 
 		.background {
 			white-space: nowrap;

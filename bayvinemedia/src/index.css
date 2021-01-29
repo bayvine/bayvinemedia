@@ -10,7 +10,7 @@ body {
 		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	width: 100vw;
+	max-width: 100vw;
 	overflow-x: hidden;
 }
 
@@ -26,4 +26,10 @@ h5 {
 footer {
 	color: white;
 	text-align: center;
+}
+
+.the-whole-app {
+	opacity: 1;
+	width: 100vw;
+	overflow: hidden;
 }

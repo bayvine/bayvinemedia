@@ -1,3 +1,7 @@
+@import "../../styles/breakpoints.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/colors.scss";
+
 .loading {
 	width: 100vw;
 	height: 100vh;
@@ -14,6 +18,10 @@
 		justify-content: center;
 		align-items: center;
 
+		@include screenxxs {
+			text-align: center;
+		}
+
 		span {
 			color: rgba(255, 255, 255, 0.5);
 		}
@@ -22,6 +30,10 @@
 			margin: 0;
 			font-size: 120px;
 			color: rgba(255, 255, 255, 0.5);
+
+			@include screenxxs {
+				font-size: 60px;
+			}
 		}
 
 		.spinner {

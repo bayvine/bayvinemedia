@@ -1,3 +1,7 @@
+@import "../../styles/breakpoints.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/colors.scss";
+
 .service {
 	display: flex;
 	align-items: flex-start;
@@ -12,5 +16,9 @@
 
 	div {
 		width: 50%;
+	}
+
+	@include screenxxs {
+		width: 95%;
 	}
 }

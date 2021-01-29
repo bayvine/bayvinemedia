@@ -22,9 +22,6 @@ export const staggerText = (node1, node2, node3, node4) => {
 const Menu = (props) => {
 	let attachedClasses = ["menu", "closed"]
 	let attachedClasses1 = ["menu2", "closed"]
-	let attachedClasses2 = ["menu3", "closed"]
-	let mainmenu = useRef(null)
-	let mainmenubackground = useRef(null)
 	let line1 = useRef(null)
 	let line2 = useRef(null)
 	let line3 = useRef(null)
@@ -63,7 +60,7 @@ const Menu = (props) => {
 
 	return (
 		<>
-			<div ref={(el) => (mainmenu = el)} className={attachedClasses.join(" ")}>
+			<div className={attachedClasses.join(" ")}>
 				<div className="menu-items">
 					<ul>
 						<li>
@@ -107,10 +104,7 @@ const Menu = (props) => {
 
 				<img className={imageClass} src={currentImage} alt="" />
 			</div>
-			<div
-				ref={(el) => (mainmenubackground = el)}
-				className={attachedClasses1.join(" ")}
-			></div>
+			<div className={attachedClasses1.join(" ")}></div>
 		</>
 	)
 }

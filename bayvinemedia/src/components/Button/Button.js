@@ -19,7 +19,7 @@ const Button = ({ clicked, className, text, landing }) => {
 		if (landing) {
 			showButton(landingref)
 		}
-	}, [])
+	}, [landing])
 
 	return (
 		<button

@@ -1,10 +1,20 @@
+@import "../../styles/breakpoints.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/colors.scss";
+
 .arrow {
 	position: absolute;
 	left: 0;
 	margin: 3em;
 	top: 60%;
 
+	@include screenxxs {
+		top: 70%;
+		left: -30px;
+	}
+
 	.arrow-down {
+		height: 200%;
 	}
 
 	span {

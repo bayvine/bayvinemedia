@@ -10,6 +10,10 @@
 	h1 {
 		text-align: center;
 		color: white;
+
+		@include screenxxs {
+			text-align: center;
+		}
 	}
 
 	.services-block {
@@ -21,6 +25,10 @@
 		align-items: center;
 
 		.images {
+			@include screenxxs {
+				display: none;
+			}
+
 			.services-image {
 				margin: 0 8em;
 				width: 80%;
@@ -33,9 +41,11 @@
 			align-items: flex-start;
 			justify-content: center;
 
+			@include screenxxs {
+			}
+
 			button {
 				margin-top: 2em;
-
 				align-self: center;
 			}
 		}

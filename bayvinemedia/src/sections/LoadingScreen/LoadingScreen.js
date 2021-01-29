@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import gsap from "gsap"
 import "./LoadingScreen.scss"
 
@@ -76,16 +76,16 @@ const LoadingScreen = () => {
 
 	useEffect(() => {
 		staggerReveal(menu, menu2)
-		staggerText(loadingTitle.current)
+		staggerText(loadingTitle)
 		staggerText(spanText)
-		simpleReveal(spinner.current)
+		simpleReveal(spinner)
 
 		setTimeout(() => {
 			staggerOut(menu, menu2)
-			simpleOut(loadingTitle.current)
+			simpleOut(loadingTitle)
 			simpleOut(spanText)
-			simpleOut(spinner.current)
-		}, 3000)
+			simpleOut(spinner)
+		}, 3500)
 	}, [])
 
 	return (
@@ -93,10 +93,10 @@ const LoadingScreen = () => {
 			<section className="loading">
 				<div ref={(el) => (menu = el)} className="loading-screen">
 					<span ref={(el) => (spanText = el)}>
-						<strong>In order to bloom you must grow</strong>
+						<strong>Iron sharpens iron, and one man sharpens another.</strong>
 					</span>
-					<div ref={spinner} class="spinner"></div>
-					<h1 ref={loadingTitle}>LOADING</h1>
+					<div ref={(el) => (spinner = el)} class="spinner"></div>
+					<h1 ref={(el) => (loadingTitle = el)}>LOADING</h1>
 				</div>
 				<div
 					ref={(el) => (menu2 = el)}

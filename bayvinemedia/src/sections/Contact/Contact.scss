@@ -1,7 +1,16 @@
+@import "../../styles/breakpoints.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/colors.scss";
+
 .contact {
 	margin-top: 20em;
 	margin-bottom: 10em;
 	color: white;
+
+	@include screenxxs {
+		margin: 0;
+		margin-bottom: 2em;
+	}
 
 	.contact-part {
 		margin-top: 5em;
@@ -10,6 +19,14 @@
 		display: flex;
 		align-items: baseline;
 		justify-content: space-evenly;
+
+		@include screenxxs {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-left: 2em;
+			margin-right: 2em;
+		}
 	}
 
 	.form {
@@ -17,11 +34,23 @@
 		flex-direction: column;
 		width: 80%;
 
+		@include screenxxs {
+			width: 100%;
+			justify-content: center;
+			align-items: center;
+		}
+
 		form {
 			margin-top: 3em;
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			grid-gap: 2em;
+
+			@include screenxxs {
+				display: flex;
+				width: 85vw;
+				flex-direction: column;
+			}
 
 			div {
 				display: flex;
@@ -58,6 +87,12 @@
 						color: white;
 						height: 100px;
 						scrollbar-arrow-color: white;
+
+						@include screenxxs {
+							padding: 0;
+							padding-left: 1em;
+							padding-top: 1em;
+						}
 					}
 				}
 			}
@@ -77,4 +112,8 @@
 			}
 		}
 	}
+}
+
+footer {
+	margin-bottom: 5px;
 }

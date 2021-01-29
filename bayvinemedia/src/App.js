@@ -1,7 +1,6 @@
-import Button from "./components/Button/Button"
 import Navbar from "./components/Navbar/Navbar"
 import About from "./sections/About/About"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import Landing from "./sections/Landing/Landing"
 import Services from "./sections/Services/Services"
 import Reviews from "./sections/Reviews/Reviews"
@@ -9,26 +8,19 @@ import ExtraInformation from "./sections/ExtraInformation/ExtraInformation"
 import Contact from "./sections/Contact/Contact"
 import Menu from "./components/Menu/Menu"
 import LoadingScreen from "./sections/LoadingScreen/LoadingScreen"
+import gsap from "gsap"
 
+export const reveal = (node) => {
+	gsap.from(node, {
+		duration: 1,
+		opacity: 0,
+	})
+}
 function App() {
 	let [menu, setMenu] = React.useState(false)
-
-	const [shouldIntroExist, setShouldIntroExist] = useState(true)
-
-	useEffect(() => {
-		setTimeout(() => {
-			setShouldIntroExist(false)
-		}, 5000)
-	}, shouldIntroExist)
-
-	function handleMenu() {
-		setMenu((prevstate) => !prevstate)
-	}
-
-	return shouldIntroExist ? (
-		<LoadingScreen />
-	) : (
-		<div className="the-whole-app">
+	let restOfPage = useRef(null)
+	let application = (
+		<div ref={(el) => (restOfPage = el)} className="the-whole-app">
 			<Menu show={menu} clicked={handleMenu} />
 			<Navbar clicked={handleMenu} />
 			<Landing />
@@ -40,6 +32,21 @@ function App() {
 			<footer>Designed and Developed with ♡ by Bay Vine Media 2021 ©</footer>
 		</div>
 	)
+
+	const [shouldIntroExist, setShouldIntroExist] = useState(true)
+
+	useEffect(() => {
+		setTimeout(() => {
+			setShouldIntroExist(false)
+			reveal(restOfPage.current)
+		}, 5000)
+	}, [shouldIntroExist])
+
+	function handleMenu() {
+		setMenu((prevstate) => !prevstate)
+	}
+
+	return shouldIntroExist ? <LoadingScreen /> : application
 }
 
 export default App

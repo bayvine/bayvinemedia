@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import "./Services.scss"
 import palmtree from "../../media/palm-tree.png"
 import Service from "../../components/Service/Service"
-import Button from "../../components/Button/Button"
 
 // images
 import s1 from "../../media/Group 16.png"
@@ -11,11 +10,11 @@ import s3 from "../../media/Group 18.png"
 import s4 from "../../media/Group 19.png"
 
 const Services = () => {
-	let [image, setimage] = useState(palmtree)
+	let [image] = useState(palmtree)
 
-	let handleImage = (image) => {
-		setimage(image)
-	}
+	// let handleImage = (image) => {
+	// 	setimage(image)
+	// }
 
 	return (
 		<section className="services">

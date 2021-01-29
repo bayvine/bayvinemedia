@@ -12,8 +12,11 @@ nav {
 	transition: all 0.3s ease-in-out;
 	display: flex;
 	justify-content: space-between;
-
 	padding: 0 3em;
+
+	@include screenxxs {
+		padding: 0;
+	}
 
 	.logo {
 		margin: 2em;
@@ -21,6 +24,10 @@ nav {
 		height: 50px;
 		background-color: red;
 		transition: all 0.3s ease-in-out;
+
+		@include screenxxs {
+			margin: 1em;
+		}
 	}
 
 	.hamburger-menu {
@@ -34,6 +41,10 @@ nav {
 		cursor: pointer;
 		transition: all 0.3s linear;
 		transform-origin: center;
+
+		@include screenxxs {
+			margin: 1em;
+		}
 
 		&:hover {
 			scale: 0.8;

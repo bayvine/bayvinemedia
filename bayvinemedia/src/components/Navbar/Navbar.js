@@ -1,5 +1,4 @@
-import React, { useEffect } from "react"
-import Menu from "../Menu/Menu"
+import React from "react"
 import "./Navbar.scss"
 
 const Navbar = (props) => {
@@ -34,7 +33,7 @@ const Navbar = (props) => {
 
 	React.useEffect(() => {
 		window.addEventListener("scroll", (e) => handleScroll(e))
-	}, [])
+	})
 
 	return (
 		<>
