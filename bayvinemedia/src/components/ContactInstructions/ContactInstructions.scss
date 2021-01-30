@@ -27,11 +27,6 @@
 		margin: 0;
 	}
 
-	@include screenm {
-		margin: 0;
-		margin-right: 1em;
-	}
-
 	h3 {
 		width: 80%;
 		font-size: 25px;
@@ -45,10 +40,6 @@
 		}
 
 		@include screens {
-			width: 100%;
-		}
-
-		@include screenm {
 			width: 100%;
 		}
 	}
@@ -74,10 +65,6 @@
 					padding-left: 4em;
 					padding-right: 4em;
 					width: 100%;
-				}
-
-				@include screenm {
-					width: 90%;
 				}
 			}
 		}

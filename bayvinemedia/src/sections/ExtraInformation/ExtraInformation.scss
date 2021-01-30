@@ -17,7 +17,7 @@
 
 		margin-top: 15em;
 		width: 80%;
-		height: 300px;
+		height: 350px;
 		border-radius: 50px;
 		background: linear-gradient(142deg, #cbf5f0 0%, #ffbd27 100%);
 
@@ -26,25 +26,6 @@
 		padding: 0 6em;
 		align-items: center;
 		justify-content: space-between;
-
-		@include screenl {
-			position: relative;
-			overflow: hidden;
-			margin: 0 auto;
-			color: white;
-
-			margin-top: 15em;
-			width: 80%;
-			height: 300px;
-			border-radius: 50px;
-			background: linear-gradient(142deg, #cbf5f0 0%, #ffbd27 100%);
-
-			display: flex;
-			// justify-content: center;
-			padding: 0 6em;
-			align-items: center;
-			justify-content: space-between;
-		}
 
 		@include screenxxs {
 			flex-direction: column;
@@ -78,17 +59,6 @@
 			margin-bottom: 0;
 		}
 
-		@include screenm {
-			justify-content: space-between;
-
-			margin-top: 15em;
-			width: 85%;
-			padding: 0;
-			padding-left: 3em;
-			padding-bottom: 0;
-			margin-bottom: 0;
-		}
-
 		.level-up-box {
 			color: black;
 			width: 50%;
@@ -111,12 +81,8 @@
 				margin-bottom: 2em;
 			}
 
-			@include screenm {
-				width: 80%;
-				margin-bottom: 2em;
-			}
-
 			.level-up-text {
+				margin-bottom: 2em;
 				p {
 					@include screenxxs {
 						width: 100%;
@@ -137,6 +103,8 @@
 
 			button {
 				margin-right: 2em;
+				margin-top: 5px;
+				margin-bottom: 5px;
 
 				@include screenxxs {
 					margin: 1rem 2em;
@@ -148,10 +116,6 @@
 
 				@include screens {
 					margin: 1rem 2em;
-				}
-
-				@include screenm {
-					margin: 1rem 1em;
 				}
 			}
 		}
@@ -167,7 +131,7 @@
 				bottom: 0;
 				right: 50%;
 				width: 100%;
-				align-self: center;
+				align-self: flex-end;
 				height: 100%;
 			}
 
