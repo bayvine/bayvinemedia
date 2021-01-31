@@ -42,7 +42,7 @@
 			@include screenxxs {
 				display: block;
 				height: 350px;
-
+				margin-right: 0;
 				object-fit: contain;
 			}
 
@@ -134,8 +134,7 @@
 		}
 		img {
 			@include screenxxs {
-				display: block;
-				height: 350px;
+				height: 200px;
 				object-fit: contain;
 			}
 

@@ -1,5 +1,6 @@
 import React from "react"
 import Button from "../Button/Button"
+import image from "../../media/phones.png"
 
 const LevelUp = () => {
 	return (
