@@ -38,6 +38,10 @@
 	.san-francisco-picture {
 		margin-right: 3em;
 
+		@include screens {
+			margin: 0 auto;
+		}
+
 		img {
 			@include screenxxs {
 				display: block;
@@ -57,6 +61,7 @@
 				display: block;
 				height: 450px;
 				object-fit: contain;
+				margin: 0 auto;
 			}
 		}
 	}

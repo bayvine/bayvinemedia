@@ -26,14 +26,12 @@
 			transform: scale(1.1);
 		}
 
-		@include screenl {
+		@include screenm {
 			position: absolute;
-			overflow: hidden;
-			right: -2%;
-			top: -5%;
-			border-radius: 50px;
-			transition: transform 0.5s ease;
 			height: 100%;
+			top: 0;
+			left: 0;
+			width: 100vw;
 		}
 
 		@include screenxxs {
@@ -73,6 +71,10 @@
 			transform: scale(1.1);
 		}
 
+		@include screenm {
+			display: none;
+		}
+
 		@include screenxxs {
 			display: none;
 		}
@@ -106,6 +108,11 @@
 			text-align: center;
 		}
 
+		@include screenm {
+			margin: 0 auto;
+			text-align: center;
+		}
+
 		h1 {
 			margin-bottom: 0;
 			color: #9ed195;
@@ -114,6 +121,8 @@
 
 			@include screenxxs {
 				color: white;
+				font-size: 30px;
+				text-align: center;
 			}
 
 			@include screenxs {
@@ -121,6 +130,10 @@
 			}
 
 			@include screens {
+				color: white;
+			}
+
+			@include screenm {
 				color: white;
 			}
 		}
@@ -133,6 +146,7 @@
 
 			@include screenxxs {
 				width: 100%;
+				text-align: center;
 			}
 
 			@include screenxs {
@@ -143,6 +157,12 @@
 				width: 100%;
 				padding-right: 1em;
 				padding-left: 1em;
+			}
+
+			@include screenm {
+				width: 100%;
+				padding-right: 5em;
+				padding-left: 5em;
 			}
 		}
 	}

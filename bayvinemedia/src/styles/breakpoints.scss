@@ -2,7 +2,7 @@
 $screenxxs: 480px;
 $screenxs: 768px;
 $screens: 1024px;
-$screenm: 1025px;
+$screenm: 1200px;
 $screenl: 1080px;
 $screenxl: 1200px;
 
@@ -32,7 +32,7 @@ $screenxl: 1200px;
 }
 
 @mixin screenm {
-	@media (min-width: #{$screenm}) {
+	@media (max-width: #{$screenm}) {
 		@content;
 	}
 }
