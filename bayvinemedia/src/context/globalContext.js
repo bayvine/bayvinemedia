@@ -20,7 +20,16 @@ const globalReducer = (state, action) => {
 export const GlobalProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(globalReducer, {
 		cursorType: false,
-		cursorStyles: ["pointer", "hovered", "contrast", "imagej"],
+		cursorStyles: [
+			"pointer",
+			"hovered",
+			"contrast",
+			"image-one",
+			"image-two",
+			"image-three",
+			"image-four",
+			"hovered-contrast",
+		],
 	})
 
 	return (

@@ -38,44 +38,50 @@
 		}
 
 		.images {
+			background: url("../../media/palm-tree.png");
+			width: 50%;
+			margin: 5em;
+			height: 800px;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			transition: all 5s ease-in;
+			border-radius: 25px;
+
+			// background-color: red;
 			@include screenxxs {
 				display: none;
+				margin: 5em;
 			}
 
 			@include screenxs {
 				display: none;
+				margin: 5em;
 			}
 
 			@include screens {
 				margin: 0 auto;
-			}
-
-			.services-image {
-				margin: 0 8em;
-				width: 80%;
-
-				@include screens {
-					width: 400px;
-					height: 600px;
-					margin-top: 5em;
-					object-fit: cover;
-					border-radius: 50px;
-				}
+				margin: 5em;
 			}
 		}
 
 		.services-text-block {
+			width: 80%;
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
 			justify-content: center;
 
 			@include screenxxs {
+				width: 100%;
 			}
 
-			button {
-				margin-top: 2em;
-				align-self: center;
+			@include screenxs {
+				width: 100%;
+			}
+
+			@include screens {
+				width: 100%;
 			}
 		}
 	}

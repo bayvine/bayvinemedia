@@ -6,7 +6,7 @@ import gsap from "gsap"
 
 // when mouse hovers in this block, make it black;
 
-const About = () => {
+const About = (props) => {
 	gsap.registerPlugin(ScrollTrigger)
 	let aboutBlock = useRef(null)
 	let aboutText = useRef(null)
@@ -59,7 +59,12 @@ const About = () => {
 
 	return (
 		<section className="about">
-			<div ref={(el) => (aboutBlock = el)} className="about-me-block">
+			<div
+				onMouseEnter={() => props.onCursor("contrast")}
+				onMouseLeave={props.onCursor}
+				ref={(el) => (aboutBlock = el)}
+				className="about-me-block"
+			>
 				<div ref={(el) => (aboutText = el)} className="about-me-text">
 					<h3>Hey there,</h3>
 					<p>
@@ -70,7 +75,11 @@ const About = () => {
 						Class aptent taciti sociosqu ad litora torquent per conubia nostra,
 						per inceptos himenaeos. Sed in venenatis arcu.
 					</p>
-					<div className="about-text-buttons">
+					<div
+						onMouseEnter={() => props.onCursor("hovered-contrast")}
+						onMouseLeave={() => props.onCursor("contrast")}
+						className="about-text-buttons"
+					>
 						<Button className={"yellow-gradient"} text={"CASES"} />
 						<Button className={"pink-gradient"} text={"SERVICES"} />
 					</div>
