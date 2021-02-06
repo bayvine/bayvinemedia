@@ -54,8 +54,8 @@ function App() {
 			<Navbar clicked={handleMenu} onCursor={onCursor} />
 			<Menu show={menu} clicked={handleMenu} />
 			<Landing />
-			<About />
-			<Services />
+			<About onCursor={onCursor} />
+			<Services onCursor={onCursor} />
 			<Reviews />
 			<ExtraInformation />
 			<Contact />
