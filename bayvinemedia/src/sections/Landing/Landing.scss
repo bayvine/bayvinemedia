@@ -23,10 +23,6 @@
 
 		height: 80%;
 
-		&:hover {
-			transform: scale(1.1);
-		}
-
 		@include screenm {
 			position: absolute;
 			height: 100vh;
@@ -74,10 +70,6 @@
 		transition: transform 0.5s ease;
 		left: 10%;
 		border-radius: 60px;
-
-		&:hover {
-			transform: scale(1.1);
-		}
 
 		@include screenm {
 			display: none;

@@ -50,8 +50,9 @@ function App() {
 
 	let application = (
 		<div ref={(el) => (restOfPage = el)} className="the-whole-app">
-			<Menu show={menu} clicked={handleMenu} />
+			<CustomCursor />
 			<Navbar clicked={handleMenu} onCursor={onCursor} />
+			<Menu show={menu} clicked={handleMenu} />
 			<Landing />
 			<About />
 			<Services />
@@ -62,12 +63,7 @@ function App() {
 		</div>
 	)
 
-	return (
-		<>
-			<CustomCursor />
-			{shouldIntroExist ? <LoadingScreen /> : application}
-		</>
-	)
+	return <>{shouldIntroExist ? <LoadingScreen /> : application}</>
 }
 
 export default App

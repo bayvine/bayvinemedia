@@ -2,19 +2,22 @@ import React, { useEffect, useRef } from "react"
 import "./Navbar.scss"
 import gsap from "gsap"
 
-// export const reveal = (node) => {
-// 	gsap.to(node, {
-// 		duration: 1,
-// 		top: 0,
-// 	})
-// }
-
 const Navbar = (props) => {
 	let userHasScrolled = false
 	let classes = "hamburger-menu"
 	let navigation = useRef(null)
 	let [attribute, setattribute] = React.useState("")
 	let [handler, setHandler] = React.useState(false)
+
+	const reveal = (node) => {
+		gsap.from([node], {
+			y: -100,
+			delay: 0.2,
+			opacity: 0,
+			duration: 1,
+			ease: "expo.out",
+		})
+	}
 
 	function handleScroll(e) {
 		if (window.scrollY > 100) {
@@ -41,7 +44,9 @@ const Navbar = (props) => {
 
 	React.useEffect(() => {
 		window.addEventListener("scroll", (e) => handleScroll(e))
-		// reveal(navigation.current)
+		if (navigation.current) {
+			reveal(navigation.current)
+		}
 	}, [])
 
 	//onCursor

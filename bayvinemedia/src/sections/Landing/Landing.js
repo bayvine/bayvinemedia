@@ -20,10 +20,9 @@ export const staggerText = (node1, node2) => {
 
 export const fromUpReveal = (node1) => {
 	gsap.from(node1, {
-		duration: 0.3,
-		y: -100,
+		duration: 1,
+		delay: 0.8,
 		opacity: 0,
-		ease: "power2.in",
 	})
 }
 
@@ -34,10 +33,13 @@ const Landing = () => {
 	let imageTwo = useRef(null)
 
 	useEffect(() => {
-		staggerText(heading, subheading)
-		fromUpReveal(imageOne)
-		fromUpReveal(imageTwo)
+		if (heading && subheading && imageOne && imageTwo) {
+			staggerText(heading, subheading)
+			fromUpReveal(imageOne)
+			fromUpReveal(imageTwo)
+		}
 	}, [])
+
 	return (
 		<section className="landing">
 			<div class="img-hover-zoom">

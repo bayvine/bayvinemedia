@@ -9,7 +9,7 @@ import gsap from "gsap"
 export const staggerText = (node1, node2, node3, node4) => {
 	gsap.from([node1, node2, node3, node4], {
 		duration: 0.8,
-		opacity: 0.5,
+		opacity: 0,
 		y: 100,
 		delay: 0.3,
 		ease: "power3.inOut",
@@ -27,9 +27,8 @@ const Menu = (props) => {
 	let line3 = useRef(null)
 	let line4 = useRef(null)
 
-	let imageClass = ""
-
 	let [currentImage, setcurrentImage] = useState("")
+	let [currentImageClass, setCurrentImageClass] = useState("")
 
 	if (props.show) {
 		attachedClasses = ["menu", "open"]
@@ -39,20 +38,19 @@ const Menu = (props) => {
 	const backgroundHandler = (image) => {
 		setcurrentImage(image)
 		// handleCity(imageSelector)
-		imageClass = "kenburn"
+		setCurrentImageClass("kenburn")
 	}
 
 	useEffect(() => {
 		if (props.show) {
 			staggerText(line1, line2, line3, line4)
 		}
-	}, [props])
+	}, [props.show])
 
 	const resetImage = () => {
-		imageClass = ""
 		// handleCityOut(imageSelector)
+		setCurrentImageClass("")
 		setcurrentImage("")
-		console.log(imageClass)
 	}
 
 	return (
@@ -99,7 +97,7 @@ const Menu = (props) => {
 					</ul>
 				</div>
 
-				<img className={imageClass} src={currentImage} alt="" />
+				<img className={currentImageClass} src={currentImage} alt="" />
 			</div>
 			<div className={attachedClasses1.join(" ")}></div>
 		</>
