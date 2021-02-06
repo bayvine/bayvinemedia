@@ -9,6 +9,11 @@ import Contact from "./sections/Contact/Contact"
 import Menu from "./components/Menu/Menu"
 import LoadingScreen from "./sections/LoadingScreen/LoadingScreen"
 import gsap from "gsap"
+import CustomCursor from "./components/Cursor/CustomCursor"
+import {
+	useGlobalStateContext,
+	useGlobalDispatchContext,
+} from "./context/globalContext"
 
 export const reveal = (node) => {
 	gsap.from(node, {
@@ -19,10 +24,34 @@ export const reveal = (node) => {
 function App() {
 	let [menu, setMenu] = React.useState(false)
 	let restOfPage = useRef(null)
+	const [shouldIntroExist, setShouldIntroExist] = useState(true)
+
+	useEffect(() => {
+		setTimeout(() => {
+			if (restOfPage) {
+				reveal(restOfPage.current)
+			}
+
+			setShouldIntroExist(false)
+		}, 5000)
+	}, [shouldIntroExist])
+
+	function handleMenu() {
+		setMenu((prevstate) => !prevstate)
+	}
+
+	const { cursorStyles } = useGlobalStateContext()
+	const dispatch = useGlobalDispatchContext()
+
+	const onCursor = (cursorType) => {
+		cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
+		dispatch({ type: "CURSOR_TYPE", cursorType: cursorType })
+	}
+
 	let application = (
 		<div ref={(el) => (restOfPage = el)} className="the-whole-app">
 			<Menu show={menu} clicked={handleMenu} />
-			<Navbar clicked={handleMenu} />
+			<Navbar clicked={handleMenu} onCursor={onCursor} />
 			<Landing />
 			<About />
 			<Services />
@@ -33,20 +62,12 @@ function App() {
 		</div>
 	)
 
-	const [shouldIntroExist, setShouldIntroExist] = useState(true)
-
-	useEffect(() => {
-		setTimeout(() => {
-			setShouldIntroExist(false)
-			reveal(restOfPage.current)
-		}, 5000)
-	}, [shouldIntroExist])
-
-	function handleMenu() {
-		setMenu((prevstate) => !prevstate)
-	}
-
-	return shouldIntroExist ? <LoadingScreen /> : application
+	return (
+		<>
+			<CustomCursor />
+			{shouldIntroExist ? <LoadingScreen /> : application}
+		</>
+	)
 }
 
 export default App

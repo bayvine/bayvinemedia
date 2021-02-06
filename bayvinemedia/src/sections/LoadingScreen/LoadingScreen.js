@@ -95,7 +95,7 @@ const LoadingScreen = () => {
 					<span ref={(el) => (spanText = el)}>
 						<strong>Iron sharpens iron, and one man sharpens another.</strong>
 					</span>
-					<div ref={(el) => (spinner = el)} class="spinner"></div>
+					<div ref={(el) => (spinner = el)} className="spinner"></div>
 					<h1 ref={(el) => (loadingTitle = el)}>LOADING</h1>
 				</div>
 				<div

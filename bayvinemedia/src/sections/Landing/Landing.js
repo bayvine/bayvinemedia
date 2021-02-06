@@ -11,7 +11,6 @@ export const staggerText = (node1, node2) => {
 		duration: 0.8,
 		opacity: 0,
 		y: 100,
-		delay: 0.3,
 		ease: "power3.in",
 		stagger: {
 			amount: 0.3,
@@ -22,10 +21,8 @@ export const staggerText = (node1, node2) => {
 export const fromUpReveal = (node1) => {
 	gsap.from(node1, {
 		duration: 0.3,
-		delay: 0.1,
-		x: 5,
+		y: -100,
 		opacity: 0,
-
 		ease: "power2.in",
 	})
 }

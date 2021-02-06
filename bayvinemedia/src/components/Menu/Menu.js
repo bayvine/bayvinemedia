@@ -9,7 +9,7 @@ import gsap from "gsap"
 export const staggerText = (node1, node2, node3, node4) => {
 	gsap.from([node1, node2, node3, node4], {
 		duration: 0.8,
-		opacity: 0,
+		opacity: 0.5,
 		y: 100,
 		delay: 0.3,
 		ease: "power3.inOut",
@@ -40,15 +40,12 @@ const Menu = (props) => {
 		setcurrentImage(image)
 		// handleCity(imageSelector)
 		imageClass = "kenburn"
-
-		console.log(imageClass)
 	}
 
 	useEffect(() => {
 		if (props.show) {
 			staggerText(line1, line2, line3, line4)
 		}
-		console.log("hi")
 	}, [props])
 
 	const resetImage = () => {

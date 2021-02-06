@@ -11,27 +11,27 @@ const Form = () => {
 			<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
 			<form>
 				<div>
-					<label for="name">Name</label>
+					<label htmlFor="name">Name</label>
 					<input name="name" type="text" />
 				</div>
 
 				<div>
-					<label for="email">Email</label>
+					<label htmlFor="email">Email</label>
 					<input name="email" type="email" />
 				</div>
 
 				<div>
-					<label for="organisation">Organisation</label>
+					<label htmlFor="organisation">Organisation</label>
 					<input name="organisation" type="text" />
 				</div>
 
 				<div>
-					<label for="phone">Phone</label>
+					<label htmlFor="phone">Phone</label>
 					<input name="phone" type="tel" />
 				</div>
 
 				<div>
-					<label for="message">Message</label>
+					<label htmlFor="message">Message</label>
 
 					<textarea></textarea>
 				</div>
