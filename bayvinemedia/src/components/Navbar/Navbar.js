@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import "./Navbar.scss"
 import gsap from "gsap"
+import { Link } from "react-router-dom"
 
 const Navbar = (props) => {
 	let userHasScrolled = false
