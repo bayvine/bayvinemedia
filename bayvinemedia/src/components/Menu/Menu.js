@@ -5,6 +5,7 @@ import statue from "../../media/statue.jpg"
 import beach from "../../media/beach.jpg"
 import together from "../../media/together.jpg"
 import gsap from "gsap"
+import { Link } from "react-scroll"
 
 export const staggerText = (node1, node2, node3, node4) => {
 	gsap.from([node1, node2, node3, node4], {
@@ -59,19 +60,23 @@ const Menu = (props) => {
 				<div className="menu-items">
 					<ul>
 						<li>
-							<h1
-								ref={(el) => (line1 = el)}
-								onMouseLeave={resetImage}
-								onMouseOver={() => backgroundHandler(sanfran)}
-							>
-								About
-							</h1>
+							<Link to="about" smooth={true} offset={-150} duration={600}>
+								<h1
+									ref={(el) => (line1 = el)}
+									onMouseLeave={resetImage}
+									onMouseOver={() => backgroundHandler(sanfran)}
+									onClick={() => props.clicked()}
+								>
+									About
+								</h1>
+							</Link>
 						</li>
 						<li>
 							<h1
 								ref={(el) => (line2 = el)}
 								onMouseLeave={resetImage}
 								onMouseOver={() => backgroundHandler(statue)}
+								onClick={props.clicked}
 							>
 								Services
 							</h1>
@@ -81,6 +86,7 @@ const Menu = (props) => {
 								ref={(el) => (line3 = el)}
 								onMouseLeave={resetImage}
 								onMouseOver={() => backgroundHandler(beach)}
+								onClick={props.clicked}
 							>
 								Reviews
 							</h1>

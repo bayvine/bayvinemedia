@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import "./Navbar.scss"
 import gsap from "gsap"
-import { Link } from "react-router-dom"
 
 const Navbar = (props) => {
 	let userHasScrolled = false
@@ -34,7 +33,7 @@ const Navbar = (props) => {
 		}
 	}
 
-	if (handler) {
+	if (!props.show) {
 		classes = "hamburger-menu hamburger-close"
 	}
 
@@ -47,6 +46,10 @@ const Navbar = (props) => {
 		window.addEventListener("scroll", (e) => handleScroll(e))
 		if (navigation.current) {
 			reveal(navigation.current)
+		}
+
+		return () => {
+			window.removeEventListener("scroll", (e) => handleScroll(e))
 		}
 	}, [])
 
@@ -61,6 +64,7 @@ const Navbar = (props) => {
 			></div>
 
 			{/* hamburger menu */}
+
 			<div
 				className={classes}
 				onMouseEnter={() => props.onCursor("hovered")}

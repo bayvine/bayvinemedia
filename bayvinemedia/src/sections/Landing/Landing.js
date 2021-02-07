@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import "./Landing.scss"
 import purplehall from "../../media/purplehall.png"
 import garage from "../../media/garage.png"
 import Button from "../../components/Button/Button"
 import Arrow from "../../components/Arrow/Arrow"
 import gsap from "gsap"
+import { Link } from "react-scroll"
 
 export const staggerText = (node1, node2) => {
 	gsap.from([node1, node2], {
@@ -26,26 +27,41 @@ export const fromUpReveal = (node1) => {
 	})
 }
 
-const Landing = () => {
+const Landing = (props) => {
 	let heading = useRef(null)
 	let subheading = useRef(null)
 	let imageOne = useRef(null)
 	let imageTwo = useRef(null)
+	const [offsetY, setOffSetY] = useState(0)
+
+	const handleScroll = () => {
+		if (window.pageYOffset < 800) {
+			setOffSetY(window.pageYOffset)
+		} else {
+			setOffSetY(0)
+		}
+	}
 
 	useEffect(() => {
-		if (heading && subheading && imageOne && imageTwo) {
-			staggerText(heading, subheading)
-			fromUpReveal(imageOne)
-			fromUpReveal(imageTwo)
+		window.addEventListener("scroll", handleScroll)
+		staggerText(heading, subheading)
+		fromUpReveal(imageOne)
+		fromUpReveal(imageTwo)
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll)
 		}
 	}, [])
 
 	return (
 		<section className="landing">
-			<div class="img-hover-zoom">
+			<div className="img-hover-zoom">
 				<img
 					ref={(el) => (imageOne = el)}
 					className="landing-background-image"
+					style={{
+						transform: `translateY(-${offsetY * 0.5}px)`,
+					}}
 					src={purplehall}
 					alt="purple hall"
 				/>
@@ -56,15 +72,31 @@ const Landing = () => {
 				className="landing-garage-image"
 				src={garage}
 				alt="garage"
+				style={{
+					transform: `translateY(${offsetY * 0.1}px)`,
+				}}
 			/>
 			<div className="landing-heading">
 				<h1 ref={(el) => (heading = el)}>Bay Vine Media</h1>
 				<p ref={(el) => (subheading = el)}>
 					Inspiring quote about what impact I can deliver to your business.
 				</p>
-				<Button landing={true} className={"green-gradient"} text={"HIRE ME"} />
+				<Link
+					onMouseEnter={() => props.onCursor("hovered")}
+					onMouseLeave={props.onCursor}
+					to="contact"
+					smooth={true}
+					offset={-150}
+					duration={600}
+				>
+					<Button
+						landing={true}
+						className={"green-gradient"}
+						text={"HIRE ME"}
+					/>
+				</Link>
 			</div>
-			<Arrow />
+			<Arrow offsetY={offsetY} />
 		</section>
 	)
 }

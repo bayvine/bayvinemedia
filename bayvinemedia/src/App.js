@@ -23,6 +23,7 @@ export const reveal = (node) => {
 }
 function App() {
 	let [menu, setMenu] = React.useState(false)
+	let [hamburger, setHamburger] = React.useState(true)
 	let restOfPage = useRef(null)
 	const [shouldIntroExist, setShouldIntroExist] = useState(true)
 
@@ -38,6 +39,7 @@ function App() {
 
 	function handleMenu() {
 		setMenu((prevstate) => !prevstate)
+		setHamburger((prevstate) => !prevstate)
 	}
 
 	const { cursorStyles } = useGlobalStateContext()
@@ -51,9 +53,9 @@ function App() {
 	let application = (
 		<div ref={(el) => (restOfPage = el)} className="the-whole-app">
 			<CustomCursor />
-			<Navbar clicked={handleMenu} onCursor={onCursor} />
+			<Navbar show={hamburger} clicked={handleMenu} onCursor={onCursor} />
 			<Menu show={menu} clicked={handleMenu} />
-			<Landing />
+			<Landing onCursor={onCursor} />
 			<About onCursor={onCursor} />
 			<Services onCursor={onCursor} />
 			<Reviews />

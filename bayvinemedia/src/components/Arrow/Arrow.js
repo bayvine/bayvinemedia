@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react"
 import arrow from "../../media/arrow-down.png"
 import "./Arrow.scss"
 import gsap from "gsap"
+import { Link } from "react-scroll"
 
 const reveal = (node) => {
 	gsap.from([node], {
@@ -21,7 +22,7 @@ const text = (node) => {
 	})
 }
 
-const Arrow = () => {
+const Arrow = (props) => {
 	let reference = useRef(null)
 	let letters = useRef(null)
 
@@ -44,18 +45,25 @@ const Arrow = () => {
 		})
 	}
 	return (
-		<div className="arrow">
-			<img
-				onMouseEnter={handleArrowIn}
-				onMouseLeave={handleArrowOut}
-				ref={(el) => (reference = el)}
-				className="arrow-down"
-				draggable="false"
-				src={arrow}
-				alt="arrow"
-			/>
-			<span ref={(el) => (letters = el)}>READ MORE</span>
-		</div>
+		<Link to="about" smooth={true} offset={-150} duration={600}>
+			<div
+				style={{
+					transform: `translateY(-${props.offsetY * 0.4}px)`,
+				}}
+				className="arrow"
+			>
+				<img
+					onMouseEnter={handleArrowIn}
+					onMouseLeave={handleArrowOut}
+					ref={(el) => (reference = el)}
+					className="arrow-down"
+					draggable="false"
+					src={arrow}
+					alt="arrow"
+				/>
+				<span ref={(el) => (letters = el)}>READ MORE</span>
+			</div>
+		</Link>
 	)
 }
 
