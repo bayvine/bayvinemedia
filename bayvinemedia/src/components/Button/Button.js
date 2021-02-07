@@ -2,22 +2,19 @@ import React, { useEffect, useRef } from "react"
 import "./Button.scss"
 import gsap from "gsap"
 
-export const showButton = (node1) => {
-	gsap.from(node1, {
-		duration: 0.8,
-		opacity: 0,
-		x: -100,
-		delay: 1,
-		ease: "power3.inOut",
-	})
-}
+export const showButton = (node1) => {}
 
 const Button = ({ clicked, className, text, landing }) => {
 	let landingref = useRef(null)
 
 	useEffect(() => {
 		if (landing) {
-			showButton(landingref)
+			gsap.from(landingref, {
+				duration: 0.8,
+				opacity: 0,
+				x: -100,
+				delay: 1,
+			})
 		}
 	}, [landing])
 

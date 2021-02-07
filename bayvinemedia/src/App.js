@@ -1,19 +1,36 @@
-import Navbar from "./components/Navbar/Navbar"
-import About from "./sections/About/About"
-import React, { useEffect, useState, useRef } from "react"
-import Landing from "./sections/Landing/Landing"
-import Services from "./sections/Services/Services"
-import Reviews from "./sections/Reviews/Reviews"
-import ExtraInformation from "./sections/ExtraInformation/ExtraInformation"
-import Contact from "./sections/Contact/Contact"
-import Menu from "./components/Menu/Menu"
-import LoadingScreen from "./sections/LoadingScreen/LoadingScreen"
+// import About from "./sections/About/About"
+import React, { useEffect, useState, useRef, Suspense } from "react"
+// import Landing from "./sections/Landing/Landing"
+// import Services from "./sections/Services/Services"
+// import Reviews from "./sections/Reviews/Reviews"
+// import ExtraInformation from "./sections/ExtraInformation/ExtraInformation"
+// import Contact from "./sections/Contact/Contact"
+// import Menu from "./components/Menu/Menu"
+// import LoadingScreen from "./sections/LoadingScreen/LoadingScreen"
 import gsap from "gsap"
-import CustomCursor from "./components/Cursor/CustomCursor"
+// import CustomCursor from "./components/Cursor/CustomCursor"
+
 import {
 	useGlobalStateContext,
 	useGlobalDispatchContext,
 } from "./context/globalContext"
+
+const Navbar = React.lazy(() => import("./components/Navbar/Navbar"))
+const LoadingScreen = React.lazy(() =>
+	import("./sections/LoadingScreen/LoadingScreen")
+)
+const About = React.lazy(() => import("./sections/About/About"))
+const Landing = React.lazy(() => import("./sections/Landing/Landing"))
+const Services = React.lazy(() => import("./sections/Services/Services"))
+const Reviews = React.lazy(() => import("./sections/Reviews/Reviews"))
+const ExtraInformation = React.lazy(() =>
+	import("./sections/ExtraInformation/ExtraInformation")
+)
+const Contact = React.lazy(() => import("./sections/Contact/Contact"))
+const Menu = React.lazy(() => import("./components/Menu/Menu"))
+const CustomCursor = React.lazy(() =>
+	import("./components/Cursor/CustomCursor")
+)
 
 export const reveal = (node) => {
 	gsap.from(node, {
@@ -30,7 +47,12 @@ function App() {
 	useEffect(() => {
 		setTimeout(() => {
 			if (restOfPage) {
-				reveal(restOfPage.current)
+				gsap.from(restOfPage.current, {
+					duration: 1,
+					delay: 2,
+					opacity: 0,
+				})
+				// reveal(restOfPage.current)
 			}
 
 			setShouldIntroExist(false)
@@ -52,20 +74,57 @@ function App() {
 
 	let application = (
 		<div ref={(el) => (restOfPage = el)} className="the-whole-app">
-			<CustomCursor />
-			<Navbar show={hamburger} clicked={handleMenu} onCursor={onCursor} />
-			<Menu show={menu} clicked={handleMenu} />
-			<Landing onCursor={onCursor} />
-			<About onCursor={onCursor} />
-			<Services onCursor={onCursor} />
-			<Reviews />
-			<ExtraInformation />
-			<Contact />
+			<Suspense fallback={<div>Loading...</div>}>
+				<CustomCursor />
+			</Suspense>
+
+			<Suspense fallback={<div>Loading...</div>}>
+				<Navbar show={hamburger} clicked={handleMenu} onCursor={onCursor} />
+			</Suspense>
+
+			<Suspense fallback={<div>Loading...</div>}>
+				<Menu show={menu} clicked={handleMenu} />
+			</Suspense>
+
+			<Suspense fallback={<div>Loading...</div>}>
+				<Landing onCursor={onCursor} />
+			</Suspense>
+
+			<Suspense fallback={<div>Loading...</div>}>
+				<About onCursor={onCursor} />
+			</Suspense>
+
+			<Suspense fallback={<div>Loading...</div>}>
+				<Services onCursor={onCursor} />
+			</Suspense>
+
+			<Suspense fallback={<div>Loading...</div>}>
+				<Reviews />
+			</Suspense>
+
+			<Suspense fallback={<div>Loading...</div>}>
+				<ExtraInformation />
+			</Suspense>
+
+			<Suspense fallback={<div>Loading...</div>}>
+				<Contact />
+			</Suspense>
+
 			<footer>Designed and Developed with ♡ by Bay Vine Media 2021 ©</footer>
 		</div>
 	)
 
-	return <>{shouldIntroExist ? <LoadingScreen /> : application}</>
+	return (
+		<>
+			{shouldIntroExist ? (
+				<Suspense fallback={<div>Loading...</div>}>
+					<LoadingScreen />
+				</Suspense>
+			) : (
+				application
+			)}
+		</>
+	)
 }
 
 export default App

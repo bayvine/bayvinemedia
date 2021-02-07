@@ -44,9 +44,21 @@ const Landing = (props) => {
 
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll)
-		staggerText(heading, subheading)
-		fromUpReveal(imageOne)
-		fromUpReveal(imageTwo)
+
+		gsap.from([heading, subheading], {
+			duration: 0.8,
+			opacity: 0,
+			y: 100,
+			stagger: {
+				amount: 0.3,
+			},
+		})
+
+		gsap.from([imageOne, imageTwo], {
+			duration: 1.3,
+			delay: 1,
+			opacity: 0,
+		})
 
 		return () => {
 			window.removeEventListener("scroll", handleScroll)

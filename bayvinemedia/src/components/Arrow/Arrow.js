@@ -28,8 +28,21 @@ const Arrow = (props) => {
 
 	useEffect(() => {
 		if (reference) {
-			reveal(reference)
-			text(letters)
+			gsap.from([reference], {
+				opacity: 0,
+				delay: 1,
+				y: -100,
+				duration: 0.4,
+			})
+
+			gsap.from(letters, {
+				opacity: 0,
+				delay: 1.2,
+				x: 0.1,
+				duration: 0.2,
+			})
+			// reveal(reference)
+			// text(letters)
 		}
 	}, [])
 
