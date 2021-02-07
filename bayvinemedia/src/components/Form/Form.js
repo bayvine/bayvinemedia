@@ -19,7 +19,13 @@ const Form = () => {
 			{loader ? (
 				<span>Sending form...</span>
 			) : (
-				<form name="contact" method="post" netlify netlify-honeybot="bot-field">
+				<form
+					name="contact"
+					method="post"
+					netlify
+					netlify-honeybot="bot-field"
+					onSubmit="submit"
+				>
 					<input type="hidden" name="form-name" value="contact" />
 					<div>
 						<label htmlFor="name">Name</label>
@@ -46,9 +52,7 @@ const Form = () => {
 						<textarea></textarea>
 					</div>
 
-					<button type="submit" onClick={(e) => formHandler(e)}>
-						S E N D
-					</button>
+					<button type="submit">S E N D</button>
 				</form>
 			)}
 		</div>
