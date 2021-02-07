@@ -61,6 +61,36 @@
 		flex-direction: column;
 		width: 80%;
 
+		.success-form,
+		.fail-form {
+			display: flex;
+			align-items: flex-start;
+			margin-top: 2em;
+			flex-direction: column;
+			justify-content: center;
+			text-align: start;
+
+			span {
+				margin-bottom: 2em;
+			}
+
+			@include screenxxs {
+				width: 100%;
+				justify-content: center;
+				align-items: center;
+			}
+
+			@include screenxs {
+				width: 100%;
+				justify-content: center;
+				align-items: center;
+			}
+
+			@include screens {
+				margin-top: 3em;
+			}
+		}
+
 		@include screenxxs {
 			width: 100%;
 			justify-content: center;

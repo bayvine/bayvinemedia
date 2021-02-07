@@ -32,7 +32,8 @@ export const reveal = (node) => {
 	})
 }
 function App() {
-	ReactGA.initialize(process.env.REACT_APP_TRACKING_URL)
+	ReactGA.initialize(`${process.env.REACT_APP_TRACKING_URL}`)
+	ReactGA.pageview("/")
 	let [menu, setMenu] = React.useState(false)
 	let [hamburger, setHamburger] = React.useState(true)
 	let restOfPage = useRef(null)
