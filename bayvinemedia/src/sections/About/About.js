@@ -51,7 +51,7 @@ const About = (props) => {
 				},
 				opacity: 0,
 				delay: 6,
-				x: -100,
+				x: 100,
 				duration: 0.8,
 			})
 		}

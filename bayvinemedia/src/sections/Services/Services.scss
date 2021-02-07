@@ -41,11 +41,12 @@
 			background: url("../../media/palm-tree.png");
 			width: 50%;
 			margin: 5em;
-			height: 800px;
+			height: 700px;
+			overflow: hidden;
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
-			transition: all 5s ease-in;
+			transition: all 0.8s ease-in;
 			border-radius: 25px;
 
 			// background-color: red;
