@@ -4,6 +4,7 @@ import "./Form.scss"
 const Form = () => {
 	const formHandler = (e) => {
 		e.preventDefault()
+		console.log("Submit form.")
 	}
 	return (
 		<div className="form">

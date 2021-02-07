@@ -25,11 +25,6 @@ const CustomCursor = React.lazy(() =>
 )
 const Footer = React.lazy(() => import("./components/Footer/Footer"))
 
-function initAnalytics() {
-	ReactGA.initialize(process.env.REACT_APP_TRACKING_URL)
-	ReactGA.pageview("/")
-}
-
 export const reveal = (node) => {
 	gsap.from(node, {
 		duration: 1,
@@ -37,8 +32,7 @@ export const reveal = (node) => {
 	})
 }
 function App() {
-	initAnalytics()
-	console.log(process.env.REACT_APP_TRACKING_URL)
+	ReactGA.initialize(process.env.REACT_APP_TRACKING_URL)
 	let [menu, setMenu] = React.useState(false)
 	let [hamburger, setHamburger] = React.useState(true)
 	let restOfPage = useRef(null)
@@ -57,20 +51,23 @@ function App() {
 
 			setShouldIntroExist(false)
 		}, 5000)
-	}, [shouldIntroExist])
+	}, [])
 
-	function handleMenu() {
+	const handleMenu = React.useCallback(() => {
 		setMenu((prevstate) => !prevstate)
 		setHamburger((prevstate) => !prevstate)
-	}
+	}, [])
 
 	const { cursorStyles } = useGlobalStateContext()
 	const dispatch = useGlobalDispatchContext()
 
-	const onCursor = (cursorType) => {
-		cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
-		dispatch({ type: "CURSOR_TYPE", cursorType: cursorType })
-	}
+	const onCursor = React.useCallback(
+		(cursorType) => {
+			cursorType = (cursorStyles.includes(cursorType) && cursorType) || false
+			dispatch({ type: "CURSOR_TYPE", cursorType: cursorType })
+		},
+		[cursorStyles, dispatch]
+	)
 
 	let application = (
 		<div ref={(el) => (restOfPage = el)} className="the-whole-app">
