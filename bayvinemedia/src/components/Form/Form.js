@@ -9,7 +9,8 @@ const Form = () => {
 		<div className="form">
 			<h1>Contact</h1>
 			<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
-			<form>
+			<form name="contact" method="post" data-netlify="true">
+				<input type="hidden" name="form-name" value="contact" />
 				<div>
 					<label htmlFor="name">Name</label>
 					<input name="name" type="text" />
@@ -32,7 +33,6 @@ const Form = () => {
 
 				<div>
 					<label htmlFor="message">Message</label>
-
 					<textarea></textarea>
 				</div>
 

@@ -43,6 +43,18 @@
 	will-change: width, height, transform, border;
 	pointer-events: none;
 	z-index: 9999999;
+
+	@include screenxs {
+		display: none;
+	}
+
+	@include screenxxs {
+		display: none;
+	}
+
+	@include screens {
+		display: none;
+	}
 }
 
 .contrast {
@@ -60,6 +72,18 @@
 	will-change: width, height, transform, border;
 	pointer-events: none;
 	z-index: 9999999;
+
+	@include screenxs {
+		display: none;
+	}
+
+	@include screenxxs {
+		display: none;
+	}
+
+	@include screens {
+		display: none;
+	}
 }
 
 .hovered-contrast {
@@ -77,6 +101,18 @@
 	will-change: width, height, transform, border;
 	pointer-events: none;
 	z-index: 9999999;
+
+	@include screenxs {
+		display: none;
+	}
+
+	@include screenxxs {
+		display: none;
+	}
+
+	@include screens {
+		display: none;
+	}
 }
 
 // image cursors

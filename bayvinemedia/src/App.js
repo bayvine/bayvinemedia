@@ -1,20 +1,12 @@
-// import About from "./sections/About/About"
 import React, { useEffect, useState, useRef, Suspense } from "react"
-// import Landing from "./sections/Landing/Landing"
-// import Services from "./sections/Services/Services"
-// import Reviews from "./sections/Reviews/Reviews"
-// import ExtraInformation from "./sections/ExtraInformation/ExtraInformation"
-// import Contact from "./sections/Contact/Contact"
-// import Menu from "./components/Menu/Menu"
-// import LoadingScreen from "./sections/LoadingScreen/LoadingScreen"
 import gsap from "gsap"
-// import CustomCursor from "./components/Cursor/CustomCursor"
-
 import {
 	useGlobalStateContext,
 	useGlobalDispatchContext,
 } from "./context/globalContext"
+import ReactGA from "react-ga"
 
+// LAZY LOADED COMP
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"))
 const LoadingScreen = React.lazy(() =>
 	import("./sections/LoadingScreen/LoadingScreen")
@@ -33,6 +25,11 @@ const CustomCursor = React.lazy(() =>
 )
 const Footer = React.lazy(() => import("./components/Footer/Footer"))
 
+function initAnalytics() {
+	ReactGA.initialize(process.env.REACT_APP_TRACKING_URL)
+	ReactGA.pageview("/")
+}
+
 export const reveal = (node) => {
 	gsap.from(node, {
 		duration: 1,
@@ -40,6 +37,8 @@ export const reveal = (node) => {
 	})
 }
 function App() {
+	initAnalytics()
+	console.log(process.env.REACT_APP_TRACKING_URL)
 	let [menu, setMenu] = React.useState(false)
 	let [hamburger, setHamburger] = React.useState(true)
 	let restOfPage = useRef(null)
@@ -130,7 +129,7 @@ function App() {
 	)
 }
 
-export default App
+export default React.memo(App)
 
 /* 
 		<Button className={"green-gradient"} text={"HIRE ME"} />

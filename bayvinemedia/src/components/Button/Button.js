@@ -10,6 +10,7 @@ const Button = ({ clicked, className, text, landing }) => {
 	useEffect(() => {
 		if (landing) {
 			gsap.from(landingref, {
+				autoAlpha: 0,
 				duration: 0.8,
 				opacity: 0,
 				x: -100,
