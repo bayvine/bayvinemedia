@@ -55,13 +55,7 @@ const Form = () => {
 			{loader ? (
 				<span>Sending form...</span>
 			) : (
-				<form
-					name="contact"
-					method="post"
-					netlify="true"
-					netlify-honeybot="bot-field"
-					onSubmit={formHandler}
-				>
+				<form name="contact" method="POST" onSubmit={formHandler}>
 					<input type="hidden" name="form-name" value="contact" />
 					<div>
 						<label htmlFor="name">Name</label>
@@ -105,7 +99,10 @@ const Form = () => {
 
 					<div>
 						<label htmlFor="message">Message</label>
-						<textarea onChange={(event) => setForm(event, true)} />
+						<textarea
+							name="message"
+							onChange={(event) => setForm(event, true)}
+						/>
 					</div>
 
 					<button type="submit" onClick={formHandler}>
