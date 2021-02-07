@@ -11,6 +11,7 @@ const Navbar = (props) => {
 
 	const reveal = (node) => {
 		gsap.from([node], {
+			autoAlpha: 0,
 			y: -100,
 			delay: 0.2,
 			opacity: 0,

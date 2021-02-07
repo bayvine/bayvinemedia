@@ -14,10 +14,12 @@
 	}
 
 	.arrow-down {
+		visibility: hidden;
 		height: 200%;
 	}
 
 	span {
+		visibility: hidden;
 		display: block;
 		position: relative;
 		transform: rotate(-90deg) translateY(-35px) translateX(180px);

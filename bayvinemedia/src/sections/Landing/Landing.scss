@@ -14,6 +14,7 @@
 	padding-right: 1em;
 
 	.landing-background-image {
+		visibility: hidden;
 		position: absolute;
 		overflow: hidden;
 		right: -2%;
@@ -63,6 +64,7 @@
 	}
 
 	.landing-garage-image {
+		visibility: hidden;
 		object-fit: cover;
 		position: absolute;
 		height: 80%;
@@ -118,6 +120,7 @@
 		}
 
 		h1 {
+			visibility: hidden;
 			margin-bottom: 0;
 			color: #9ed195;
 			font-weight: 800;
@@ -143,6 +146,7 @@
 		}
 
 		p {
+			visibility: hidden;
 			color: white;
 			font-weight: 800;
 			font-size: $subheading;

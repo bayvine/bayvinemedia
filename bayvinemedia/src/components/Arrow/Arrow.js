@@ -29,6 +29,7 @@ const Arrow = (props) => {
 	useEffect(() => {
 		if (reference) {
 			gsap.from([reference], {
+				autoAlpha: 0,
 				opacity: 0,
 				delay: 1,
 				y: -100,
@@ -36,6 +37,7 @@ const Arrow = (props) => {
 			})
 
 			gsap.from(letters, {
+				autoAlpha: 0,
 				opacity: 0,
 				delay: 1.2,
 				x: 0.1,

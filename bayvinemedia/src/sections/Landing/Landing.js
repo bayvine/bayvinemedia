@@ -47,6 +47,7 @@ const Landing = (props) => {
 
 		gsap.from([heading, subheading], {
 			duration: 0.8,
+			autoAlpha: 0,
 			opacity: 0,
 			y: 100,
 			stagger: {
@@ -55,6 +56,7 @@ const Landing = (props) => {
 		})
 
 		gsap.from([imageOne, imageTwo], {
+			autoAlpha: 0,
 			duration: 1.3,
 			delay: 1,
 			opacity: 0,

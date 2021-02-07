@@ -31,6 +31,7 @@ const Menu = React.lazy(() => import("./components/Menu/Menu"))
 const CustomCursor = React.lazy(() =>
 	import("./components/Cursor/CustomCursor")
 )
+const Footer = React.lazy(() => import("./components/Footer/Footer"))
 
 export const reveal = (node) => {
 	gsap.from(node, {
@@ -110,7 +111,9 @@ function App() {
 				<Contact />
 			</Suspense>
 
-			<footer>Designed and Developed with ♡ by Bay Vine Media 2021 ©</footer>
+			<Suspense fallback={<div>Loading...</div>}>
+				<Footer />
+			</Suspense>
 		</div>
 	)
 
