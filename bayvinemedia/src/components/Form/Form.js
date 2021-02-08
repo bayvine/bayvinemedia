@@ -1,8 +1,11 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./Form.scss"
+import { useForm } from "react-hook-form"
 import Success from "../../media/success.gif"
 import Fail from "../../media/fail.gif"
 import FormLoader from "../FormLoader/FormLoader"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { contactSchema } from "./FormValidation/contactValidation"
 
 function encode(data) {
 	return Object.keys(data)
@@ -11,6 +14,11 @@ function encode(data) {
 }
 
 const Form = () => {
+	const { register, handleSubmit, errors } = useForm({
+		resolver: yupResolver(contactSchema),
+		criteriaMode: "all",
+	})
+
 	const [loader, setLoader] = useState(false)
 	const [success, setSuccess] = useState(false)
 	const [fail, setFail] = useState(false)
@@ -22,30 +30,41 @@ const Form = () => {
 		phone: "",
 		message: "",
 	})
+	// const [error, setError] = useState({
+	// 	name: errors.name?.message || "",
+	// 	email: errors.email?.message || "",
+	// 	phone: errors.phone?.message || "",
+	// })
 
-	const formHandler = (e) => {
+	useEffect(() => {}, [])
+
+	const formHandler = async (e) => {
 		setSuccess(false)
 		setFail(false)
-		setLoader(true)
-		setShowFarm(false)
 
-		fetch("/", {
-			method: "POST",
-			headers: { "Content-Type": "application/x-www-form-urlencoded" },
-			body: encode({ "form-name": "contact", ...formData }),
-		})
-			.then(() => {
-				setFail(false)
-				setLoader(false)
-				setSuccess(true)
-				setShowFarm(false)
-			})
-			.catch(() => {
-				setLoader(false)
-				setSuccess(false)
-				setFail(true)
-				setShowFarm(false)
-			})
+		// setLoader(true)
+		// setShowFarm(false)
+
+		const isValid = await contactSchema.isValid(formData)
+		console.log(isValid)
+
+		// fetch("/", {
+		// 	method: "POST",
+		// 	headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		// 	body: encode({ "form-name": "contact", ...formData }),
+		// })
+		// 	.then(() => {
+		// 		setFail(false)
+		// 		setLoader(false)
+		// 		setSuccess(true)
+		// 		setShowFarm(false)
+		// 	})
+		// 	.catch(() => {
+		// 		setLoader(false)
+		// 		setSuccess(false)
+		// 		setFail(true)
+		// 		setShowFarm(false)
+		// 	})
 
 		e.preventDefault()
 	}
@@ -53,6 +72,22 @@ const Form = () => {
 	const setForm = (e, message) => {
 		let name = e.target.name
 		let value = e.target.value
+
+		// console.log(errors[name]?.message)
+
+		// if (errors[name]) {
+		// 	setError({
+		// 		...error,
+		// 		[name]: errors[name].message,
+		// 	})
+		// }
+
+		// if (error[name] && !errors[name]) {
+		// 	setError({
+		// 		...error,
+		// 		[name]: "",
+		// 	})
+		// }
 
 		if (message) {
 			setFormData({
@@ -68,31 +103,57 @@ const Form = () => {
 	}
 
 	let form = (
-		<form name="contact" method="POST" onSubmit={formHandler}>
+		<form
+			name="contact"
+			method="POST"
+			onSubmit={(e) => handleSubmit(formHandler(e))}
+		>
 			<input type="hidden" name="form-name" value="contact" />
 			<div>
-				<label htmlFor="name">Name</label>
+				<label htmlFor="name">Name*</label>
 				<input
+					style={{
+						border: errors.name ? "3px solid red" : "2px solid white",
+					}}
+					placeholder="John Doe"
 					onChange={setForm}
 					value={formData.name}
 					name="name"
 					type="text"
+					ref={register}
 				/>
+				<span
+					style={{ color: "lightred", marginTop: "10px", marginBottom: "0em" }}
+				>
+					{errors.name?.message}
+				</span>
 			</div>
 
 			<div>
-				<label htmlFor="email">Email</label>
+				<label htmlFor="email">Email*</label>
 				<input
+					style={{
+						border: errors.email ? "3px solid red" : "2px solid white",
+					}}
+					ref={register}
+					placeholder="John@doe.com"
 					value={formData.email}
 					onChange={setForm}
 					name="email"
 					type="email"
 				/>
+				<span
+					style={{ color: "lightred", marginTop: "10px", marginBottom: "0em" }}
+				>
+					{errors.email?.message}
+				</span>
 			</div>
 
 			<div>
 				<label htmlFor="organization">Organization</label>
 				<input
+					ref={register}
+					placeholder="Doe LLC"
 					value={formData.organization}
 					onChange={setForm}
 					name="organization"
@@ -101,25 +162,42 @@ const Form = () => {
 			</div>
 
 			<div>
-				<label htmlFor="phone">Phone</label>
+				<label htmlFor="phone">Phone*</label>
 				<input
+					style={{
+						border: errors.phone ? "3px solid red" : "2px solid white",
+					}}
+					ref={register}
+					placeholder="+31(0)6-123-456-78"
 					value={formData.phone}
 					onChange={setForm}
 					name="phone"
 					type="tel"
 				/>
+				<span
+					style={{ color: "lightred", marginTop: "10px", marginBottom: "0em" }}
+				>
+					{errors.phone?.message}
+				</span>
 			</div>
 
 			<div>
 				<label htmlFor="message">Message</label>
-				<textarea name="message" onChange={(event) => setForm(event, true)} />
+				<textarea
+					ref={register}
+					placeholder="Tell me something about yourself or your business!"
+					name="message"
+					onChange={(event) => setForm(event, true)}
+				/>
 			</div>
 
-			<input name="bot-field" type="hidden" onChange={setForm} />
+			<input ref={register} name="bot-field" type="hidden" onChange={setForm} />
 
-			<button type="submit" onClick={formHandler}>
-				S E N D
-			</button>
+			<input
+				value="S U B M I T"
+				className="button-submit"
+				type="submit"
+			></input>
 		</form>
 	)
 
