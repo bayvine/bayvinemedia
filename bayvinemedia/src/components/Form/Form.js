@@ -112,9 +112,6 @@ const Form = () => {
 			<div>
 				<label htmlFor="name">Name*</label>
 				<input
-					style={{
-						border: errors.name ? "3px solid red" : "2px solid white",
-					}}
 					placeholder="John Doe"
 					onChange={setForm}
 					value={formData.name}
@@ -132,9 +129,6 @@ const Form = () => {
 			<div>
 				<label htmlFor="email">Email*</label>
 				<input
-					style={{
-						border: errors.email ? "3px solid red" : "2px solid white",
-					}}
 					ref={register}
 					placeholder="John@doe.com"
 					value={formData.email}
@@ -164,9 +158,6 @@ const Form = () => {
 			<div>
 				<label htmlFor="phone">Phone*</label>
 				<input
-					style={{
-						border: errors.phone ? "3px solid red" : "2px solid white",
-					}}
 					ref={register}
 					placeholder="+31(0)6-123-456-78"
 					value={formData.phone}
