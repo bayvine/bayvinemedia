@@ -41,9 +41,8 @@ const Form = () => {
 	const formHandler = async (e) => {
 		setSuccess(false)
 		setFail(false)
-
-		// setLoader(true)
-		// setShowFarm(false)
+		setLoader(true)
+		setShowFarm(false)
 
 		// const isValid = await contactSchema.isValid(formData)
 		// console.log(isValid)
