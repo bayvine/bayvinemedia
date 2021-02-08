@@ -45,26 +45,26 @@ const Form = () => {
 		// setLoader(true)
 		// setShowFarm(false)
 
-		const isValid = await contactSchema.isValid(formData)
-		console.log(isValid)
+		// const isValid = await contactSchema.isValid(formData)
+		// console.log(isValid)
 
-		// fetch("/", {
-		// 	method: "POST",
-		// 	headers: { "Content-Type": "application/x-www-form-urlencoded" },
-		// 	body: encode({ "form-name": "contact", ...formData }),
-		// })
-		// 	.then(() => {
-		// 		setFail(false)
-		// 		setLoader(false)
-		// 		setSuccess(true)
-		// 		setShowFarm(false)
-		// 	})
-		// 	.catch(() => {
-		// 		setLoader(false)
-		// 		setSuccess(false)
-		// 		setFail(true)
-		// 		setShowFarm(false)
-		// 	})
+		fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: encode({ "form-name": "contact", ...formData }),
+		})
+			.then(() => {
+				setFail(false)
+				setLoader(false)
+				setSuccess(true)
+				setShowFarm(false)
+			})
+			.catch(() => {
+				setLoader(false)
+				setSuccess(false)
+				setFail(true)
+				setShowFarm(false)
+			})
 
 		e.preventDefault()
 	}
