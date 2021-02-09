@@ -15,8 +15,7 @@ const Navbar = (props) => {
 			y: -100,
 			delay: 0.2,
 			opacity: 0,
-			duration: 1,
-			ease: "expo.out",
+			duration: 0.3,
 		})
 	}
 

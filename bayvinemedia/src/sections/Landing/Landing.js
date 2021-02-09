@@ -69,7 +69,7 @@ const Landing = (props) => {
 
 	return (
 		<section className="landing">
-			<div className="img-hover-zoom">
+			<div className="img-hover-zoom-1">
 				<img
 					ref={(el) => (imageOne = el)}
 					className="landing-background-image"
@@ -81,15 +81,18 @@ const Landing = (props) => {
 				/>
 			</div>
 
-			<img
-				ref={(el) => (imageTwo = el)}
-				className="landing-garage-image"
-				src={garage}
-				alt="garage"
-				style={{
-					transform: `translateY(${offsetY * 0.1}px)`,
-				}}
-			/>
+			<div className="img-hover-zoom">
+				<img
+					ref={(el) => (imageTwo = el)}
+					className="landing-garage-image"
+					src={garage}
+					alt="garage"
+					style={{
+						transform: `translateY(${offsetY * 0.1}px)`,
+					}}
+				/>
+			</div>
+
 			<div className="landing-heading">
 				<h1 ref={(el) => (heading = el)}>Bay Vine Media</h1>
 				<p ref={(el) => (subheading = el)}>

@@ -37,7 +37,7 @@ function App() {
 	let [menu, setMenu] = React.useState(false)
 	let [hamburger, setHamburger] = React.useState(true)
 	let restOfPage = useRef(null)
-	const [shouldIntroExist, setShouldIntroExist] = useState(true)
+	const [shouldIntroExist, setShouldIntroExist] = useState(false)
 
 	useEffect(() => {
 		setTimeout(() => {
