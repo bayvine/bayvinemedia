@@ -1,20 +1,17 @@
 import React, { useEffect, useRef, useState } from "react"
 import "./Services.scss"
-import palmtree from "../../media/palm-tree.png"
+import palmtree from "../../media/palm-tree.webp"
 import Service from "../../components/Service/Service"
 import { ScrollTrigger } from "gsap/all"
 import gsap from "gsap"
 
 // images
-import s1 from "../../media/Group 16.png"
-import s2 from "../../media/Group 17.png"
-import s3 from "../../media/Group 18.png"
-import s4 from "../../media/Group 19.png"
-
-import video from "../../media/loopablemovie.mp4"
+import s1 from "../../media/Group 16.webp"
+import s2 from "../../media/Group 17.webp"
+import s3 from "../../media/Group 18.webp"
+import s4 from "../../media/Group 19.webp"
 
 const Services = (props) => {
-	let [imageClass, setimageClass] = useState(0)
 	gsap.registerPlugin(ScrollTrigger)
 
 	let services = useRef(null)
@@ -65,38 +62,11 @@ const Services = (props) => {
 		})
 	}, [])
 
-	let handleImageIn = () => {
-		setimageClass(1)
-	}
-
-	let handleImageOut = () => {
-		setimageClass(0)
-	}
-
 	return (
 		<section className="services">
 			<h1 ref={(el) => (title = el)}>Tailored to your needs.</h1>
 			<div ref={(el) => (theImage = el)} className="services-block">
-				<div
-					className="images"
-					onMouseEnter={handleImageIn}
-					onMouseLeave={handleImageOut}
-				>
-					<video
-						style={{
-							opacity: imageClass,
-							objectFit: "cover",
-							width: "100%",
-							height: "800px",
-							borderRadius: "25px",
-							transition: "all 0.8s ease-in-out",
-						}}
-						className="video"
-						src={video}
-						autoPlay
-						muted
-					/>
-				</div>
+				<div className="images"></div>
 				<div className="services-text-block" ref={(el) => (services = el)}>
 					<Service
 						onCursor={props.onCursor}

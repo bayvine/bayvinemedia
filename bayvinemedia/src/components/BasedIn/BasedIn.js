@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import "./BasedIn.scss"
-import rotterdam from "../../media/rotterdam.png"
-import sanfran from "../../media/san-fran.png"
+import rotterdam from "../../media/rotterdam.webp"
+import sanfran from "../../media/san-fran.webp"
 import { ScrollTrigger } from "gsap/all"
 import gsap from "gsap"
 

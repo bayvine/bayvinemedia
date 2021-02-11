@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react"
 import "./Menu.scss"
-import sanfran from "../../media/menubackgroundsan.png"
-import statue from "../../media/statue.jpg"
-import beach from "../../media/beach.jpg"
-import together from "../../media/together.jpg"
+import sanfran from "../../media/menubackgroundsan.webp"
+import statue from "../../media/statue.webp"
+import beach from "../../media/beach.webp"
+import together from "../../media/together.webp"
 import gsap from "gsap"
 import { Link } from "react-scroll"
 
@@ -60,7 +60,13 @@ const Menu = (props) => {
 				<div className="menu-items">
 					<ul>
 						<li>
-							<Link to="about" smooth={true} offset={-150} duration={600}>
+							<Link
+								activeClass="link-active"
+								to="about"
+								smooth={true}
+								offset={-150}
+								duration={600}
+							>
 								<h1
 									ref={(el) => (line1 = el)}
 									onMouseLeave={resetImage}

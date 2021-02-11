@@ -1,6 +1,6 @@
 import React from "react"
 import "./ContactHero.scss"
-import bridge from "../../media/bridge.png"
+import bridge from "../../media/bridge.webp"
 
 const ContactHero = () => {
 	return (

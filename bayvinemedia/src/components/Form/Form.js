@@ -109,7 +109,9 @@ const Form = () => {
 		>
 			<input type="hidden" name="form-name" value="contact" />
 			<div>
-				<label htmlFor="name">Name*</label>
+				<label id="lbl-name" htmlFor="name">
+					Name*
+				</label>
 				<input
 					placeholder="John Doe"
 					onChange={setForm}
@@ -117,6 +119,7 @@ const Form = () => {
 					name="name"
 					type="text"
 					ref={register}
+					aria-labelledby="lbl-name"
 				/>
 				<span
 					style={{ color: "lightred", marginTop: "10px", marginBottom: "0em" }}
@@ -126,7 +129,9 @@ const Form = () => {
 			</div>
 
 			<div>
-				<label htmlFor="email">Email*</label>
+				<label id="lbl-email" htmlFor="email">
+					Email*
+				</label>
 				<input
 					ref={register}
 					placeholder="John@doe.com"
@@ -134,6 +139,7 @@ const Form = () => {
 					onChange={setForm}
 					name="email"
 					type="email"
+					aria-labelledby="lbl-email"
 				/>
 				<span
 					style={{ color: "lightred", marginTop: "10px", marginBottom: "0em" }}
@@ -143,8 +149,11 @@ const Form = () => {
 			</div>
 
 			<div>
-				<label htmlFor="organization">Organization</label>
+				<label id="lbl-org" htmlFor="organization">
+					Organization
+				</label>
 				<input
+					aria-labelledby="lbl-org"
 					ref={register}
 					placeholder="Doe LLC"
 					value={formData.organization}
@@ -155,7 +164,9 @@ const Form = () => {
 			</div>
 
 			<div>
-				<label htmlFor="phone">Phone*</label>
+				<label id="lbl-phone" htmlFor="phone">
+					Phone*
+				</label>
 				<input
 					ref={register}
 					placeholder="+31(0)6-123-456-78"
@@ -163,6 +174,7 @@ const Form = () => {
 					onChange={setForm}
 					name="phone"
 					type="tel"
+					aria-labelledby="lbl-phone"
 				/>
 				<span
 					style={{ color: "lightred", marginTop: "10px", marginBottom: "0em" }}
@@ -172,8 +184,11 @@ const Form = () => {
 			</div>
 
 			<div>
-				<label htmlFor="message">Message</label>
+				<label id="lbl-message" htmlFor="message">
+					Message
+				</label>
 				<textarea
+					aria-labelledby="lbl-message"
 					ref={register}
 					placeholder="Tell me something about yourself or your business!"
 					name="message"
@@ -194,7 +209,10 @@ const Form = () => {
 	return (
 		<div className="form">
 			<h1>Contact</h1>
-			<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
+			<span>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
+				<span>* = Required</span>{" "}
+			</span>
 
 			{fail ? (
 				<div className="fail-form">
