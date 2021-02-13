@@ -37,7 +37,7 @@ function App() {
 	let [menu, setMenu] = React.useState(false)
 	let [hamburger, setHamburger] = React.useState(true)
 	let restOfPage = useRef(null)
-	const [shouldIntroExist, setShouldIntroExist] = useState(false)
+	const [shouldIntroExist, setShouldIntroExist] = useState(true)
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -47,7 +47,7 @@ function App() {
 					delay: 2,
 					opacity: 0,
 				})
-				// reveal(restOfPage.current)
+				reveal(restOfPage.current)
 			}
 
 			setShouldIntroExist(false)
