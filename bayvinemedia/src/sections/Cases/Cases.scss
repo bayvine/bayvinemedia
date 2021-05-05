@@ -1,0 +1,116 @@
+@import "../../styles/breakpoints.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/colors.scss";
+
+.bay-cases {
+	width: 100%;
+	height: 720px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-shrink: 0;
+	margin: 8rem 0;
+	position: relative;
+
+	@include screens {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 8rem auto;
+		margin-bottom: 15rem;
+		height: auto;
+	}
+
+	.arrows {
+		width: 500px;
+		display: flex;
+		justify-content: space-around;
+		position: absolute;
+		right: 5%;
+		bottom: 0;
+
+		@include screens {
+			left: 50%;
+			right: 0;
+			transform: translateX(-50%);
+			bottom: -15%;
+			margin: 0 auto;
+		}
+
+		@include screenxxs {
+			width: 320px;
+			bottom: -8%;
+		}
+
+		img {
+			transform: rotate(90deg);
+
+			&:last-child {
+				transform: rotate(-90deg);
+			}
+		}
+	}
+
+	.bay-cases-text {
+		width: 50%;
+		box-sizing: border-box;
+		color: white;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+
+		@include screens {
+			align-items: center;
+			width: 100%;
+		}
+
+		.bay-cases-text-container {
+			width: 50%;
+
+			@include screenm {
+				width: 100%;
+				padding: 2em;
+			}
+		}
+	}
+
+	.bay-cases-cases {
+		width: 50%;
+		overflow-x: scroll;
+		scroll-behavior: smooth;
+		font-size: large;
+		position: relative;
+		scrollbar-width: none; /* Firefox */
+		-webkit-mask-image: linear-gradient(
+			to left,
+			rgb(0, 0, 0) 50%,
+			transparent 100%
+		);
+		mask-image: linear-gradient(to left, rgb(0, 0, 0) 50%, transparent 100%);
+
+		@include screens {
+			width: 100%;
+			mask-image: none;
+			-webkit-mask-image: none;
+		}
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		.scrollable {
+			transform: translateX(5%);
+			position: relative;
+			width: fit-content;
+			display: flex;
+			cursor: grab;
+			overflow: hidden;
+
+			@include screens {
+				transform: translateX(0);
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+}

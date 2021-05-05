@@ -5,6 +5,7 @@ import {
 	useGlobalDispatchContext,
 } from "./context/globalContext"
 import ReactGA from "react-ga"
+import Cases from "./sections/Cases/Cases"
 
 // LAZY LOADED COMP
 const Navbar = React.lazy(() => import("./components/Navbar/Navbar"))
@@ -37,21 +38,20 @@ function App() {
 	let [menu, setMenu] = React.useState(false)
 	let [hamburger, setHamburger] = React.useState(true)
 	let restOfPage = useRef(null)
-	const [shouldIntroExist, setShouldIntroExist] = useState(true)
+	const [shouldIntroExist, setShouldIntroExist] = useState(false)
 
 	useEffect(() => {
-		setTimeout(() => {
-			if (restOfPage) {
-				gsap.from(restOfPage.current, {
-					duration: 1,
-					delay: 2,
-					opacity: 0,
-				})
-				reveal(restOfPage.current)
-			}
-
-			setShouldIntroExist(false)
-		}, 5000)
+		// setTimeout(() => {
+		// 	if (restOfPage) {
+		// 		gsap.from(restOfPage.current, {
+		// 			duration: 1,
+		// 			delay: 2,
+		// 			opacity: 0,
+		// 		})
+		// 		reveal(restOfPage.current)
+		// 	}
+		// 	setShouldIntroExist(false)
+		// }, 5000)
 	}, [])
 
 	const handleMenu = React.useCallback(() => {
@@ -94,6 +94,10 @@ function App() {
 
 			<Suspense fallback={<div>Loading...</div>}>
 				<Services onCursor={onCursor} />
+			</Suspense>
+
+			<Suspense fallback={<div>Loading...</div>}>
+				<Cases onCursor={onCursor} />
 			</Suspense>
 
 			<Suspense fallback={<div>Loading...</div>}>
