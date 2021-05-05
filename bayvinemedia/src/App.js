@@ -38,20 +38,20 @@ function App() {
 	let [menu, setMenu] = React.useState(false)
 	let [hamburger, setHamburger] = React.useState(true)
 	let restOfPage = useRef(null)
-	const [shouldIntroExist, setShouldIntroExist] = useState(false)
+	const [shouldIntroExist, setShouldIntroExist] = useState(true)
 
 	useEffect(() => {
-		// setTimeout(() => {
-		// 	if (restOfPage) {
-		// 		gsap.from(restOfPage.current, {
-		// 			duration: 1,
-		// 			delay: 2,
-		// 			opacity: 0,
-		// 		})
-		// 		reveal(restOfPage.current)
-		// 	}
-		// 	setShouldIntroExist(false)
-		// }, 5000)
+		setTimeout(() => {
+			if (restOfPage) {
+				gsap.from(restOfPage.current, {
+					duration: 1,
+					delay: 2,
+					opacity: 0,
+				})
+				reveal(restOfPage.current)
+			}
+			setShouldIntroExist(false)
+		}, 5000)
 	}, [])
 
 	const handleMenu = React.useCallback(() => {
