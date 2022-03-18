@@ -96,9 +96,9 @@ function App() {
 				<Services onCursor={onCursor} />
 			</Suspense>
 
-			<Suspense fallback={<div>Loading...</div>}>
+			{/* <Suspense fallback={<div>Loading...</div>}>
 				<Cases onCursor={onCursor} />
-			</Suspense>
+			</Suspense> */}
 
 			<Suspense fallback={<div>Loading...</div>}>
 				<Reviews />
