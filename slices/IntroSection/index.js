@@ -29,7 +29,7 @@ const IntroSection = ({ slice }) => {
 				delay: 0.25,
 			})
 			gsap.from(".marquee", {
-				x: 120,
+				x: 115,
 				opacity: 0,
 				duration: 0.8,
 				delay: 0.8,
