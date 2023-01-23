@@ -7,7 +7,24 @@ type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
 /** Content for homepage documents */
-type HomepageDocumentData = Record<string, never>;
+interface HomepageDocumentData {
+    /**
+     * Slice Zone field in *homepage*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: homepage.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<HomepageDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *homepage → Slice Zone*
+ *
+ */
+type HomepageDocumentDataSlicesSlice = IntroSectionSlice;
 /**
  * homepage document from Prismic
  *
@@ -73,6 +90,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocument, AllDocumentTypes, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice };
     }
 }

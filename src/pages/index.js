@@ -1,6 +1,9 @@
 import Head from "next/head"
+import { SliceZone } from "@prismicio/react"
+import { createClient } from "../../prismicio"
+import { components } from "../../slices"
 
-export default function Home() {
+export default function Home({ page, navigation, settings }) {
 	return (
 		<>
 			<Head>
@@ -10,8 +13,20 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main>
-				<h1 className="">hello</h1>
+				<SliceZone slices={page.data.slices} components={components} />
 			</main>
 		</>
 	)
+}
+
+export async function getStaticProps({ previewData }) {
+	const client = createClient({ previewData })
+
+	const page = await client.getSingle("homepage")
+
+	return {
+		props: {
+			page,
+		},
+	}
 }
