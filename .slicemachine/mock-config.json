@@ -3,6 +3,10 @@
     "homepage": {}
   },
   "slices": {
-    "IntroSection": {}
+    "IntroSection": {
+      "default": {
+        "primary": {}
+      }
+    }
   }
 }

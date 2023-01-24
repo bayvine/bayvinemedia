@@ -3,7 +3,7 @@
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "intro_section$9d015a2f-ade4-4820-8273-c8d93c7cf5a4",
+        "key": "intro_section$072e7fd2-a84b-41e5-a925-5733e8a5b827",
         "name": "intro_section",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -15,7 +15,7 @@
                 {
                   "type": "heading1",
                   "content": {
-                    "text": "Dress"
+                    "text": "Ought"
                   }
                 }
               ]
@@ -26,7 +26,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Commodo nisi velit in aliquip quis. Ullamco deserunt sint commodo cillum proident do officia et minim qui adipisicing culpa."
+                    "text": "Veniam nisi laborum id. Quis eiusmod quis et sunt quis irure elit laboris enim Lorem tempor excepteur quis cillum."
                   }
                 }
               ]

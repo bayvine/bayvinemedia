@@ -7,9 +7,9 @@
         "__TYPE__": "StructuredTextContent",
         "value": [
           {
-            "type": "heading1",
+            "type": "paragraph",
             "content": {
-              "text": "Child"
+              "text": "Lorem commodo in est occaecat deserunt. Eiusmod reprehenderit cupidatat nostrud exercitation Lorem enim deserunt eu commodo magna."
             }
           }
         ]
@@ -24,12 +24,31 @@
             }
           }
         ]
+      },
+      "year": {
+        "__TYPE__": "FieldContent",
+        "value": "pleasant",
+        "type": "Text"
+      },
+      "cta": {
+        "__TYPE__": "FieldContent",
+        "value": "fat",
+        "type": "Text"
       }
     },
     "items": [
       {
         "__TYPE__": "GroupItemContent",
-        "value": []
+        "value": [
+          [
+            "service",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "secret",
+              "type": "Text"
+            }
+          ]
+        ]
       }
     ]
   }

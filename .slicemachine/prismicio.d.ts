@@ -44,13 +44,13 @@ interface IntroSectionSliceDefaultPrimary {
     /**
      * Title field in *IntroSection → Primary*
      *
-     * - **Field Type**: Title
+     * - **Field Type**: Rich Text
      * - **Placeholder**: This is where it all begins...
      * - **API ID Path**: intro_section.primary.title
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    title: prismicT.TitleField;
+    title: prismicT.RichTextField;
     /**
      * Description field in *IntroSection → Primary*
      *
@@ -61,6 +61,42 @@ interface IntroSectionSliceDefaultPrimary {
      *
      */
     description: prismicT.RichTextField;
+    /**
+     * Year field in *IntroSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: intro_section.primary.year
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    year: prismicT.KeyTextField;
+    /**
+     * CTA field in *IntroSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: intro_section.primary.cta
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta: prismicT.KeyTextField;
+}
+/**
+ * Item in IntroSection → Items
+ *
+ */
+export interface IntroSectionSliceDefaultItem {
+    /**
+     * service field in *IntroSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: intro_section.items[].service
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    service: prismicT.KeyTextField;
 }
 /**
  * Default variation for IntroSection Slice
@@ -70,7 +106,7 @@ interface IntroSectionSliceDefaultPrimary {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type IntroSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<IntroSectionSliceDefaultPrimary>, never>;
+export type IntroSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<IntroSectionSliceDefaultPrimary>, Simplify<IntroSectionSliceDefaultItem>>;
 /**
  * Slice variation for *IntroSection*
  *
@@ -90,6 +126,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice };
     }
 }

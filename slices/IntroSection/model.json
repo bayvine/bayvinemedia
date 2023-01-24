@@ -14,9 +14,10 @@
         "title": {
           "type": "StructuredText",
           "config": {
-            "single": "heading1",
             "label": "Title",
-            "placeholder": "This is where it all begins..."
+            "placeholder": "This is where it all begins...",
+            "allowTargetBlank": true,
+            "single": "heading1,strong,paragraph"
           }
         },
         "description": {
@@ -26,10 +27,32 @@
             "label": "Description",
             "placeholder": "A nice description of your feature"
           }
+        },
+        "year": {
+          "type": "Text",
+          "config": {
+            "label": "Year",
+            "placeholder": ""
+          }
+        },
+        "cta": {
+          "type": "Text",
+          "config": {
+            "label": "CTA",
+            "placeholder": ""
+          }
         }
       },
-      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format",
-      "items": {}
+      "items": {
+        "service": {
+          "type": "Text",
+          "config": {
+            "label": "service",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
     }
   ]
 }
