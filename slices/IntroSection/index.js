@@ -20,14 +20,14 @@ const IntroSection = ({ slice }) => {
 	return (
 		<section className="px-5 text-white">
 			<div className="flex flex-col">
-				<div className="flex flex-col justify-center pt-56 font-bold text-center uppercase">
+				<div className="flex flex-col justify-center font-bold text-center uppercase pt-60">
 					<PrismicRichText
 						field={slice.primary.title}
 						components={htmlSerializer}
 					/>
 				</div>
-				<div className="mt-2 text-center">
-					<PrismicText field={slice.primary.description} />
+				<div className="max-w-sm mx-auto mt-3 text-center text-md">
+					<PrismicRichText field={slice.primary.description} />
 				</div>
 
 				<div className="relative flex justify-center mt-56 overflow-x-hidden">
