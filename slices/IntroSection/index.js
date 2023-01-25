@@ -17,11 +17,10 @@ const htmlSerializer = (type, element, text, children) => {
 }
 
 const IntroSection = ({ slice }) => {
-	console.log(slice)
 	return (
 		<section className="px-5 text-white">
 			<div className="flex flex-col">
-				<div className="pt-56 font-bold text-center uppercase">
+				<div className="flex flex-col justify-center pt-56 font-bold text-center uppercase">
 					<PrismicRichText
 						field={slice.primary.title}
 						components={htmlSerializer}
@@ -31,22 +30,43 @@ const IntroSection = ({ slice }) => {
 					<PrismicText field={slice.primary.description} />
 				</div>
 
-				<ul className="flex mt-56">
-					{Array.isArray(slice.items) &&
-						slice.items.length &&
-						slice.items.slice(0, 2) &&
-						slice.items.map((item, index) => {
-							return (
-								<li className="text-xs whitespace-pre" key={useId()}>
-									{index !== slice.items.length - 1
-										? `${item.service}  •  `
-										: item.service}
-								</li>
-							)
-						})}
-				</ul>
+				<div className="relative flex justify-center mt-56 overflow-x-hidden">
+					<ul className="flex px-2 animate-marquee whitespace-nowrap">
+						{Array.isArray(slice.items) &&
+							slice.items.length &&
+							slice.items.slice(0, 2) &&
+							slice.items.map((item, index) => {
+								return (
+									<li className="whitespace-pre text-md" key={useId()}>
+										{index !== slice.items.length - 1
+											? `${item.service}  •  `
+											: item.service}
+									</li>
+								)
+							})}
+					</ul>
+					<div></div>
+					<ul className="absolute top-0 flex px-2 animate-marquee2 whitespace-nowrap">
+						{Array.isArray(slice.items) &&
+							slice.items.length &&
+							slice.items.slice(0, 2) &&
+							slice.items.map((item, index) => {
+								return (
+									<li className="whitespace-pre text-md" key={useId()}>
+										{index !== slice.items.length - 1
+											? `${item.service}  •  `
+											: item.service}
+									</li>
+								)
+							})}
+					</ul>
+				</div>
 			</div>
-			<hr className="-mx-5 h-0.5 w-screen border-white/30 my-8" />
+			<hr className="-mx-5 h-0.5 w-screen border-white/30 my-4" />
+			<div className="flex justify-between">
+				<span>{slice.primary.year}</span>
+				<span>{slice.primary.cta}</span>
+			</div>
 		</section>
 	)
 }
