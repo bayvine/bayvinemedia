@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useRef } from "react"
 import { PrismicRichText } from "@prismicio/react"
-import { gsap } from "gsap"
+import gsap from "gsap"
 import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect"
 import clsx from "clsx"
 
@@ -18,9 +18,9 @@ const IntroSection = ({ slice }) => {
 	useIsomorphicLayoutEffect(() => {
 		let ctx = gsap.context(() => {
 			gsap.from([titleRefOne.current, titleRefTwo.current], {
-				y: 150,
+				y: 100,
 				stagger: {
-					amount: 0.03,
+					amount: 0.04,
 				},
 				delay: 0.35,
 			})
