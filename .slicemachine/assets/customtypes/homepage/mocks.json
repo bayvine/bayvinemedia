@@ -3,7 +3,7 @@
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "intro_section$072e7fd2-a84b-41e5-a925-5733e8a5b827",
+        "key": "intro_section$76aa1743-6589-4e55-b9db-9931cafe32d3",
         "name": "intro_section",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -13,9 +13,9 @@
               "__TYPE__": "StructuredTextContent",
               "value": [
                 {
-                  "type": "heading1",
+                  "type": "paragraph",
                   "content": {
-                    "text": "Ought"
+                    "text": "Labore adipisicing deserunt reprehenderit. Enim in dolore mollit tempor officia magna cillum eiusmod voluptate ex et consequat. Dolor veniam commodo eu Lorem culpa."
                   }
                 }
               ]
@@ -26,10 +26,88 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Veniam nisi laborum id. Quis eiusmod quis et sunt quis irure elit laboris enim Lorem tempor excepteur quis cillum."
+                    "text": "Minim quis amet et reprehenderit aliquip aliquip amet amet. Ex laboris enim nostrud ullamco laborum Lorem."
                   }
                 }
               ]
+            },
+            "year": {
+              "__TYPE__": "FieldContent",
+              "value": "realize",
+              "type": "Text"
+            },
+            "cta": {
+              "__TYPE__": "FieldContent",
+              "value": "mighty",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "service",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "smooth",
+                    "type": "Text"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "about_section$d8c1e4e0-7584-48b6-b337-7c0bc8e7b5be",
+        "name": "about_section",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "title": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading1",
+                  "content": {
+                    "text": "Forget"
+                  }
+                }
+              ]
+            },
+            "description": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Ut ea laborum do ea deserunt exercitation id do voluptate elit dolore pariatur tempor duis. Mollit nostrud duis ex aute ad quis est magna labore labore excepteur do aute labore nostrud. Ullamco culpa quis culpa consequat excepteur ad proident nostrud officia magna incididunt adipisicing."
+                  }
+                }
+              ]
+            },
+            "background": {
+              "__TYPE__": "ImageContent",
+              "origin": {
+                "id": "main",
+                "url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f",
+                "width": 6597,
+                "height": 4398
+              },
+              "url": "https://images.unsplash.com/photo-1601933973783-43cf8a7d4c5f",
+              "width": 6597,
+              "height": 4398,
+              "edit": {
+                "zoom": 1,
+                "crop": {
+                  "x": 0,
+                  "y": 0
+                },
+                "background": "transparent"
+              },
+              "thumbnails": {}
             }
           },
           "items": [
