@@ -39,11 +39,11 @@ const AboutSection = ({ slice }) => {
 				.from(".about-description", {
 					opacity: 0,
 					y: 15,
-					delay: -0.25,
+					delay: -0.15,
 				})
 				.from(".about-title", {
 					y: 35,
-					delay: -0.45,
+					delay: -0.35,
 				})
 		}, root)
 
