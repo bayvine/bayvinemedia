@@ -36,14 +36,14 @@ const AboutSection = ({ slice }) => {
 					duration: 1.2,
 					ease: Expo.easeOut,
 				})
-				.from(".about-description", {
-					opacity: 0,
-					y: 15,
-					delay: -0.15,
-				})
 				.from(".about-title", {
 					y: 35,
-					delay: -0.35,
+					delay: -0.45,
+				})
+				.from(".about-description", {
+					opacity: 0,
+					y: 10,
+					delay: -0.15,
 				})
 		}, root)
 
