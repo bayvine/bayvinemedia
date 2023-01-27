@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import { PrismicRichText, PrismicText } from "@prismicio/react"
+import { PrismicText } from "@prismicio/react"
 import Image from "next/image"
 import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect"
 import gsap, { Expo, Power2 } from "gsap"
@@ -20,7 +20,7 @@ const AboutSection = ({ slice }) => {
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: ".about-section",
-					start: "center 200px",
+					start: "top 250px",
 				},
 			})
 
@@ -51,7 +51,7 @@ const AboutSection = ({ slice }) => {
 	}, [])
 
 	return (
-		<section ref={root} className="my-20 overflow-hidden about-section">
+		<section ref={root} className="mt-20 overflow-hidden about-section">
 			<div className="relative w-full h-full text-white">
 				<div className="relative z-10 px-5 py-14">
 					<div className="overflow-y-hidden h-fit">

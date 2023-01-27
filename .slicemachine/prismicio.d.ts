@@ -24,7 +24,7 @@ interface HomepageDocumentData {
  * Slice for *homepage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice;
+type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice | FeaturedSectionSlice;
 /**
  * homepage document from Prismic
  *
@@ -95,6 +95,101 @@ type AboutSectionSliceVariation = AboutSectionSliceDefault;
  *
  */
 export type AboutSectionSlice = prismicT.SharedSlice<"about_section", AboutSectionSliceVariation>;
+/**
+ * Primary content in FeaturedSection → Primary
+ *
+ */
+interface FeaturedSectionSliceDefaultPrimary {
+    /**
+     * Title field in *FeaturedSection → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: featured_section.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *FeaturedSection → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: featured_section.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Item in FeaturedSection → Items
+ *
+ */
+export interface FeaturedSectionSliceDefaultItem {
+    /**
+     * Image field in *FeaturedSection → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: featured_section.items[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * title field in *FeaturedSection → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: featured_section.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.RichTextField;
+    /**
+     * description field in *FeaturedSection → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: featured_section.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * link field in *FeaturedSection → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: featured_section.items[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * Default variation for FeaturedSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `FeaturedSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FeaturedSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<FeaturedSectionSliceDefaultPrimary>, Simplify<FeaturedSectionSliceDefaultItem>>;
+/**
+ * Slice variation for *FeaturedSection*
+ *
+ */
+type FeaturedSectionSliceVariation = FeaturedSectionSliceDefault;
+/**
+ * FeaturedSection Shared Slice
+ *
+ * - **API ID**: `featured_section`
+ * - **Description**: `FeaturedSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FeaturedSectionSlice = prismicT.SharedSlice<"featured_section", FeaturedSectionSliceVariation>;
 /**
  * Primary content in IntroSection → Primary
  *
@@ -185,6 +280,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice };
     }
 }
