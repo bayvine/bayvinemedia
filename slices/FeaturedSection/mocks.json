@@ -33,7 +33,6 @@
           [
             "image",
             {
-              "__TYPE__": "ImageContent",
               "origin": {
                 "id": "main",
                 "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869",
@@ -51,6 +50,9 @@
                 },
                 "background": "transparent"
               },
+              "credits": null,
+              "alt": null,
+              "__TYPE__": "ImageContent",
               "thumbnails": {}
             }
           ],
@@ -90,6 +92,14 @@
                 "__TYPE__": "ExternalLink",
                 "url": "http://twitter.com"
               }
+            }
+          ],
+          [
+            "services_done",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "dance",
+              "type": "Text"
             }
           ]
         ]

@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect"
 import gsap, { Expo, Power2 } from "gsap"
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+import Link from "next/link"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,7 +21,7 @@ const AboutSection = ({ slice }) => {
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: ".about-section",
-					start: "top 250px",
+					start: "top center",
 				},
 			})
 
@@ -37,13 +38,12 @@ const AboutSection = ({ slice }) => {
 					ease: Expo.easeOut,
 				})
 				.from(".about-title", {
-					y: 35,
-					delay: -0.45,
+					opacity: 0,
+					y: 50,
 				})
 				.from(".about-description", {
 					opacity: 0,
-					y: 10,
-					delay: -0.15,
+					y: 50,
 				})
 		}, root)
 
@@ -67,7 +67,7 @@ const AboutSection = ({ slice }) => {
 				<div className="w-full h-full overflow-y-hidden">
 					<Image
 						src={slice.primary.background.url}
-						className="absolute top-0 left-0 z-0 object-cover w-full h-full opacity-50 about-image"
+						className="absolute top-0 left-0 z-0 object-cover w-full h-full opacity-40 about-image"
 						alt={slice.primary.background.alt}
 						width={slice.primary.background.dimensions.width}
 						height={slice.primary.background.dimensions.height}

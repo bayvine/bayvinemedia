@@ -2,8 +2,12 @@ import Head from "next/head"
 import { SliceZone } from "@prismicio/react"
 import { createClient } from "../../prismicio"
 import { components } from "../../slices"
+import { useRef } from "react"
+import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect"
 
 export default function Home({ page, navigation, settings }) {
+	const scrollRef = useRef()
+
 	return (
 		<>
 			<Head>
@@ -12,7 +16,7 @@ export default function Home({ page, navigation, settings }) {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<main className="">
+			<main className="" ref={scrollRef}>
 				<SliceZone slices={page.data.slices} components={components} />
 			</main>
 		</>

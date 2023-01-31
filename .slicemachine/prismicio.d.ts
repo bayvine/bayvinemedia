@@ -166,6 +166,16 @@ export interface FeaturedSectionSliceDefaultItem {
      *
      */
     link: prismicT.LinkField;
+    /**
+     * services done field in *FeaturedSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: featured_section.items[].services_done
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    services_done: prismicT.KeyTextField;
 }
 /**
  * Default variation for FeaturedSection Slice
