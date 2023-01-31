@@ -1,0 +1,14 @@
+{
+  "_cts": {
+    "homepage": {}
+  },
+  "slices": {
+    "IntroSection": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "AboutSection": {},
+    "FeaturedSection": {}
+  }
+}
