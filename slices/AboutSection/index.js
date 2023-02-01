@@ -21,7 +21,6 @@ const AboutSection = ({ slice }) => {
 			const tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: ".about-section",
-					start: "top center",
 				},
 			})
 
@@ -40,10 +39,12 @@ const AboutSection = ({ slice }) => {
 				.from(".about-title", {
 					opacity: 0,
 					y: 50,
+					delay: -0.35,
 				})
 				.from(".about-description", {
 					opacity: 0,
 					y: 50,
+					delay: -0.15,
 				})
 		}, root)
 

@@ -9,19 +9,20 @@ gsap.registerPlugin(ScrollTrigger)
  * @typedef {import("@prismicio/react").SliceComponentProps<FeaturedSectionSlice>} FeaturedSectionProps
  * @param { FeaturedSectionProps }
  */
-const Title = ({ title, description, trigger }) => {
+const Title = ({ title, description, trigger, subdescription }) => {
 	const root = useRef()
 
 	useIsomorphicLayoutEffect(() => {
 		let ctx = gsap.context(() => {
 			const tl = gsap.timeline({
 				scrollTrigger: {
-					trigger: trigger,
+					trigger: trigger ?? ".title-title",
 					start: "center bottom",
 				},
 			})
-			tl.from([".title-description", ".title-title"], {
+			tl.from([".title-description", ".title-title", ".title-subdescription"], {
 				y: 50,
+				opacity: 0,
 				ease: Expo.easeOut,
 				stagger: {
 					amount: 0.25,
@@ -43,6 +44,11 @@ const Title = ({ title, description, trigger }) => {
 					</div>
 					<div className="overflow-y-hidden h-fit">
 						<h2 className="mt-2 text-xl font-semibold title-title">{title}</h2>
+					</div>
+					<div className="overflow-y-hidden h-fit">
+						<p className="mt-2 text-md title-subdescription">
+							{subdescription}
+						</p>
 					</div>
 				</div>
 			</div>

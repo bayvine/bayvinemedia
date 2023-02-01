@@ -3,15 +3,18 @@
 import AboutSection from './AboutSection';
 import FeaturedSection from './FeaturedSection';
 import IntroSection from './IntroSection';
+import ServicesSection from './ServicesSection';
 
 export {
 	AboutSection,
 	FeaturedSection,
 	IntroSection,
+	ServicesSection,
 };
 
 export const components = {
 	about_section: AboutSection,
 	featured_section: FeaturedSection,
 	intro_section: IntroSection,
+	services_section: ServicesSection,
 };

@@ -21,13 +21,10 @@ const FeaturedSection = ({ slice }) => {
 
 	const getClasses = () => {
 		const elementsToLoopThrough = []
-
-		slice.items.map((item, _) =>
-			elementsToLoopThrough.push(`.project-image-${_}`)
-		)
-
+		slice.items.map((x, _) => elementsToLoopThrough.push(`.project-image-${_}`))
 		return elementsToLoopThrough
 	}
+
 	useIsomorphicLayoutEffect(() => {
 		let ctx = gsap.context(() => {
 			gsap.fromTo(
@@ -45,7 +42,6 @@ const FeaturedSection = ({ slice }) => {
 					delay: 0.8,
 					scrollTrigger: {
 						trigger: ".project-wrapper",
-						start: "top center",
 					},
 				}
 			)
@@ -62,8 +58,6 @@ const FeaturedSection = ({ slice }) => {
 
 		return () => ctx.revert()
 	}, [])
-
-	console.log(slice)
 
 	return (
 		<section ref={root}>
@@ -82,7 +76,7 @@ const FeaturedSection = ({ slice }) => {
 								key={useId}
 								className="relative aspect-[380/450] min-h-auto pt-20 flex pb-4 rounded-md px-4 group "
 							>
-								<div className="relative z-50 self-end overflow-hidden text-white project-text h-fit ">
+								<div className="relative z-50 self-end overflow-hidden text-white h-fit project-text">
 									<p className="mb-1 text-2xl font-bold uppercase">
 										<PrismicText field={item.title} />
 									</p>
@@ -94,19 +88,19 @@ const FeaturedSection = ({ slice }) => {
 									</div>
 
 									<div className="flex gap-2 my-4 font-bold text-black whitespace-pre">
-										{/* <PrismicLink href={item.link.url}>
+										{isMobile && (
 											<button className="px-8 py-2 uppercase bg-white rounded-md text-bold">
-												<span className="flex items-center font-black">
+												<PrismicLink
+													href={item.link.url}
+													className="flex items-center font-black"
+												>
 													Visit site <ArrowUpRight />
-												</span>
+												</PrismicLink>
 											</button>
-										</PrismicLink> */}
-										{/* <button className="px-4 py-2 uppercase bg-white rounded-md text-bold">
-											<div className="font-black">Casestudy</div>
-										</button> */}
+										)}
 									</div>
 								</div>
-								<div className="absolute top-0 left-0 rounded-md overflow-hidden aspect-[380/450] opacity-30 h-full w-full">
+								<div className="absolute top-0 left-0 rounded-md overflow-hidden aspect-[380/450] opacity-30 h-full w-full transition-all duration-150 ease-in-out">
 									<Image
 										className={`project-image-${_} h-full object-cover`}
 										src={item.image.url}
@@ -119,7 +113,6 @@ const FeaturedSection = ({ slice }) => {
 						)
 					})}
 			</div>
-			<CtaProject />
 		</section>
 	)
 }
