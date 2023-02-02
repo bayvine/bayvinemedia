@@ -4,12 +4,14 @@ import AboutSection from './AboutSection';
 import FeaturedSection from './FeaturedSection';
 import IntroSection from './IntroSection';
 import ServicesSection from './ServicesSection';
+import ToolkitSection from './ToolkitSection';
 
 export {
 	AboutSection,
 	FeaturedSection,
 	IntroSection,
 	ServicesSection,
+	ToolkitSection,
 };
 
 export const components = {
@@ -17,4 +19,5 @@ export const components = {
 	featured_section: FeaturedSection,
 	intro_section: IntroSection,
 	services_section: ServicesSection,
+	toolkit_section: ToolkitSection,
 };

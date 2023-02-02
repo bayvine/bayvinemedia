@@ -21,6 +21,9 @@
             },
             "services_section": {
               "type": "SharedSlice"
+            },
+            "toolkit_section": {
+              "type": "SharedSlice"
             }
           }
         }

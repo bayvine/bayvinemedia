@@ -24,7 +24,7 @@ interface HomepageDocumentData {
  * Slice for *homepage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice | FeaturedSectionSlice | ServicesSectionSlice;
+type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice | FeaturedSectionSlice | ServicesSectionSlice | ToolkitSectionSlice;
 /**
  * homepage document from Prismic
  *
@@ -380,11 +380,86 @@ type ServicesSectionSliceVariation = ServicesSectionSliceDefault;
  *
  */
 export type ServicesSectionSlice = prismicT.SharedSlice<"services_section", ServicesSectionSliceVariation>;
+/**
+ * Primary content in ToolkitSection → Primary
+ *
+ */
+interface ToolkitSectionSliceDefaultPrimary {
+    /**
+     * Title field in *ToolkitSection → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: toolkit_section.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *ToolkitSection → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: toolkit_section.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Sub Description field in *ToolkitSection → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toolkit_section.primary.sub_description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    sub_description: prismicT.RichTextField;
+}
+/**
+ * Item in ToolkitSection → Items
+ *
+ */
+export interface ToolkitSectionSliceDefaultItem {
+    /**
+     * Tech field in *ToolkitSection → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: toolkit_section.items[].tech
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    tech: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for ToolkitSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ToolkitSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ToolkitSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ToolkitSectionSliceDefaultPrimary>, Simplify<ToolkitSectionSliceDefaultItem>>;
+/**
+ * Slice variation for *ToolkitSection*
+ *
+ */
+type ToolkitSectionSliceVariation = ToolkitSectionSliceDefault;
+/**
+ * ToolkitSection Shared Slice
+ *
+ * - **API ID**: `toolkit_section`
+ * - **Description**: `ToolkitSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ToolkitSectionSlice = prismicT.SharedSlice<"toolkit_section", ToolkitSectionSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice, ToolkitSectionSliceDefaultPrimary, ToolkitSectionSliceDefaultItem, ToolkitSectionSliceDefault, ToolkitSectionSliceVariation, ToolkitSectionSlice };
     }
 }
