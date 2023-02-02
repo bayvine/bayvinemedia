@@ -17,13 +17,7 @@ const ServicesSection = ({ slice }) => {
 	const description = prismich.asText(slice.primary.description)
 	const subdescription = prismich.asText(slice.primary.sub_description)
 	const serviceItems = slice.items
-
 	const serviceWrapper = useRef()
-	console.log(slice)
-
-	useIsomorphicLayoutEffect(() => {
-		const boxes = gsap.utils.toArray(".service-item")
-	}, [])
 
 	return (
 		<section ref={root} className="my-4">
@@ -35,7 +29,7 @@ const ServicesSection = ({ slice }) => {
 					trigger=".service-wrapper"
 				/>
 				<div
-					className="relative flex items-center gap-4 px-5 overflow-scroll scrollbar-hide service-carousel scroll-smooth"
+					className="relative flex items-baseline gap-4 px-5 overflow-scroll scrollbar-hide service-carousel scroll-smooth"
 					ref={serviceWrapper}
 				>
 					{Array.isArray(serviceItems) &&
@@ -44,9 +38,13 @@ const ServicesSection = ({ slice }) => {
 							return (
 								<div
 									key={useId(item)}
-									className="service-item text-white rounded-xl bg-none  shrink-0 w-[360px] py-9 px-6 overflow-hidden h-[400px] border-slate-50/30 border-2"
+									className="service-item text-white rounded-xl bg-none  shrink-0 w-[360px] py-10 px-8 overflow-hidden h-[400px] border-slate-50/30 border-2"
 								>
-									<img src={item.icon.url} />
+									<img
+										src={item.icon.url}
+										className="h-[35px]"
+										alt={item.icon.alt}
+									/>
 									<span className="inline-block my-4 text-2xl font-bold">
 										{item.title}
 									</span>
