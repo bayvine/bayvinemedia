@@ -63,7 +63,7 @@ const IntroSection = ({ slice }) => {
 	return (
 		<section className="px-5 text-white" ref={root}>
 			<div className="flex flex-col">
-				<div className="flex flex-col justify-center font-bold text-center uppercase pt-60">
+				<div className="font-bold text-center uppercase pt-60">
 					<PrismicRichText
 						field={slice.primary.title}
 						components={htmlSerializer}
