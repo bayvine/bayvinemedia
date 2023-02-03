@@ -42,7 +42,7 @@ const IntroSection = ({ slice }) => {
 	const htmlSerializer = (type, element, text, children) => {
 		if (type == "strong") {
 			return (
-				<div className="overflow-y-hidden text-7xl animated-gradient h-fit">
+				<div className="overflow-y-hidden text-white text-7xl animated-gradient h-fit">
 					<div className="inline-block" ref={titleRefOne}>
 						{text}
 					</div>
@@ -51,7 +51,7 @@ const IntroSection = ({ slice }) => {
 		}
 		if (type == "span") {
 			return (
-				<div className="overflow-y-hidden text-4xl h-fit animated-gradient">
+				<div className="overflow-y-hidden text-4xl text-white h-fit animated-gradient">
 					<div ref={titleRefTwo} className="inline-block">
 						{text}
 					</div>
