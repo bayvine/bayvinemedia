@@ -107,6 +107,7 @@ a {
 }
 
 .animated-gradient {
+	color: white;
 	background: linear-gradient(-45deg, #ffbcf5, #6e97e3, #c33b3b, #c33b3b);
 	background-size: 300%;
 	-webkit-background-clip: text;

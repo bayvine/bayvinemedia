@@ -3,6 +3,7 @@
 import AboutSection from './AboutSection';
 import FeaturedSection from './FeaturedSection';
 import IntroSection from './IntroSection';
+import RoadmapSection from './RoadmapSection';
 import ServicesSection from './ServicesSection';
 import ToolkitSection from './ToolkitSection';
 
@@ -10,6 +11,7 @@ export {
 	AboutSection,
 	FeaturedSection,
 	IntroSection,
+	RoadmapSection,
 	ServicesSection,
 	ToolkitSection,
 };
@@ -18,6 +20,7 @@ export const components = {
 	about_section: AboutSection,
 	featured_section: FeaturedSection,
 	intro_section: IntroSection,
+	roadmap_section: RoadmapSection,
 	services_section: ServicesSection,
 	toolkit_section: ToolkitSection,
 };

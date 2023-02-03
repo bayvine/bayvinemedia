@@ -24,6 +24,9 @@
             },
             "toolkit_section": {
               "type": "SharedSlice"
+            },
+            "roadmap_section": {
+              "type": "SharedSlice"
             }
           }
         }
