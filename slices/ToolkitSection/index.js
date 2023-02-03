@@ -57,7 +57,7 @@ const ToolkitSection = ({ slice }) => {
 						return (
 							<div
 								key={useId()}
-								className="shrink-0 flex bg-[#0C0E1D] -translate-x-96 h-[150px] w-[150px] items-center justify-center  rounded-lg  aspect-square"
+								className="shrink-0 flex bg-[#0C0E1D] -translate-x-10 h-[150px] w-[150px] items-center justify-center  rounded-lg  aspect-square"
 							>
 								<Image
 									className=" shrink-0"

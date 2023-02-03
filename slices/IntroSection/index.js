@@ -43,18 +43,18 @@ const IntroSection = ({ slice }) => {
 		if (type == "strong") {
 			return (
 				<div className="overflow-y-hidden text-7xl animated-gradient h-fit">
-					<span className="inline-block" ref={titleRefOne}>
+					<div className="inline-block" ref={titleRefOne}>
 						{text}
-					</span>
+					</div>
 				</div>
 			)
 		}
 		if (type == "span") {
 			return (
 				<div className="overflow-y-hidden text-4xl h-fit animated-gradient">
-					<span ref={titleRefTwo} className="inline-block">
+					<div ref={titleRefTwo} className="inline-block">
 						{text}
-					</span>
+					</div>
 				</div>
 			)
 		}

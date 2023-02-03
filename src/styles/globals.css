@@ -115,7 +115,6 @@ a {
 	animation: animated_text 10s ease-in-out infinite;
 	-moz-animation: animated_text 10s ease-in-out infinite;
 	-webkit-animation: animated_text 10s ease-in-out infinite;
-	display: block;
 }
 
 @keyframes animated_text {
