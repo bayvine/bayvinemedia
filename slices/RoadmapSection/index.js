@@ -1,36 +1,44 @@
-import React from 'react'
-import { PrismicRichText } from '@prismicio/react'
-
+import React, { useId, useRef } from "react"
+import * as prismich from "@prismicio/helpers"
+import Title from "@/components/Title"
+import { PrismicRichText } from "@prismicio/react"
 /**
  * @typedef {import("@prismicio/client").Content.RoadmapSectionSlice} RoadmapSectionSlice
  * @typedef {import("@prismicio/react").SliceComponentProps<RoadmapSectionSlice>} RoadmapSectionProps
  * @param { RoadmapSectionProps }
  */
-const RoadmapSection = ({ slice }) => (
-  <section>
-    <span className="title">
-      {
-        slice.primary.title ?
-        <PrismicRichText field={slice.primary.title}/>
-        : <h2>Template slice, update me!</h2>
-      }
-    </span>
-    {
-      slice.primary.description ?
-      <PrismicRichText field={slice.primary.description}/>
-      : <p>start by editing this slice from inside Slice Machine!</p>
-    }
-    <style jsx>{`
-        section {
-          max-width: 600px;
-          margin: 4em auto;
-          text-align: center;
-        }
-        .title {
-          color: #8592e0;
-        }
-    `}</style>
-  </section>
-)
+const RoadmapSection = ({ slice }) => {
+	const root = useRef()
+	const title = prismich.asText(slice.primary.title)
+	const description = prismich.asText(slice.primary.description)
+	const subdescription = prismich.asText(slice.primary.sub_description)
+	const roadmapItems = slice.items
+
+	return (
+		<section ref={root} className="roadmap-section">
+			<Title
+				title={title}
+				description={description}
+				subdescription={subdescription}
+				trigger=".roadmap-section"
+			/>
+			{Array.isArray(roadmapItems) &&
+				roadmapItems.length &&
+				roadmapItems.map((item, index) => {
+					console.log(item)
+					return (
+						<div key={useId()} className="px-5 mb-5 text-white">
+							<h3 className="text-xl font-bold ">
+								<PrismicRichText field={item.step_title} />
+							</h3>
+							<div className="max-w-xs mt-2">
+								<PrismicRichText field={item.step_description} />
+							</div>
+						</div>
+					)
+				})}
+		</section>
+	)
+}
 
 export default RoadmapSection
