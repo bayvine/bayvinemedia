@@ -5,6 +5,7 @@ import FeaturedSection from './FeaturedSection';
 import IntroSection from './IntroSection';
 import RoadmapSection from './RoadmapSection';
 import ServicesSection from './ServicesSection';
+import TestimonialSection from './TestimonialSection';
 import ToolkitSection from './ToolkitSection';
 
 export {
@@ -13,6 +14,7 @@ export {
 	IntroSection,
 	RoadmapSection,
 	ServicesSection,
+	TestimonialSection,
 	ToolkitSection,
 };
 
@@ -22,5 +24,6 @@ export const components = {
 	intro_section: IntroSection,
 	roadmap_section: RoadmapSection,
 	services_section: ServicesSection,
+	testimonial_section: TestimonialSection,
 	toolkit_section: ToolkitSection,
 };

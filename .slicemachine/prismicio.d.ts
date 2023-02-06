@@ -24,7 +24,7 @@ interface HomepageDocumentData {
  * Slice for *homepage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice | FeaturedSectionSlice | ServicesSectionSlice | ToolkitSectionSlice | RoadmapSectionSlice;
+type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice | FeaturedSectionSlice | ServicesSectionSlice | ToolkitSectionSlice | RoadmapSectionSlice | TestimonialSectionSlice;
 /**
  * homepage document from Prismic
  *
@@ -466,6 +466,91 @@ type ServicesSectionSliceVariation = ServicesSectionSliceDefault;
  */
 export type ServicesSectionSlice = prismicT.SharedSlice<"services_section", ServicesSectionSliceVariation>;
 /**
+ * Primary content in TestimonialSection → Primary
+ *
+ */
+interface TestimonialSectionSliceDefaultPrimary {
+    /**
+     * Title field in *TestimonialSection → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonial_section.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.RichTextField;
+}
+/**
+ * Item in TestimonialSection → Items
+ *
+ */
+export interface TestimonialSectionSliceDefaultItem {
+    /**
+     * Title field in *TestimonialSection → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonial_section.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.RichTextField;
+    /**
+     * Photo field in *TestimonialSection → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonial_section.items[].photo
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    photo: prismicT.ImageField<never>;
+    /**
+     * Author field in *TestimonialSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonial_section.items[].author
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    author: prismicT.KeyTextField;
+    /**
+     * Testimonial field in *TestimonialSection → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonial_section.items[].testimonial
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    testimonial: prismicT.RichTextField;
+}
+/**
+ * Default variation for TestimonialSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `TestimonialSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TestimonialSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TestimonialSectionSliceDefaultPrimary>, Simplify<TestimonialSectionSliceDefaultItem>>;
+/**
+ * Slice variation for *TestimonialSection*
+ *
+ */
+type TestimonialSectionSliceVariation = TestimonialSectionSliceDefault;
+/**
+ * TestimonialSection Shared Slice
+ *
+ * - **API ID**: `testimonial_section`
+ * - **Description**: `TestimonialSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TestimonialSectionSlice = prismicT.SharedSlice<"testimonial_section", TestimonialSectionSliceVariation>;
+/**
  * Primary content in ToolkitSection → Primary
  *
  */
@@ -545,6 +630,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, RoadmapSectionSliceDefaultPrimary, RoadmapSectionSliceDefaultItem, RoadmapSectionSliceDefault, RoadmapSectionSliceVariation, RoadmapSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice, ToolkitSectionSliceDefaultPrimary, ToolkitSectionSliceDefaultItem, ToolkitSectionSliceDefault, ToolkitSectionSliceVariation, ToolkitSectionSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, RoadmapSectionSliceDefaultPrimary, RoadmapSectionSliceDefaultItem, RoadmapSectionSliceDefault, RoadmapSectionSliceVariation, RoadmapSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice, TestimonialSectionSliceDefaultPrimary, TestimonialSectionSliceDefaultItem, TestimonialSectionSliceDefault, TestimonialSectionSliceVariation, TestimonialSectionSlice, ToolkitSectionSliceDefaultPrimary, ToolkitSectionSliceDefaultItem, ToolkitSectionSliceDefault, ToolkitSectionSliceVariation, ToolkitSectionSlice };
     }
 }

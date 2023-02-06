@@ -16,6 +16,11 @@
       }
     },
     "ToolkitSection": {},
-    "RoadmapSection": {}
+    "RoadmapSection": {},
+    "TestimonialSection": {
+      "default": {
+        "primary": {}
+      }
+    }
   }
 }
