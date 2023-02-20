@@ -9,7 +9,6 @@ import Title from "@/components/Title"
  * @param { TestimonialSectionProps }
  */
 const TestimonialSection = ({ slice }) => {
-	console.log(slice)
 	const title = prismich.asText(slice.primary.title)
 
 	return (
