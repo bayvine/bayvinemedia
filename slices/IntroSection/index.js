@@ -42,24 +42,24 @@ const IntroSection = ({ slice }) => {
 		if (type == "strong") {
 			return (
 				<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit ">
-					<div
-						className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600"
+					<span
+						className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient"
 						ref={titleRefOne}
 					>
 						{text}
-					</div>
+					</span>
 				</div>
 			)
 		}
 		if (type == "span") {
 			return (
 				<div className="inline-block overflow-y-hidden text-4xl text-white opacity-100 h-fit ">
-					<div
+					<span
 						ref={titleRefTwo}
-						className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600"
+						className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient"
 					>
 						{text}
-					</div>
+					</span>
 				</div>
 			)
 		}
