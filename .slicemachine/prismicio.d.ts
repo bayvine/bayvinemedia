@@ -24,7 +24,7 @@ interface HomepageDocumentData {
  * Slice for *homepage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice | FeaturedSectionSlice | ServicesSectionSlice | ToolkitSectionSlice | RoadmapSectionSlice | TestimonialSectionSlice;
+type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice | FeaturedSectionSlice | ServicesSectionSlice | ToolkitSectionSlice | RoadmapSectionSlice | TestimonialSectionSlice | BehindTheVineSlice;
 /**
  * homepage document from Prismic
  *
@@ -95,6 +95,85 @@ type AboutSectionSliceVariation = AboutSectionSliceDefault;
  *
  */
 export type AboutSectionSlice = prismicT.SharedSlice<"about_section", AboutSectionSliceVariation>;
+/**
+ * Primary content in BehindTheVine → Primary
+ *
+ */
+interface BehindTheVineSliceDefaultPrimary {
+    /**
+     * Title field in *BehindTheVine → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: behind_the_vine.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *BehindTheVine → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: behind_the_vine.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Link field in *BehindTheVine → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: behind_the_vine.primary.link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+    /**
+     * Link label field in *BehindTheVine → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: behind_the_vine.primary.link_label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    link_label: prismicT.KeyTextField;
+    /**
+     * Background image field in *BehindTheVine → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: behind_the_vine.primary.background_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    background_image: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for BehindTheVine Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `BehindTheVine`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type BehindTheVineSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<BehindTheVineSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *BehindTheVine*
+ *
+ */
+type BehindTheVineSliceVariation = BehindTheVineSliceDefault;
+/**
+ * BehindTheVine Shared Slice
+ *
+ * - **API ID**: `behind_the_vine`
+ * - **Description**: `BehindTheVine`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type BehindTheVineSlice = prismicT.SharedSlice<"behind_the_vine", BehindTheVineSliceVariation>;
 /**
  * Primary content in FeaturedSection → Primary
  *
@@ -630,6 +709,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, RoadmapSectionSliceDefaultPrimary, RoadmapSectionSliceDefaultItem, RoadmapSectionSliceDefault, RoadmapSectionSliceVariation, RoadmapSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice, TestimonialSectionSliceDefaultPrimary, TestimonialSectionSliceDefaultItem, TestimonialSectionSliceDefault, TestimonialSectionSliceVariation, TestimonialSectionSlice, ToolkitSectionSliceDefaultPrimary, ToolkitSectionSliceDefaultItem, ToolkitSectionSliceDefault, ToolkitSectionSliceVariation, ToolkitSectionSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, BehindTheVineSliceDefaultPrimary, BehindTheVineSliceDefault, BehindTheVineSliceVariation, BehindTheVineSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, RoadmapSectionSliceDefaultPrimary, RoadmapSectionSliceDefaultItem, RoadmapSectionSliceDefault, RoadmapSectionSliceVariation, RoadmapSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice, TestimonialSectionSliceDefaultPrimary, TestimonialSectionSliceDefaultItem, TestimonialSectionSliceDefault, TestimonialSectionSliceVariation, TestimonialSectionSlice, ToolkitSectionSliceDefaultPrimary, ToolkitSectionSliceDefaultItem, ToolkitSectionSliceDefault, ToolkitSectionSliceVariation, ToolkitSectionSlice };
     }
 }

@@ -30,6 +30,9 @@
             },
             "testimonial_section": {
               "type": "SharedSlice"
+            },
+            "behind_the_vine": {
+              "type": "SharedSlice"
             }
           }
         }
