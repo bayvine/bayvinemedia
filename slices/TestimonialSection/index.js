@@ -15,8 +15,50 @@ const TestimonialSection = ({ slice }) => {
 	return (
 		<section className="testmonial-section">
 			<Title title={title} trigger=".testimonial-section" />
+			<div className="relative flex items-baseline gap-4 px-5 overflow-scroll scrollbar-hide service-carousel scroll-smooth">
+				{Array.isArray(slice.items) &&
+					slice.items.length &&
+					slice.items.map((item, index) => {
+						const title = prismich.asText(item.title)
+						const author = item.author
+						const photo = item.photo
+						const testim = item.testimonial
+						return (
+							<TestimonialCard
+								key={index}
+								photo={photo}
+								title={title}
+								author={author}
+								testimonial={testim}
+							/>
+						)
+					})}
+			</div>
 		</section>
 	)
 }
 
+const TestimonialCard = ({ photo, title, author, testimonial }) => {
+	return (
+		<div className="text-white bg-[#0C0E1D] py-6 px-5 rounded-lg shrink-0">
+			{/* top row */}
+			<div className="flex gap-4">
+				<div className="w-16 h-16 bg-white rounded-lg aspect-square">
+					<img
+						src={photo.url || ""}
+						alt={photo.alt || ""}
+						className="w-full h-full rounded-lg aspect-square"
+					/>
+				</div>
+				<div className="flex flex-col">
+					<span className="text-lg font-bold">{title}</span>
+					<span className="text-sm text-gray-400">{author}</span>
+				</div>
+			</div>
+			<div className="max-w-xs mt-5">
+				<PrismicRichText field={testimonial} />
+			</div>
+		</div>
+	)
+}
 export default TestimonialSection

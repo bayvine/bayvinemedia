@@ -20,7 +20,7 @@ const ToolkitSection = ({ slice }) => {
 	const rowTwo = slice.items.slice(halfIndex, slice.items.length)
 
 	return (
-		<section className="toolkit-section" ref={root}>
+		<section className=" toolkit-section" ref={root}>
 			<Title
 				title={title}
 				description={description}
@@ -28,7 +28,7 @@ const ToolkitSection = ({ slice }) => {
 				trigger=".toolkit-section"
 			/>
 
-			<div className="grid grid-cols-10 gap-3 px-5 overflow-x-scroll technology-wrapper w-max">
+			<div className="grid grid-cols-10 gap-3 px-5 overflow-x-hidden technology-wrapper w-max">
 				{Array.isArray(rowOne) &&
 					rowOne.length &&
 					rowOne.map((tech, index) => {
