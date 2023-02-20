@@ -16,27 +16,26 @@ const IntroSection = ({ slice }) => {
 	const titleRefTwo = useRef()
 
 	useIsomorphicLayoutEffect(() => {
-		let ctx = gsap.context(() => {
-			gsap.from([titleRefOne.current, titleRefTwo.current], {
-				y: 100,
-				stagger: {
-					amount: 0.04,
-				},
-				delay: 0.35,
-			})
-			gsap.from([".description", ".information-tab", ".cross-line"], {
-				opacity: 0,
-				delay: 0.25,
-			})
-			gsap.from(".marquee", {
-				x: 120,
-				opacity: 0,
-				duration: 0.8,
-				delay: 0.8,
-			})
-		}, root)
-
-		return () => ctx.revert()
+		// let ctx = gsap.context(() => {
+		// 	gsap.from([titleRefOne.current, titleRefTwo.current], {
+		// 		y: 100,
+		// 		stagger: {
+		// 			amount: 0.04,
+		// 		},
+		// 		delay: 0.35,
+		// 	})
+		// 	gsap.from([".description", ".information-tab", ".cross-line"], {
+		// 		opacity: 0,
+		// 		delay: 0.25,
+		// 	})
+		// 	gsap.from(".marquee", {
+		// 		x: 120,
+		// 		opacity: 0,
+		// 		duration: 0.8,
+		// 		delay: 0.8,
+		// 	})
+		// }, root)
+		// return () => ctx.revert()
 	}, [])
 
 	const htmlSerializer = (type, element, text, children) => {

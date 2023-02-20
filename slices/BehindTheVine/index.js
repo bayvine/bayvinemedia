@@ -9,7 +9,6 @@ import ArrowUpRight from "@/components/ArrowUpRight"
  * @param { BehindTheVineProps }
  */
 const BehindTheVine = ({ slice }) => {
-	console.log(slice)
 	return (
 		<section className="relative py-24 my-5 text-white">
 			<div className="relative z-10 px-5">
@@ -30,7 +29,7 @@ const BehindTheVine = ({ slice }) => {
 			</div>
 			<img
 				src={slice.primary.background_image.url}
-				className="absolute top-0 left-0 object-cover object-left-bottom w-full h-full"
+				className="absolute top-0 left-0 object-cover w-full h-full "
 			/>
 		</section>
 	)
