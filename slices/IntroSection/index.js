@@ -16,44 +16,44 @@ const IntroSection = ({ slice }) => {
 	const titleRefTwo = useRef()
 
 	useIsomorphicLayoutEffect(() => {
-		// let ctx = gsap.context(() => {
-		// 	gsap.from([titleRefOne.current, titleRefTwo.current], {
-		// 		y: 100,
-		// 		stagger: {
-		// 			amount: 0.04,
-		// 		},
-		// 		delay: 0.35,
-		// 	})
-		// 	gsap.from([".description", ".information-tab", ".cross-line"], {
-		// 		opacity: 0,
-		// 		delay: 0.25,
-		// 	})
-		// 	gsap.from(".marquee", {
-		// 		x: 120,
-		// 		opacity: 0,
-		// 		duration: 0.8,
-		// 		delay: 0.8,
-		// 	})
-		// }, root)
-		// return () => ctx.revert()
+		let ctx = gsap.context(() => {
+			gsap.from([titleRefOne.current, titleRefTwo.current], {
+				y: 100,
+				stagger: {
+					amount: 0.04,
+				},
+				delay: 0.35,
+			})
+			gsap.from([".description", ".information-tab", ".cross-line"], {
+				opacity: 0,
+				delay: 0.25,
+			})
+			gsap.from(".marquee", {
+				x: 120,
+				opacity: 0,
+				duration: 0.8,
+				delay: 0.8,
+			})
+		}, root)
+		return () => ctx.revert()
 	}, [])
 
 	const htmlSerializer = (type, element, text, children) => {
 		if (type == "strong") {
 			return (
 				<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit ">
-					<span
+					<div
 						className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600"
 						ref={titleRefOne}
 					>
 						{text}
-					</span>
+					</div>
 				</div>
 			)
 		}
 		if (type == "span") {
 			return (
-				<div className="inline-block overflow-y-hidden text-4xl text-transparent text-white opacity-100 h-fit bg-clip-text bg-gradient-to-r from-purple-500 to-blue-600">
+				<div className="inline-block overflow-y-hidden text-4xl text-white opacity-100 h-fit ">
 					<div
 						ref={titleRefTwo}
 						className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600"
