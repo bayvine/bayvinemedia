@@ -19,30 +19,8 @@ const ToolkitSection = ({ slice }) => {
 	const rowOne = slice.items.slice(0, halfIndex)
 	const rowTwo = slice.items.slice(halfIndex, slice.items.length)
 
-	useIsomorphicLayoutEffect(() => {
-		document.getScroll = function () {
-			if (window.pageYOffset != undefined) {
-				return [pageXOffset, pageYOffset]
-			} else {
-				var sx,
-					sy,
-					d = document,
-					r = d.documentElement,
-					b = d.body
-				sx = r.scrollLeft || b.scrollLeft || 0
-				sy = r.scrollTop || b.scrollTop || 0
-
-				console.log(sx)
-				return [sx, sy]
-			}
-		}
-	}, [])
 	return (
-		<section
-			className="toolkit-section"
-			ref={root}
-			onScroll={(e) => console.log(e)}
-		>
+		<section className="toolkit-section" ref={root}>
 			<Title
 				title={title}
 				description={description}

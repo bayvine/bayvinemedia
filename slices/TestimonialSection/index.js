@@ -1,36 +1,22 @@
-import React from 'react'
-import { PrismicRichText } from '@prismicio/react'
+import React from "react"
+import { PrismicRichText } from "@prismicio/react"
+import * as prismich from "@prismicio/helpers"
+import Title from "@/components/Title"
 
 /**
  * @typedef {import("@prismicio/client").Content.TestimonialSectionSlice} TestimonialSectionSlice
  * @typedef {import("@prismicio/react").SliceComponentProps<TestimonialSectionSlice>} TestimonialSectionProps
  * @param { TestimonialSectionProps }
  */
-const TestimonialSection = ({ slice }) => (
-  <section>
-    <span className="title">
-      {
-        slice.primary.title ?
-        <PrismicRichText field={slice.primary.title}/>
-        : <h2>Template slice, update me!</h2>
-      }
-    </span>
-    {
-      slice.primary.description ?
-      <PrismicRichText field={slice.primary.description}/>
-      : <p>start by editing this slice from inside Slice Machine!</p>
-    }
-    <style jsx>{`
-        section {
-          max-width: 600px;
-          margin: 4em auto;
-          text-align: center;
-        }
-        .title {
-          color: #8592e0;
-        }
-    `}</style>
-  </section>
-)
+const TestimonialSection = ({ slice }) => {
+	console.log(slice)
+	const title = prismich.asText(slice.primary.title)
+
+	return (
+		<section className="testmonial-section">
+			<Title title={title} trigger=".testimonial-section" />
+		</section>
+	)
+}
 
 export default TestimonialSection

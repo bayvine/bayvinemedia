@@ -25,7 +25,6 @@ const RoadmapSection = ({ slice }) => {
 			{Array.isArray(roadmapItems) &&
 				roadmapItems.length &&
 				roadmapItems.map((item, index) => {
-					console.log(item)
 					return (
 						<div key={useId()} className="px-5 mb-5 text-white">
 							<h3 className="text-xl font-bold ">
