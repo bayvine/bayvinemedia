@@ -2,6 +2,7 @@
 
 import AboutSection from './AboutSection';
 import BehindTheVine from './BehindTheVine';
+import ContactSection from './ContactSection';
 import FeaturedSection from './FeaturedSection';
 import IntroSection from './IntroSection';
 import RoadmapSection from './RoadmapSection';
@@ -12,6 +13,7 @@ import ToolkitSection from './ToolkitSection';
 export {
 	AboutSection,
 	BehindTheVine,
+	ContactSection,
 	FeaturedSection,
 	IntroSection,
 	RoadmapSection,
@@ -23,6 +25,7 @@ export {
 export const components = {
 	about_section: AboutSection,
 	behind_the_vine: BehindTheVine,
+	contact_section: ContactSection,
 	featured_section: FeaturedSection,
 	intro_section: IntroSection,
 	roadmap_section: RoadmapSection,

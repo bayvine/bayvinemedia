@@ -175,6 +175,55 @@ type BehindTheVineSliceVariation = BehindTheVineSliceDefault;
  */
 export type BehindTheVineSlice = prismicT.SharedSlice<"behind_the_vine", BehindTheVineSliceVariation>;
 /**
+ * Primary content in ContactSection → Primary
+ *
+ */
+interface ContactSectionSliceDefaultPrimary {
+    /**
+     * Title field in *ContactSection → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: contact_section.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *ContactSection → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: contact_section.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Default variation for ContactSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ContactSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ContactSectionSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *ContactSection*
+ *
+ */
+type ContactSectionSliceVariation = ContactSectionSliceDefault;
+/**
+ * ContactSection Shared Slice
+ *
+ * - **API ID**: `contact_section`
+ * - **Description**: `ContactSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactSectionSlice = prismicT.SharedSlice<"contact_section", ContactSectionSliceVariation>;
+/**
  * Primary content in FeaturedSection → Primary
  *
  */
@@ -709,6 +758,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, BehindTheVineSliceDefaultPrimary, BehindTheVineSliceDefault, BehindTheVineSliceVariation, BehindTheVineSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, RoadmapSectionSliceDefaultPrimary, RoadmapSectionSliceDefaultItem, RoadmapSectionSliceDefault, RoadmapSectionSliceVariation, RoadmapSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice, TestimonialSectionSliceDefaultPrimary, TestimonialSectionSliceDefaultItem, TestimonialSectionSliceDefault, TestimonialSectionSliceVariation, TestimonialSectionSlice, ToolkitSectionSliceDefaultPrimary, ToolkitSectionSliceDefaultItem, ToolkitSectionSliceDefault, ToolkitSectionSliceVariation, ToolkitSectionSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, BehindTheVineSliceDefaultPrimary, BehindTheVineSliceDefault, BehindTheVineSliceVariation, BehindTheVineSlice, ContactSectionSliceDefaultPrimary, ContactSectionSliceDefault, ContactSectionSliceVariation, ContactSectionSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, RoadmapSectionSliceDefaultPrimary, RoadmapSectionSliceDefaultItem, RoadmapSectionSliceDefault, RoadmapSectionSliceVariation, RoadmapSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice, TestimonialSectionSliceDefaultPrimary, TestimonialSectionSliceDefaultItem, TestimonialSectionSliceDefault, TestimonialSectionSliceVariation, TestimonialSectionSlice, ToolkitSectionSliceDefaultPrimary, ToolkitSectionSliceDefaultItem, ToolkitSectionSliceDefault, ToolkitSectionSliceVariation, ToolkitSectionSlice };
     }
 }
