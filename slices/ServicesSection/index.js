@@ -17,7 +17,6 @@ const ServicesSection = ({ slice }) => {
 	const description = prismich.asText(slice.primary.description)
 	const subdescription = prismich.asText(slice.primary.sub_description)
 	const serviceItems = slice.items
-	const serviceWrapper = useRef()
 
 	return (
 		<section ref={root} className="my-4">
@@ -28,10 +27,7 @@ const ServicesSection = ({ slice }) => {
 					subdescription={subdescription}
 					trigger=".service-wrapper"
 				/>
-				<div
-					className="relative flex items-baseline gap-4 px-5 overflow-scroll scrollbar-hide service-carousel scroll-smooth"
-					ref={serviceWrapper}
-				>
+				<div className="relative flex items-baseline gap-4 px-5 overflow-scroll scrollbar-hide service-carousel scroll-smooth">
 					{Array.isArray(serviceItems) &&
 						serviceItems.length &&
 						serviceItems.map((item, index) => {
