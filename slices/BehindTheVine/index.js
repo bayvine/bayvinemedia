@@ -11,8 +11,9 @@ import useIsMobile from "@/helpers/useIsMobile"
  */
 const BehindTheVine = ({ slice }) => {
 	const isMobile = useIsMobile()
+
 	return (
-		<section className="relative py-24 my-5 text-white">
+		<section className="relative text-white py-14">
 			<div className="relative z-10 px-5">
 				<h3 className="text-4xl font-bold">
 					{prismicH.asText(slice.primary.title)}

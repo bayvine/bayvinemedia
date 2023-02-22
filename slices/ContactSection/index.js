@@ -1,36 +1,27 @@
-import React from 'react'
-import { PrismicRichText } from '@prismicio/react'
+import React from "react"
+import { PrismicLink, PrismicRichText } from "@prismicio/react"
+import * as prismicH from "@prismicio/helpers"
+import Title from "@/components/Title"
 
 /**
  * @typedef {import("@prismicio/client").Content.ContactSectionSlice} ContactSectionSlice
  * @typedef {import("@prismicio/react").SliceComponentProps<ContactSectionSlice>} ContactSectionProps
  * @param { ContactSectionProps }
  */
-const ContactSection = ({ slice }) => (
-  <section>
-    <span className="title">
-      {
-        slice.primary.title ?
-        <PrismicRichText field={slice.primary.title}/>
-        : <h2>Template slice, update me!</h2>
-      }
-    </span>
-    {
-      slice.primary.description ?
-      <PrismicRichText field={slice.primary.description}/>
-      : <p>start by editing this slice from inside Slice Machine!</p>
-    }
-    <style jsx>{`
-        section {
-          max-width: 600px;
-          margin: 4em auto;
-          text-align: center;
-        }
-        .title {
-          color: #8592e0;
-        }
-    `}</style>
-  </section>
-)
+const ContactSection = ({ slice }) => {
+	const title = prismicH.asText(slice.primary.title)
+	const description = slice.primary.description
+
+	const htmlSerializer = (type, element, text, children) => {}
+
+	return (
+		<section className="text-white">
+			<Title title={title} />
+			<div className="px-5">
+				<PrismicRichText field={description} className="underline" />
+			</div>
+		</section>
+	)
+}
 
 export default ContactSection
