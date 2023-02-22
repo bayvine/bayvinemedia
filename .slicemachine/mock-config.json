@@ -23,6 +23,10 @@
       }
     },
     "BehindTheVine": {},
-    "ContactSection": {}
+    "ContactSection": {
+      "default": {
+        "primary": {}
+      }
+    }
   }
 }

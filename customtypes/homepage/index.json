@@ -33,6 +33,9 @@
             },
             "behind_the_vine": {
               "type": "SharedSlice"
+            },
+            "contact_section": {
+              "type": "SharedSlice"
             }
           }
         }
