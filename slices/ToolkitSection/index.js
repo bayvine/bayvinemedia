@@ -11,7 +11,6 @@ import { useIsomorphicLayoutEffect } from "@/helpers/useIsomorphicLayoutEffect"
  * @param { ToolkitSectionProps }
  */
 const ToolkitSection = ({ slice }) => {
-	const root = useRef()
 	const title = prismich.asText(slice.primary.title)
 	const description = prismich.asText(slice.primary.description)
 	const subdescription = prismich.asText(slice.primary.sub_description)
@@ -20,15 +19,14 @@ const ToolkitSection = ({ slice }) => {
 	const rowTwo = slice.items.slice(halfIndex, slice.items.length)
 
 	return (
-		<section className=" toolkit-section" ref={root}>
+		<section>
 			<Title
 				title={title}
 				description={description}
 				subdescription={subdescription}
-				trigger=".toolkit-section"
 			/>
 
-			<div className="grid grid-cols-10 gap-3 px-5 overflow-x-hidden technology-wrapper w-max">
+			<div className="grid grid-cols-10 gap-3 px-5 overflow-x-hidden w-max">
 				{Array.isArray(rowOne) &&
 					rowOne.length &&
 					rowOne.map((tech, index) => {

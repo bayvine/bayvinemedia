@@ -8,19 +8,17 @@ import { PrismicRichText } from "@prismicio/react"
  * @param { RoadmapSectionProps }
  */
 const RoadmapSection = ({ slice }) => {
-	const root = useRef()
 	const title = prismich.asText(slice.primary.title)
 	const description = prismich.asText(slice.primary.description)
 	const subdescription = prismich.asText(slice.primary.sub_description)
 	const roadmapItems = slice.items
 
 	return (
-		<section ref={root} className="roadmap-section">
+		<section>
 			<Title
 				title={title}
 				description={description}
 				subdescription={subdescription}
-				trigger=".roadmap-section"
 			/>
 			{Array.isArray(roadmapItems) &&
 				roadmapItems.length &&

@@ -10,45 +10,19 @@ gsap.registerPlugin(ScrollTrigger)
  * @param { FeaturedSectionProps }
  */
 const Title = ({ title, description, trigger, subdescription }) => {
-	const root = useRef()
-
-	useIsomorphicLayoutEffect(() => {
-		let ctx = gsap.context(() => {
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: trigger ?? ".title-title",
-					start: "center bottom",
-				},
-			})
-			tl.from([".title-description", ".title-title", ".title-subdescription"], {
-				y: 50,
-				opacity: 0,
-				ease: Expo.easeOut,
-				stagger: {
-					amount: 0.25,
-				},
-			})
-		}, root)
-
-		return () => ctx.revert()
-	}, [])
-
+	useIsomorphicLayoutEffect(() => {}, [])
 	return (
-		<div ref={root}>
-			<div className="title-wrapper">
+		<div>
+			<div>
 				<div className="relative z-10 px-5 py-8 text-white">
 					<div className="overflow-y-hidden h-fit">
-						<span className="inline-block text-md title-description">
-							{description}
-						</span>
+						<span className="inline-block text-md">{description}</span>
 					</div>
 					<div className="overflow-y-hidden h-fit">
-						<h2 className="mt-2 text-xl font-semibold title-title">{title}</h2>
+						<h2 className="mt-2 text-xl font-semibold">{title}</h2>
 					</div>
 					<div className="overflow-y-hidden h-fit">
-						<p className="mt-2 text-md title-subdescription">
-							{subdescription}
-						</p>
+						<p className="mt-2 text-md">{subdescription}</p>
 					</div>
 				</div>
 			</div>

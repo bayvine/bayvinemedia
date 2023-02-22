@@ -6,7 +6,7 @@ const ScrollForMore = ({ className, target }) => {
 		<button
 			onClick={() => {
 				const contentToScroll = document.querySelector(target)
-				contentToScroll.scrollLeft += 250
+				contentToScroll.scrollLeft += 100
 			}}
 			className="flex items-center gap-2 my-5 text-white opacity-30"
 		>

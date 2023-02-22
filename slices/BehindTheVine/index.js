@@ -2,6 +2,7 @@ import React from "react"
 import { PrismicLink, PrismicRichText } from "@prismicio/react"
 import * as prismicH from "@prismicio/helpers"
 import ArrowUpRight from "@/components/ArrowUpRight"
+import useIsMobile from "@/helpers/useIsMobile"
 
 /**
  * @typedef {import("@prismicio/client").Content.BehindTheVineSlice} BehindTheVineSlice
@@ -9,6 +10,7 @@ import ArrowUpRight from "@/components/ArrowUpRight"
  * @param { BehindTheVineProps }
  */
 const BehindTheVine = ({ slice }) => {
+	const isMobile = useIsMobile()
 	return (
 		<section className="relative py-24 my-5 text-white">
 			<div className="relative z-10 px-5">
@@ -27,10 +29,12 @@ const BehindTheVine = ({ slice }) => {
 					</button>
 				</div>
 			</div>
-			<img
-				src={slice.primary.background_image.url}
-				className="absolute top-0 left-0 object-cover w-full h-full "
-			/>
+			{!isMobile && (
+				<img
+					src={slice.primary.background_image.url}
+					className="absolute top-0 left-0 object-cover w-full h-full "
+				/>
+			)}
 		</section>
 	)
 }

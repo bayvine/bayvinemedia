@@ -17,56 +17,22 @@ import CtaProject from "@/components/CtaProject"
 const FeaturedSection = ({ slice }) => {
 	const isMobile = useIsMobile()
 	const Element = isMobile ? "article" : PrismicLink
-	const root = useRef()
 
-	const getClasses = () => {
+	const getImageClasses = () => {
 		const elementsToLoopThrough = []
 		slice.items.map((x, _) => elementsToLoopThrough.push(`.project-image-${_}`))
 		return elementsToLoopThrough
 	}
 
-	useIsomorphicLayoutEffect(() => {
-		let ctx = gsap.context(() => {
-			gsap.fromTo(
-				[...getClasses()],
-				{
-					opacity: 0,
-					scale: 1,
-					stagger: {
-						amount: 0.04,
-					},
-				},
-				{
-					opacity: 1,
-					scale: 1.2,
-					delay: 0.8,
-					scrollTrigger: {
-						trigger: ".project-wrapper",
-					},
-				}
-			)
-
-			gsap.from(".project-text ", {
-				opacity: 0,
-				delay: 1.4,
-				scrollTrigger: {
-					trigger: ".project-wrapper",
-					start: "top center",
-				},
-			})
-		}, root)
-
-		return () => ctx.revert()
-	}, [])
+	useIsomorphicLayoutEffect(() => {}, [])
 
 	return (
-		<section ref={root}>
+		<section>
 			<Title
-				trigger=".project-wrapper"
 				title={<PrismicText field={slice.primary.title} />}
 				description={<PrismicText field={slice.primary.description} />}
 			/>
-			<div className="px-5 mb-5 project-wrapper">
+			<div className="px-5 mb-5">
 				{Array.isArray(slice.items) &&
 					slice.items.length &&
 					slice.items.map((item, _) => {
@@ -76,7 +42,7 @@ const FeaturedSection = ({ slice }) => {
 								key={useId}
 								className="relative aspect-[380/450] min-h-auto pt-20 flex pb-4 rounded-md px-4 group "
 							>
-								<div className="relative z-50 self-end overflow-hidden text-white h-fit project-text">
+								<div className="relative z-50 self-end overflow-hidden text-white h-fit">
 									<p className="mb-1 text-2xl font-bold uppercase">
 										<PrismicText field={item.title} />
 									</p>
