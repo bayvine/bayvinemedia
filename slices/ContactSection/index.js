@@ -78,12 +78,14 @@ const ContactSection = ({ slice }) => {
 				<div>
 					{/* First name, not required */}
 					<div>
-						<label>Your name:</label>
-
+						<label>Name:</label>
 						<input type="text"></input>
 					</div>
 					{/* Email, required */}
-					<div></div>
+					<div>
+						<label>Email:</label>
+						<input type="email"></input>
+					</div>
 				</div>
 				{/* Second row */}
 				<div>
