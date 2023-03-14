@@ -90,7 +90,10 @@ const ContactSection = ({ slice }) => {
 				{/* Second row */}
 				<div>
 					{/* Phone number, not required */}
-					<div></div>
+					<div>
+						<label>Phone:</label>
+						<input type="text"></input>
+					</div>
 					{/* Project budget, not required */}
 					<div></div>
 				</div>
