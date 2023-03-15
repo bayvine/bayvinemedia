@@ -95,7 +95,15 @@ const ContactSection = ({ slice }) => {
 						<input type="text"></input>
 					</div>
 					{/* Project budget, not required */}
-					<div></div>
+					<div>
+						<label>Project budget:</label>
+						<select>
+							<option selected>Select your budget</option>
+							{OPTIONS.map((item, index) => (
+								<option key={index}>{item}</option>
+							))}
+						</select>
+					</div>
 				</div>
 				{/* Third row */}
 				<div>
