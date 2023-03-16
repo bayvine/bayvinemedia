@@ -108,7 +108,9 @@ const ContactSection = ({ slice }) => {
 				{/* Third row */}
 				<div>
 					{/* Tell us about the project */}
-					<div></div>
+					<div>
+						<label>Tell us about your project:</label>
+					</div>
 				</div>
 				{/* Fourth row */}
 				<div>
