@@ -73,13 +73,14 @@ const ContactSection = ({ slice }) => {
 					}}
 				/>
 			</div>
-			<form>
+			<form className="text-black">
 				{/* First row */}
 				<div>
 					{/* First name, not required */}
 					<div>
 						<label>Name:</label>
 						<input type="text"></input>
+						<div>Error name</div>
 					</div>
 					{/* Email, required */}
 					<div>
@@ -116,7 +117,9 @@ const ContactSection = ({ slice }) => {
 				{/* Fourth row */}
 				<div>
 					{/* Submit button */}
-					<div></div>
+					<div>
+						<button type="submit">Submit</button>
+					</div>
 				</div>
 			</form>
 		</section>
