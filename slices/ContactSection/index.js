@@ -86,6 +86,7 @@ const ContactSection = ({ slice }) => {
 					<div>
 						<label>Email:</label>
 						<input type="email"></input>
+						<div>Error email</div>
 					</div>
 				</div>
 				{/* Second row */}
