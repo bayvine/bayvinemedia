@@ -37,7 +37,7 @@ const ContactSection = ({ slice }) => {
 		setName("")
 		setEmail("")
 		setPhoneNumber("")
-		setBudget("SELECT YOUR BUDGET")
+		setBudget("Select your budget")
 		setMessage("")
 	}
 
@@ -100,7 +100,9 @@ const ContactSection = ({ slice }) => {
 					<div>
 						<label>Project budget:</label>
 						<select>
-							<option selected>Select your budget</option>
+							<option selected={budget == "Select your budget"}>
+								Select your budget
+							</option>
 							{OPTIONS.map((item, index) => (
 								<option key={index}>{item}</option>
 							))}
