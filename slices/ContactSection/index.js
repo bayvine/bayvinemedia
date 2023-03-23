@@ -78,7 +78,7 @@ const ContactSection = ({ slice }) => {
 				<div>
 					{/* First name, not required */}
 					<div>
-						<label>Name:</label>
+						<label className="text-white">Name:</label>
 						<input type="text"></input>
 						<div>Error name</div>
 					</div>
