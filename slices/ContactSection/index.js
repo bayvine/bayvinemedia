@@ -84,7 +84,7 @@ const ContactSection = ({ slice }) => {
 					</div>
 					{/* Email, required */}
 					<div>
-						<label>Email:</label>
+						<label lassName="text-white">Email:</label>
 						<input type="email"></input>
 						<div>Error email</div>
 					</div>
