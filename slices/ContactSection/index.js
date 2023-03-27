@@ -84,7 +84,7 @@ const ContactSection = ({ slice }) => {
 					</div>
 					{/* Email, required */}
 					<div>
-						<label lassName="text-white">Email:</label>
+						<label className="text-white">Email:</label>
 						<input type="email"></input>
 						<div>Error email</div>
 					</div>
@@ -93,7 +93,7 @@ const ContactSection = ({ slice }) => {
 				<div>
 					{/* Phone number, not required */}
 					<div>
-						<label>Phone:</label>
+						<label className="text-white">Phone:</label>
 						<input type="text"></input>
 					</div>
 					{/* Project budget, not required */}
