@@ -98,7 +98,7 @@ const ContactSection = ({ slice }) => {
 					</div>
 					{/* Project budget, not required */}
 					<div>
-						<label>Project budget:</label>
+						<label className="text-white">Project budget:</label>
 						<select>
 							<option selected={budget == "Select your budget"}>
 								Select your budget
