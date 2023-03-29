@@ -113,7 +113,7 @@ const ContactSection = ({ slice }) => {
 				<div>
 					{/* Tell us about the project */}
 					<div>
-						<label>Tell us about your project:</label>
+						<label className="text-white">Tell us about your project:</label>
 						<textarea></textarea>
 					</div>
 				</div>
