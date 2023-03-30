@@ -121,7 +121,9 @@ const ContactSection = ({ slice }) => {
 				<div>
 					{/* Submit button */}
 					<div>
-						<button type="submit">Submit</button>
+						<button type="submit" className="bg-white">
+							<div className="text-black">Submit</div>
+						</button>
 					</div>
 				</div>
 			</form>
