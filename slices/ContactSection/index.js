@@ -75,15 +75,15 @@ const ContactSection = ({ slice }) => {
 			</div>
 			<form className="px-5 text-black">
 				{/* First row */}
-				<div>
+				<div className="mt-5">
 					{/* First name, not required */}
-					<div>
+					<div className="flex flex-col">
 						<label className="text-white">Name:</label>
 						<input type="text"></input>
 						<div>Error name</div>
 					</div>
 					{/* Email, required */}
-					<div>
+					<div className="flex flex-col">
 						<label className="text-white">Email:</label>
 						<input type="email"></input>
 						<div>Error email</div>
@@ -92,12 +92,12 @@ const ContactSection = ({ slice }) => {
 				{/* Second row */}
 				<div>
 					{/* Phone number, not required */}
-					<div>
+					<div className="flex flex-col">
 						<label className="text-white">Phone:</label>
 						<input type="text"></input>
 					</div>
 					{/* Project budget, not required */}
-					<div>
+					<div className="flex flex-col">
 						<label className="text-white">Project budget:</label>
 						<select>
 							<option selected={budget == "Select your budget"}>
