@@ -73,7 +73,7 @@ const ContactSection = ({ slice }) => {
 					}}
 				/>
 			</div>
-			<form className="px-5 text-black">
+			<form className="grid grid-cols-1 px-5 text-black">
 				{/* First row */}
 				<div className="mt-5">
 					{/* First name, not required */}
@@ -90,7 +90,7 @@ const ContactSection = ({ slice }) => {
 					</div>
 				</div>
 				{/* Second row */}
-				<div>
+				<div className="">
 					{/* Phone number, not required */}
 					<div className="flex flex-col">
 						<label className="text-white">Phone:</label>
@@ -110,19 +110,19 @@ const ContactSection = ({ slice }) => {
 					</div>
 				</div>
 				{/* Third row */}
-				<div>
+				<div className="mt-5">
 					{/* Tell us about the project */}
-					<div>
+					<div className="flex flex-col">
 						<label className="text-white">Tell us about your project:</label>
 						<textarea></textarea>
 					</div>
 				</div>
 				{/* Fourth row */}
-				<div>
+				<div className="mt-5">
 					{/* Submit button */}
-					<div>
-						<button className="px-8 py-2 uppercase bg-white rounded-md text-bold">
-							<div className="flex items-center font-black text-black">
+					<div className="w-full">
+						<button className="w-full px-8 py-2 uppercase bg-white rounded-md text-bold">
+							<div className="flex items-center justify-center font-black text-center text-black">
 								Submit
 							</div>
 						</button>
