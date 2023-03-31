@@ -73,7 +73,7 @@ const ContactSection = ({ slice }) => {
 					}}
 				/>
 			</div>
-			<form className="text-black">
+			<form className="px-5 text-black">
 				{/* First row */}
 				<div>
 					{/* First name, not required */}
