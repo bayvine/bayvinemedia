@@ -121,8 +121,10 @@ const ContactSection = ({ slice }) => {
 				<div>
 					{/* Submit button */}
 					<div>
-						<button type="submit" className="bg-white">
-							<div className="text-black">Submit</div>
+						<button className="px-8 py-2 uppercase bg-white rounded-md text-bold">
+							<div className="flex items-center font-black text-black">
+								Submit
+							</div>
 						</button>
 					</div>
 				</div>
