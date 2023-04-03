@@ -23,7 +23,7 @@ const ContactSection = ({ slice }) => {
 	const [email, setEmail] = useState("")
 	const [emailErr, setEmailErr] = useState("")
 	const [phoneNumber, setPhoneNumber] = useState("")
-	const [budget, setBudget] = useState("SELECT YOUR BUDGET")
+	const [budget, setBudget] = useState("Select your budget")
 	const [message, setMessage] = useState("")
 
 	const OPTIONS = [
