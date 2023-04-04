@@ -75,18 +75,18 @@ const ContactSection = ({ slice }) => {
 			</div>
 			<form className="grid grid-cols-1 px-5 text-black">
 				{/* First row */}
-				<div className="mt-5">
+				<div className="">
 					{/* First name, not required */}
 					<div className="flex flex-col">
 						<label className="text-white">Name:</label>
-						<input type="text"></input>
-						<div>Error name</div>
+						<input type="text" className="py-3 indent-3"></input>
+						{/* <div>Error name</div> */}
 					</div>
 					{/* Email, required */}
 					<div className="flex flex-col">
 						<label className="text-white">Email:</label>
 						<input type="email"></input>
-						<div>Error email</div>
+						{/* <div>Error email</div> */}
 					</div>
 				</div>
 				{/* Second row */}
@@ -99,8 +99,8 @@ const ContactSection = ({ slice }) => {
 					{/* Project budget, not required */}
 					<div className="flex flex-col">
 						<label className="text-white">Project budget:</label>
-						<select>
-							<option selected={budget == "Select your budget"}>
+						<select defaultValue={budget}>
+							<option disabled value={"Select your budget"}>
 								Select your budget
 							</option>
 							{OPTIONS.map((item, index) => (
@@ -110,7 +110,7 @@ const ContactSection = ({ slice }) => {
 					</div>
 				</div>
 				{/* Third row */}
-				<div className="mt-5">
+				<div className="">
 					{/* Tell us about the project */}
 					<div className="flex flex-col">
 						<label className="text-white">Tell us about your project:</label>
@@ -118,7 +118,7 @@ const ContactSection = ({ slice }) => {
 					</div>
 				</div>
 				{/* Fourth row */}
-				<div className="mt-5">
+				<div className="">
 					{/* Submit button */}
 					<div className="w-full">
 						<button className="w-full px-8 py-2 uppercase bg-white rounded-md text-bold">
