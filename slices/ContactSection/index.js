@@ -47,10 +47,23 @@ const ContactSection = ({ slice }) => {
 	}
 
 	const validateForm = () => {
-		if (!nameErr) setNameErr("Please provide a valid name!")
-		if (!emailErr) setEmailErr("Please provide a valid email")
-		if (emailErr && !emailErr.includes("@"))
+		if (!name) {
+			setNameErr("Please provide a valid name!")
+		} else {
+			setNameErr("")
+		}
+
+		if (!email) {
+			setEmailErr("Please provide a valid email")
+		} else {
+			setNameErr("")
+		}
+
+		if (email && !email.includes("@")) {
 			setEmailErr("Please provied a valid email")
+		} else {
+			setNameErr("")
+		}
 	}
 
 	return (
@@ -77,29 +90,51 @@ const ContactSection = ({ slice }) => {
 				{/* First row */}
 				<div className="">
 					{/* First name, not required */}
-					<div className="flex flex-col">
-						<label className="text-white">Name:</label>
-						<input type="text" className="py-3 indent-3"></input>
-						{/* <div>Error name</div> */}
+					<div className="flex flex-col mt-4">
+						<label className="pb-2 text-white">Name*:</label>
+						<input
+							type="text"
+							placeholder="John Doe..."
+							required
+							className="px-3 py-3 text-white bg-transparent border rounded-md"
+							onInput={validateForm}
+						></input>
+						{nameErr && (
+							<div className="py-0 mt-1 text-sm text-red-400">
+								Please provide a name!
+							</div>
+						)}
 					</div>
 					{/* Email, required */}
-					<div className="flex flex-col">
-						<label className="text-white">Email:</label>
-						<input type="email"></input>
-						{/* <div>Error email</div> */}
+					<div className="flex flex-col mt-4">
+						<label className="pb-2 text-white">Email*:</label>
+						<input
+							placeholder="John@doe.com..."
+							type="email"
+							required
+							className="px-3 py-3 text-white bg-transparent border rounded-md"
+						></input>
+						{emailErr && <div>Please provide a valid email!</div>}
 					</div>
 				</div>
 				{/* Second row */}
 				<div className="">
 					{/* Phone number, not required */}
-					<div className="flex flex-col">
-						<label className="text-white">Phone:</label>
-						<input type="text"></input>
+					<div className="flex flex-col mt-4">
+						<label className="pb-2 text-white">Phone:</label>
+						<input
+							type="text"
+							placeholder="(408)-123-4567"
+							className="px-3 py-3 text-white bg-transparent border rounded-md"
+						></input>
 					</div>
 					{/* Project budget, not required */}
-					<div className="flex flex-col">
-						<label className="text-white">Project budget:</label>
-						<select defaultValue={budget}>
+					<div className="flex flex-col mt-4">
+						<label className="pb-2 text-white">Project budget:</label>
+						<select
+							defaultValue={budget}
+							className="px-3 py-3 text-white bg-transparent border rounded-md"
+						>
 							<option disabled value={"Select your budget"}>
 								Select your budget
 							</option>
@@ -112,13 +147,18 @@ const ContactSection = ({ slice }) => {
 				{/* Third row */}
 				<div className="">
 					{/* Tell us about the project */}
-					<div className="flex flex-col">
-						<label className="text-white">Tell us about your project:</label>
-						<textarea></textarea>
+					<div className="flex flex-col mt-4">
+						<label className="pb-2 text-white">
+							Tell us about your project:
+						</label>
+						<textarea
+							placeholder="Mobile application, Social Media, Multiple Page Website..."
+							className="px-3 py-3 text-white bg-transparent border rounded-md"
+						></textarea>
 					</div>
 				</div>
 				{/* Fourth row */}
-				<div className="">
+				<div className="mt-6">
 					{/* Submit button */}
 					<div className="w-full">
 						<button className="w-full px-8 py-2 uppercase bg-white rounded-md text-bold">
