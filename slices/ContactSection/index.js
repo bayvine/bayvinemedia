@@ -49,20 +49,14 @@ const ContactSection = ({ slice }) => {
 	const validateForm = () => {
 		if (!name) {
 			setNameErr("Please provide a valid name!")
-		} else {
-			setNameErr("")
 		}
 
 		if (!email) {
 			setEmailErr("Please provide a valid email")
-		} else {
-			setNameErr("")
 		}
 
 		if (email && !email.includes("@")) {
 			setEmailErr("Please provied a valid email")
-		} else {
-			setNameErr("")
 		}
 	}
 
@@ -112,9 +106,14 @@ const ContactSection = ({ slice }) => {
 							placeholder="John@doe.com..."
 							type="email"
 							required
+							onInput={validateForm}
 							className="px-3 py-3 text-white bg-transparent border rounded-md"
 						></input>
-						{emailErr && <div>Please provide a valid email!</div>}
+						{emailErr && (
+							<div className="py-0 mt-1 text-sm text-red-400">
+								Please provide a valid email!
+							</div>
+						)}
 					</div>
 				</div>
 				{/* Second row */}
