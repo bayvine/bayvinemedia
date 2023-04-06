@@ -58,6 +58,14 @@ const ContactSection = ({ slice }) => {
 		if (email && !email.includes("@")) {
 			setEmailErr("Please provied a valid email")
 		}
+
+		if (email && email.includes("@") && name) return true
+	}
+
+	const handleFormSubmission = (e) => {
+		e.preventDefault()
+		const isValid = validateForm()
+		console.log(isValid)
 	}
 
 	return (
@@ -80,7 +88,10 @@ const ContactSection = ({ slice }) => {
 					}}
 				/>
 			</div>
-			<form className="grid grid-cols-1 px-5 text-black">
+			<form
+				className="grid grid-cols-1 px-5 text-black"
+				onSubmit={handleFormSubmission}
+			>
 				{/* First row */}
 				<div className="">
 					{/* First name, not required */}
