@@ -26,6 +26,8 @@ const ContactSection = ({ slice }) => {
 	const [budget, setBudget] = useState("Select your budget")
 	const [message, setMessage] = useState("")
 
+	const [loading, setLoading] = useState(false)
+
 	const OPTIONS = [
 		"$1,000 - $3,000",
 		"$3,000 - $5,000",
@@ -59,11 +61,18 @@ const ContactSection = ({ slice }) => {
 			setEmailErr("Please provied a valid email")
 		}
 
-		if (email && email.includes("@") && name) return true
+		if (email && email.includes("@") && name) {
+			return true
+		} else {
+			return false
+		}
 	}
 
 	const handleFormSubmission = (e) => {
 		e.preventDefault()
+		wipeErrors()
+		setLoading(true)
+
 		const isValid = validateForm()
 		console.log(isValid)
 	}
@@ -101,8 +110,8 @@ const ContactSection = ({ slice }) => {
 							type="text"
 							placeholder="John Doe..."
 							required
+							onInput={(e) => setName(e.target.value)}
 							className="px-3 py-3 text-white bg-transparent border rounded-md"
-							onInput={validateForm}
 						></input>
 						{nameErr && (
 							<div className="py-0 mt-1 text-sm text-red-400">
@@ -117,7 +126,6 @@ const ContactSection = ({ slice }) => {
 							placeholder="John@doe.com..."
 							type="email"
 							required
-							onInput={validateForm}
 							className="px-3 py-3 text-white bg-transparent border rounded-md"
 						></input>
 						{emailErr && (
