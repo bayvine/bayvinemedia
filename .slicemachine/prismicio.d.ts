@@ -336,23 +336,13 @@ interface FooterSectionSliceDefaultPrimary {
     /**
      * Title field in *FooterSection → Primary*
      *
-     * - **Field Type**: Title
+     * - **Field Type**: Rich Text
      * - **Placeholder**: This is where it all begins...
      * - **API ID Path**: footer_section.primary.title
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    title: prismicT.TitleField;
-    /**
-     * Description field in *FooterSection → Primary*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: A nice description of your feature
-     * - **API ID Path**: footer_section.primary.description
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    description: prismicT.RichTextField;
+    title: prismicT.RichTextField;
 }
 /**
  * Default variation for FooterSection Slice

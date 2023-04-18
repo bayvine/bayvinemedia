@@ -28,6 +28,10 @@
         "primary": {}
       }
     },
-    "FooterSection": {}
+    "FooterSection": {
+      "default": {
+        "primary": {}
+      }
+    }
   }
 }
