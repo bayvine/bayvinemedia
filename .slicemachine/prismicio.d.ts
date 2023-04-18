@@ -329,6 +329,55 @@ type FeaturedSectionSliceVariation = FeaturedSectionSliceDefault;
  */
 export type FeaturedSectionSlice = prismicT.SharedSlice<"featured_section", FeaturedSectionSliceVariation>;
 /**
+ * Primary content in FooterSection → Primary
+ *
+ */
+interface FooterSectionSliceDefaultPrimary {
+    /**
+     * Title field in *FooterSection → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: footer_section.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *FooterSection → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: footer_section.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Default variation for FooterSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `FooterSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FooterSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<FooterSectionSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *FooterSection*
+ *
+ */
+type FooterSectionSliceVariation = FooterSectionSliceDefault;
+/**
+ * FooterSection Shared Slice
+ *
+ * - **API ID**: `footer_section`
+ * - **Description**: `FooterSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FooterSectionSlice = prismicT.SharedSlice<"footer_section", FooterSectionSliceVariation>;
+/**
  * Primary content in IntroSection → Primary
  *
  */
@@ -758,6 +807,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, BehindTheVineSliceDefaultPrimary, BehindTheVineSliceDefault, BehindTheVineSliceVariation, BehindTheVineSlice, ContactSectionSliceDefaultPrimary, ContactSectionSliceDefault, ContactSectionSliceVariation, ContactSectionSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, RoadmapSectionSliceDefaultPrimary, RoadmapSectionSliceDefaultItem, RoadmapSectionSliceDefault, RoadmapSectionSliceVariation, RoadmapSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice, TestimonialSectionSliceDefaultPrimary, TestimonialSectionSliceDefaultItem, TestimonialSectionSliceDefault, TestimonialSectionSliceVariation, TestimonialSectionSlice, ToolkitSectionSliceDefaultPrimary, ToolkitSectionSliceDefaultItem, ToolkitSectionSliceDefault, ToolkitSectionSliceVariation, ToolkitSectionSlice };
+        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, AllDocumentTypes, AboutSectionSliceDefaultPrimary, AboutSectionSliceDefault, AboutSectionSliceVariation, AboutSectionSlice, BehindTheVineSliceDefaultPrimary, BehindTheVineSliceDefault, BehindTheVineSliceVariation, BehindTheVineSlice, ContactSectionSliceDefaultPrimary, ContactSectionSliceDefault, ContactSectionSliceVariation, ContactSectionSlice, FeaturedSectionSliceDefaultPrimary, FeaturedSectionSliceDefaultItem, FeaturedSectionSliceDefault, FeaturedSectionSliceVariation, FeaturedSectionSlice, FooterSectionSliceDefaultPrimary, FooterSectionSliceDefault, FooterSectionSliceVariation, FooterSectionSlice, IntroSectionSliceDefaultPrimary, IntroSectionSliceDefaultItem, IntroSectionSliceDefault, IntroSectionSliceVariation, IntroSectionSlice, RoadmapSectionSliceDefaultPrimary, RoadmapSectionSliceDefaultItem, RoadmapSectionSliceDefault, RoadmapSectionSliceVariation, RoadmapSectionSlice, ServicesSectionSliceDefaultPrimary, ServicesSectionSliceDefaultItem, ServicesSectionSliceDefault, ServicesSectionSliceVariation, ServicesSectionSlice, TestimonialSectionSliceDefaultPrimary, TestimonialSectionSliceDefaultItem, TestimonialSectionSliceDefault, TestimonialSectionSliceVariation, TestimonialSectionSlice, ToolkitSectionSliceDefaultPrimary, ToolkitSectionSliceDefaultItem, ToolkitSectionSliceDefault, ToolkitSectionSliceVariation, ToolkitSectionSlice };
     }
 }

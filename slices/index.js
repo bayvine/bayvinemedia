@@ -4,6 +4,7 @@ import AboutSection from './AboutSection';
 import BehindTheVine from './BehindTheVine';
 import ContactSection from './ContactSection';
 import FeaturedSection from './FeaturedSection';
+import FooterSection from './FooterSection';
 import IntroSection from './IntroSection';
 import RoadmapSection from './RoadmapSection';
 import ServicesSection from './ServicesSection';
@@ -15,6 +16,7 @@ export {
 	BehindTheVine,
 	ContactSection,
 	FeaturedSection,
+	FooterSection,
 	IntroSection,
 	RoadmapSection,
 	ServicesSection,
@@ -27,6 +29,7 @@ export const components = {
 	behind_the_vine: BehindTheVine,
 	contact_section: ContactSection,
 	featured_section: FeaturedSection,
+	footer_section: FooterSection,
 	intro_section: IntroSection,
 	roadmap_section: RoadmapSection,
 	services_section: ServicesSection,
