@@ -24,7 +24,7 @@ interface HomepageDocumentData {
  * Slice for *homepage → Slice Zone*
  *
  */
-type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice | FeaturedSectionSlice | ServicesSectionSlice | ToolkitSectionSlice | RoadmapSectionSlice | TestimonialSectionSlice | BehindTheVineSlice | ContactSectionSlice;
+type HomepageDocumentDataSlicesSlice = IntroSectionSlice | AboutSectionSlice | FeaturedSectionSlice | ServicesSectionSlice | ToolkitSectionSlice | RoadmapSectionSlice | TestimonialSectionSlice | BehindTheVineSlice | ContactSectionSlice | FooterSectionSlice;
 /**
  * homepage document from Prismic
  *

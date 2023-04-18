@@ -36,6 +36,9 @@
             },
             "contact_section": {
               "type": "SharedSlice"
+            },
+            "footer_section": {
+              "type": "SharedSlice"
             }
           }
         }
