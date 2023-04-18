@@ -83,6 +83,16 @@ const ContactSection = ({ slice }) => {
 		e.preventDefault()
 		setLoading(true)
 		const isValid = validateForm()
+		console.log(
+			encode({
+				"form-name": "contact",
+				name: name,
+				email: email,
+				phone: phoneNumber,
+				budget: budget,
+				message: message,
+			})
+		)
 
 		if (isValid) {
 			fetch("/", {
@@ -104,7 +114,9 @@ const ContactSection = ({ slice }) => {
 					wipeForm()
 					console.log("Form successfully submitted")
 				})
-				.catch((error) => setLoading(false))
+				.catch((error) => {
+					setLoading(false)
+				})
 		}
 
 		setLoading(false)
@@ -132,8 +144,8 @@ const ContactSection = ({ slice }) => {
 			</div>
 
 			{formSuccess ? (
-				<div>
-					Thank you for submitting the form! We'll get back to you as soon as
+				<div className="px-5 my-8 text-left text-green-500 text-md">
+					Thank you for your submission! We'll get back to you as soon as
 					possible.
 				</div>
 			) : loading ? (
@@ -146,12 +158,19 @@ const ContactSection = ({ slice }) => {
 					method="POST"
 					data-netlify="true"
 				>
+					<input
+						type="hidden"
+						name="subject"
+						value="Inquiry from Bayvine website!"
+					/>
+					<input type="hidden" name="Bayvine" value="contact" />
 					{/* First row */}
 					<div className="">
 						{/* First name, not required */}
 						<div className="flex flex-col mt-4">
 							<label className="pb-2 text-white">Name*:</label>
 							<input
+								name="name"
 								type="text"
 								placeholder="John Doe..."
 								required
@@ -170,6 +189,7 @@ const ContactSection = ({ slice }) => {
 							<input
 								placeholder="John@doe.com..."
 								type="email"
+								name="email"
 								required
 								onInput={(e) => setEmail(e.target.value)}
 								className="px-3 py-3 text-white bg-transparent border rounded-md"
@@ -187,6 +207,7 @@ const ContactSection = ({ slice }) => {
 						<div className="flex flex-col mt-4">
 							<label className="pb-2 text-white">Phone:</label>
 							<input
+								name="phonenumber"
 								onInput={(e) => setPhoneNumber(e.target.value)}
 								type="text"
 								placeholder="(408)-123-4567"
@@ -197,6 +218,7 @@ const ContactSection = ({ slice }) => {
 						<div className="flex flex-col mt-4">
 							<label className="pb-2 text-white">Project budget:</label>
 							<select
+								name="budget"
 								onInput={(e) => setBudget(e.target.value)}
 								value={budget}
 								className="px-3 py-3 text-white bg-transparent border rounded-md"
@@ -218,6 +240,7 @@ const ContactSection = ({ slice }) => {
 								Tell us about your project:
 							</label>
 							<textarea
+								name="message"
 								onInput={(e) => setMessage(e.target.value)}
 								placeholder="Mobile application, Social Media, Multiple Page Website..."
 								className="px-3 py-3 text-white bg-transparent border rounded-md"
