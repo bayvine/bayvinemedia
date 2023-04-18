@@ -75,7 +75,6 @@ const ContactSection = ({ slice }) => {
 		setLoading(true)
 
 		const isValid = validateForm()
-		console.log(isValid)
 	}
 
 	return (
