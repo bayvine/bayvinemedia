@@ -31,7 +31,7 @@ const BehindTheVine = ({ slice }) => {
 				</div>
 			</div>
 			{!isMobile && (
-				<img
+				<im
 					src={slice.primary.background_image.url}
 					className="absolute top-0 left-0 object-cover w-full h-full "
 				/>

@@ -69,6 +69,7 @@ const ContactSection = ({ slice }) => {
 	}
 
 	const handleFormSubmission = (e) => {
+		console.log(name, email, phoneNumber, budget, message)
 		e.preventDefault()
 		wipeErrors()
 		setLoading(true)
@@ -126,6 +127,7 @@ const ContactSection = ({ slice }) => {
 							placeholder="John@doe.com..."
 							type="email"
 							required
+							onInput={(e) => setEmail(e.target.value)}
 							className="px-3 py-3 text-white bg-transparent border rounded-md"
 						></input>
 						{emailErr && (
@@ -141,6 +143,7 @@ const ContactSection = ({ slice }) => {
 					<div className="flex flex-col mt-4">
 						<label className="pb-2 text-white">Phone:</label>
 						<input
+							onInput={(e) => setPhoneNumber(e.target.value)}
 							type="text"
 							placeholder="(408)-123-4567"
 							className="px-3 py-3 text-white bg-transparent border rounded-md"
@@ -150,7 +153,8 @@ const ContactSection = ({ slice }) => {
 					<div className="flex flex-col mt-4">
 						<label className="pb-2 text-white">Project budget:</label>
 						<select
-							defaultValue={budget}
+							onInput={(e) => setBudget(e.target.value)}
+							value={budget}
 							className="px-3 py-3 text-white bg-transparent border rounded-md"
 						>
 							<option disabled value={"Select your budget"}>
@@ -170,6 +174,7 @@ const ContactSection = ({ slice }) => {
 							Tell us about your project:
 						</label>
 						<textarea
+							onInput={(e) => setMessage(e.target.value)}
 							placeholder="Mobile application, Social Media, Multiple Page Website..."
 							className="px-3 py-3 text-white bg-transparent border rounded-md"
 						></textarea>
