@@ -33,7 +33,7 @@ const IntroSection = ({ slice }) => {
 	}
 
 	return (
-		<section className="px-5 text-white">
+		<section className="px-5 text-white sm:px-10">
 			<div className="flex flex-col">
 				<div className="font-bold text-center uppercase pt-60">
 					<PrismicRichText

@@ -26,7 +26,7 @@ const ToolkitSection = ({ slice }) => {
 				subdescription={subdescription}
 			/>
 
-			<div className="grid grid-cols-10 gap-3 px-5 overflow-x-hidden w-max">
+			<div className="grid grid-cols-10 gap-3 px-5 mt-5 overflow-x-hidden w-max sm:px-10">
 				{Array.isArray(rowOne) &&
 					rowOne.length &&
 					rowOne.map((tech, index) => {

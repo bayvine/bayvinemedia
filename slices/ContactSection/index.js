@@ -125,7 +125,7 @@ const ContactSection = ({ slice }) => {
 	return (
 		<section className="text-white">
 			<Title title={title} />
-			<div className="px-5">
+			<div className="px-5 sm:px-10">
 				<PrismicRichText
 					field={description}
 					className="underline"
@@ -152,7 +152,7 @@ const ContactSection = ({ slice }) => {
 				<div>Submitting...</div>
 			) : (
 				<form
-					className="grid grid-cols-1 px-5 text-black"
+					className="grid grid-cols-1 px-5 text-black sm:px-10"
 					onSubmit={handleFormSubmission}
 					name="contact"
 					method="POST"

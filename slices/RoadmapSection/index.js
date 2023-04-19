@@ -14,26 +14,31 @@ const RoadmapSection = ({ slice }) => {
 	const roadmapItems = slice.items
 
 	return (
-		<section>
+		<section className="sm:mt-5">
 			<Title
 				title={title}
 				description={description}
 				subdescription={subdescription}
 			/>
-			{Array.isArray(roadmapItems) &&
-				roadmapItems.length &&
-				roadmapItems.map((item, index) => {
-					return (
-						<div key={useId()} className="px-5 mb-5 text-white">
-							<h3 className="text-xl font-bold ">
-								<PrismicRichText field={item.step_title} />
-							</h3>
-							<div className="max-w-xs mt-2">
-								<PrismicRichText field={item.step_description} />
+			<div className="sm:mt-5 sm:px-10 sm:grid sm:grid-cols-2 sm:gap-5">
+				{Array.isArray(roadmapItems) &&
+					roadmapItems.length &&
+					roadmapItems.map((item, index) => {
+						return (
+							<div
+								key={useId()}
+								className="px-5 mb-5 text-white sm:bg-[#0C0E1D]  sm:max-w-md sm:px-4 sm:py-7 sm:rounded-lg"
+							>
+								<h3 className="text-xl font-bold ">
+									<PrismicRichText field={item.step_title} />
+								</h3>
+								<div className="max-w-xs mt-2">
+									<PrismicRichText field={item.step_description} />
+								</div>
 							</div>
-						</div>
-					)
-				})}
+						)
+					})}
+			</div>
 		</section>
 	)
 }

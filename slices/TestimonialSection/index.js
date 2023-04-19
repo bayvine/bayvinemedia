@@ -14,7 +14,7 @@ const TestimonialSection = ({ slice }) => {
 	return (
 		<section className="testmonial-section">
 			<Title title={title} trigger=".testimonial-section" />
-			<div className="relative flex items-baseline gap-4 px-5 overflow-scroll scrollbar-hide service-carousel scroll-smooth">
+			<div className="relative flex items-baseline gap-4 px-5 overflow-scroll scrollbar-hide service-carousel scroll-smooth sm:px-10">
 				{Array.isArray(slice.items) &&
 					slice.items.length &&
 					slice.items.map((item, index) => {

@@ -26,7 +26,7 @@ const FeaturedSection = ({ slice }) => {
 				title={<PrismicText field={slice.primary.title} />}
 				description={<PrismicText field={slice.primary.description} />}
 			/>
-			<div className="px-5 mt-5 mb-5">
+			<div className="px-5 mt-5 mb-5 sm:px-10">
 				{Array.isArray(slice.items) &&
 					slice.items.length &&
 					slice.items.map((item, _) => {

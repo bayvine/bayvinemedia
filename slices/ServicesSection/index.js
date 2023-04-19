@@ -18,14 +18,14 @@ const ServicesSection = ({ slice }) => {
 	const serviceItems = slice.items
 
 	return (
-		<section className="my-4">
+		<section className="my-4 ">
 			<div>
 				<Title
 					title={title}
 					description={description}
 					subdescription={subdescription}
 				/>
-				<div className="relative flex items-baseline gap-4 px-5 overflow-scroll scrollbar-hide service-carousel scroll-smooth">
+				<div className="relative flex items-baseline gap-4 px-5 overflow-scroll sm:px-10 scrollbar-hide service-carousel scroll-smooth sm:mt-5">
 					{Array.isArray(serviceItems) &&
 						serviceItems.length &&
 						serviceItems.map((item, index) => {
@@ -47,7 +47,7 @@ const ServicesSection = ({ slice }) => {
 							)
 						})}
 				</div>
-				<div className="px-5">
+				<div className="px-5 sm:px-10">
 					<ScrollForMore target=".service-carousel" />
 				</div>
 			</div>

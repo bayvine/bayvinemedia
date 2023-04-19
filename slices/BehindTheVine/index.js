@@ -14,7 +14,7 @@ const BehindTheVine = ({ slice }) => {
 
 	return (
 		<section className="relative text-white py-14">
-			<div className="relative z-10 px-5">
+			<div className="relative z-10 px-5 sm:px-10">
 				<h3 className="text-4xl font-bold">
 					{prismicH.asText(slice.primary.title)}
 				</h3>
