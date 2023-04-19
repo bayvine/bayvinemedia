@@ -20,7 +20,7 @@ const RoadmapSection = ({ slice }) => {
 				description={description}
 				subdescription={subdescription}
 			/>
-			<div className="sm:mt-5 sm:px-10 sm:grid sm:grid-cols-2 sm:gap-5">
+			<div className="sm:mt-5 sm:px-10 sm:grid sm:grid-cols-2 sm:gap-5 md:px-14">
 				{Array.isArray(roadmapItems) &&
 					roadmapItems.length &&
 					roadmapItems.map((item, index) => {

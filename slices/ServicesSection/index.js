@@ -25,7 +25,7 @@ const ServicesSection = ({ slice }) => {
 					description={description}
 					subdescription={subdescription}
 				/>
-				<div className="relative flex items-baseline gap-4 px-5 overflow-scroll sm:px-10 scrollbar-hide service-carousel scroll-smooth sm:mt-5">
+				<div className="relative flex items-baseline gap-4 px-5 overflow-scroll sm:px-10 scrollbar-hide service-carousel scroll-smooth sm:mt-5 md:px-14">
 					{Array.isArray(serviceItems) &&
 						serviceItems.length &&
 						serviceItems.map((item, index) => {
@@ -47,7 +47,7 @@ const ServicesSection = ({ slice }) => {
 							)
 						})}
 				</div>
-				<div className="px-5 sm:px-10">
+				<div className="px-5 sm:px-10 md:px-14">
 					<ScrollForMore target=".service-carousel" />
 				</div>
 			</div>
