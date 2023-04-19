@@ -14,7 +14,7 @@ const IntroSection = ({ slice }) => {
 	const htmlSerializer = (type, element, text, children) => {
 		if (type == "strong") {
 			return (
-				<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit sm:text-9xl">
+				<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit sm:text-9xl md:text-[20vw]">
 					<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 						{text}
 					</span>
@@ -23,7 +23,7 @@ const IntroSection = ({ slice }) => {
 		}
 		if (type == "span") {
 			return (
-				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full">
+				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full md:text-[10vw]">
 					<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 						{text}
 					</span>
@@ -33,7 +33,7 @@ const IntroSection = ({ slice }) => {
 	}
 
 	return (
-		<section className="px-5 text-white sm:px-10">
+		<section className="px-5 text-white sm:px-10 md:px-14">
 			<div className="flex flex-col">
 				<div className="font-bold text-center uppercase pt-60">
 					<PrismicRichText

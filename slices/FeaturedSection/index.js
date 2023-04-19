@@ -26,12 +26,12 @@ const FeaturedSection = ({ slice }) => {
 				title={<PrismicText field={slice.primary.title} />}
 				description={<PrismicText field={slice.primary.description} />}
 			/>
-			<div className="px-5 mt-5 mb-5 sm:px-10">
+			<div className="px-5 mt-5 mb-5 sm:px-10 md:px-14 md:mx-auto">
 				{Array.isArray(slice.items) &&
 					slice.items.length &&
 					slice.items.map((item, _) => {
 						return (
-							<div className="relative max-w-md aspect-square">
+							<div className="relative max-w-md aspect-square md:max-w-xl">
 								<div className="h-[80%]">
 									<Image
 										src={item.image.url}
@@ -52,16 +52,14 @@ const FeaturedSection = ({ slice }) => {
 										{item.services_done}
 									</div>
 									<div className="flex gap-2 my-4 font-bold text-black whitespace-pre ">
-										{isMobile && (
-											<button className="px-8 py-2 uppercase bg-white rounded-md text-bold">
-												<PrismicLink
-													href={item.link.url}
-													className="flex items-center font-black"
-												>
-													Visit site <ArrowUpRight />
-												</PrismicLink>
-											</button>
-										)}
+										<button className="px-8 py-2 uppercase bg-white rounded-md text-bold">
+											<PrismicLink
+												href={item.link.url}
+												className="flex items-center font-black"
+											>
+												Visit site <ArrowUpRight />
+											</PrismicLink>
+										</button>
 									</div>
 								</div>
 							</div>

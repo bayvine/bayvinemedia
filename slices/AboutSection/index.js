@@ -51,7 +51,7 @@ const AboutSection = ({ slice }) => {
 	return (
 		<section className="mt-20 overflow-hidden">
 			<div className="relative w-full h-full text-white">
-				<div className="relative z-10 px-5 py-14 sm:px-10">
+				<div className="relative z-10 px-5 py-14 sm:px-10 md:px-14">
 					<div className="overflow-y-hidden h-fit">
 						<h2 className="text-md">
 							<PrismicText field={slice.primary.title} />

@@ -15,7 +15,7 @@ const Title = ({ title, description, trigger, subdescription, className }) => {
 	return (
 		<div className={clsx([className])}>
 			<div>
-				<div className="relative z-10 px-5 py-4 text-white sm:px-10">
+				<div className="relative z-10 px-5 py-4 text-white sm:px-10 md:px-14">
 					{description && (
 						<div className="overflow-y-hidden h-fit">
 							<span className="inline-block text-md">{description}</span>
