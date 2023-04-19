@@ -19,24 +19,24 @@ const ToolkitSection = ({ slice }) => {
 	const rowTwo = slice.items.slice(halfIndex, slice.items.length)
 
 	return (
-		<section>
+		<section className="lg:max-w-4xl lg:mx-auto lg:px-0 ">
 			<Title
 				title={title}
 				description={description}
 				subdescription={subdescription}
 			/>
 
-			<div className="grid grid-cols-10 gap-3 px-5 mt-5 overflow-x-hidden w-max sm:px-10">
+			<div className="grid grid-cols-10 gap-3 px-5 mt-5 overflow-x-hidden lg:w-full w-max sm:px-10 lg:px-0 lg:grid-cols-5">
 				{Array.isArray(rowOne) &&
 					rowOne.length &&
 					rowOne.map((tech, index) => {
 						return (
 							<div
 								key={useId()}
-								className="shrink-0 flex bg-[#0C0E1D] -translate-x-10 h-[150px] w-[150px] items-center justify-center  rounded-lg  aspect-square"
+								className="shrink-0 flex bg-[#0C0E1D] -translate-x-10 lg:translate-x-0 h-[150px] w-[150px] lg:w-full items-center justify-center  rounded-lg  aspect-square"
 							>
 								<Image
-									className=" shrink-0"
+									className="shrink-0"
 									src={tech.tech.url}
 									alt={tech.tech.alt}
 									width={tech.tech.dimensions.width}
@@ -52,7 +52,7 @@ const ToolkitSection = ({ slice }) => {
 						return (
 							<div
 								key={useId()}
-								className="shrink-0 bg-[#0C0E1D] flex -translate-x-32 h-[150px] w-[150px] items-center justify-center  rounded-lg  aspect-square"
+								className="shrink-0 bg-[#0C0E1D] flex -translate-x-32 h-[150px] w-[150px] lg:translate-x-0 lg:w-full items-center justify-center  rounded-lg  aspect-square"
 							>
 								<Image
 									className=" shrink-0"

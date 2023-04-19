@@ -12,9 +12,9 @@ const TestimonialSection = ({ slice }) => {
 	const title = prismich.asText(slice.primary.title)
 
 	return (
-		<section className="testmonial-section">
+		<section className="testmonial-section lg:max-w-4xl lg:mx-auto lg:px-0 ">
 			<Title title={title} trigger=".testimonial-section" />
-			<div className="relative flex items-baseline gap-4 px-5 overflow-scroll scrollbar-hide service-carousel scroll-smooth sm:px-10 md:px-14">
+			<div className="relative flex items-baseline gap-4 px-5 mx-auto overflow-scroll scrollbar-hide service-carousel scroll-smooth sm:px-10 md:px-14 full-bleed">
 				{Array.isArray(slice.items) &&
 					slice.items.length &&
 					slice.items.map((item, index) => {

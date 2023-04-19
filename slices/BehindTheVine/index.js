@@ -14,11 +14,13 @@ const BehindTheVine = ({ slice }) => {
 
 	return (
 		<section className="relative text-white py-14">
-			<div className="relative z-10 px-5 sm:px-10 md:px-14">
+			<div className="relative z-10 px-5 sm:px-10 md:px-14 lg:max-w-4xl lg:mx-auto lg:px-0">
 				<h3 className="text-4xl font-bold">
 					{prismicH.asText(slice.primary.title)}
 				</h3>
-				<p className="mt-4">{prismicH.asText(slice.primary.description)}</p>
+				<p className="mt-4 lg:max-w-2xl">
+					{prismicH.asText(slice.primary.description)}
+				</p>
 				<div className="mt-8">
 					<button className="px-8 py-2 uppercase bg-white rounded-md text-bold">
 						<PrismicLink

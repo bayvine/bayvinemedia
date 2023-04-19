@@ -9,7 +9,7 @@ import { PrismicLink, PrismicRichText } from "@prismicio/react"
 const FooterSection = ({ slice }) => {
 	const title = slice.primary.title
 	return (
-		<section className="px-5 py-8 text-sm text-white opacity-50">
+		<section className="px-5 py-8 text-sm text-white opacity-50 lg:mt-20">
 			<PrismicRichText
 				field={title}
 				components={{

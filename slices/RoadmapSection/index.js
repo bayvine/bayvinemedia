@@ -14,13 +14,13 @@ const RoadmapSection = ({ slice }) => {
 	const roadmapItems = slice.items
 
 	return (
-		<section className="sm:mt-5">
+		<section className="sm:mt-5 lg:max-w-4xl lg:mx-auto lg:px-0 ">
 			<Title
 				title={title}
 				description={description}
 				subdescription={subdescription}
 			/>
-			<div className="sm:mt-5 sm:px-10 sm:grid sm:grid-cols-2 sm:gap-5 md:px-14">
+			<div className="sm:mt-5 sm:px-10 sm:grid sm:grid-cols-2 sm:gap-5 md:px-14 lg:px-0 lg:grid-cols-3">
 				{Array.isArray(roadmapItems) &&
 					roadmapItems.length &&
 					roadmapItems.map((item, index) => {

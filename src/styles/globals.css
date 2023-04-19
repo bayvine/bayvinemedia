@@ -140,3 +140,10 @@ a {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
+
+@media only screen and (min-width: 1024px) {
+	.full-bleed {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+	}
+}

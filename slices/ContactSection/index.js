@@ -123,9 +123,9 @@ const ContactSection = ({ slice }) => {
 	}
 
 	return (
-		<section className="text-white">
+		<section className="text-white lg:max-w-4xl lg:mx-auto lg:px-0">
 			<Title title={title} />
-			<div className="px-5 sm:px-10 md:px-14">
+			<div className="px-5 sm:px-10 md:px-14 lg:px-0">
 				<PrismicRichText
 					field={description}
 					className="underline"
@@ -152,7 +152,7 @@ const ContactSection = ({ slice }) => {
 				<div>Submitting...</div>
 			) : (
 				<form
-					className="grid grid-cols-1 px-5 text-black sm:px-10 md:px-14"
+					className="grid grid-cols-1 px-5 text-black sm:px-10 md:px-14 lg:px-0 lg:grid-cols-2 lg:gap-8"
 					onSubmit={handleFormSubmission}
 					name="contact"
 					method="POST"
@@ -233,9 +233,9 @@ const ContactSection = ({ slice }) => {
 						</div>
 					</div>
 					{/* Third row */}
-					<div className="">
+					<div className="lg:col-span-2">
 						{/* Tell us about the project */}
-						<div className="flex flex-col mt-4">
+						<div className="flex flex-col mt-4 lg:mt-0 ">
 							<label className="pb-2 text-white">
 								Tell us about your project:
 							</label>
@@ -243,12 +243,12 @@ const ContactSection = ({ slice }) => {
 								name="message"
 								onInput={(e) => setMessage(e.target.value)}
 								placeholder="Mobile application, Social Media, Multiple Page Website..."
-								className="px-3 py-3 text-white bg-transparent border rounded-md"
+								className="px-3 py-3 text-white bg-transparent border rounded-md lg:h-[250px]"
 							></textarea>
 						</div>
 					</div>
 					{/* Fourth row */}
-					<div className="mt-6">
+					<div className="mt-6 lg:mt-0 lg:col-span-2">
 						{/* Submit button */}
 						<div className="w-full">
 							<button className="w-full px-8 py-2 uppercase bg-white rounded-md text-bold">
