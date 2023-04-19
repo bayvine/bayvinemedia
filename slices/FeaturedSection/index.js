@@ -31,8 +31,8 @@ const FeaturedSection = ({ slice }) => {
 					slice.items.length &&
 					slice.items.map((item, _) => {
 						return (
-							<div className="relative overflow-hidden aspect-[1/1] max-w-lg flex">
-								<div className="absolute z-0 h-full overflow-hidden">
+							<div className="relative max-w-md aspect-square">
+								<div className="h-[80%]">
 									<Image
 										src={item.image.url}
 										alt={item.image.alt}
@@ -41,7 +41,7 @@ const FeaturedSection = ({ slice }) => {
 										width={item.image.dimensions.width}
 									/>
 								</div>
-								<div className="relative self-end w-full px-5 mt-4 text-white py-7 bg-black/80 z-100">
+								<div className="relative self-end w-full text-white py-7 bg-black/80 z-100">
 									<p className="mb-1 text-2xl font-bold uppercase">
 										<PrismicText field={item.title} />
 									</p>
