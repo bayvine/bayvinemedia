@@ -14,7 +14,7 @@ const IntroSection = ({ slice }) => {
 	const htmlSerializer = (type, element, text, children) => {
 		if (type == "strong") {
 			return (
-				<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit sm:text-9xl md:text-[20vw]">
+				<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit sm:text-9xl md:text-[20vw] lg:text-[15vw]">
 					<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 						{text}
 					</span>
@@ -23,7 +23,7 @@ const IntroSection = ({ slice }) => {
 		}
 		if (type == "span") {
 			return (
-				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full md:text-[10vw]">
+				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full md:text-[10vw] lg:text-[5vw]">
 					<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 						{text}
 					</span>
@@ -33,9 +33,9 @@ const IntroSection = ({ slice }) => {
 	}
 
 	return (
-		<section className="px-5 text-white sm:px-10 md:px-14">
+		<section className="px-5 text-white sm:px-10 md:px-14 lg:max-w-4xl lg:mx-auto lg:px-0">
 			<div className="flex flex-col">
-				<div className="font-bold text-center uppercase pt-60">
+				<div className="font-bold text-center uppercase pt-60 lg:self-center lg:pt-80">
 					<PrismicRichText
 						field={slice.primary.title}
 						components={htmlSerializer}
@@ -43,7 +43,7 @@ const IntroSection = ({ slice }) => {
 				</div>
 				<div
 					className={clsx([
-						"max-w-sm mx-auto mt-3 text-center text-md sm:text-xl sm:max-w-md",
+						"max-w-sm mx-auto mt-3 text-center text-md sm:text-xl sm:max-w-md lg:max-w-lg lg:text-lg",
 						"description",
 					])}
 				>
@@ -82,7 +82,7 @@ const IntroSection = ({ slice }) => {
 					</ul>
 				</div>
 			</div>
-			<hr className="-mx-5 sm:-mx-10 md:-mx-14 h-0.5 w-screen border-white/30 my-4 cross-line" />
+			<hr className="-mx-5 sm:-mx-10 md:-mx-14 lg:-mx-16 h-0.5 w-screen border-white/30 my-4 cross-line" />
 			<div className="flex justify-between information-tab">
 				<span>{slice.primary.year}</span>
 				<span>{slice.primary.cta}</span>

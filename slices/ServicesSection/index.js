@@ -18,21 +18,21 @@ const ServicesSection = ({ slice }) => {
 	const serviceItems = slice.items
 
 	return (
-		<section className="my-4 ">
+		<section className="my-4 lg:max-w-4xl lg:mx-auto lg:px-0 ">
 			<div>
 				<Title
 					title={title}
 					description={description}
 					subdescription={subdescription}
 				/>
-				<div className="relative flex items-baseline gap-4 px-5 overflow-scroll sm:px-10 scrollbar-hide service-carousel scroll-smooth sm:mt-5 md:px-14">
+				<div className="relative flex items-baseline gap-4 px-5 overflow-scroll sm:px-10 scrollbar-hide service-carousel scroll-smooth sm:mt-5 md:px-14 lg:px-0 lg:grid lg:grid-cols-2 lg:items-start">
 					{Array.isArray(serviceItems) &&
 						serviceItems.length &&
 						serviceItems.map((item, index) => {
 							return (
 								<div
 									key={useId(item)}
-									className="text-white rounded-xl bg-none  shrink-0 w-[360px] py-10 px-8 overflow-hidden h-[400px] border-slate-50/30 border-2"
+									className="text-white rounded-xl bg-none  shrink-0 w-[360px] py-10 px-8 overflow-hidden h-[400px] border-slate-50/30 border-2 lg:w-full"
 								>
 									<img
 										src={item.icon.url}
@@ -47,7 +47,7 @@ const ServicesSection = ({ slice }) => {
 							)
 						})}
 				</div>
-				<div className="px-5 sm:px-10 md:px-14">
+				<div className="px-5 sm:px-10 md:px-14 lg:px-0">
 					<ScrollForMore target=".service-carousel" />
 				</div>
 			</div>
