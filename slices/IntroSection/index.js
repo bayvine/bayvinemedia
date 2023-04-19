@@ -50,7 +50,7 @@ const IntroSection = ({ slice }) => {
 					<PrismicRichText field={slice.primary.description} />
 				</div>
 
-				<div className="relative flex justify-center mt-56 overflow-x-hidden marquee">
+				<div className="relative flex justify-center mt-56 -mx-5 overflow-x-hidden marquee sm:-mx-10 md:-mx-14">
 					<ul className="flex px-2 animate-marquee whitespace-nowrap">
 						{Array.isArray(slice.items) &&
 							slice.items.length &&
@@ -82,7 +82,7 @@ const IntroSection = ({ slice }) => {
 					</ul>
 				</div>
 			</div>
-			<hr className="-mx-5 h-0.5 w-screen border-white/30 my-4 cross-line" />
+			<hr className="-mx-5 sm:-mx-10 md:-mx-14 h-0.5 w-screen border-white/30 my-4 cross-line" />
 			<div className="flex justify-between information-tab">
 				<span>{slice.primary.year}</span>
 				<span>{slice.primary.cta}</span>
