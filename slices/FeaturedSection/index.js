@@ -26,7 +26,7 @@ const FeaturedSection = ({ slice }) => {
 				title={<PrismicText field={slice.primary.title} />}
 				description={<PrismicText field={slice.primary.description} />}
 			/>
-			<div className="px-5 mt-5 mb-5 sm:px-10 md:px-14 md:mx-auto lg:px-0 lg:grid lg:grid-cols-2 2xl:mt-0 lg:gap-10">
+			<div className="px-5 mt-5 sm:px-10 md:px-14 md:mx-auto lg:px-0 lg:grid lg:grid-cols-2 2xl:mt-0 lg:gap-10 ">
 				{Array.isArray(slice.items) &&
 					slice.items.length &&
 					slice.items.map((item, index) => {
@@ -49,7 +49,7 @@ const FeaturedSection = ({ slice }) => {
 										<div className="mt-2 text-sm font-light 2xl:text-lg">
 											{item.services_done}
 										</div>
-										<div className="flex gap-2 my-4 font-bold text-black whitespace-pre ">
+										<div className="flex gap-2 mt-4 font-bold text-black whitespace-pre ">
 											<PrismicLink href={item.link.url} className="font-black ">
 												<button className="flex items-center px-8 py-2 uppercase bg-white rounded-md text-bold 2xl:text-xl">
 													Visit site <ArrowUpRight />
