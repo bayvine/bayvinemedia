@@ -18,7 +18,7 @@ const IntroSection = ({ slice }) => {
 							{text}
 						</span>
 					</div>
-					<div className="hidden xl:block xl:max-w-sm xl:text-right xl:text-sm xl:pt-4 2xl:text-lg">
+					<div className="hidden xl:block xl:max-w-sm xl:text-right xl:text-sm xl:pt-4 2xl:text-base 2xl:font-medium">
 						<PrismicRichText field={slice.primary.description} />
 					</div>
 				</div>
@@ -39,7 +39,7 @@ const IntroSection = ({ slice }) => {
 		<section className="px-5 text-white sm:px-10 md:px-14 lg:max-w-4xl lg:mx-auto lg:px-0 xl:max-w-6xl 2xl:max-w-7xl">
 			<div className="hidden xl:flex xl:flex-col xl:pt-60">
 				{/* title 1 with description next to it */}
-				<div className="flex font-bold uppercase ">
+				<div className="flex font-bold uppercase cursor-default ">
 					<PrismicRichText
 						field={slice.primary.title}
 						components={htmlSerializer}

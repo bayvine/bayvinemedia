@@ -17,19 +17,21 @@ const Title = ({ title, description, trigger, subdescription, className }) => {
 			<div>
 				<div className="relative z-10 px-5 py-4 text-white sm:px-10 md:px-14 lg:px-0 xl:py-12">
 					{description && (
-						<div className="overflow-y-hidden h-fit">
-							<span className="inline-block text-md">{description}</span>
+						<div className="overflow-y-hidden h-fit ">
+							<span className="inline-block text-md 2xl:text-lg">
+								{description}
+							</span>
 						</div>
 					)}
 					{title && (
-						<div className="overflow-y-hidden h-fit">
-							<h2 className="mt-2 text-xl font-semibold xl:text-4xl ">
+						<div className="overflow-y-hidden h-fit 2xl:h-full">
+							<h2 className="mt-2 text-xl font-semibold xl:text-4xl 2xl:mt-0 ">
 								{title}
 							</h2>
 						</div>
 					)}
 					{subdescription && (
-						<div className="overflow-y-hidden h-fit">
+						<div className="overflow-y-hidden h-fit 2xl:text-lg">
 							<p className="mt-2 text-md">{subdescription}</p>
 						</div>
 					)}
