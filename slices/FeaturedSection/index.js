@@ -21,7 +21,7 @@ const FeaturedSection = ({ slice }) => {
 	useIsomorphicLayoutEffect(() => {}, [])
 
 	return (
-		<section className="mt-10 lg:max-w-4xl lg:mx-auto lg:px-0 2xl:max-w-7xl">
+		<section className="mt-10 lg:max-w-4xl lg:mx-auto lg:px-0 2xl:max-w-screen-2xl 2xl:px-5">
 			<Title
 				title={<PrismicText field={slice.primary.title} />}
 				description={<PrismicText field={slice.primary.description} />}
