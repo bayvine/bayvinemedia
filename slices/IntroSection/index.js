@@ -12,22 +12,22 @@ const IntroSection = ({ slice }) => {
 	const htmlSerializer = (type, element, text, children) => {
 		if (type == "strong") {
 			return (
-				<div className=" xl:flex xl:align-baseline xl:justify-between">
-					<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit sm:text-9xl md:text-[20vw] lg:text-[15vw] xl:text-[10vw]  ">
+				<h1 className="xl:flex xl:justify-between">
+					<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit sm:text-9xl md:text-[20vw] lg:text-[15vw] xl:text-[150px]  ">
 						<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 							{text}
 						</span>
 					</div>
-					<div className="hidden xl:flex xl:max-w-sm xl:text-right xl:text-sm xl:pt-4">
+					<div className="hidden xl:block xl:max-w-sm xl:text-right xl:text-sm xl:pt-4">
 						<PrismicRichText field={slice.primary.description} />
 					</div>
-				</div>
+				</h1>
 			)
 		}
 		if (type == "span") {
 			return (
-				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full md:text-[10vw] lg:text-[5vw] xl:text-[10vw]">
-					<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient xl:whitespace-pre">
+				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full md:text-[10vw] lg:text-[5vw] xl:text-[134px] xl:whitespace-nowrap">
+					<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 						{text}
 					</span>
 				</div>
@@ -39,7 +39,7 @@ const IntroSection = ({ slice }) => {
 		<section className="px-5 text-white sm:px-10 md:px-14 lg:max-w-4xl lg:mx-auto lg:px-0 xl:max-w-6xl">
 			<div className="hidden xl:flex xl:flex-col xl:pt-60">
 				{/* title 1 with description next to it */}
-				<div className="flex font-bold uppercase">
+				<div className="flex font-bold uppercase ">
 					<PrismicRichText
 						field={slice.primary.title}
 						components={htmlSerializer}
