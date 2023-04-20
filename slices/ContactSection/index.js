@@ -123,7 +123,7 @@ const ContactSection = ({ slice }) => {
 	}
 
 	return (
-		<section className="text-white lg:max-w-4xl lg:mx-auto lg:px-0">
+		<section className="text-white lg:max-w-4xl lg:mx-auto lg:px-0 ">
 			<Title title={title} />
 			<div className="px-5 sm:px-10 md:px-14 lg:px-0">
 				<PrismicRichText
@@ -252,7 +252,7 @@ const ContactSection = ({ slice }) => {
 						{/* Submit button */}
 						<div className="w-full">
 							<button className="w-full px-8 py-2 uppercase bg-white rounded-md text-bold">
-								<div className="flex items-center justify-center font-black text-center text-black">
+								<div className="flex items-center justify-center font-black text-center text-black 2xl:text-xl">
 									Submit
 								</div>
 							</button>
