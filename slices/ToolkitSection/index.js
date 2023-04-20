@@ -19,14 +19,14 @@ const ToolkitSection = ({ slice }) => {
 	const rowTwo = slice.items.slice(halfIndex, slice.items.length)
 
 	return (
-		<section className="lg:max-w-4xl lg:mx-auto lg:px-0 ">
+		<section className="lg:max-w-4xl lg:mx-auto lg:px-0 2xl:max-w-screen-2xl 2xl:px-5 ">
 			<Title
 				title={title}
 				description={description}
 				subdescription={subdescription}
 			/>
 
-			<div className="grid grid-cols-10 gap-3 px-5 mt-5 overflow-x-hidden lg:w-full w-max sm:px-10 lg:px-0 lg:grid-cols-5">
+			<div className="grid grid-cols-10 gap-3 px-5 mt-5 overflow-x-hidden lg:w-full w-max sm:px-10 lg:px-0 lg:grid-cols-5 2xl:grid-cols-10">
 				{Array.isArray(rowOne) &&
 					rowOne.length &&
 					rowOne.map((tech, index) => {
