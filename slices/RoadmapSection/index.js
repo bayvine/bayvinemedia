@@ -14,7 +14,7 @@ const RoadmapSection = ({ slice }) => {
 	const roadmapItems = slice.items
 
 	return (
-		<section className="sm:mt-5 lg:max-w-4xl lg:mx-auto lg:px-0 ">
+		<section className="sm:mt-5 lg:max-w-4xl lg:mx-auto lg:px-0 2xl:max-w-screen-2xl 2xl:px-5">
 			<Title
 				title={title}
 				description={description}

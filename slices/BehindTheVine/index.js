@@ -13,8 +13,8 @@ const BehindTheVine = ({ slice }) => {
 	const isMobile = useIsMobile()
 
 	return (
-		<section className="relative text-white py-14">
-			<div className="relative z-10 px-5 sm:px-10 md:px-14 lg:max-w-4xl lg:mx-auto lg:px-0">
+		<section className="relative text-white py-14 2xl:my-20">
+			<div className="relative z-10 px-5 sm:px-10 md:px-14 lg:max-w-4xl lg:mx-auto lg:px-0 2xl:max-w-screen-2xl 2xl:px-20">
 				<h3 className="text-4xl font-bold">
 					{prismicH.asText(slice.primary.title)}
 				</h3>
@@ -32,12 +32,11 @@ const BehindTheVine = ({ slice }) => {
 					</button>
 				</div>
 			</div>
-			{!isMobile && (
-				<im
-					src={slice.primary.background_image.url}
-					className="absolute top-0 left-0 object-cover w-full h-full "
-				/>
-			)}
+
+			<img
+				src={slice.primary.background_image.url}
+				className="absolute top-0 left-0 hidden object-cover w-full h-full 2xl:block "
+			/>
 		</section>
 	)
 }

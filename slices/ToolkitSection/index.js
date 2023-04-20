@@ -19,7 +19,7 @@ const ToolkitSection = ({ slice }) => {
 	const rowTwo = slice.items.slice(halfIndex, slice.items.length)
 
 	return (
-		<section className="lg:max-w-4xl lg:mx-auto lg:px-0 2xl:max-w-screen-2xl 2xl:px-5 ">
+		<section className="lg:max-w-4xl lg:mx-auto lg:px-0 2xl:max-w-screen-2xl 2xl:px-5">
 			<Title
 				title={title}
 				description={description}
