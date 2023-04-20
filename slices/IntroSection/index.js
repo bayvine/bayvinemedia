@@ -12,7 +12,7 @@ const IntroSection = ({ slice }) => {
 	const htmlSerializer = (type, element, text, children) => {
 		if (type == "strong") {
 			return (
-				<h1 className="xl:flex xl:justify-between">
+				<div className="xl:flex xl:justify-between">
 					<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit sm:text-9xl md:text-[20vw] lg:text-[15vw] xl:text-[150px]  ">
 						<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 							{text}
@@ -21,12 +21,12 @@ const IntroSection = ({ slice }) => {
 					<div className="hidden xl:block xl:max-w-sm xl:text-right xl:text-sm xl:pt-4">
 						<PrismicRichText field={slice.primary.description} />
 					</div>
-				</h1>
+				</div>
 			)
 		}
 		if (type == "span") {
 			return (
-				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full md:text-[10vw] lg:text-[5vw] xl:text-[134px] xl:whitespace-nowrap">
+				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full md:text-[8vw] lg:text-[5vw] xl:text-[134px] xl:whitespace-nowrap">
 					<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 						{text}
 					</span>
@@ -108,7 +108,7 @@ const IntroSection = ({ slice }) => {
 					</ul>
 				</div>
 			</div>
-			<hr className="-mx-5 sm:-mx-10 md:-mx-14 lg:-mx-16 h-0.5 w-screen border-white/30 my-4 cross-line xl:mt-24" />
+			<hr className="-mx-5 sm:-mx-10 md:-mx-14 lg:-mx-[50vw] full-width h-0.5 w-screen border-white/30 my-4 xl:mt-24" />
 			<div className="flex justify-between information-tab">
 				<span>{slice.primary.year}</span>
 				<span>{slice.primary.cta}</span>
