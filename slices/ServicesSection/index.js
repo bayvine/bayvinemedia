@@ -18,7 +18,7 @@ const ServicesSection = ({ slice }) => {
 	const serviceItems = slice.items
 
 	return (
-		<section className="my-4 lg:max-w-4xl lg:mx-auto lg:px-0 ">
+		<section className="my-4 lg:max-w-4xl lg:mx-auto lg:px-0 2xl:max-w-7xl">
 			<div>
 				<Title
 					title={title}

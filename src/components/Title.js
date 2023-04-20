@@ -31,7 +31,7 @@ const Title = ({ title, description, trigger, subdescription, className }) => {
 						</div>
 					)}
 					{subdescription && (
-						<div className="overflow-y-hidden h-fit 2xl:text-lg">
+						<div className="overflow-y-hidden h-fit 2xl:text-lg 2xl:max-w-xl">
 							<p className="mt-2 text-md">{subdescription}</p>
 						</div>
 					)}
