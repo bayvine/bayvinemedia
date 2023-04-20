@@ -34,7 +34,7 @@ const FeaturedSection = ({ slice }) => {
 							<>
 								<div
 									key={index}
-									className="relative max-w-md aspect-square md:max-w-full"
+									className="max-w-md aspect-square md:max-w-full"
 								>
 									<div className="h-[450px] overflow-hidden aspect-square w-full">
 										<Image
@@ -45,7 +45,7 @@ const FeaturedSection = ({ slice }) => {
 											width={item.image.dimensions.width}
 										/>
 									</div>
-									<div className="text-white relativew-full py-7 bg-black/80">
+									<div className="relative w-full text-white py-7 bg-black/80">
 										<p className="mb-1 text-2xl font-bold uppercase 2xl:text-3xl">
 											<PrismicText field={item.title} />
 										</p>
@@ -70,18 +70,3 @@ const FeaturedSection = ({ slice }) => {
 }
 
 export default FeaturedSection
-
-/*
-<Element
-								href={item.link.url}
-								key={useId}
-								className="relative aspect-[380/450] min-h-auto pt-20 flex pb-4 rounded-md px-4 group sm:max-w-md sm:min-h-full "
-							>
-								<div className="relative z-50 self-end overflow-hidden text-white h-fit sm:max-w-sm">
-									
-								</div>
-								<div className="absolute top-0 left-0 rounded-md overflow-hidden aspect-[380/450] opacity-30 h-full w-full transition-all duration-150 ease-in-out">
-									
-								</div>
-							</Element>
-*/
