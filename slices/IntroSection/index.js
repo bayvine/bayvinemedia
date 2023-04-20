@@ -13,12 +13,12 @@ const IntroSection = ({ slice }) => {
 		if (type == "strong") {
 			return (
 				<div className="xl:flex xl:justify-between">
-					<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit sm:text-9xl md:text-[20vw] lg:text-[15vw] xl:text-[150px]  ">
+					<div className="inline-block overflow-y-hidden text-white opacity-100 text-7xl h-fit sm:text-9xl md:text-[20vw] lg:text-[15vw] xl:text-[150px] 2xl:text-[175px] ">
 						<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 							{text}
 						</span>
 					</div>
-					<div className="hidden xl:block xl:max-w-sm xl:text-right xl:text-sm xl:pt-4">
+					<div className="hidden xl:block xl:max-w-sm xl:text-right xl:text-sm xl:pt-4 2xl:text-lg">
 						<PrismicRichText field={slice.primary.description} />
 					</div>
 				</div>
@@ -26,7 +26,7 @@ const IntroSection = ({ slice }) => {
 		}
 		if (type == "span") {
 			return (
-				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full md:text-[8vw] lg:text-[5vw] xl:text-[134px] xl:whitespace-nowrap">
+				<div className="inline-block w-full overflow-y-hidden text-4xl text-white opacity-100 h-fit sm:text-6xl sm:h-full md:text-[8vw] lg:text-[5vw] xl:text-[134px] xl:whitespace-nowrap 2xl:text-[149px]">
 					<span className="inline-block text-transparent bg-gradient-to-r bg-clip-text from-purple-500 to-blue-600 animated-gradient">
 						{text}
 					</span>
@@ -36,7 +36,7 @@ const IntroSection = ({ slice }) => {
 	}
 
 	return (
-		<section className="px-5 text-white sm:px-10 md:px-14 lg:max-w-4xl lg:mx-auto lg:px-0 xl:max-w-6xl">
+		<section className="px-5 text-white sm:px-10 md:px-14 lg:max-w-4xl lg:mx-auto lg:px-0 xl:max-w-6xl 2xl:max-w-7xl">
 			<div className="hidden xl:flex xl:flex-col xl:pt-60">
 				{/* title 1 with description next to it */}
 				<div className="flex font-bold uppercase ">
@@ -52,7 +52,10 @@ const IntroSection = ({ slice }) => {
 						slice.items.slice(0, 2) &&
 						slice.items.map((item, index) => {
 							return (
-								<li className="whitespace-pre text-md" key={useId()}>
+								<li
+									className="whitespace-pre text-md 2xl:text-lg"
+									key={useId()}
+								>
 									{index !== slice.items.length - 1
 										? `${item.service}  •  `
 										: item.service}
@@ -109,7 +112,7 @@ const IntroSection = ({ slice }) => {
 				</div>
 			</div>
 			<hr className="-mx-5 sm:-mx-10 md:-mx-14 lg:-mx-[50vw] full-width h-0.5 w-screen border-white/30 my-4 xl:mt-24" />
-			<div className="flex justify-between information-tab">
+			<div className="flex justify-between information-tab 2xl:text-lg">
 				<span>{slice.primary.year}</span>
 				<span>{slice.primary.cta}</span>
 			</div>

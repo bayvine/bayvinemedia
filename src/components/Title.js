@@ -15,7 +15,7 @@ const Title = ({ title, description, trigger, subdescription, className }) => {
 	return (
 		<div className={clsx([className])}>
 			<div>
-				<div className="relative z-10 px-5 py-4 text-white sm:px-10 md:px-14 lg:px-0">
+				<div className="relative z-10 px-5 py-4 text-white sm:px-10 md:px-14 lg:px-0 xl:py-12">
 					{description && (
 						<div className="overflow-y-hidden h-fit">
 							<span className="inline-block text-md">{description}</span>
@@ -23,7 +23,9 @@ const Title = ({ title, description, trigger, subdescription, className }) => {
 					)}
 					{title && (
 						<div className="overflow-y-hidden h-fit">
-							<h2 className="mt-2 text-xl font-semibold">{title}</h2>
+							<h2 className="mt-2 text-xl font-semibold xl:text-4xl ">
+								{title}
+							</h2>
 						</div>
 					)}
 					{subdescription && (
