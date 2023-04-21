@@ -31,34 +31,32 @@ const FeaturedSection = ({ slice }) => {
 					slice.items.length &&
 					slice.items.map((item, index) => {
 						return (
-							<>
-								<div key={index} className="max-w-md md:max-w-full">
-									<div className="h-[450px] overflow-hidden aspect-square w-full">
-										<Image
-											src={item.image.url}
-											alt={item.image.alt}
-											className={`project-image-${index} object-cover h-full`}
-											height={item.image.dimensions.height}
-											width={item.image.dimensions.width}
-										/>
+							<div key={index} className="max-w-md md:max-w-full">
+								<div className="h-[450px] overflow-hidden aspect-square w-full">
+									<Image
+										src={item.image.url}
+										alt={item.image.alt}
+										className={`project-image-${index} object-cover h-full`}
+										height={item.image.dimensions.height}
+										width={item.image.dimensions.width}
+									/>
+								</div>
+								<div className="w-full text-white py-7">
+									<p className="mb-1 text-2xl font-bold uppercase 2xl:text-3xl">
+										<PrismicText field={item.title} />
+									</p>
+									<div className="mt-2 text-sm font-light 2xl:text-lg">
+										{item.services_done}
 									</div>
-									<div className="w-full text-white py-7">
-										<p className="mb-1 text-2xl font-bold uppercase 2xl:text-3xl">
-											<PrismicText field={item.title} />
-										</p>
-										<div className="mt-2 text-sm font-light 2xl:text-lg">
-											{item.services_done}
-										</div>
-										<div className="flex gap-2 mt-4 font-bold text-black whitespace-pre ">
-											<PrismicLink href={item.link.url} className="font-black ">
-												<button className="flex items-center px-8 py-2 uppercase bg-white rounded-md text-bold 2xl:text-xl">
-													Visit site <ArrowUpRight />
-												</button>
-											</PrismicLink>
-										</div>
+									<div className="flex gap-2 mt-4 font-bold text-black whitespace-pre ">
+										<PrismicLink href={item.link.url} className="font-black ">
+											<button className="flex items-center px-8 py-2 uppercase bg-white rounded-md text-bold 2xl:text-xl">
+												Visit site <ArrowUpRight />
+											</button>
+										</PrismicLink>
 									</div>
 								</div>
-							</>
+							</div>
 						)
 					})}
 			</div>
