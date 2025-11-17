@@ -1,0 +1,37 @@
+{
+  "_cts": {
+    "homepage": {}
+  },
+  "slices": {
+    "IntroSection": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "AboutSection": {},
+    "FeaturedSection": {},
+    "ServicesSection": {
+      "default": {
+        "items": {}
+      }
+    },
+    "ToolkitSection": {},
+    "RoadmapSection": {},
+    "TestimonialSection": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "BehindTheVine": {},
+    "ContactSection": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "FooterSection": {
+      "default": {
+        "primary": {}
+      }
+    }
+  }
+}
