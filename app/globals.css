@@ -127,6 +127,11 @@ a {
 	}
 }
 
+
+.background-hover-effect { 
+	@apply relative overflow-hidden transition-all before:absolute before:h-0 before:w-0 before:rounded-full hover:text-white before:bg-black before:duration-300 before:ease-out  hover:before:h-56 hover:before:w-full 
+}
+
 .section-shell {
 	position: relative;
 	overflow: hidden;
@@ -151,9 +156,9 @@ a {
 	inset: -30% -15%;
 	background: radial-gradient(
 			circle at var(--blob-x, 50%) var(--blob-y, 50%),
-			rgba(129, 61, 196, 0.55),
-			rgba(209, 76, 149, 0.45) 30%,
-			rgba(14, 117, 233, 0.4) 55%,
+			rgba(255, 255, 255, 0.55),
+			rgba(115, 176, 201, 0.45) 30%,
+			rgba(32, 132, 14, 0.4) 55%,
 			rgba(3, 3, 14, 0.9) 80%
 		),
 		radial-gradient(circle at 20% 20%, rgba(13, 18, 40, 0.4), transparent 55%);

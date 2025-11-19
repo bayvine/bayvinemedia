@@ -1,32 +1,32 @@
-import clsx from "clsx"
-import { type ButtonHTMLAttributes, type CSSProperties, type ReactNode } from "react"
+import clsx from "clsx";
+import {
+  type ButtonHTMLAttributes,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 
 type CTAButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-	label?: string
-	children?: ReactNode
-	size?: number
-}
+  label?: string | ReactNode;
+  children?: ReactNode;
+  size?: number;
+};
 
 const CTAButton = ({
-	label = "SCHEDULE FREE INTRO",
-	children,
-	className = "",
-	style,
-	...props
+  label = "SCHEDULE FREE INTRO",
+  className = "",
+  children,
+  ...props
 }: CTAButtonProps) => {
+  return (
+    <button
+      className={clsx([
+        "transition-all ease-in  cursor-pointer bg-white text-black font-bold uppercase rounded-full py-3 px-8 relative flex items-center justify-center overflow-hidden shadow-2xl background-hover-effect",
+        className,
+      ])}
+    >
+      <span className="relative z-50">{children}</span>
+    </button>
+  );
+};
 
-	return (
-		<button
-			type="button"
-			className={clsx([
-				"p-2 shrink-0 w-[150px] transition-colors ease-in duration-75  border-4 border-white cursor-pointer font-extrabold flex items-center justify-center rounded-full aspect-square hover:bg-white hover:text-black",
-				className,
-			])}
-			{...props}
-		>
-			{label}
-		</button>
-	)
-}
-
-export default CTAButton
+export default CTAButton;

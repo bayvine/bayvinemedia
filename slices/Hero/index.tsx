@@ -4,6 +4,7 @@ import { PrismicRichText, PrismicText, SliceComponentProps } from "@prismicio/re
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
 import { GlitchText } from "@/components/GlichText";
+import { RxArrowTopRight } from "react-icons/rx";
 
 /**
  * Props for `Hero`.
@@ -17,7 +18,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 	const array = slice.primary.title_action.map((text) => text.action as string)
 
 	return (
-		<div className="relative isolate pb-40 lg:pb-56">
+		<div className="relative isolate">
 			<Section
 				hasBlub
 				data-slice-type={slice.slice_type}
@@ -26,43 +27,43 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 			>
 				<div className="">
 					<div className="flex flex-col items-center justify-center text-center">
-						<div className="font-black 
-						text-[40px]
-						lg:text-[90px] leading-12 lg:leading-23 uppercase">
+						<div className="font-black text-8xl 
+						 leading-12 lg:leading-23 uppercase">
 							<PrismicRichText field={slice.primary.title}></PrismicRichText>
 							<GlitchText words={array} />{" "}
 						</div>
 
-						<p className="font-medium text-md lg:text-2xl text-center lg:w-[650px] my-5">
+						<p className="lg:text-lg text-center lg:w-[650px] my-4">
 							<PrismicText field={slice.primary.subtitle} />
 						</p>
 					</div>
 
-					<div className="flex items-center gap-4 justify-center">
-						<button className="transition-all ease-in border-2 cursor-pointer bg-white text-black border-white  text-md lg:text-lg font-black uppercase rounded-lg hover:rounded-4xl py-4 px-8">
-							Schedule Free Consultation
-						</button>
+					<div className="flex items-center gap-4 justify-center my-2">
+					<CTAButton>
+						<span className="flex gap-1 items-center">{slice.primary.call_to_action_label} <RxArrowTopRight strokeWidth={0.5}/></span>
+					</CTAButton>
+					
 					</div>
 				</div>
 			</Section>
-{/* 
-			{isFilled.linkToMedia(slice.primary.banner) && (
+
+			{/* {isFilled.linkToMedia(slice.primary.banner) && (
         <div className="pointer-events-auto absolute inset-x-0 
-        bottom-[7rem]
+        bottom-[8rem]
         sm:bottom-[-12rem] lg:bottom-[-5rem] 2xl:bottom-[-20rem] flex justify-center ">
-					<div className="w-[95vw] overflow-hidden rounded-lg backdrop-blur">
+					<div className="w-full  overflow-hidden rounded-lg backdrop-blur">
 						<video
 							autoPlay
 							playsInline
 							muted
 							loop
-							className="w-full h-[260px] sm:h-[500px] 2xl:h-[800px] object-cover"
+							className="w-full h-[600px] object-cover position-bottom"
 						>
 							<source src={slice.primary.banner.url} type="video/mp4" />
 						</video>
 					</div>
 				</div>
-			)} */}
+			)}  */}
 		</div>
 	)
 };
