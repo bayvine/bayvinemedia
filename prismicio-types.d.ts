@@ -133,6 +133,21 @@ export type HomeDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomeDocument;
 
 /**
+ * Item in *Hero → Default → Primary → Title action*
+ */
+export interface HeroSliceDefaultPrimaryTitleActionItem {
+  /**
+   * action field in *Hero → Default → Primary → Title action*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.title_action[].action
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  action: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -183,14 +198,26 @@ export interface HeroSliceDefaultPrimary {
   subtitle: prismic.RichTextField;
 
   /**
-   * Banner field in *Hero → Default → Primary*
+   * Title action field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.title_action[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  title_action: prismic.GroupField<
+    Simplify<HeroSliceDefaultPrimaryTitleActionItem>
+  >;
+
+  /**
+   * banner field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.default.primary.banner
-   * - **Documentation**: https://prismic.io/docs/fields/image
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
    */
-  banner: prismic.ImageField<never>;
+  banner: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
@@ -246,6 +273,7 @@ declare module "@prismicio/client" {
       HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeroSlice,
+      HeroSliceDefaultPrimaryTitleActionItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,

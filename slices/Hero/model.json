@@ -48,15 +48,29 @@
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "banner": {
-          "type": "Image",
+        "title_action": {
+          "type": "Group",
           "config": {
-            "label": "Banner",
-            "constraint": {
-              "width": null,
-              "height": null
-            },
-            "thumbnails": []
+            "label": "Title action",
+            "repeat": true,
+            "fields": {
+              "action": {
+                "type": "Text",
+                "config": {
+                  "label": "action",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "banner": {
+          "type": "Link",
+          "config": {
+            "label": "banner",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
           }
         }
       },
