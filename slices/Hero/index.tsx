@@ -19,9 +19,10 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 	return (
 		<div className="relative isolate pb-40 lg:pb-56">
 			<Section
+				hasBlub
 				data-slice-type={slice.slice_type}
 				data-slice-variation={slice.variation}
-				className="min-h-screen 2xl:min-h-[1000px] flex items-center pb-36 lg:pb-48 pt-18"
+				className="min-h-screen 2xl:min-h-[1000px] flex items-center"
 			>
 				<div className="">
 					<div className="flex flex-col items-center justify-center text-center">
@@ -44,7 +45,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 					</div>
 				</div>
 			</Section>
-
+{/* 
 			{isFilled.linkToMedia(slice.primary.banner) && (
         <div className="pointer-events-auto absolute inset-x-0 
         bottom-[7rem]
@@ -61,7 +62,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 						</video>
 					</div>
 				</div>
-			)}
+			)} */}
 		</div>
 	)
 };

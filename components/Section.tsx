@@ -3,9 +3,11 @@
 import { PointerEvent, useCallback, useEffect, useRef } from "react"
 import clsx from "clsx"
 
-type SectionProps = React.ComponentPropsWithoutRef<"section">
+type SectionProps = {
+	hasBlub: boolean
+} & React.ComponentPropsWithoutRef<"section">
 
-const Section = ({ className, children, ...props }: SectionProps) => {
+const Section = ({ className, children, hasBlub = false, ...props }: SectionProps) => {
 	const sectionRef = useRef<HTMLElement>(null)
 	const frameRef = useRef<number>()
 	const targetRef = useRef({ x: 50, y: 50 })
@@ -77,16 +79,15 @@ const Section = ({ className, children, ...props }: SectionProps) => {
 		<section
 			{...props}
 			ref={sectionRef}
-			onPointerMove={handlePointerMove}
-			onPointerLeave={handlePointerLeave}
-			className={clsx("section-shell text-white lg:mx-auto", className)}
+			onPointerMove={hasBlub ? handlePointerMove : () => null}
+			onPointerLeave={hasBlub ? handlePointerLeave : () => null}
+			className={clsx("text-white lg:mx-auto", hasBlub && "section-shell", className)}
 		>
-			<div className="section-shell__background" aria-hidden="true" />
-               <div className="section-shell__inner 
-              
-               sm:max-w-xs
-               md:max-w-md
-               lg:max-w-4xl xl:max-w-6xl 2xl:max-w-screen-2xl mx-auto">
+			{hasBlub && <div className={clsx(["section-shell__background"])} aria-hidden="true" />}
+			<div
+				className={clsx([hasBlub && "section-shell__inner", "w-full md:max-w-md lg:max-w-4xl xl:max-w-6xl 2xl:max-w-screen-2xl mx-auto"])}
+
+			>
 				{children}
 			</div>
 		</section>
