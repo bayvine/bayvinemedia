@@ -81,7 +81,7 @@ const Section = ({ className, children, hasBlub = false, ...props }: SectionProp
 			ref={sectionRef}
 			onPointerMove={hasBlub ? handlePointerMove : () => null}
 			onPointerLeave={hasBlub ? handlePointerLeave : () => null}
-			className={clsx("text-white lg:mx-auto", hasBlub && "section-shell", className)}
+			className={clsx("lg:mx-auto", hasBlub && "section-shell", className)}
 		>
 			{hasBlub && <div className={clsx(["section-shell__background"])} aria-hidden="true" />}
 			<div

@@ -23,7 +23,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 				hasBlub
 				data-slice-type={slice.slice_type}
 				data-slice-variation={slice.variation}
-				className="min-h-screen 2xl:min-h-[1000px] flex items-center"
+				className="min-h-screen 2xl:min-h-[1000px] flex items-center rounded-b-4xl"
 			>
 				<div className="">
 					<div className="flex flex-col items-center justify-center text-center">
@@ -46,12 +46,12 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 					</div>
 				</div>
 			</Section>
-
-			{/* {isFilled.linkToMedia(slice.primary.banner) && (
+{/* 
+			{isFilled.linkToMedia(slice.primary.banner) && (
         <div className="pointer-events-auto absolute inset-x-0 
         bottom-[8rem]
         sm:bottom-[-12rem] lg:bottom-[-5rem] 2xl:bottom-[-20rem] flex justify-center ">
-					<div className="w-full  overflow-hidden rounded-lg backdrop-blur">
+					<div className="w-[1200px]  overflow-hidden rounded-lg backdrop-blur">
 						<video
 							autoPlay
 							playsInline

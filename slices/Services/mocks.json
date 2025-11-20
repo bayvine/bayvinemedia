@@ -1,0 +1,85 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"services": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"hover_image",
+								{
+									"key": "b8dee9a4-4107-4e71-aa61-8558c18e63d7",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "FileLink",
+										"id": "mock_Media_link",
+										"kind": "file",
+										"name": "mock_name",
+										"url": "https://source.unsplash.com/daily",
+										"size": "0",
+										"text": "dirty"
+									}
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "manner",
+									"type": "Text"
+								}
+							],
+							[
+								"service_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nostrud ea voluptate voluptate reprehenderit sint eiusmod consectetur ex commodo incididunt fugiat occaecat est velit anim. Excepteur occaecat amet mollit reprehenderit proident veniam et laboris cillum cillum est eiusmod eiusmod nostrud. Laborum pariatur voluptate in enim voluptate Lorem duis nulla cillum."
+											}
+										}
+									]
+								}
+							],
+							[
+								"link",
+								{
+									"key": "13c88dc3-f068-4962-a1fb-4cce01544c0e",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "during"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "difference",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Mollit magna duis laboris velit est ullamco esse duis sit."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

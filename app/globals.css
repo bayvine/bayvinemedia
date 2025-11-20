@@ -142,9 +142,7 @@ a {
 	--blob-x: 50%;
 	--blob-y: 50%;
 	--blob-scale: 1;
-	box-shadow:
-		0 0 60px rgba(82, 35, 132, 0.25),
-		0 20px 80px rgba(2, 6, 23, 0.85);
+
 }
 
 .section-shell:hover {
