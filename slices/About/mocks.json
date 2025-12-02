@@ -3,63 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"highlighted_features": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": []
-					}
-				]
-			},
-			"mission_statements": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"icon",
-								{
-									"key": "47f3c44f-a8d7-401f-8675-8b138a37d8c8",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "FileLink",
-										"id": "mock_Media_link",
-										"kind": "file",
-										"name": "mock_name",
-										"url": "https://source.unsplash.com/daily",
-										"size": "0",
-										"text": "storm"
-									}
-								}
-							],
-							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "result",
-									"type": "Text"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Mollit enim deserunt id in anim deserunt laboris quis culpa eiusmod officia. Eiusmod do proident laborum excepteur consequat laborum anim. Qui quis sunt dolor do minim veniam aliquip anim sit excepteur."
-											}
-										}
-									]
-								}
-							]
-						]
-					}
-				]
-			},
 			"title": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -79,6 +22,45 @@
 						"content": {
 							"text": "Dolore est ipsum occaecat adipisicing aliqua sunt."
 						}
+					}
+				]
+			},
+			"background_video": {
+				"key": "c3506430-1c46-4d95-88c0-51520fd9f199",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "short"
+				}
+			},
+			"photos": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"city",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "855a7e2c-066a-412a-a735-ec4dd0f05f49",
+									"value": {
+										"__TYPE__": "FileLink",
+										"id": "mock_Media_link",
+										"kind": "file",
+										"name": "mock_name",
+										"url": "https://source.unsplash.com/daily",
+										"size": "0",
+										"text": "choice"
+									}
+								}
+							]
+						]
 					}
 				]
 			}

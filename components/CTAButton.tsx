@@ -20,7 +20,7 @@ const CTAButton = ({
   return (
     <button
       className={clsx([
-        "transition-all ease-in  cursor-pointer bg-white text-black font-bold uppercase rounded-full py-3 px-8 relative flex items-center justify-center overflow-hidden shadow-2xl background-hover-effect",
+        "transition-all ease-in  cursor-pointer bg-white text-black font-bold uppercase rounded-full py-3 px-8s relative flex items-center justify-center overflow-hidden shadow-2xl background-hover-effect",
         className,
       ])}
     >

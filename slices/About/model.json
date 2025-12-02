@@ -12,48 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "highlighted_features": {
-          "type": "Group",
-          "config": {
-            "label": "highlighted_features",
-            "repeat": true,
-            "fields": {}
-          }
-        },
-        "mission_statements": {
-          "type": "Group",
-          "config": {
-            "label": "mission statements",
-            "repeat": true,
-            "fields": {
-              "icon": {
-                "type": "Link",
-                "config": {
-                  "label": "icon",
-                  "placeholder": "",
-                  "select": "media",
-                  "allowText": true
-                }
-              },
-              "title": {
-                "type": "Text",
-                "config": {
-                  "label": "title",
-                  "placeholder": ""
-                }
-              },
-              "description": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "description",
-                  "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-                }
-              }
-            }
-          }
-        },
         "title": {
           "type": "StructuredText",
           "config": {
@@ -70,6 +28,33 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "background_video": {
+          "type": "Link",
+          "config": {
+            "label": "background video",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        },
+        "photos": {
+          "type": "Group",
+          "config": {
+            "label": "photos",
+            "repeat": true,
+            "fields": {
+              "city": {
+                "type": "Link",
+                "config": {
+                  "label": "city",
+                  "placeholder": "",
+                  "select": "media",
+                  "allowText": true
+                }
+              }
+            }
           }
         }
       },

@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomeDocumentDataSlicesSlice = ServicesSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice = AboutSlice | ServicesSlice | HeroSlice;
 
 /**
  * Content for home documents
@@ -133,73 +133,24 @@ export type HomeDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomeDocument;
 
 /**
- * Item in *About → Default → Primary → highlighted_features*
+ * Item in *About → Default → Primary → photos*
  */
-export interface AboutSliceDefaultPrimaryHighlightedFeaturesItem {}
-
-/**
- * Item in *About → Default → Primary → mission statements*
- */
-export interface AboutSliceDefaultPrimaryMissionStatementsItem {
+export interface AboutSliceDefaultPrimaryPhotosItem {
   /**
-   * icon field in *About → Default → Primary → mission statements*
+   * city field in *About → Default → Primary → photos*
    *
    * - **Field Type**: Link to Media
    * - **Placeholder**: *None*
-   * - **API ID Path**: about.default.primary.mission_statements[].icon
+   * - **API ID Path**: about.default.primary.photos[].city
    * - **Documentation**: https://prismic.io/docs/fields/link-to-media
    */
-  icon: prismic.LinkToMediaField<prismic.FieldState, never>;
-
-  /**
-   * title field in *About → Default → Primary → mission statements*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.default.primary.mission_statements[].title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * description field in *About → Default → Primary → mission statements*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.default.primary.mission_statements[].description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
+  city: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
  * Primary content in *About → Default → Primary*
  */
 export interface AboutSliceDefaultPrimary {
-  /**
-   * highlighted_features field in *About → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.default.primary.highlighted_features[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  highlighted_features: prismic.GroupField<
-    Simplify<AboutSliceDefaultPrimaryHighlightedFeaturesItem>
-  >;
-
-  /**
-   * mission statements field in *About → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about.default.primary.mission_statements[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  mission_statements: prismic.GroupField<
-    Simplify<AboutSliceDefaultPrimaryMissionStatementsItem>
-  >;
-
   /**
    * Title field in *About → Default → Primary*
    *
@@ -219,6 +170,26 @@ export interface AboutSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   subtitle: prismic.RichTextField;
+
+  /**
+   * background video field in *About → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.background_video
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  background_video: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+  /**
+   * photos field in *About → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.photos[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  photos: prismic.GroupField<Simplify<AboutSliceDefaultPrimaryPhotosItem>>;
 }
 
 /**
@@ -501,8 +472,7 @@ declare module "@prismicio/client" {
       HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutSlice,
-      AboutSliceDefaultPrimaryHighlightedFeaturesItem,
-      AboutSliceDefaultPrimaryMissionStatementsItem,
+      AboutSliceDefaultPrimaryPhotosItem,
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,

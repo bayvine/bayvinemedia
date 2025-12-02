@@ -5,11 +5,12 @@ import clsx from "clsx"
 
 type SectionProps = {
 	hasBlub: boolean
+	ref: React.Ref<HTMLElement>
 } & React.ComponentPropsWithoutRef<"section">
 
-const Section = ({ className, children, hasBlub = false, ...props }: SectionProps) => {
+const Section = ({ className, children,ref, hasBlub = false, ...props }: SectionProps) => {
 	const sectionRef = useRef<HTMLElement>(null)
-	const frameRef = useRef<number>()
+	const frameRef = useRef<number>(null)
 	const targetRef = useRef({ x: 50, y: 50 })
 	const currentRef = useRef({ x: 50, y: 50 })
 	const pointerActiveRef = useRef(false)
@@ -78,7 +79,7 @@ const Section = ({ className, children, hasBlub = false, ...props }: SectionProp
 	return (
 		<section
 			{...props}
-			ref={sectionRef}
+			ref={ref || sectionRef}
 			onPointerMove={hasBlub ? handlePointerMove : () => null}
 			onPointerLeave={hasBlub ? handlePointerLeave : () => null}
 			className={clsx("lg:mx-auto", hasBlub && "section-shell", className)}

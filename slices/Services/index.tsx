@@ -40,7 +40,7 @@ export const ServiceComponent = () => {
         className="w-full px-4 py-12 border-t border-gray-500 flex justify-between group  items-center cursor-pointer  transition-all duration-300"
       >
         <h3 className=" z-50 text-5xl font-semibold mb-4 flex items-center shrink-0 ">
-          <span className="mr-4 text-sm text-gray-300 font-extralight w-3 h-3  flex items-center justify-center border rounded-full p-4 ">
+          <span className="mr-4 text-sm text-gray-300 font-extralight w-0.5 h-0.5 flex items-center justify-center border rounded-full p-3 ">
             1
           </span>
           WEB DEVELOPMENT
