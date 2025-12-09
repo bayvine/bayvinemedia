@@ -64,8 +64,9 @@ const Roadmap: FC<RoadmapProps> = ({ slice }) => {
     <Section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="py-12"
     >
-      <div className="mt-3 max-w-xl text-slate-200">
+      <div className="max-w-xl text-slate-200">
         <h2 className="text-2xl font-bold uppercase sm:text-3xl">{slice.primary.title}</h2>
         <div className="my-1 max-w-lg">
           <PrismicRichText

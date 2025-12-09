@@ -1,0 +1,105 @@
+{
+  "id": "roadmap",
+  "type": "SharedSlice",
+  "name": "Roadmap",
+  "description": "Roadmap",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitel": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitel",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "roadmap": {
+          "type": "Group",
+          "config": {
+            "label": "roadmap",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "media": {
+                "type": "Link",
+                "config": {
+                  "label": "media",
+                  "placeholder": "",
+                  "select": "media",
+                  "allowText": true
+                }
+              }
+            }
+          }
+        },
+        "background_cta": {
+          "type": "Link",
+          "config": {
+            "label": "background cta",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        },
+        "cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "cta link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "cta label",
+            "placeholder": ""
+          }
+        },
+        "cta_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "cta title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

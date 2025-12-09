@@ -69,7 +69,12 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomeDocumentDataSlicesSlice = AboutSlice | ServicesSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice =
+  | ProjectHeroSlice
+  | RoadmapSlice
+  | AboutSlice
+  | ServicesSlice
+  | HeroSlice;
 
 /**
  * Content for home documents
@@ -335,6 +340,264 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *ProjectHero → Default → Primary → Project Tags*
+ */
+export interface ProjectHeroSliceDefaultPrimaryProjectTagsItem {
+  /**
+   * Tag field in *ProjectHero → Default → Primary → Project Tags*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_hero.default.primary.project_tags[].tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ProjectHero → Default → Primary*
+ */
+export interface ProjectHeroSliceDefaultPrimary {
+  /**
+   * Project Title field in *ProjectHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_hero.default.primary.project_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  project_title: prismic.RichTextField;
+
+  /**
+   * Project Subtitle field in *ProjectHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_hero.default.primary.project_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  project_subtitle: prismic.RichTextField;
+
+  /**
+   * Project Tags field in *ProjectHero → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_hero.default.primary.project_tags[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  project_tags: prismic.GroupField<
+    Simplify<ProjectHeroSliceDefaultPrimaryProjectTagsItem>
+  >;
+
+  /**
+   * Project Description field in *ProjectHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_hero.default.primary.project_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  project_description: prismic.RichTextField;
+
+  /**
+   * Mockup Image field in *ProjectHero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_hero.default.primary.mockup_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  mockup_image: prismic.ImageField<never>;
+
+  /**
+   * Mockup device field in *ProjectHero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_hero.default.primary.mockup_device
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  mockup_device: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ProjectHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard hero layout with prominent left-aligned content and right visual mockup.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectHero*
+ */
+type ProjectHeroSliceVariation = ProjectHeroSliceDefault;
+
+/**
+ * ProjectHero Shared Slice
+ *
+ * - **API ID**: `project_hero`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectHeroSlice = prismic.SharedSlice<
+  "project_hero",
+  ProjectHeroSliceVariation
+>;
+
+/**
+ * Item in *Roadmap → Default → Primary → roadmap*
+ */
+export interface RoadmapSliceDefaultPrimaryRoadmapItem {
+  /**
+   * title field in *Roadmap → Default → Primary → roadmap*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.roadmap[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *Roadmap → Default → Primary → roadmap*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.roadmap[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * media field in *Roadmap → Default → Primary → roadmap*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.roadmap[].media
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  media: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *Roadmap → Default → Primary*
+ */
+export interface RoadmapSliceDefaultPrimary {
+  /**
+   * Title field in *Roadmap → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitel field in *Roadmap → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.subtitel
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitel: prismic.RichTextField;
+
+  /**
+   * roadmap field in *Roadmap → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.roadmap[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  roadmap: prismic.GroupField<Simplify<RoadmapSliceDefaultPrimaryRoadmapItem>>;
+
+  /**
+   * background cta field in *Roadmap → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.background_cta
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  background_cta: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+  /**
+   * cta link field in *Roadmap → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.cta_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  cta_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * cta label field in *Roadmap → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.cta_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  cta_label: prismic.KeyTextField;
+
+  /**
+   * cta title field in *Roadmap → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: roadmap.default.primary.cta_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  cta_title: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Roadmap Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type RoadmapSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RoadmapSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Roadmap*
+ */
+type RoadmapSliceVariation = RoadmapSliceDefault;
+
+/**
+ * Roadmap Shared Slice
+ *
+ * - **API ID**: `roadmap`
+ * - **Description**: Roadmap
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type RoadmapSlice = prismic.SharedSlice<
+  "roadmap",
+  RoadmapSliceVariation
+>;
+
+/**
  * Item in *Services → Default → Primary → Services*
  */
 export interface ServicesSliceDefaultPrimaryServicesItem {
@@ -481,6 +744,16 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      ProjectHeroSlice,
+      ProjectHeroSliceDefaultPrimaryProjectTagsItem,
+      ProjectHeroSliceDefaultPrimary,
+      ProjectHeroSliceVariation,
+      ProjectHeroSliceDefault,
+      RoadmapSlice,
+      RoadmapSliceDefaultPrimaryRoadmapItem,
+      RoadmapSliceDefaultPrimary,
+      RoadmapSliceVariation,
+      RoadmapSliceDefault,
       ServicesSlice,
       ServicesSliceDefaultPrimaryServicesItem,
       ServicesSliceDefaultPrimary,

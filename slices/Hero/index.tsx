@@ -63,12 +63,12 @@ const Hero: FC<HeroProps> = ({ slice }) => {
   const array = slice.primary.title_action.map((text) => text.action as string);
 
   return (
-    <div className="relative isolate">
+
       <Section
         hasBlub
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
-        className="min-h-screen 2xl:min-h-[1000px] flex items-center rounded-b-4xl"
+        className="min-h-screen 2xl:min-h-[1000px] flex items-center rounded-b-4xl py-12"
       >
         <div className="">
           <div className="flex flex-col items-center justify-center text-center">
@@ -94,12 +94,12 @@ const Hero: FC<HeroProps> = ({ slice }) => {
             </CTAButton>
           </div>
 
-          <InfiniteScrollComponent
+          {/* <InfiniteScrollComponent
             items={["hi", "hqwe", "qweklqwj", "askdljq"]}
-          />
+          /> */}
         </div>
       </Section>
-    </div>
+
   );
 };
 

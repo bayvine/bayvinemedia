@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "project_hero": {
+              "type": "SharedSlice"
+            },
+            "roadmap": {
+              "type": "SharedSlice"
+            },
             "about": {
               "type": "SharedSlice"
             },

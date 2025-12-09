@@ -1,0 +1,104 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"project_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Finish"
+						}
+					}
+				]
+			},
+			"project_subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Aute occaecat quis ad aliqua aliquip aute cillum id deserunt officia aliquip. Cupidatat ex velit officia pariatur. Excepteur est exercitation nostrud reprehenderit occaecat ea eiusmod minim esse proident ullamco."
+						}
+					}
+				]
+			},
+			"project_tags": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"tag",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "label",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"project_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cupidatat irure proident enim reprehenderit incididunt."
+						}
+					}
+				]
+			},
+			"mockup_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+					"width": 4172,
+					"height": 4000
+				},
+				"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+				"width": 4172,
+				"height": 4000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "mood",
+				"credits": null,
+				"__TYPE__": "ImageContent"
+			},
+			"mockup_device": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+					"width": 3810,
+					"height": 5715
+				},
+				"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
+				"width": 3810,
+				"height": 5715,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "possible",
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]

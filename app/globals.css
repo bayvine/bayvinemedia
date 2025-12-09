@@ -89,9 +89,11 @@
   syntax: "*";
   inherits: false;
 }
+
 html,
 body {
   background-color: black;
+  color: white;
   font-family: "Satoshi", "Arial", "sans-serif";
   letter-spacing: -0.05em;
 }
