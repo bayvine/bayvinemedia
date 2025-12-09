@@ -15,7 +15,7 @@ const NavBar = () => {
      return (
 				<div className="fixed z-50 w-full top-5 flex items-center justify-between px-15 py-7 shrink-0">
 					<div>
-						<span className='text-white font-[600] text-lg flex items-center gap-3'><Icon size="38" name='logo'/>Bayvine Digital Agency</span>
+						<span className='text-white text-lg flex items-center gap-3'><Icon size="38" name='logo'/>Bayvine Digital Agency</span>
 					</div>
 					<nav className="flex items-center justify-center text-white bg-black/50 px-2 py-2 rounded-full box-shadow shadow-2xl shrink-0">
 						<ul className="flex gap-4 shrink-0">
