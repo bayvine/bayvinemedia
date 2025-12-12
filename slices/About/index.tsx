@@ -1,26 +1,22 @@
-"use client";
+"use client"
 
-import { FC, useRef } from "react";
-import { Content, isFilled } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import Section from "@/components/Section";
-import { motion } from "framer-motion";
+import { FC, useRef } from "react"
+import { Content, isFilled } from "@prismicio/client"
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react"
+import Section from "@/components/Section"
+import { motion } from "framer-motion"
 
 /**
  * Props for `About`.
  */
-export type AboutProps = SliceComponentProps<Content.AboutSlice>;
+export type AboutProps = SliceComponentProps<Content.AboutSlice>
 
 /**
  * Component for "About" Slices.
  */
 const About: FC<AboutProps> = ({ slice }) => {
-  const scrollRef = useRef(null);
-
-  return (
-		<Section
-			ref={scrollRef}
-			hasBlub={false}
+	return (
+		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
 			className="py-12"
@@ -30,7 +26,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 					className="pointer-events-auto
        flex justify-center items-center"
 				>
-					<div className="w-[1200px] overflow-hidden rounded-lg backdrop-blur isolate">
+					<div className="w-full overflow-hidden backdrop-blur isolate">
 						<motion.video
 							autoPlay
 							playsInline
@@ -43,7 +39,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 								type="video/mp4"
 							/>
 						</motion.video>
-						<motion.div className="bg-linear-30 bg-black/50 absolute left-0 top-0 w-full h-full z-50  flex items-center justify-center flex-col">
+						<motion.div className="bg-linear-30 bg-black/75 absolute left-0 top-0 w-full h-full z-50  flex items-center justify-center flex-col">
 							<span className="text-lg min-w-4 flex items-center justify-center overflow-hidden px-6 py-1 border rounded-full">
 								<PrismicRichText field={slice.primary.title} />
 							</span>
@@ -54,8 +50,8 @@ const About: FC<AboutProps> = ({ slice }) => {
 					</div>
 				</div>
 			)}
-		</Section>
+		</section>
 	)
-};
+}
 
-export default About;
+export default About

@@ -24,7 +24,9 @@ const CTAButton = ({
         className,
       ])}
     >
-      <span className="relative z-50">{children}</span>
+      <span className="relative z-50 flex items-center gap-2 whitespace-nowrap">
+        {children}
+      </span>
     </button>
   );
 };

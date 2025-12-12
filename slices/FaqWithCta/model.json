@@ -1,0 +1,85 @@
+{
+  "type": "SharedSlice",
+  "id": "faq_with_cta",
+  "name": "FaqWithCta",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard variation with FAQ group and contact CTA card.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph,strong",
+            "label": "Section Subtitle"
+          }
+        },
+        "faqs": {
+          "type": "Group",
+          "config": {
+            "label": "FAQs",
+            "fields": {
+              "question": {
+                "type": "Text",
+                "config": {
+                  "label": "Question"
+                }
+              },
+              "answer": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Answer"
+                }
+              }
+            }
+          }
+        },
+        "cta_media": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Media",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        },
+        "cta_title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading4,strong",
+            "label": "CTA Title"
+          }
+        },
+        "cta_description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "CTA Description"
+          }
+        },
+        "cta_button": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Button",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        },
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

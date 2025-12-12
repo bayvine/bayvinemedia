@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "faq_with_cta": {
+              "type": "SharedSlice"
+            },
             "project_hero": {
               "type": "SharedSlice"
             },
