@@ -1,0 +1,29 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "privacy_policy": {
+        "type": "Link",
+        "config": {
+          "label": "Privacy policy",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "trademark": {
+        "type": "Text",
+        "config": {
+          "label": "Trademark",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

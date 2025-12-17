@@ -65,7 +65,6 @@ const Hero: FC<HeroProps> = ({ slice }) => {
   return (
 
       <Section
-        // hasBlub
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
         className="flex items-center rounded-b-4xl pb-12 pt-60"
@@ -74,7 +73,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           <div className="flex flex-col items-center justify-center text-center">
             <div
               className="font-black text-8xl 
-						 leading-12 lg:leading-23 uppercase"
+						 leading-12 lg:leading-23 tracking-tighter uppercase"
             >
               <PrismicRichText field={slice.primary.title}></PrismicRichText>
               <GlitchText words={array} />{" "}

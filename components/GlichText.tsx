@@ -50,7 +50,7 @@ export const GlitchText = ({
 	
 
 	return (
-		<span className="word-veil" aria-live="polite" aria-atomic="true">
+		<span className="word-veil tracking-tighter" aria-live="polite" aria-atomic="true">
 			<AnimatePresence mode="wait" initial={false}>
 				<motion.span
 					key={`${wordsKey}-${currentIndex}`}

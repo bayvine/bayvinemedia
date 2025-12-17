@@ -154,7 +154,6 @@ const FaqWithCta: FC<FaqWithCtaProps> = ({ slice }) => {
   return (
 		<Section
 			id="faq"
-			hasBlub={false}
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
 			className="py-16 lg:py-24"

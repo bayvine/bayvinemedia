@@ -19,27 +19,27 @@ const About: FC<AboutProps> = ({ slice }) => {
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
-			className="py-12"
+			className="py-12 w-full mx-auto"
 		>
 			{isFilled.linkToMedia(slice.primary.background_video) && (
 				<div
 					className="pointer-events-auto
        flex justify-center items-center"
 				>
-					<div className="w-full overflow-hidden backdrop-blur isolate">
+					<div className="w-full overflow-hidden backdrop-blur isolate mx-auto">
 						<motion.video
 							autoPlay
 							playsInline
 							muted
 							loop
-							className="object-cover position-bottom"
+							className="object-cover w-full"
 						>
 							<source
 								src={slice.primary.background_video.url}
 								type="video/mp4"
 							/>
 						</motion.video>
-						<motion.div className="bg-linear-30 bg-black/75 absolute left-0 top-0 w-full h-full z-50  flex items-center justify-center flex-col">
+						<motion.div className="bg-linear-30 bg-black/75 absolute left-0 top-0 w-full  z-5 h-full  flex items-center justify-center flex-col">
 							<span className="text-lg min-w-4 flex items-center justify-center overflow-hidden px-6 py-1 border rounded-full">
 								<PrismicRichText field={slice.primary.title} />
 							</span>

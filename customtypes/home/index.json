@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "footer_cta_navigation_branding": {
+              "type": "SharedSlice"
+            },
             "about_with_images_grid": {
               "type": "SharedSlice"
             },

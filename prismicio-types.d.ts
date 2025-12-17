@@ -69,7 +69,124 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
+type ContactDocumentDataSlicesSlice =
+  | FooterCtaNavigationBrandingSlice
+  | ContactFormSlice;
+
+/**
+ * Content for contact documents
+ */
+interface ContactDocumentData {
+  /**
+   * Slice Zone field in *contact*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<ContactDocumentDataSlicesSlice> /**
+   * Meta Title field in *contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: contact.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: contact.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *contact*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * contact document from Prismic
+ *
+ * - **API ID**: `contact`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ContactDocumentData>,
+    "contact",
+    Lang
+  >;
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Privacy policy field in *Footer*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.privacy_policy
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  privacy_policy: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Trademark field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.trademark
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  trademark: prismic.KeyTextField;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
 type HomeDocumentDataSlicesSlice =
+  | FooterCtaNavigationBrandingSlice
   | AboutWithImagesGridSlice
   | FaqWithCtaSlice
   | ProjectHeroSlice
@@ -137,7 +254,7 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = HomeDocument;
+export type AllDocumentTypes = ContactDocument | FooterDocument | HomeDocument;
 
 /**
  * Item in *About → Default → Primary → photos*
@@ -319,6 +436,250 @@ export type AboutWithImagesGridSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ContactForm → Default → Primary → Contact Options*
+ */
+export interface ContactFormSliceDefaultPrimaryContactOptionsItem {
+  /**
+   * Label field in *ContactForm → Default → Primary → Contact Options*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.contact_options[].option_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  option_label: prismic.KeyTextField;
+
+  /**
+   * Link or action (email, phone, calendar) field in *ContactForm → Default → Primary → Contact Options*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.contact_options[].option_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  option_link: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+}
+
+/**
+ * Item in *ContactForm → Default → Primary → Interest Services*
+ */
+export interface ContactFormSliceDefaultPrimaryInterestServicesItem {
+  /**
+   * Service field in *ContactForm → Default → Primary → Interest Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.interest_services[].service
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  service: prismic.KeyTextField;
+}
+
+/**
+ * Item in *ContactForm → Default → Primary → Budget Options*
+ */
+export interface ContactFormSliceDefaultPrimaryBudgetOptionsItem {
+  /**
+   * Budget Option field in *ContactForm → Default → Primary → Budget Options*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.budget_options[].budget_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  budget_label: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ContactForm → Default → Primary*
+ */
+export interface ContactFormSliceDefaultPrimary {
+  /**
+   * Heading field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Subheading field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.subheading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subheading: prismic.RichTextField;
+
+  /**
+   * 'Got questions?' Link field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.questions_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  questions_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Contact Options field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.contact_options[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  contact_options: prismic.GroupField<
+    Simplify<ContactFormSliceDefaultPrimaryContactOptionsItem>
+  >;
+
+  /**
+   * Interest Services field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.interest_services[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  interest_services: prismic.GroupField<
+    Simplify<ContactFormSliceDefaultPrimaryInterestServicesItem>
+  >;
+
+  /**
+   * Name Label field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.name_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name_label: prismic.KeyTextField;
+
+  /**
+   * Email Label field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.email_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  email_label: prismic.KeyTextField;
+
+  /**
+   * Phone Label field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.phone_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  phone_label: prismic.KeyTextField;
+
+  /**
+   * Budget Options field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.budget_options[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  budget_options: prismic.GroupField<
+    Simplify<ContactFormSliceDefaultPrimaryBudgetOptionsItem>
+  >;
+
+  /**
+   * Project Description Label field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.about_project_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  about_project_label: prismic.KeyTextField;
+
+  /**
+   * Project Description Placeholder field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.about_project_placeholder
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  about_project_placeholder: prismic.KeyTextField;
+
+  /**
+   * Button Label field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.submit_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  submit_label: prismic.KeyTextField;
+
+  /**
+   * Disclaimer field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.disclaimer
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  disclaimer: prismic.RichTextField;
+
+  /**
+   * Hero background field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.hero_background
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  hero_background: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for ContactForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard contact and inquiry form with service selection and direct contact options.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactFormSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactForm*
+ */
+type ContactFormSliceVariation = ContactFormSliceDefault;
+
+/**
+ * ContactForm Shared Slice
+ *
+ * - **API ID**: `contact_form`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactFormSlice = prismic.SharedSlice<
+  "contact_form",
+  ContactFormSliceVariation
+>;
+
+/**
  * Item in *FaqWithCta → Default → Primary → FAQs*
  */
 export interface FaqWithCtaSliceDefaultPrimaryFaqsItem {
@@ -452,6 +813,138 @@ type FaqWithCtaSliceVariation = FaqWithCtaSliceDefault;
 export type FaqWithCtaSlice = prismic.SharedSlice<
   "faq_with_cta",
   FaqWithCtaSliceVariation
+>;
+
+/**
+ * Item in *FooterCtaNavigationBranding → Default → Primary → nav groups*
+ */
+export interface FooterCtaNavigationBrandingSliceDefaultPrimaryPageNavLinksItem {
+  /**
+   * heading field in *FooterCtaNavigationBranding → Default → Primary → nav groups*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_cta_navigation_branding.default.primary.page_nav_links[].heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * nav item field in *FooterCtaNavigationBranding → Default → Primary → nav groups*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_cta_navigation_branding.default.primary.page_nav_links[].nav_item
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  nav_item: prismic.Repeatable<
+    prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+  >;
+}
+
+/**
+ * Primary content in *FooterCtaNavigationBranding → Default → Primary*
+ */
+export interface FooterCtaNavigationBrandingSliceDefaultPrimary {
+  /**
+   * CTA Heading field in *FooterCtaNavigationBranding → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_cta_navigation_branding.default.primary.cta_heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  cta_heading: prismic.KeyTextField;
+
+  /**
+   * CTA Text field in *FooterCtaNavigationBranding → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_cta_navigation_branding.default.primary.cta_text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  cta_text: prismic.RichTextField;
+
+  /**
+   * CTA Button field in *FooterCtaNavigationBranding → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_cta_navigation_branding.default.primary.cta_button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  cta_button: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * nav groups field in *FooterCtaNavigationBranding → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_cta_navigation_branding.default.primary.page_nav_links[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  page_nav_links: prismic.GroupField<
+    Simplify<FooterCtaNavigationBrandingSliceDefaultPrimaryPageNavLinksItem>
+  >;
+
+  /**
+   * Motto field in *FooterCtaNavigationBranding → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_cta_navigation_branding.default.primary.motto
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  motto: prismic.RichTextField;
+
+  /**
+   * Branding field in *FooterCtaNavigationBranding → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_cta_navigation_branding.default.primary.branding
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  branding: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for FooterCtaNavigationBranding Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard footer layout with call-to-action, grouped navigational links, secondary legal links, brand logo/text, and optional motto.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FooterCtaNavigationBrandingSliceDefault =
+  prismic.SharedSliceVariation<
+    "default",
+    Simplify<FooterCtaNavigationBrandingSliceDefaultPrimary>,
+    never
+  >;
+
+/**
+ * Slice variation for *FooterCtaNavigationBranding*
+ */
+type FooterCtaNavigationBrandingSliceVariation =
+  FooterCtaNavigationBrandingSliceDefault;
+
+/**
+ * FooterCtaNavigationBranding Shared Slice
+ *
+ * - **API ID**: `footer_cta_navigation_branding`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FooterCtaNavigationBrandingSlice = prismic.SharedSlice<
+  "footer_cta_navigation_branding",
+  FooterCtaNavigationBrandingSliceVariation
 >;
 
 /**
@@ -960,6 +1453,11 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ContactDocument,
+      ContactDocumentData,
+      ContactDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
@@ -974,11 +1472,23 @@ declare module "@prismicio/client" {
       AboutWithImagesGridSliceDefaultPrimary,
       AboutWithImagesGridSliceVariation,
       AboutWithImagesGridSliceDefault,
+      ContactFormSlice,
+      ContactFormSliceDefaultPrimaryContactOptionsItem,
+      ContactFormSliceDefaultPrimaryInterestServicesItem,
+      ContactFormSliceDefaultPrimaryBudgetOptionsItem,
+      ContactFormSliceDefaultPrimary,
+      ContactFormSliceVariation,
+      ContactFormSliceDefault,
       FaqWithCtaSlice,
       FaqWithCtaSliceDefaultPrimaryFaqsItem,
       FaqWithCtaSliceDefaultPrimary,
       FaqWithCtaSliceVariation,
       FaqWithCtaSliceDefault,
+      FooterCtaNavigationBrandingSlice,
+      FooterCtaNavigationBrandingSliceDefaultPrimaryPageNavLinksItem,
+      FooterCtaNavigationBrandingSliceDefaultPrimary,
+      FooterCtaNavigationBrandingSliceVariation,
+      FooterCtaNavigationBrandingSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryTitleActionItem,
       HeroSliceDefaultPrimary,

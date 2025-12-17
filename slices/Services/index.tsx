@@ -74,7 +74,6 @@ export const ServiceComponent = () => {
 const Services: FC<ServicesProps> = ({ slice }) => {
   return (
     <Section
-      hasBlub={false}
       className="py-12"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}

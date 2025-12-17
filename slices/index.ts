@@ -5,7 +5,11 @@ import dynamic from "next/dynamic";
 export const components = {
   about: dynamic(() => import("./About")),
   about_with_images_grid: dynamic(() => import("./AboutWithImagesGrid")),
+  contact_form: dynamic(() => import("./ContactForm")),
   faq_with_cta: dynamic(() => import("./FaqWithCta")),
+  footer_cta_navigation_branding: dynamic(
+    () => import("./FooterCtaNavigationBranding"),
+  ),
   hero: dynamic(() => import("./Hero")),
   project_hero: dynamic(() => import("./ProjectHero")),
   roadmap: dynamic(() => import("./Roadmap")),

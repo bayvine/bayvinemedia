@@ -1,0 +1,84 @@
+{
+  "type": "SharedSlice",
+  "id": "footer_cta_navigation_branding",
+  "name": "FooterCtaNavigationBranding",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard footer layout with call-to-action, grouped navigational links, secondary legal links, brand logo/text, and optional motto.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "cta_heading": {
+          "type": "Text",
+          "config": {
+            "label": "CTA Heading",
+            "placeholder": ""
+          }
+        },
+        "cta_text": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "CTA Text"
+          }
+        },
+        "cta_button": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Button",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        },
+        "page_nav_links": {
+          "type": "Group",
+          "config": {
+            "label": "nav groups",
+            "repeat": true,
+            "fields": {
+              "heading": {
+                "type": "Text",
+                "config": {
+                  "label": "heading",
+                  "placeholder": ""
+                }
+              },
+              "nav_item": {
+                "type": "Link",
+                "config": {
+                  "label": "nav item",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": true
+                }
+              }
+            }
+          }
+        },
+        "motto": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading4",
+            "label": "Motto"
+          }
+        },
+        "branding": {
+          "type": "Link",
+          "config": {
+            "label": "Branding",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
