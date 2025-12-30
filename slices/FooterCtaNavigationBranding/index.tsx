@@ -37,7 +37,7 @@ const FooterCtaNavigationBranding = async ({
   console.log(navMap);
 
   const trademark = footerDoc?.data?.trademark || "Bayvine Digital";
-  const ctaLabel = slice.primary.cta_button?.text || "Let's collaborate";
+	const ctaLabel = slice.primary.cta_button?.text;
 
   return (
 		<Section
@@ -68,15 +68,15 @@ const FooterCtaNavigationBranding = async ({
 							/>
 						</div>
 
-						<Link
-							href={ctaHref}
-							target="_blank"
-							className="mt-4 w-fit inline-flex items-center"
-						>
-							<CTAButton className="w-full inline-flex gap-2 whitespace-nowrap">
-								{ctaLabel} <RxArrowTopRight />
-							</CTAButton>
-						</Link>
+					  {ctaLabel && <Link
+						  href={ctaHref}
+						  target="_blank"
+						  className="mt-4 w-fit inline-flex items-center"
+					  >
+						  <CTAButton className="w-full inline-flex gap-2 whitespace-nowrap">
+							  {ctaLabel} <RxArrowTopRight />
+						  </CTAButton>
+					  </Link>}
 					</div>
 					<div className="flex gap-10">
 						{Object.entries(navMap).map(([heading, items]) => (
