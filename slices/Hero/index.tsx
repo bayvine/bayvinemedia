@@ -67,19 +67,20 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       <Section
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
-        className="flex items-center rounded-b-4xl pb-12 pt-60"
+        className="flex items-center rounded-b-4xl pb-12 pt-28 sm:pt-36 lg:pt-52"
       >
         <div className="">
           <div className="flex flex-col items-center justify-center text-center">
             <div
-              className="font-black text-8xl 
-						 leading-12 lg:leading-23 tracking-tighter uppercase"
+              className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight sm:leading-[1.05] lg:leading-[1.1] tracking-normal sm:tracking-tight lg:tracking-[-0.04em] uppercase"
             >
               <PrismicRichText field={slice.primary.title}></PrismicRichText>
-              <GlitchText words={array} />{" "}
+              <span className="inline-block">
+                <GlitchText words={array} />
+              </span>{" "}
             </div>
 
-            <p className="lg:text-lg text-center lg:w-[650px] my-4">
+            <p className="text-sm sm:text-base lg:text-lg text-center max-w-[650px] my-4">
               <PrismicText field={slice.primary.subtitle} />
             </p>
           </div>
