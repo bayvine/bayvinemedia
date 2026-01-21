@@ -1,9 +1,8 @@
 "use client"
 
-import { FC, useRef } from "react"
+import { FC } from "react"
 import { Content, isFilled } from "@prismicio/client"
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react"
-import Section from "@/components/Section"
 import { motion } from "framer-motion"
 
 /**
@@ -19,35 +18,33 @@ const About: FC<AboutProps> = ({ slice }) => {
 		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
-			className="py-12 w-full mx-auto"
+			className="relative w-full"
 		>
 			{isFilled.linkToMedia(slice.primary.background_video) && (
-				<div
-					className="pointer-events-auto
-       flex justify-center items-center"
-				>
-					<div className="w-full overflow-hidden backdrop-blur isolate mx-auto">
+				<div className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden">
+					<div className="absolute inset-0">
 						<motion.video
 							autoPlay
 							playsInline
 							muted
 							loop
-							className="object-cover w-full"
+							className="h-full w-full object-cover"
 						>
 							<source
 								src={slice.primary.background_video.url}
 								type="video/mp4"
 							/>
 						</motion.video>
-						<motion.div className="bg-linear-30 bg-black/75 absolute left-0 top-0 w-full  z-5 h-full  flex items-center justify-center flex-col">
-							<span className="text-lg min-w-4 flex items-center justify-center overflow-hidden px-6 py-1 border rounded-full">
-								<PrismicRichText field={slice.primary.title} />
-							</span>
-							<div className="text-center max-w-2xl text-4xl shrink-0 mt-5 uppercase">
-								<PrismicRichText field={slice.primary.subtitle} />
-							</div>
-						</motion.div>
 					</div>
+					<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/80" />
+					<motion.div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 py-16 text-center">
+						<span className="inline-flex text-lg items-center justify-center rounded-full px-5 py-2 border">
+							<PrismicRichText field={slice.primary.title} />
+						</span>
+						<div className="mt-6 max-w-4xl text-3xl  uppercase sm:text-4xl md:text-5xl">
+							<PrismicRichText field={slice.primary.subtitle} />
+						</div>
+					</motion.div>
 				</div>
 			)}
 		</section>

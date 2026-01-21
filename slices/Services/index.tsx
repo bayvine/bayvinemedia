@@ -37,21 +37,21 @@ export const ServiceComponent = () => {
 		>
 			<Link
 				href="#"
-				className="w-full px-4 py-12 border-t border-gray-500 flex justify-between group hover:bg-slate-50   items-center cursor-pointer  transition-all duration-300"
+				className="w-full border-t border-gray-500 px-4 py-10 sm:px-6 sm:py-12 transition-all duration-300 hover:bg-slate-50 group cursor-pointer grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_auto] lg:items-center"
 			>
-				<h3 className=" z-50 text-5xl font-semibold mb-4 flex items-center shrink-0 group-hover:text-black">
+				<h3 className=" z-50 text-5xl font-semibold mb-0 flex items-center group-hover:text-black md:pr-6">
 					<span className="mr-4 text-sm text-slate-50 group-hover:text-black  font-extralight w-0.5 h-0.5 flex items-center justify-center border rounded-full p-3 ">
 						1
 					</span>
 					WEB DEVELOPMENT
 				</h3>
-				<p className="max-w-sm  z-50 group-hover:text-black">
+				<p className="max-w-sm z-50 group-hover:text-black">
 					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore
 					consequatur iusto at, perspiciatis eaque.
 				</p>
 				<RxArrowTopRight
 					size={30}
-					className="relative z-50 group-hover:text-black mr-8 group-hover:translate-x-0.5 group-hover:-translate-y-1 transition-all duration-300"
+					className="relative z-50 group-hover:text-black mr-0 md:mr-8 self-end lg:self-auto justify-self-end group-hover:translate-x-0.5 group-hover:-translate-y-1 transition-all duration-300"
 				/>
 				{/* <Image
           style={{
