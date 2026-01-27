@@ -22,8 +22,8 @@ const RoadMapCard: FC<{
   t: any; // MotionValue<number> 0..1 collapse progress for this card
 }> = ({ item, t }) => {
   // Heights
-  const cardH = useTransform(t, (v) => `${lerp(400, 200, clamp(v))}px`); // overall card height
-  const mediaH = useTransform(t, (v) => `${lerp(320, 150, clamp(v))}px`); // video height (your ask)
+  const cardH = useTransform(t, (v) => `${lerp(400, 150, clamp(v))}px`); // overall card height
+  const mediaH = useTransform(t, (v) => `${lerp(320, 100, clamp(v))}px`); // video height (your ask)
 
   // “Snap” description (not progressive): stays visible until ~70%, then disappears.
   const descOpacity = useTransform(t, [0, 0.68, 0.69, 1], [1, 1, 0, 0]);
@@ -76,7 +76,7 @@ const RoadMapCard: FC<{
   );
 };
 
-export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 120 }) => {
+export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   // Scroll progress for THIS section only
@@ -94,7 +94,7 @@ export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 120 }) => 
   return (
     <div ref={sectionRef} className="relative my-12" style={{ minHeight: sectionMinH }}>
       {/* ONE sticky wrapper for the whole stack (like dpdk) */}
-      <div className="sticky" style={{ top: navbarHeight + 20 }}>
+      <div className="sticky" style={{ top: navbarHeight  }}>
         <div className="h-fit">
           {items.map((item, i) => {
             // Each card collapses in its own slice of the scroll timeline.
