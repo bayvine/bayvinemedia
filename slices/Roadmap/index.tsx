@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useMemo, useRef } from "react";
+import React, { FC, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Content } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
@@ -76,6 +76,43 @@ const RoadMapCard: FC<{
   );
 };
 
+const RoadmapCardStatic: FC<{ item: RoadmapItem }> = ({ item }) => {
+  return (
+    <article className="border-t border-white py-6">
+      <div className="flex flex-col gap-4">
+        <div className="min-w-0">
+          <h3 className="text-xl font-bold uppercase leading-tight text-white sm:text-2xl">
+            {item.title || "Untitled step"}
+          </h3>
+          <div className="mt-3">
+            <div className="space-y-3 text-sm leading-relaxed text-slate-200 sm:text-base">
+              <PrismicRichText
+                field={item.description}
+                components={{
+                  paragraph: ({ children }) => <p className="leading-relaxed">{children}</p>,
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {item.media?.url ? (
+          <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-900/40 shadow-lg">
+            <video
+              src={item.media.url}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-full w-full object-cover object-center"
+            />
+          </div>
+        ) : null}
+      </div>
+    </article>
+  );
+};
+
 export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -120,7 +157,7 @@ export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
  * Component for "Roadmap" Slices.
  */
 const Roadmap: FC<RoadmapProps> = ({ slice }) => {
-  const roadmapItems = [...slice.primary.roadmap, ...slice.primary.roadmap, ...slice.primary.roadmap, ...slice.primary.roadmap];
+  const roadmapItems = [...slice.primary.roadmap];
 
   return (
     <Section
@@ -142,7 +179,15 @@ const Roadmap: FC<RoadmapProps> = ({ slice }) => {
         </div>
       </div>
 
-     <StickyRoadmapStack items={roadmapItems}/>
+      <div className="mt-8 md:hidden">
+        {roadmapItems.map((item, i) => (
+          <RoadmapCardStatic key={`${item.title ?? "step"}-${i}`} item={item} />
+        ))}
+      </div>
+
+      <div className="hidden md:block">
+        <StickyRoadmapStack items={roadmapItems} />
+      </div>
     </Section>
   );
 };
