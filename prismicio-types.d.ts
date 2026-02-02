@@ -1142,6 +1142,16 @@ export interface ProjectHeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   mockup_device: prismic.ImageField<never>;
+
+  /**
+   * Background video field in *ProjectHero → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_hero.default.primary.background_video
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  background_video: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**

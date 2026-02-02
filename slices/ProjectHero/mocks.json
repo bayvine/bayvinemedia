@@ -77,7 +77,6 @@
 				"__TYPE__": "ImageContent"
 			},
 			"mockup_device": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
@@ -96,7 +95,22 @@
 					"background": "transparent"
 				},
 				"alt": "possible",
+				"credits": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"background_video": {
+				"__TYPE__": "LinkContent",
+				"key": "fcd2f95c-5679-4fc8-aff1-8b9d2a35d220",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "harbor"
+				}
 			}
 		},
 		"items": []

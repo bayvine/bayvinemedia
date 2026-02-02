@@ -59,6 +59,15 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "background_video": {
+          "type": "Link",
+          "config": {
+            "label": "Background video",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
         }
       },
       "items": {}
