@@ -127,6 +127,69 @@ a {
   }
 }
 
+.project-detail-media {
+  animation: project-media-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.project-detail-title {
+  animation: project-title-reveal 0.9s 0.1s cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+.project-detail-body {
+  animation: project-body-reveal 0.9s 0.2s cubic-bezier(0.16, 1, 0.3, 1)
+    both;
+}
+
+@keyframes project-media-reveal {
+  0% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes project-title-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes project-body-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-detail-media,
+  .project-detail-title,
+  .project-detail-body {
+    animation: none;
+  }
+}
+
+.project-carousel-track {
+  scrollbar-width: none;
+}
+
+.project-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
 .background-hover-effect {
   @apply relative overflow-hidden transition-all before:absolute before:h-0 before:w-0 before:rounded-full hover:text-white before:bg-black before:duration-300 before:ease-out  hover:before:h-56 hover:before:w-full;
 }

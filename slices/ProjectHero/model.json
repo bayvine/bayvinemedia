@@ -46,18 +46,20 @@
             "label": "Project Description"
           }
         },
+        "project_link": {
+          "type": "Link",
+          "config": {
+            "label": "Project Link",
+            "select": "document",
+            "customtypes": [
+              "project"
+            ]
+          }
+        },
         "mockup_image": {
           "type": "Image",
           "config": {
             "label": "Mockup Image"
-          }
-        },
-        "mockup_device": {
-          "type": "Image",
-          "config": {
-            "label": "Mockup device",
-            "constraint": {},
-            "thumbnails": []
           }
         },
         "background_video": {

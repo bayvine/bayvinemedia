@@ -54,6 +54,14 @@
 					}
 				]
 			},
+			"project_link": {
+				"key": "8f65d5c8-8d6a-4d94-b2d2-fd2e01c6b79d",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "/projects/finish"
+				}
+			},
 			"mockup_image": {
 				"origin": {
 					"id": "main",
@@ -76,32 +84,9 @@
 				"credits": null,
 				"__TYPE__": "ImageContent"
 			},
-			"mockup_device": {
-				"origin": {
-					"id": "main",
-					"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
-					"width": 3810,
-					"height": 5715
-				},
-				"url": "https://images.unsplash.com/photo-1587614295999-6c1c13675117",
-				"width": 3810,
-				"height": 5715,
-				"edit": {
-					"zoom": 1,
-					"crop": {
-						"x": 0,
-						"y": 0
-					},
-					"background": "transparent"
-				},
-				"alt": "possible",
-				"credits": null,
-				"__TYPE__": "ImageContent",
-				"thumbnails": {}
-			},
 			"background_video": {
-				"__TYPE__": "LinkContent",
 				"key": "fcd2f95c-5679-4fc8-aff1-8b9d2a35d220",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "FileLink",
 					"id": "mock_Media_link",

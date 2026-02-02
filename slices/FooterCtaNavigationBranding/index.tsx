@@ -34,7 +34,6 @@ const FooterCtaNavigationBranding = async ({
     acc[section.heading as string] = section.nav_item;
     return acc;
   }, {});
-  console.log(navMap);
 
   const trademark = footerDoc?.data?.trademark || "Bayvine Digital";
 	const ctaLabel = slice.primary.cta_button?.text;
@@ -79,14 +78,13 @@ const FooterCtaNavigationBranding = async ({
 					  </Link>}
 					</div>
 					<div className="flex gap-10">
-						{Object.entries(navMap).map(([heading, items]) => (
-							<div>
+						{Object.entries(navMap).map(([heading, items], key) => (
+							<div key={key}>
 								<h3 className="font-bold mb-2 text-lg">{heading}</h3>
 								<ul className="flex flex-col gap-2">
-									{items.map((i) => {
-										console.log(i)
+									{items.map((i, key) => {
                     return (
-											<li>
+											<li key={key}>
 												<PrismicNextLink
 													className="hover:underline! text-lg"
 													field={i}

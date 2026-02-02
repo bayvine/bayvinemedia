@@ -1,0 +1,137 @@
+{
+  "format": "page",
+  "id": "project",
+  "label": "Project",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "single": "heading1",
+          "label": "Project Title"
+        }
+      },
+      "subtitle": {
+        "type": "StructuredText",
+        "config": {
+          "single": "paragraph",
+          "label": "Project Subtitle"
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph,strong,em,hyperlink",
+          "label": "Project Description"
+        }
+      },
+      "hero_video": {
+        "type": "Link",
+        "config": {
+          "label": "Hero Video",
+          "select": "media"
+        }
+      },
+      "hero_poster": {
+        "type": "Image",
+        "config": {
+          "label": "Hero Poster"
+        }
+      },
+      "gallery": {
+        "type": "Group",
+        "config": {
+          "label": "Gallery",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image"
+              }
+            },
+            "caption": {
+              "type": "Text",
+              "config": {
+                "label": "Caption"
+              }
+            }
+          }
+        }
+      },
+      "cta_heading": {
+        "type": "Text",
+        "config": {
+          "label": "CTA Heading"
+        }
+      },
+      "cta_body": {
+        "type": "StructuredText",
+        "config": {
+          "multi": "paragraph,strong,em,hyperlink",
+          "label": "CTA Body"
+        }
+      },
+      "primary_cta_label": {
+        "type": "Text",
+        "config": {
+          "label": "Primary CTA Label"
+        }
+      },
+      "primary_cta_link": {
+        "type": "Link",
+        "config": {
+          "label": "Primary CTA Link",
+          "select": null
+        }
+      },
+      "secondary_cta_label": {
+        "type": "Text",
+        "config": {
+          "label": "Secondary CTA Label"
+        }
+      },
+      "secondary_cta_link": {
+        "type": "Link",
+        "config": {
+          "label": "Secondary CTA Link",
+          "select": null
+        }
+      },
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid"
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  }
+}

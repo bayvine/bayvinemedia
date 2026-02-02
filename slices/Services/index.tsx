@@ -20,7 +20,6 @@ export const ServiceComponent = () => {
   const handlePointerMove = useCallback((event: PointerEvent<HTMLElement>) => {
     const x = event.clientX 
     const y = event.clientY
-    console.log({x, y})
     setPosition({x, y})
   }, []);
 
