@@ -30,7 +30,7 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
 
       <Link
         href=""
-        className="mt-12 group relative overflow-hidden duration-300 ease-in-out isolate rounded-2xl  h-[700px] w-full flex items-end group"
+        className="mt-12 shadow shadow-slate-50/40 drop-shadow-4xl group relative overflow-hidden duration-300 ease-in-out isolate rounded-2xl aspect-video flex items-end group"
       >
         <div className="z-50 py-10 px-10 w-full  flex flex-col">
         
