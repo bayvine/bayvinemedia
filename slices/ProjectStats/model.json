@@ -1,0 +1,50 @@
+{
+  "type": "SharedSlice",
+  "id": "project_stats",
+  "name": "ProjectStats",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Stat cards with icon, value, and description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading"
+          }
+        },
+        "stats": {
+          "type": "Group",
+          "config": {
+            "label": "Stats",
+            "fields": {
+              "icon_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Icon Name"
+                }
+              },
+              "value": {
+                "type": "Text",
+                "config": {
+                  "label": "Value"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

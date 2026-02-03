@@ -1,0 +1,52 @@
+{
+  "type": "SharedSlice",
+  "id": "project_double_column_text",
+  "name": "ProjectDoubleColumnText",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Two-column text with detail list.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Title"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Body"
+          }
+        },
+        "details": {
+          "type": "Group",
+          "config": {
+            "label": "Details",
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label"
+                }
+              },
+              "value": {
+                "type": "Text",
+                "config": {
+                  "label": "Value"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

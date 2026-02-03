@@ -1,0 +1,32 @@
+{
+  "type": "SharedSlice",
+  "id": "project_title_paragraph",
+  "name": "ProjectTitleParagraph",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Title with supporting paragraph text.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Title"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Body"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

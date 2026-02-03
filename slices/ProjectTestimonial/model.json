@@ -1,0 +1,49 @@
+{
+  "type": "SharedSlice",
+  "id": "project_testimonial",
+  "name": "ProjectTestimonial",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Client testimonial with quote and author details.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "quote": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Quote"
+          }
+        },
+        "author_name": {
+          "type": "Text",
+          "config": {
+            "label": "Author Name"
+          }
+        },
+        "author_title": {
+          "type": "Text",
+          "config": {
+            "label": "Author Title"
+          }
+        },
+        "author_company": {
+          "type": "Text",
+          "config": {
+            "label": "Author Company"
+          }
+        },
+        "author_image": {
+          "type": "Image",
+          "config": {
+            "label": "Author Image"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Impact",
+        "type": "Text"
+      },
+      "stats": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "icon_name",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "logo",
+                  "type": "Text"
+                }
+              ],
+              [
+                "value",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "120%",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Growth",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  }
+]

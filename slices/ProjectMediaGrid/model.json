@@ -1,0 +1,51 @@
+{
+  "type": "SharedSlice",
+  "id": "project_media_grid",
+  "name": "ProjectMediaGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Grid of images and videos.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading"
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Media Items",
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image"
+                }
+              },
+              "video": {
+                "type": "Link",
+                "config": {
+                  "label": "Video",
+                  "select": "media"
+                }
+              },
+              "caption": {
+                "type": "Text",
+                "config": {
+                  "label": "Caption"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
