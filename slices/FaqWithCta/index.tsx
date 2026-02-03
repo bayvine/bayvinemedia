@@ -76,6 +76,8 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
   const mediaUrl = hasMedia ? primary.cta_media.url : null;
   const hasCtaLink = isFilled.link(primary.cta_button);
   const ctaHref = hasCtaLink ? primary.cta_button.url ?? "#" : null;
+  const isContactLink =
+    typeof ctaHref === "string" && /\/contact(\/|$|\?|#)/.test(ctaHref);
   const ctaLabel =
     primary.cta_button?.text || "Schedule free intro chat";
 
@@ -130,7 +132,12 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
 						/>
 					</div>
 					{hasCtaLink ? (
-						<Link href={ctaHref} target="_blank" className="mt-4 w-fit inline-flex items-center">
+						<Link
+							href={ctaHref}
+							target={isContactLink ? undefined : "_blank"}
+							rel={isContactLink ? undefined : "noreferrer"}
+							className="mt-4 w-fit inline-flex items-center"
+						>
 							<CTAButton className="w-full inline-flex gap-2 whitespace-nowrap">
 								{ctaLabel} <RxArrowTopRight />
 							</CTAButton>

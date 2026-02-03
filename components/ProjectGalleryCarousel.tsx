@@ -11,7 +11,7 @@ type ProjectGalleryCarouselProps = {
 
 const ProjectGalleryCarousel = ({
   items,
-  heading = "Page highlights",
+  heading = "Highlights",
 }: ProjectGalleryCarouselProps) => {
   const trackRef = useRef<HTMLDivElement | null>(null);
 
@@ -29,7 +29,7 @@ const ProjectGalleryCarousel = ({
   return (
     <div className="mt-12">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h3 className="text-sm font-semibold uppercase tracking-[0.35em] text-white/70">
+        <h3 className="text-xl font-semibold ">
           {heading}
         </h3>
         <div className="flex items-center gap-2">
@@ -37,7 +37,7 @@ const ProjectGalleryCarousel = ({
             type="button"
             onClick={() => handleScroll(-1)}
             aria-label="Scroll gallery backward"
-            className="rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:border-white/50 hover:text-white"
+            className="rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-semibold  transition hover:border-white/50 hover:text-white"
           >
             Prev
           </button>
@@ -45,7 +45,7 @@ const ProjectGalleryCarousel = ({
             type="button"
             onClick={() => handleScroll(1)}
             aria-label="Scroll gallery forward"
-            className="rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:border-white/50 hover:text-white"
+            className="rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-semibold  transition hover:border-white/50 hover:text-white"
           >
             Next
           </button>
@@ -57,34 +57,26 @@ const ProjectGalleryCarousel = ({
         className="project-carousel-track mt-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6"
       >
         {items.map((item, index) => {
-          const caption = item.caption?.trim();
+        
           return (
             <article
               key={`${item.image?.url ?? "page"}-${index}`}
-              className="snap-center shrink-0 w-[82%] sm:w-[70%] lg:w-[55%]"
+              className=""
             >
-              <div className="relative aspect-video overflow-hidden rounded-3xl border border-white/10 bg-white/5">
+              <div className="snap-center relative overflow-hidden w-[500px] h-[500px] flex items-center justify-center">
                 {item.image?.url ? (
                   <PrismicNextImage
                     field={item.image}
-                    fill
                     sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 55vw"
-                    className="object-cover"
+                    className="object-contain w-full"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-sm text-white/60">
-                    No image
+                   
                   </div>
                 )}
               </div>
-              <div className="mt-3 flex items-center justify-between text-xs uppercase tracking-[0.2em] text-white/60">
-                <span>{`Page ${index + 1}`}</span>
-                {caption ? (
-                  <span className="text-white/80 normal-case tracking-normal text-sm font-semibold">
-                    {caption}
-                  </span>
-                ) : null}
-              </div>
+             
             </article>
           );
         })}

@@ -280,6 +280,41 @@ export interface ProjectDocumentDataGalleryItem {
 }
 
 /**
+ * Item in *Project → Stats*
+ */
+export interface ProjectDocumentDataStatsItem {
+  /**
+   * Icon Name field in *Project → Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.stats[].icon_name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  icon_name: prismic.KeyTextField;
+
+  /**
+   * Value field in *Project → Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.stats[].value
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  value: prismic.KeyTextField;
+
+  /**
+   * Description field in *Project → Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.stats[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+}
+
+/**
  * Content for Project documents
  */
 interface ProjectDocumentData {
@@ -348,6 +383,17 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   gallery: prismic.GroupField<Simplify<ProjectDocumentDataGalleryItem>>;
+
+  /**
+   * Stats field in *Project*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.stats[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  stats: prismic.GroupField<Simplify<ProjectDocumentDataStatsItem>>;
 
   /**
    * CTA Heading field in *Project*
@@ -1699,6 +1745,7 @@ declare module "@prismicio/client" {
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataGalleryItem,
+      ProjectDocumentDataStatsItem,
       AllDocumentTypes,
       AboutSlice,
       AboutSliceDefaultPrimaryPhotosItem,

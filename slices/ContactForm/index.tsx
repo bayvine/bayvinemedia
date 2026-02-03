@@ -316,6 +316,11 @@ type ContactOptionsProps = {
   options: Content.ContactFormSliceDefaultPrimaryContactOptionsItem[];
 };
 
+const getContactTargetProps = (href?: string | null) =>
+  typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
+    ? { target: "_self" }
+    : {};
+
 const ContactOptions: FC<ContactOptionsProps> = ({ options }) => (
   <div className="flex flex-col gap-2">
     {options.map((option, index) => {
@@ -327,6 +332,7 @@ const ContactOptions: FC<ContactOptionsProps> = ({ options }) => (
         <PrismicNextLink
           key={`${option.option_label ?? "option"}-${index}`}
           field={option.option_link}
+          {...getContactTargetProps(option.option_link?.url)}
         >
           <span className="text-lg font-semibold hover:underline">
             {option.option_label || option.option_link.text || option.option_link.url}
@@ -454,7 +460,10 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
               }}
               field={slice.primary.heading}
             ></PrismicRichText>
-            <PrismicNextLink field={slice.primary.questions_link}>
+            <PrismicNextLink
+              field={slice.primary.questions_link}
+              {...getContactTargetProps(slice.primary.questions_link?.url)}
+            >
               <span className="hover:underline text-lg font-medium">
                 {slice.primary.questions_link.text}
               </span>

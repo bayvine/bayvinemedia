@@ -60,6 +60,32 @@
           }
         }
       },
+      "stats": {
+        "type": "Group",
+        "config": {
+          "label": "Stats",
+          "fields": {
+            "icon_name": {
+              "type": "Text",
+              "config": {
+                "label": "Icon Name"
+              }
+            },
+            "value": {
+              "type": "Text",
+              "config": {
+                "label": "Value"
+              }
+            },
+            "description": {
+              "type": "Text",
+              "config": {
+                "label": "Description"
+              }
+            }
+          }
+        }
+      },
       "cta_heading": {
         "type": "Text",
         "config": {

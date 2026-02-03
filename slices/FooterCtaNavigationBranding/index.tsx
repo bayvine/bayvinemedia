@@ -26,7 +26,10 @@ const FooterCtaNavigationBranding = async ({
 }: FooterCtaNavigationBrandingProps) => {
   const client = createClient();
   const footerDoc = await client.getSingle("footer").catch(() => null);
+  const isContactHref = (href?: string | null) =>
+    typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href);
   const ctaHref = slice.primary.cta_button.url ?? "#";
+  const isContactLink = isContactHref(ctaHref);
   const navGroups = slice.primary.page_nav_links || [];
   const navMap = navGroups.reduce<
     Record<string, (typeof navGroups)[number]["nav_item"]>
@@ -67,15 +70,18 @@ const FooterCtaNavigationBranding = async ({
 							/>
 						</div>
 
-					  {ctaLabel && <Link
-						  href={ctaHref}
-						  target="_blank"
-						  className="mt-4 w-fit inline-flex items-center"
-					  >
-						  <CTAButton className="w-full inline-flex gap-2 whitespace-nowrap">
-							  {ctaLabel} <RxArrowTopRight />
-						  </CTAButton>
-					  </Link>}
+					  {ctaLabel && (
+							<Link
+								href={ctaHref}
+								target={isContactLink ? undefined : "_blank"}
+								rel={isContactLink ? undefined : "noreferrer"}
+								className="mt-4 w-fit inline-flex items-center"
+							>
+								<CTAButton className="w-full inline-flex gap-2 whitespace-nowrap">
+									{ctaLabel} <RxArrowTopRight />
+								</CTAButton>
+							</Link>
+						)}
 					</div>
 					<div className="flex gap-10">
 						{Object.entries(navMap).map(([heading, items], key) => (
@@ -83,11 +89,13 @@ const FooterCtaNavigationBranding = async ({
 								<h3 className="font-bold mb-2 text-lg">{heading}</h3>
 								<ul className="flex flex-col gap-2">
 									{items.map((i, key) => {
+										const navIsContact = isContactHref(i.url ?? "");
                     return (
 											<li key={key}>
 												<PrismicNextLink
 													className="hover:underline! text-lg"
 													field={i}
+													{...(navIsContact ? { target: "_self" } : {})}
 												>
 													{i.text}
 												</PrismicNextLink>
@@ -109,6 +117,9 @@ const FooterCtaNavigationBranding = async ({
 							<PrismicNextLink
 								className="hover:underline!"
 								field={footerDoc?.data.privacy_policy}
+								{...(isContactHref(footerDoc?.data.privacy_policy?.url)
+									? { target: "_self" }
+									: {})}
 							>
 								{footerDoc?.data.privacy_policy.text}
 							</PrismicNextLink>
