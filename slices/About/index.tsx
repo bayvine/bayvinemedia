@@ -20,6 +20,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 			data-slice-variation={slice.variation}
 			className="relative w-full"
 		>
+			
 			{isFilled.linkToMedia(slice.primary.background_video) && (
 				<div className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden">
 					<div className="absolute inset-0">
@@ -41,6 +42,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 						<span className="inline-flex text-lg items-center justify-center rounded-full px-5 py-2 border">
 							<PrismicRichText field={slice.primary.title} />
 						</span>
+						
 						<div className="mt-6 max-w-4xl text-3xl  uppercase sm:text-4xl md:text-5xl">
 							<PrismicRichText field={slice.primary.subtitle} />
 						</div>

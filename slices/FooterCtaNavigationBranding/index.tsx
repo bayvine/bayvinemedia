@@ -43,7 +43,7 @@ const FooterCtaNavigationBranding = async ({
 
   return (
 		<Section
-			className="relative isolate overflow-hidden"
+			className="relative isolate overflow-hidden mt-20"
 			style={{
 				backgroundImage: "url(/images/Footer-background.png)",
 				backgroundSize: "cover",

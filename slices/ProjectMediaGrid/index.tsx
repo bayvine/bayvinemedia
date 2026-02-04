@@ -9,10 +9,23 @@ export type ProjectMediaGridProps =
 
 const ProjectMediaGrid: FC<ProjectMediaGridProps> = ({ slice }) => {
   const items = slice.primary.items ?? [];
+  const totalItems = items.length;
 
   if (!items.length) {
     return null;
   }
+
+  const shouldSpanFull = (index: number) => {
+    if (totalItems === 1) return true;
+    if (totalItems === 2) return false;
+
+    const remainder = totalItems % 3;
+    if (remainder === 2 && index >= totalItems - 2) {
+      return false;
+    }
+
+    return index % 3 === 0;
+  };
 
   return (
     <Section
@@ -21,20 +34,23 @@ const ProjectMediaGrid: FC<ProjectMediaGridProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       {slice.primary.heading ? (
-        <p className="mb-6 text-sm font-semibold uppercase tracking-[0.35em] text-white/60">
+        <p className="mb-6 text-sm font-semibold">
           {slice.primary.heading}
         </p>
       ) : null}
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2">
         {items.map((item, index) => {
           const hasVideo = isFilled.linkToMedia(item.video);
           const hasImage = Boolean(item.image?.url);
+          const spanFull = shouldSpanFull(index);
           return (
             <div
               key={`${item.caption ?? "media"}-${index}`}
-              className="rounded-3xl border border-white/10 bg-white/5 p-3"
+              className={`rounded-3xl  p-3 ${
+                spanFull ? "sm:col-span-2" : ""
+              }`}
             >
-              <div className="relative aspect-video overflow-hidden rounded-2xl bg-black/50">
+              <div className="relative aspect-video overflow-hidden rounded-lg">
                 {hasVideo ? (
                   <video
                     src={item.video.url ?? undefined}
@@ -51,11 +67,7 @@ const ProjectMediaGrid: FC<ProjectMediaGridProps> = ({ slice }) => {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover"
                   />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center text-sm text-white/60">
-                    No media
-                  </div>
-                )}
+                ) : null}
               </div>
               {item.caption ? (
                 <p className="mt-3 text-sm font-semibold text-white/70">

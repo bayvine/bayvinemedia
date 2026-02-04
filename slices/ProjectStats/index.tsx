@@ -21,7 +21,7 @@ const ProjectStats: FC<ProjectStatsProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       {slice.primary.heading ? (
-        <p className="mb-6 text-sm font-semibold uppercase tracking-[0.35em] text-white/60">
+        <p className="text-2xl font-bold uppercase sm:text-3xl mb-6">
           {slice.primary.heading}
         </p>
       ) : null}
@@ -31,15 +31,15 @@ const ProjectStats: FC<ProjectStatsProps> = ({ slice }) => {
           return (
             <div
               key={`${stat.value ?? "stat"}-${index}`}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6"
+              className="rounded-lg border border-white/10 bg-white/2 p-6"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-black/40">
-                <Icon name={iconName} size="28" alt="" />
+              <div className="flex h-12 w-12 items-center justify-center ">
+                <Icon name={iconName} className="stroke-white text-white fill-white" size="40" alt=""/>
               </div>
-              <div className="mt-4 text-3xl font-black text-emerald-400">
+              <div className="mt-4 text-3xl font-black text-emerald-300">
                 {stat.value || "0"}
               </div>
-              <div className="mt-2 text-sm uppercase tracking-[0.2em] text-white/60">
+              <div className="mt-2 text-md font-semibold">
                 {stat.description || "Result"}
               </div>
             </div>

@@ -4,6 +4,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import Section from "@/components/Section";
+import CTAButton from "@/components/CTAButton";
 
 export type ProjectCTAProps = SliceComponentProps<Content.ProjectCtaSlice>;
 
@@ -23,13 +24,13 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-10">
+      <div className="rounded-lg border border-white/10 bg-white/5 p-8 sm:p-10">
         <div className="max-w-2xl">
-          <h2 className="text-2xl font-bold uppercase tracking-tight sm:text-3xl">
+          <h2 className="text-2xl font-bold uppercase  sm:text-3xl">
             {slice.primary.heading || "Ready to bring your product to life?"}
           </h2>
           {isFilled.richText(slice.primary.body) ? (
-            <div className="mt-3 text-slate-200">
+            <div className="mt-3">
               <PrismicRichText
                 field={slice.primary.body}
                 components={{
@@ -40,7 +41,7 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
               />
             </div>
           ) : (
-            <p className="mt-3 text-slate-200">
+            <p className="mt-3">
               Tell us about your next launch or request a quick walkthrough.
             </p>
           )}
@@ -51,9 +52,11 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
             <PrismicNextLink
               field={primaryLink}
               {...(isContactHref(primaryLink.url) ? { target: "_self" } : {})}
-              className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-black transition hover:translate-y-[-2px]"
             >
-              {slice.primary.primary_cta_label || "Contact us"}
+              <CTAButton>
+                {" "}
+                {slice.primary.primary_cta_label || "Contact us"}
+              </CTAButton>
             </PrismicNextLink>
           ) : (
             <Link

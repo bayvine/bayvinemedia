@@ -15,7 +15,7 @@ const ProjectDoubleColumnText: FC<ProjectDoubleColumnTextProps> = ({ slice }) =>
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="grid gap-20 lg:grid-cols-[1.2fr_0.8fr] items-center">
         <div>
           <PrismicRichText
             field={slice.primary.title}
@@ -36,12 +36,12 @@ const ProjectDoubleColumnText: FC<ProjectDoubleColumnTextProps> = ({ slice }) =>
             />
           </div>
         </div>
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <div className="">
           <ul className="space-y-4">
             {details.map((detail, index) => (
               <li
                 key={`${detail.label ?? "detail"}-${index}`}
-                className="flex items-start justify-between gap-4 border-b border-white/10 pb-4 text-sm uppercase tracking-[0.18em] text-white/70 last:border-b-0 last:pb-0"
+                className="flex items-start justify-between gap-4 border-b border-white/10 pb-4 text-white last:border-b-0 last:pb-0"
               >
                 <span>{detail.label || "Detail"}</span>
                 <span className="text-right text-white/90 normal-case tracking-normal text-base font-semibold">
