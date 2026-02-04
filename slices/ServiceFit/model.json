@@ -1,0 +1,64 @@
+{
+  "type": "SharedSlice",
+  "id": "service_fit",
+  "name": "ServiceFit",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Why this service is for you vs not for you.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading"
+          }
+        },
+        "for_you_heading": {
+          "type": "Text",
+          "config": {
+            "label": "For You Heading"
+          }
+        },
+        "not_for_you_heading": {
+          "type": "Text",
+          "config": {
+            "label": "Not For You Heading"
+          }
+        },
+        "for_you_items": {
+          "type": "Group",
+          "config": {
+            "label": "For You Items",
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text"
+                }
+              }
+            }
+          }
+        },
+        "not_for_you_items": {
+          "type": "Group",
+          "config": {
+            "label": "Not For You Items",
+            "fields": {
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

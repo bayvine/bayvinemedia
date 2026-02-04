@@ -1,0 +1,85 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "eyebrow": {
+        "__TYPE__": "FieldContent",
+        "value": "Service",
+        "type": "Text"
+      },
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Search Engine Optimization"
+            }
+          }
+        ]
+      },
+      "subtitle": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Be seen when it matters."
+            }
+          }
+        ]
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "We build search visibility with clear prioritization, technical fixes, and content that ranks."
+            }
+          }
+        ]
+      },
+      "tags": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "tag",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "SEO",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "background_image": {
+        "__TYPE__": "ImageContent",
+        "url": "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
+        "width": 1600,
+        "height": 900,
+        "alt": "Service background"
+      },
+      "background_video": {
+        "__TYPE__": "LinkContent",
+        "key": "mock-video",
+        "value": {
+          "__TYPE__": "FileLink",
+          "id": "mock_media",
+          "kind": "file",
+          "name": "mock_video",
+          "url": "https://source.unsplash.com/random",
+          "size": "0",
+          "text": "video"
+        }
+      }
+    },
+    "items": []
+  }
+]

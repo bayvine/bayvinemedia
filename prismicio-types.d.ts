@@ -328,11 +328,94 @@ export type ProjectDocument<Lang extends string = string> =
     Lang
   >;
 
+type ServiceDocumentDataSlicesSlice =
+  | ProjectDetailHeroSlice
+  | ProjectTitleParagraphSlice
+  | ProjectStatsSlice
+  | ProjectCtaSlice
+  | ServiceHeroSlice
+  | ServiceFitSlice
+  | ServiceHighlightSlice
+  | ServiceProcessSlice
+  | RelatedProjectSlice
+  | FaqWithCtaSlice
+  | ProjectTestimonialSlice
+  | ProjectMediaGridSlice
+  | ProjectSingleMediaSlice
+  | ProjectDoubleColumnTextSlice
+  | FooterCtaNavigationBrandingSlice;
+
+/**
+ * Content for Service documents
+ */
+interface ServiceDocumentData {
+  /**
+   * Slice Zone field in *Service*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.slices[]
+  * - **Tab**: Main
+  * - **Documentation**: https://prismic.io/docs/slices
+  */
+  slices: prismic.SliceZone<ServiceDocumentDataSlicesSlice>;
+
+  /**
+   * Meta Title field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: service.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: service.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Service*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Service document from Prismic
+ *
+ * - **API ID**: `service`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ServiceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ServiceDocumentData>,
+    "service",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | ContactDocument
   | FooterDocument
   | HomeDocument
-  | ProjectDocument;
+  | ProjectDocument
+  | ServiceDocument;
 
 /**
  * Item in *About → Default → Primary → photos*
@@ -1952,6 +2035,219 @@ export type ProjectTitleParagraphSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *RelatedProject → Default → Primary → Project Tags*
+ */
+export interface RelatedProjectSliceDefaultPrimaryProjectTagsItem {
+  /**
+   * Tag field in *RelatedProject → Default → Primary → Project Tags*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: related_project.default.primary.project_tags[].tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *RelatedProject → Default → Primary*
+ */
+export interface RelatedProjectSliceDefaultPrimary {
+  /**
+   * Heading field in *RelatedProject → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: related_project.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Project field in *RelatedProject → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: related_project.default.primary.project
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  project: prismic.ContentRelationshipField<"project">;
+
+  /**
+   * Project Title field in *RelatedProject → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: related_project.default.primary.project_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  project_title: prismic.KeyTextField;
+
+  /**
+   * Project Description field in *RelatedProject → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: related_project.default.primary.project_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  project_description: prismic.RichTextField;
+
+  /**
+   * Project Tags field in *RelatedProject → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: related_project.default.primary.project_tags[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  project_tags: prismic.GroupField<
+    Simplify<RelatedProjectSliceDefaultPrimaryProjectTagsItem>
+  >;
+
+  /**
+   * Project Image field in *RelatedProject → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: related_project.default.primary.project_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  project_image: prismic.ImageField<never>;
+
+  /**
+   * Project Link field in *RelatedProject → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: related_project.default.primary.project_link
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  project_link: prismic.ContentRelationshipField<"project">;
+}
+
+/**
+ * Default variation for RelatedProject Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Highlight a related project.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type RelatedProjectSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RelatedProjectSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *RelatedProject*
+ */
+type RelatedProjectSliceVariation = RelatedProjectSliceDefault;
+
+/**
+ * RelatedProject Shared Slice
+ *
+ * - **API ID**: `related_project`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type RelatedProjectSlice = prismic.SharedSlice<
+  "related_project",
+  RelatedProjectSliceVariation
+>;
+
+/**
+ * Primary content in *ServiceHighlight → Default → Primary*
+ */
+export interface ServiceHighlightSliceDefaultPrimary {
+  /**
+   * Heading field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * CTA Label field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.cta_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  cta_label: prismic.KeyTextField;
+
+  /**
+   * CTA Link field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.cta_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  cta_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Image field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ServiceHighlight Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Highlight block with heading, description, CTA, and image.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceHighlightSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServiceHighlightSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ServiceHighlight*
+ */
+type ServiceHighlightSliceVariation = ServiceHighlightSliceDefault;
+
+/**
+ * ServiceHighlight Shared Slice
+ *
+ * - **API ID**: `service_highlight`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceHighlightSlice = prismic.SharedSlice<
+  "service_highlight",
+  ServiceHighlightSliceVariation
+>;
+
+/**
  * Item in *Roadmap → Default → Primary → roadmap*
  */
 export interface RoadmapSliceDefaultPrimaryRoadmapItem {
@@ -2098,6 +2394,327 @@ export type RoadmapSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ServiceFit → Default → Primary → For You Items*
+ */
+export interface ServiceFitSliceDefaultPrimaryForYouItemsItem {
+  /**
+   * Text field in *ServiceFit → Default → Primary → For You Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_fit.default.primary.for_you_items[].text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Item in *ServiceFit → Default → Primary → Not For You Items*
+ */
+export interface ServiceFitSliceDefaultPrimaryNotForYouItemsItem {
+  /**
+   * Text field in *ServiceFit → Default → Primary → Not For You Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_fit.default.primary.not_for_you_items[].text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ServiceFit → Default → Primary*
+ */
+export interface ServiceFitSliceDefaultPrimary {
+  /**
+   * Heading field in *ServiceFit → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_fit.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * For You Heading field in *ServiceFit → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_fit.default.primary.for_you_heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  for_you_heading: prismic.KeyTextField;
+
+  /**
+   * Not For You Heading field in *ServiceFit → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_fit.default.primary.not_for_you_heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  not_for_you_heading: prismic.KeyTextField;
+
+  /**
+   * For You Items field in *ServiceFit → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_fit.default.primary.for_you_items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  for_you_items: prismic.GroupField<
+    Simplify<ServiceFitSliceDefaultPrimaryForYouItemsItem>
+  >;
+
+  /**
+   * Not For You Items field in *ServiceFit → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_fit.default.primary.not_for_you_items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  not_for_you_items: prismic.GroupField<
+    Simplify<ServiceFitSliceDefaultPrimaryNotForYouItemsItem>
+  >;
+}
+
+/**
+ * Default variation for ServiceFit Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Why this service is for you vs not for you.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceFitSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServiceFitSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ServiceFit*
+ */
+type ServiceFitSliceVariation = ServiceFitSliceDefault;
+
+/**
+ * ServiceFit Shared Slice
+ *
+ * - **API ID**: `service_fit`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceFitSlice = prismic.SharedSlice<
+  "service_fit",
+  ServiceFitSliceVariation
+>;
+
+/**
+ * Item in *ServiceHero → Default → Primary → Tags*
+ */
+export interface ServiceHeroSliceDefaultPrimaryTagsItem {
+  /**
+   * Tag field in *ServiceHero → Default → Primary → Tags*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_hero.default.primary.tags[].tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *ServiceHero → Default → Primary*
+ */
+export interface ServiceHeroSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *ServiceHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_hero.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Title field in *ServiceHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_hero.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Subtitle field in *ServiceHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_hero.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * Description field in *ServiceHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_hero.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Tags field in *ServiceHero → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_hero.default.primary.tags[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  tags: prismic.GroupField<Simplify<ServiceHeroSliceDefaultPrimaryTagsItem>>;
+
+  /**
+   * Background Image field in *ServiceHero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_hero.default.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Background Video field in *ServiceHero → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_hero.default.primary.background_video
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  background_video: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for ServiceHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Service hero with background media, title, tags, and description.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServiceHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ServiceHero*
+ */
+type ServiceHeroSliceVariation = ServiceHeroSliceDefault;
+
+/**
+ * ServiceHero Shared Slice
+ *
+ * - **API ID**: `service_hero`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceHeroSlice = prismic.SharedSlice<
+  "service_hero",
+  ServiceHeroSliceVariation
+>;
+
+/**
+ * Item in *ServiceProcess → Default → Primary → Steps*
+ */
+export interface ServiceProcessSliceDefaultPrimaryStepsItem {
+  /**
+   * Title field in *ServiceProcess → Default → Primary → Steps*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_process.default.primary.steps[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *ServiceProcess → Default → Primary → Steps*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_process.default.primary.steps[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ServiceProcess → Default → Primary*
+ */
+export interface ServiceProcessSliceDefaultPrimary {
+  /**
+   * Heading field in *ServiceProcess → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_process.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Steps field in *ServiceProcess → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_process.default.primary.steps[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  steps: prismic.GroupField<
+    Simplify<ServiceProcessSliceDefaultPrimaryStepsItem>
+  >;
+}
+
+/**
+ * Default variation for ServiceProcess Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Step-by-step process for the service.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceProcessSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServiceProcessSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ServiceProcess*
+ */
+type ServiceProcessSliceVariation = ServiceProcessSliceDefault;
+
+/**
+ * ServiceProcess Shared Slice
+ *
+ * - **API ID**: `service_process`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceProcessSlice = prismic.SharedSlice<
+  "service_process",
+  ServiceProcessSliceVariation
+>;
+
+/**
  * Item in *Services → Default → Primary → Services*
  */
 export interface ServicesSliceDefaultPrimaryServicesItem {
@@ -2241,6 +2858,9 @@ declare module "@prismicio/client" {
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataSlicesSlice,
+      ServiceDocument,
+      ServiceDocumentData,
+      ServiceDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutSlice,
       AboutSliceDefaultPrimaryPhotosItem,
@@ -2315,11 +2935,36 @@ declare module "@prismicio/client" {
       ProjectTitleParagraphSliceDefaultPrimary,
       ProjectTitleParagraphSliceVariation,
       ProjectTitleParagraphSliceDefault,
+      RelatedProjectSlice,
+      RelatedProjectSliceDefaultPrimaryProjectTagsItem,
+      RelatedProjectSliceDefaultPrimary,
+      RelatedProjectSliceVariation,
+      RelatedProjectSliceDefault,
       RoadmapSlice,
       RoadmapSliceDefaultPrimaryRoadmapItem,
       RoadmapSliceDefaultPrimary,
       RoadmapSliceVariation,
       RoadmapSliceDefault,
+      ServiceFitSlice,
+      ServiceFitSliceDefaultPrimaryForYouItemsItem,
+      ServiceFitSliceDefaultPrimaryNotForYouItemsItem,
+      ServiceFitSliceDefaultPrimary,
+      ServiceFitSliceVariation,
+      ServiceFitSliceDefault,
+      ServiceHeroSlice,
+      ServiceHeroSliceDefaultPrimaryTagsItem,
+      ServiceHeroSliceDefaultPrimary,
+      ServiceHeroSliceVariation,
+      ServiceHeroSliceDefault,
+      ServiceHighlightSlice,
+      ServiceHighlightSliceDefaultPrimary,
+      ServiceHighlightSliceVariation,
+      ServiceHighlightSliceDefault,
+      ServiceProcessSlice,
+      ServiceProcessSliceDefaultPrimaryStepsItem,
+      ServiceProcessSliceDefaultPrimary,
+      ServiceProcessSliceVariation,
+      ServiceProcessSliceDefault,
       ServicesSlice,
       ServicesSliceDefaultPrimaryServicesItem,
       ServicesSliceDefaultPrimary,

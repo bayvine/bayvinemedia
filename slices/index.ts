@@ -20,6 +20,11 @@ export const components = {
   project_stats: dynamic(() => import("./ProjectStats")),
   project_testimonial: dynamic(() => import("./ProjectTestimonial")),
   project_title_paragraph: dynamic(() => import("./ProjectTitleParagraph")),
+  related_project: dynamic(() => import("./RelatedProject")),
+  service_fit: dynamic(() => import("./ServiceFit")),
+  service_highlight: dynamic(() => import("./ServiceHighlight")),
+  service_hero: dynamic(() => import("./ServiceHero")),
+  service_process: dynamic(() => import("./ServiceProcess")),
   roadmap: dynamic(() => import("./Roadmap")),
   services: dynamic(() => import("./Services")),
 };

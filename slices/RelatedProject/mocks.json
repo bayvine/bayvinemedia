@@ -1,0 +1,85 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Related project",
+        "type": "Text"
+      },
+      "project": {
+        "__TYPE__": "LinkContent",
+        "key": "mock-project-link",
+        "value": {
+          "__TYPE__": "DocumentLink",
+          "id": "mock-project",
+          "uid": "finish",
+          "type": "project",
+          "lang": "en-us",
+          "tags": [],
+          "link_type": "Document",
+          "isBroken": false,
+          "url": "/projects/finish"
+        }
+      },
+      "project_title": {
+        "__TYPE__": "FieldContent",
+        "value": "Finish Mobile Bar",
+        "type": "Text"
+      },
+      "project_description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "A conversion-first site that raised inbound leads."
+            }
+          }
+        ]
+      },
+      "project_tags": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "tag",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "SEO",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "project_image": {
+        "__TYPE__": "ImageContent",
+        "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+        "width": 1600,
+        "height": 900,
+        "alt": "Related project"
+      },
+      "project_link": {
+        "__TYPE__": "LinkContent",
+        "key": "mock-project-link-2",
+        "value": {
+          "__TYPE__": "DocumentLink",
+          "id": "mock-project",
+          "uid": "finish",
+          "type": "project",
+          "lang": "en-us",
+          "tags": [],
+          "link_type": "Document",
+          "isBroken": false,
+          "url": "/projects/finish"
+        }
+      }
+    },
+    "items": []
+  }
+]

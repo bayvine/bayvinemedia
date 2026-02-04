@@ -1,0 +1,60 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Is this service for you?",
+        "type": "Text"
+      },
+      "for_you_heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Best for you if",
+        "type": "Text"
+      },
+      "not_for_you_heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Not a fit if",
+        "type": "Text"
+      },
+      "for_you_items": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "You want consistent inbound leads",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "not_for_you_items": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "You need immediate results in 24 hours",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  }
+]
