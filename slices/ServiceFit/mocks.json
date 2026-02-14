@@ -18,12 +18,27 @@
         "value": "Not a fit if",
         "type": "Text"
       },
+      "not_for_you_intro": {
+        "__TYPE__": "FieldContent",
+        "value": "This might not be the right fit if:",
+        "type": "Text"
+      },
       "for_you_items": {
         "__TYPE__": "GroupContentType",
         "value": [
           {
             "__TYPE__": "GroupItemContent",
             "value": [
+              [
+                "icon",
+                {
+                  "__TYPE__": "ImageContent",
+                  "url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+                  "width": 120,
+                  "height": 120,
+                  "alt": "Handshake icon"
+                }
+              ],
               [
                 "text",
                 {

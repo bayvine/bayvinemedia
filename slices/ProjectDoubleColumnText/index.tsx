@@ -27,7 +27,7 @@ const ProjectDoubleColumnText: FC<ProjectDoubleColumnTextProps> = ({ slice }) =>
               ),
             }}
           />
-          <div className="mt-4 text-base text-slate-200 sm:text-lg">
+          <div className="mt-4 text-base sm:text-lg">
             <PrismicRichText
               field={slice.primary.body}
               components={{
@@ -41,10 +41,10 @@ const ProjectDoubleColumnText: FC<ProjectDoubleColumnTextProps> = ({ slice }) =>
             {details.map((detail, index) => (
               <li
                 key={`${detail.label ?? "detail"}-${index}`}
-                className="flex items-start justify-between gap-4 border-b border-white/10 pb-4 text-white last:border-b-0 last:pb-0"
+                className="flex items-start justify-between gap-4 border-b border-white pb-4 last:border-b-0 last:pb-0"
               >
                 <span>{detail.label || "Detail"}</span>
-                <span className="text-right text-white/90 normal-case tracking-normal text-base font-semibold">
+                <span className="text-right font-semibold">
                   {detail.value || "-"}
                 </span>
               </li>

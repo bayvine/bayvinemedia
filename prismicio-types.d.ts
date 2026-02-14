@@ -2398,6 +2398,16 @@ export type RoadmapSlice = prismic.SharedSlice<
  */
 export interface ServiceFitSliceDefaultPrimaryForYouItemsItem {
   /**
+   * Icon field in *ServiceFit → Default → Primary → For You Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_fit.default.primary.for_you_items[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
    * Text field in *ServiceFit → Default → Primary → For You Items*
    *
    * - **Field Type**: Text
@@ -2456,6 +2466,16 @@ export interface ServiceFitSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   not_for_you_heading: prismic.KeyTextField;
+
+  /**
+   * Not For You Intro field in *ServiceFit → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_fit.default.primary.not_for_you_intro
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  not_for_you_intro: prismic.KeyTextField;
 
   /**
    * For You Items field in *ServiceFit → Default → Primary*

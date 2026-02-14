@@ -13,25 +13,27 @@ const ProjectTitleParagraph: FC<ProjectTitleParagraphProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="max-w-3xl">
-        <PrismicRichText
-          field={slice.primary.title}
-          components={{
-            heading2: ({ children }) => (
-              <h2 className="text-2xl font-bold uppercase sm:text-3xl">
-                {children}
-              </h2>
-            ),
-          }}
-        />
-        <div className="mt-4 text-base text-slate-200 sm:text-lg">
+      
+        <div>
           <PrismicRichText
-            field={slice.primary.body}
+            field={slice.primary.title}
             components={{
-              paragraph: ({ children }) => <p className="mt-3">{children}</p>,
+              heading2: ({ children }) => (
+                <h2 className="text-2xl font-bold uppercase sm:text-3xl">
+                  {children}
+                </h2>
+              ),
             }}
           />
-        </div>
+          <div className="mt-4 text-base sm:text-lg">
+            <PrismicRichText
+              field={slice.primary.body}
+              components={{
+                paragraph: ({ children }) => <p className="mt-3">{children}</p>,
+              }}
+            />
+          </div>
+      
       </div>
     </Section>
   );

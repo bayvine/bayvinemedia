@@ -29,11 +29,23 @@
             "label": "Not For You Heading"
           }
         },
+        "not_for_you_intro": {
+          "type": "Text",
+          "config": {
+            "label": "Not For You Intro"
+          }
+        },
         "for_you_items": {
           "type": "Group",
           "config": {
             "label": "For You Items",
             "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon"
+                }
+              },
               "text": {
                 "type": "Text",
                 "config": {
