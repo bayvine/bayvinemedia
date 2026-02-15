@@ -187,7 +187,6 @@ export type FooterDocument<Lang extends string = string> =
 
 type HomeDocumentDataSlicesSlice =
   | FooterCtaNavigationBrandingSlice
-  | AboutWithImagesGridSlice
   | FaqWithCtaSlice
   | ProjectHeroSlice
   | RoadmapSlice
@@ -501,98 +500,6 @@ type AboutSliceVariation = AboutSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
-
-/**
- * Item in *AboutWithImagesGrid → Default → Primary → Cards*
- */
-export interface AboutWithImagesGridSliceDefaultPrimaryCardsItem {
-  /**
-   * Media field in *AboutWithImagesGrid → Default → Primary → Cards*
-   *
-   * - **Field Type**: Link to Media
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about_with_images_grid.default.primary.cards[].media
-   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
-   */
-  media: prismic.LinkToMediaField<prismic.FieldState, never>;
-}
-
-/**
- * Primary content in *AboutWithImagesGrid → Default → Primary*
- */
-export interface AboutWithImagesGridSliceDefaultPrimary {
-  /**
-   * Heading field in *AboutWithImagesGrid → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about_with_images_grid.default.primary.heading
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  heading: prismic.RichTextField;
-
-  /**
-   * subtitle field in *AboutWithImagesGrid → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about_with_images_grid.default.primary.subtitle
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  subtitle: prismic.KeyTextField;
-
-  /**
-   * Description field in *AboutWithImagesGrid → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about_with_images_grid.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * Cards field in *AboutWithImagesGrid → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: about_with_images_grid.default.primary.cards[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  cards: prismic.GroupField<
-    Simplify<AboutWithImagesGridSliceDefaultPrimaryCardsItem>
-  >;
-}
-
-/**
- * Default variation for AboutWithImagesGrid Slice
- *
- * - **API ID**: `default`
- * - **Description**: Displays a heading, a text description, and a grid of repeatable image cards.
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type AboutWithImagesGridSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<AboutWithImagesGridSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *AboutWithImagesGrid*
- */
-type AboutWithImagesGridSliceVariation = AboutWithImagesGridSliceDefault;
-
-/**
- * AboutWithImagesGrid Shared Slice
- *
- * - **API ID**: `about_with_images_grid`
- * - **Description**: *None*
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type AboutWithImagesGridSlice = prismic.SharedSlice<
-  "about_with_images_grid",
-  AboutWithImagesGridSliceVariation
->;
 
 /**
  * Item in *ContactForm → Default → Primary → Contact Options*
@@ -1296,6 +1203,16 @@ export interface ProjectCtaSliceDefaultPrimary {
     prismic.FieldState,
     never
   >;
+
+  /**
+   * Background field in *ProjectCTA → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_cta.default.primary.background
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  background: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
@@ -2885,11 +2802,6 @@ declare module "@prismicio/client" {
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
-      AboutWithImagesGridSlice,
-      AboutWithImagesGridSliceDefaultPrimaryCardsItem,
-      AboutWithImagesGridSliceDefaultPrimary,
-      AboutWithImagesGridSliceVariation,
-      AboutWithImagesGridSliceDefault,
       ContactFormSlice,
       ContactFormSliceDefaultPrimaryContactOptionsItem,
       ContactFormSliceDefaultPrimaryInterestServicesItem,

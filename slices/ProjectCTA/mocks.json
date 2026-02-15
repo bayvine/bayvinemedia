@@ -1,49 +1,64 @@
 [
-  {
-    "__TYPE__": "SharedSliceContent",
-    "variation": "default",
-    "primary": {
-      "heading": {
-        "__TYPE__": "FieldContent",
-        "value": "Ready to build your next launch?",
-        "type": "Text"
-      },
-      "body": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [
-          {
-            "type": "paragraph",
-            "content": {
-              "text": "Tell us about your goals and we will map the next steps."
-            }
-          }
-        ]
-      },
-      "primary_cta_label": {
-        "__TYPE__": "FieldContent",
-        "value": "Contact us",
-        "type": "Text"
-      },
-      "primary_cta_link": {
-        "__TYPE__": "LinkContent",
-        "value": {
-          "__TYPE__": "ExternalLink",
-          "url": "/contact"
-        }
-      },
-      "secondary_cta_label": {
-        "__TYPE__": "FieldContent",
-        "value": "Schedule a call",
-        "type": "Text"
-      },
-      "secondary_cta_link": {
-        "__TYPE__": "LinkContent",
-        "value": {
-          "__TYPE__": "ExternalLink",
-          "url": "https://calendly.com"
-        }
-      }
-    },
-    "items": []
-  }
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "Ready to build your next launch?",
+				"type": "Text"
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Tell us about your goals and we will map the next steps."
+						}
+					}
+				]
+			},
+			"primary_cta_label": {
+				"__TYPE__": "FieldContent",
+				"value": "Contact us",
+				"type": "Text"
+			},
+			"primary_cta_link": {
+				"key": "90cb0c7e-d198-4b6d-afe2-951bdcb7b8b2",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "/contact"
+				}
+			},
+			"secondary_cta_label": {
+				"__TYPE__": "FieldContent",
+				"value": "Schedule a call",
+				"type": "Text"
+			},
+			"secondary_cta_link": {
+				"key": "30d67da6-fa37-4d3d-bdff-eaa8b848d2de",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://calendly.com"
+				}
+			},
+			"background": {
+				"__TYPE__": "LinkContent",
+				"key": "216bfd98-a5ac-47c0-b6c3-72ea6d8d8de9",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "troops"
+				}
+			}
+		},
+		"items": []
+	}
 ]

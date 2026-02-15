@@ -33,7 +33,8 @@
         "primary_cta_link": {
           "type": "Link",
           "config": {
-            "label": "Primary CTA Link"
+            "label": "Primary CTA Link",
+            "select": null
           }
         },
         "secondary_cta_label": {
@@ -45,7 +46,17 @@
         "secondary_cta_link": {
           "type": "Link",
           "config": {
-            "label": "Secondary CTA Link"
+            "label": "Secondary CTA Link",
+            "select": null
+          }
+        },
+        "background": {
+          "type": "Link",
+          "config": {
+            "label": "Background",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
           }
         }
       },

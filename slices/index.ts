@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 
 export const components = {
   about: dynamic(() => import("./About")),
-  about_with_images_grid: dynamic(() => import("./AboutWithImagesGrid")),
   contact_form: dynamic(() => import("./ContactForm")),
   faq_with_cta: dynamic(() => import("./FaqWithCta")),
   footer_cta_navigation_branding: dynamic(
@@ -13,18 +12,20 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   project_cta: dynamic(() => import("./ProjectCTA")),
   project_detail_hero: dynamic(() => import("./ProjectDetailHero")),
-  project_double_column_text: dynamic(() => import("./ProjectDoubleColumnText")),
+  project_double_column_text: dynamic(
+    () => import("./ProjectDoubleColumnText"),
+  ),
+  project_hero: dynamic(() => import("./ProjectHero")),
   project_media_grid: dynamic(() => import("./ProjectMediaGrid")),
   project_single_media: dynamic(() => import("./ProjectSingleMedia")),
-  project_hero: dynamic(() => import("./ProjectHero")),
   project_stats: dynamic(() => import("./ProjectStats")),
   project_testimonial: dynamic(() => import("./ProjectTestimonial")),
   project_title_paragraph: dynamic(() => import("./ProjectTitleParagraph")),
   related_project: dynamic(() => import("./RelatedProject")),
-  service_fit: dynamic(() => import("./ServiceFit")),
-  service_highlight: dynamic(() => import("./ServiceHighlight")),
-  service_hero: dynamic(() => import("./ServiceHero")),
-  service_process: dynamic(() => import("./ServiceProcess")),
   roadmap: dynamic(() => import("./Roadmap")),
+  service_fit: dynamic(() => import("./ServiceFit")),
+  service_hero: dynamic(() => import("./ServiceHero")),
+  service_highlight: dynamic(() => import("./ServiceHighlight")),
+  service_process: dynamic(() => import("./ServiceProcess")),
   services: dynamic(() => import("./Services")),
 };

@@ -32,7 +32,7 @@ const ProjectStats: FC<ProjectStatsProps> = ({ slice }) => {
           return (
             <div
               key={`${stat.value ?? "stat"}-${index}`}
-              className="rounded-lg border border-white/10 bg-white/2 p-6"
+              className="rounded-lg border border-emerald-300/30 bg-white/2 p-6"
             >
               <div className="flex h-12 w-12 items-center justify-center">
                 {hasIcon ? (
