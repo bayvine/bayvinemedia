@@ -1,8 +1,9 @@
 import { FC } from "react";
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
+import Image from "next/image";
 import Section from "@/components/Section";
-import { Icon } from "@/components/icons/Icon";
 
 export type ProjectStatsProps =
   SliceComponentProps<Content.ProjectStatsSlice>;
@@ -27,14 +28,29 @@ const ProjectStats: FC<ProjectStatsProps> = ({ slice }) => {
       ) : null}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {stats.map((stat, index) => {
-          const iconName = stat.icon_name || "logo";
+          const hasIcon = isFilled.image(stat.icon);
           return (
             <div
               key={`${stat.value ?? "stat"}-${index}`}
               className="rounded-lg border border-white/10 bg-white/2 p-6"
             >
-              <div className="flex h-12 w-12 items-center justify-center ">
-                <Icon name={iconName} className="stroke-white text-white fill-white" size="40" alt=""/>
+              <div className="flex h-12 w-12 items-center justify-center">
+                {hasIcon ? (
+                  <PrismicNextImage
+                    field={stat.icon}
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 object-contain "
+                  />
+                ) : (
+                  <Image
+                    src="/icon-logo.svg"
+                    alt="Bayvine logo"
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 object-contain"
+                  />
+                )}
               </div>
               <div className="mt-4 text-3xl font-black text-emerald-300">
                 {stat.value || "0"}

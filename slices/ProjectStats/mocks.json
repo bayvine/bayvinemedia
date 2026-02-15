@@ -1,48 +1,66 @@
 [
-  {
-    "__TYPE__": "SharedSliceContent",
-    "variation": "default",
-    "primary": {
-      "heading": {
-        "__TYPE__": "FieldContent",
-        "value": "Impact",
-        "type": "Text"
-      },
-      "stats": {
-        "__TYPE__": "GroupContentType",
-        "value": [
-          {
-            "__TYPE__": "GroupItemContent",
-            "value": [
-              [
-                "icon_name",
-                {
-                  "__TYPE__": "FieldContent",
-                  "value": "logo",
-                  "type": "Text"
-                }
-              ],
-              [
-                "value",
-                {
-                  "__TYPE__": "FieldContent",
-                  "value": "120%",
-                  "type": "Text"
-                }
-              ],
-              [
-                "description",
-                {
-                  "__TYPE__": "FieldContent",
-                  "value": "Growth",
-                  "type": "Text"
-                }
-              ]
-            ]
-          }
-        ]
-      }
-    },
-    "items": []
-  }
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "Impact",
+				"type": "Text"
+			},
+			"stats": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"value",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "120%",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "Growth",
+									"type": "Text"
+								}
+							],
+							[
+								"icon",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+										"width": 3560,
+										"height": 5340
+									},
+									"url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+									"width": 3560,
+									"height": 5340,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "compass",
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
 ]

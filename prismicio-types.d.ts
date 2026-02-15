@@ -335,8 +335,8 @@ type ServiceDocumentDataSlicesSlice =
   | ProjectCtaSlice
   | ServiceHeroSlice
   | ServiceFitSlice
-  | ServiceHighlightSlice
   | ServiceProcessSlice
+  | ServiceHighlightSlice
   | RelatedProjectSlice
   | FaqWithCtaSlice
   | ProjectTestimonialSlice
@@ -355,12 +355,10 @@ interface ServiceDocumentData {
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
    * - **API ID Path**: service.slices[]
-  * - **Tab**: Main
-  * - **Documentation**: https://prismic.io/docs/slices
-  */
-  slices: prismic.SliceZone<ServiceDocumentDataSlicesSlice>;
-
-  /**
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<ServiceDocumentDataSlicesSlice> /**
    * Meta Title field in *Service*
    *
    * - **Field Type**: Text
@@ -1809,14 +1807,14 @@ export type ProjectSingleMediaSlice = prismic.SharedSlice<
  */
 export interface ProjectStatsSliceDefaultPrimaryStatsItem {
   /**
-   * Icon Name field in *ProjectStats → Default → Primary → Stats*
+   * Icon field in *ProjectStats → Default → Primary → Stats*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: project_stats.default.primary.stats[].icon_name
-   * - **Documentation**: https://prismic.io/docs/fields/text
+   * - **API ID Path**: project_stats.default.primary.stats[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
    */
-  icon_name: prismic.KeyTextField;
+  icon: prismic.ImageField<never>;
 
   /**
    * Value field in *ProjectStats → Default → Primary → Stats*
@@ -2154,97 +2152,6 @@ type RelatedProjectSliceVariation = RelatedProjectSliceDefault;
 export type RelatedProjectSlice = prismic.SharedSlice<
   "related_project",
   RelatedProjectSliceVariation
->;
-
-/**
- * Primary content in *ServiceHighlight → Default → Primary*
- */
-export interface ServiceHighlightSliceDefaultPrimary {
-  /**
-   * Heading field in *ServiceHighlight → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: service_highlight.default.primary.heading
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  heading: prismic.RichTextField;
-
-  /**
-   * Description field in *ServiceHighlight → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: service_highlight.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * CTA Label field in *ServiceHighlight → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: service_highlight.default.primary.cta_label
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  cta_label: prismic.KeyTextField;
-
-  /**
-   * CTA Link field in *ServiceHighlight → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: service_highlight.default.primary.cta_link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  cta_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
-   * Image field in *ServiceHighlight → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: service_highlight.default.primary.image
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  image: prismic.ImageField<never>;
-}
-
-/**
- * Default variation for ServiceHighlight Slice
- *
- * - **API ID**: `default`
- * - **Description**: Highlight block with heading, description, CTA, and image.
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ServiceHighlightSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ServiceHighlightSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *ServiceHighlight*
- */
-type ServiceHighlightSliceVariation = ServiceHighlightSliceDefault;
-
-/**
- * ServiceHighlight Shared Slice
- *
- * - **API ID**: `service_highlight`
- * - **Description**: *None*
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ServiceHighlightSlice = prismic.SharedSlice<
-  "service_highlight",
-  ServiceHighlightSliceVariation
 >;
 
 /**
@@ -2650,6 +2557,97 @@ type ServiceHeroSliceVariation = ServiceHeroSliceDefault;
 export type ServiceHeroSlice = prismic.SharedSlice<
   "service_hero",
   ServiceHeroSliceVariation
+>;
+
+/**
+ * Primary content in *ServiceHighlight → Default → Primary*
+ */
+export interface ServiceHighlightSliceDefaultPrimary {
+  /**
+   * Heading field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * CTA Label field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.cta_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  cta_label: prismic.KeyTextField;
+
+  /**
+   * CTA Link field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.cta_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  cta_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Image field in *ServiceHighlight → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service_highlight.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ServiceHighlight Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Highlight block with heading, description, CTA, and image.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceHighlightSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ServiceHighlightSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ServiceHighlight*
+ */
+type ServiceHighlightSliceVariation = ServiceHighlightSliceDefault;
+
+/**
+ * ServiceHighlight Shared Slice
+ *
+ * - **API ID**: `service_highlight`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ServiceHighlightSlice = prismic.SharedSlice<
+  "service_highlight",
+  ServiceHighlightSliceVariation
 >;
 
 /**

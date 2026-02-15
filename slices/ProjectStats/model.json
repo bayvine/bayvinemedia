@@ -22,10 +22,12 @@
           "config": {
             "label": "Stats",
             "fields": {
-              "icon_name": {
-                "type": "Text",
+              "icon": {
+                "type": "Image",
                 "config": {
-                  "label": "Icon Name"
+                  "label": "Icon",
+                  "constraint": {},
+                  "thumbnails": []
                 }
               },
               "value": {
