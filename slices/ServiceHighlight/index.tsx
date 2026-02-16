@@ -1,10 +1,14 @@
 import { FC } from "react";
 import { Content, isFilled, type LinkToMediaField } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
 import SectionTitle from "@/components/SectionTitle";
+import {
+  PHOTO_PLACEHOLDER_SRC,
+  VIDEO_PLACEHOLDER_SRC,
+} from "@/utils/mediaPlaceholders";
 
 export type ServiceHighlightProps =
   SliceComponentProps<Content.ServiceHighlightSlice>;
@@ -47,28 +51,32 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
         <div className="relative aspect-video overflow-hidden">
           {hasImage ? (
             <PrismicNextImage
-              alt="HELLO"
               field={slice.primary.image}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-contain"
+              className="bg-center bg-cover object-contain"
+              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
             />
           ) : null}
           {hasVideo ? (
             <video
-              className="absolute inset-0 z-10 h-full w-full object-contain rounded-lg"
+              className="pointer-events-none absolute inset-0 z-10 h-full w-full rounded-lg bg-center bg-cover object-contain"
               src={videoField.url ?? undefined}
               preload="metadata"
               autoPlay
               muted
               loop
               playsInline
-              poster={
-                hasImage ? (slice.primary.image.url ?? undefined) : undefined
-              }
+              poster={VIDEO_PLACEHOLDER_SRC}
+              style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
             />
           ) : null}
-          {!hasImage && !hasVideo && null}
+          {!hasImage && !hasVideo ? (
+            <div
+              className="absolute inset-0 bg-center bg-cover"
+              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+            />
+          ) : null}
         </div>
       </div>
     </Section>

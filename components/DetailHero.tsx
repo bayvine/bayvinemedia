@@ -11,6 +11,7 @@ import { PrismicRichText } from "@prismicio/react";
 import Section from "@/components/Section";
 import Tag from "@/components/Tag";
 import Eyebrow from "@/components/Eyebrow";
+import { PHOTO_PLACEHOLDER_SRC, VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 type DetailHeroProps = {
   title: RichTextField;
@@ -48,7 +49,7 @@ const DetailHero: FC<DetailHeroProps> = ({
       <div className="absolute inset-0">
         {hasVideo ? (
           <video
-            className="project-detail-media pointer-events-none absolute inset-0 h-full w-full object-cover"
+            className="project-detail-media pointer-events-none absolute inset-0 h-full w-full bg-center bg-cover object-cover"
             src={backgroundVideo.url ?? undefined}
             autoPlay
             muted
@@ -57,7 +58,8 @@ const DetailHero: FC<DetailHeroProps> = ({
             preload="metadata"
             aria-hidden="true"
             tabIndex={-1}
-            poster={backgroundImage?.url || ""}
+            poster={VIDEO_PLACEHOLDER_SRC}
+            style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
           />
         ) : hasImage ? (
           <div className="project-detail-media absolute inset-0">
@@ -65,11 +67,16 @@ const DetailHero: FC<DetailHeroProps> = ({
               field={backgroundImage}
               fill
               sizes="100vw"
-              className="object-cover"
+              loading="eager"
+              className="bg-center bg-cover object-cover"
+              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
             />
           </div>
         ) : (
-          <div className="project-detail-media absolute inset-0 bg-slate-900" />
+          <div
+            className="project-detail-media absolute inset-0 bg-slate-900 bg-center bg-cover"
+            style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+          />
         )}
         <div
           aria-hidden

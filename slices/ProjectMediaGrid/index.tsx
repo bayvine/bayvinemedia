@@ -3,6 +3,10 @@ import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
+import {
+  PHOTO_PLACEHOLDER_SRC,
+  VIDEO_PLACEHOLDER_SRC,
+} from "@/utils/mediaPlaceholders";
 
 export type ProjectMediaGridProps =
   SliceComponentProps<Content.ProjectMediaGridSlice>;
@@ -58,16 +62,25 @@ const ProjectMediaGrid: FC<ProjectMediaGridProps> = ({ slice }) => {
                     loop
                     muted
                     playsInline
-                    className="h-full w-full object-cover"
+                    preload="metadata"
+                    poster={VIDEO_PLACEHOLDER_SRC}
+                    className="h-full w-full bg-center bg-cover object-cover"
+                    style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
                   />
                 ) : hasImage ? (
                   <PrismicNextImage
                     field={item.image}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
+                    className="bg-center bg-cover object-cover"
+                    style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
                   />
-                ) : null}
+                ) : (
+                  <div
+                    className="h-full w-full bg-center bg-cover"
+                    style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+                  />
+                )}
               </div>
               {item.caption ? (
                 <p className="mt-3 text-sm font-semibold text-white/70">

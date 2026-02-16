@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 import { Content, isFilled } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import clsx from "clsx";
 import { RxArrowTopRight, RxChevronDown } from "react-icons/rx";
@@ -11,6 +11,7 @@ import { Icon } from "@/components/icons/Icon";
 import CTAButton from "@/components/CTAButton";
 import SectionTitle from "@/components/SectionTitle";
 import CardText from "@/components/CardText";
+import { VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 /**
  * Props for `FaqWithCta`.
@@ -19,12 +20,11 @@ export type FaqWithCtaProps = SliceComponentProps<Content.FaqWithCtaSlice>;
 
 type FaqItemProps = {
   item: Content.FaqWithCtaSliceDefaultPrimaryFaqsItem;
-  index: number;
   isOpen: boolean;
   onToggle: () => void;
 };
 
-const FaqItem: FC<FaqItemProps> = ({ item, index, isOpen, onToggle }) => {
+const FaqItem: FC<FaqItemProps> = ({ item, isOpen, onToggle }) => {
   return (
     <article className="py-5 sm:py-6 border-t border-slate-50">
       <button
@@ -77,23 +77,26 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
   return (
     <aside className="relative isolate overflow-hidden bg-slate-900/60 shrink-0 h-[600px] min-h-[600px]">
       {mediaUrl ? (
-        <>
-          <video
-            src={mediaUrl}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-            tabIndex={-1}
-            className="pointer-events-none absolute rounded-lg inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/90" />
-        </>
+        <video
+          src={mediaUrl}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          tabIndex={-1}
+          poster={VIDEO_PLACEHOLDER_SRC}
+          className="pointer-events-none absolute rounded-lg inset-0 h-full w-full bg-center bg-cover object-cover"
+          style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
+        />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
+        />
       )}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/90" />
 
       <div className="relative flex h-full flex-col justify-between gap-6 p-8">
         <div className="flex items-center gap-1 text-sm font-semibold text-white/80">
@@ -158,7 +161,6 @@ const FaqWithCta: FC<FaqWithCtaProps> = ({ slice }) => {
                 <FaqItem
                   key={`${item.question || "faq"}-${index}`}
                   item={item}
-                  index={index}
                   isOpen={openIndex === index}
                   onToggle={() =>
                     setOpenIndex((current) =>

@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { Content, isFilled } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
-import Link from "next/link";
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
 import SectionTitle from "@/components/SectionTitle";
+import { withPhotoPlaceholderBackground } from "@/utils/mediaPlaceholders";
 
 export type ProjectCTAProps = SliceComponentProps<Content.ProjectCtaSlice>;
 
@@ -29,13 +29,13 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
       <div
         className="relative isolate overflow-hidden rounded-lg p-8 pt-15 lg:px-15 lg:pb-15 lg:pt-20"
         style={
-          hasBackground && slice.primary.background.url
-            ? {
-                backgroundImage: `url(${slice.primary.background.url})`,
-                backgroundSize: "cover",
-                backgroundPosition: "top",
-              }
-            : undefined
+          {
+            backgroundImage: withPhotoPlaceholderBackground(
+              hasBackground ? slice.primary.background.url : null
+            ),
+            backgroundSize: "cover",
+            backgroundPosition: "top",
+          }
         }
       >
         {hasBackground ? (

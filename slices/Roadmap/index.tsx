@@ -7,6 +7,7 @@ import { PrismicRichText } from "@prismicio/react";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 import CardText from "@/components/CardText";
+import { VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 type RoadmapItem = Content.RoadmapSliceDefaultPrimaryRoadmapItem;
 
@@ -60,7 +61,10 @@ const RoadMapCard: FC<{
               loop
               muted
               playsInline
-              className="h-full w-full object-cover object-center"
+              preload="metadata"
+              poster={VIDEO_PLACEHOLDER_SRC}
+              className="h-full w-full bg-center bg-cover object-cover object-center"
+              style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
             />
           </motion.div>
         ) : null}
@@ -99,7 +103,10 @@ const RoadmapCardStatic: FC<{ item: RoadmapItem }> = ({ item }) => {
               loop
               muted
               playsInline
-              className="h-full w-full object-cover object-center"
+              preload="metadata"
+              poster={VIDEO_PLACEHOLDER_SRC}
+              className="h-full w-full bg-center bg-cover object-cover object-center"
+              style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
             />
           </div>
         ) : null}

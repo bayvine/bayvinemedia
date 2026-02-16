@@ -10,6 +10,7 @@ import Section from "@/components/Section";
 import Link from "next/link";
 import { PrismicNextLink } from "@prismicio/next";
 import CTAButton from "@/components/CTAButton";
+import { PHOTO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 /**
  * Props for `FooterCtaNavigationBranding`.
@@ -50,7 +51,7 @@ const FooterCtaNavigationBranding = async ({
 		<Section
 			className="relative isolate overflow-hidden mt-20"
 			style={{
-				backgroundImage: "url(/images/Footer-background.png)",
+				backgroundImage: "url(/images/Footer-background.webp)",
 				backgroundSize: "cover",
 				backgroundPosition: "center",
 			}}
@@ -149,10 +150,13 @@ const FooterCtaNavigationBranding = async ({
 					{/* Bottom of bottom section */}
 					<div>
 						<img
-							src={slice.primary.branding.url}
+							src={slice.primary.branding.url || PHOTO_PLACEHOLDER_SRC}
 							alt=""
 							className="w-full"
 							draggable={false}
+              loading="lazy"
+              decoding="async"
+              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})`, backgroundSize: "cover", backgroundPosition: "center" }}
 						/>
 					</div>
 				</div>

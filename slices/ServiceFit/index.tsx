@@ -6,6 +6,7 @@ import { RxCheck, RxCross2 } from "react-icons/rx";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 import CardText from "@/components/CardText";
+import { PHOTO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 export type ServiceFitProps = SliceComponentProps<Content.ServiceFitSlice>;
 
@@ -33,7 +34,12 @@ const ServiceFit: FC<ServiceFitProps> = ({ slice }) => {
           >
             <span className="flex w-12 aspect-video items-center justify-center mb-3">
               {item.icon?.url ? (
-                <PrismicNextImage field={item.icon} className="h-full w-full" />
+                <PrismicNextImage
+                  field={item.icon}
+                  className="h-full w-full bg-center bg-cover"
+                  style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+                  loading="lazy"
+                />
               ) : (
                 <RxCheck className="text-3xl" />
               )}

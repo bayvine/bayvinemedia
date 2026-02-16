@@ -2,6 +2,10 @@ import { FC } from "react";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
+import {
+  PHOTO_PLACEHOLDER_SRC,
+  VIDEO_PLACEHOLDER_SRC,
+} from "@/utils/mediaPlaceholders";
 
 export type ProjectSingleMediaProps =
   SliceComponentProps<Content.ProjectSingleMediaSlice>;
@@ -25,19 +29,24 @@ const ProjectSingleMedia: FC<ProjectSingleMediaProps> = ({ slice }) => {
               loop
               muted
               playsInline
-              className="h-full w-full object-cover"
+              preload="metadata"
+              poster={VIDEO_PLACEHOLDER_SRC}
+              className="h-full w-full bg-center bg-cover object-cover"
+              style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
             />
           ) : hasImage ? (
             <PrismicNextImage
               field={slice.primary.image}
               fill
               sizes="100vw"
-              className="object-cover"
+              className="bg-center bg-cover object-cover"
+              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center text-sm text-white/60">
-              No media
-            </div>
+            <div
+              className="h-full w-full bg-center bg-cover"
+              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+            />
           )}
         </div>
       </div>

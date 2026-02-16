@@ -11,6 +11,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
+import { withPhotoPlaceholderBackground } from "@/utils/mediaPlaceholders";
 
 /**
  * Props for `ContactForm`.
@@ -552,7 +553,9 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
     <Section
       className="relative isolate overflow-hidden min-h-[500px] flex items-end pb-10"
       style={{
-        backgroundImage: `url(${slice.primary.hero_background.url})`,
+        backgroundImage: withPhotoPlaceholderBackground(
+          slice.primary.hero_background.url
+        ),
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
