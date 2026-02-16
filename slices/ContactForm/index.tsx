@@ -11,6 +11,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
+import { withPhotoPlaceholderBackground } from "@/utils/mediaPlaceholders";
 
 /**
  * Props for `ContactForm`.
@@ -539,12 +540,22 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
     }
   };
 
+  const handleStartAnotherSubmission = () => {
+    setFormError(null);
+    setErrors({});
+    setHasSubmitted(false);
+    setValues(getInitialFormValues());
+    setIsSuccess(false);
+  };
+
   return (
     <>
     <Section
       className="relative isolate overflow-hidden min-h-[500px] flex items-end pb-10"
       style={{
-        backgroundImage: `url(${slice.primary.hero_background.url})`,
+        backgroundImage: withPhotoPlaceholderBackground(
+          slice.primary.hero_background.url
+        ),
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -603,11 +614,19 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
               ref={successMessageRef}
               role="status"
               aria-live="polite"
-              className="flex min-h-[320px] items-center justify-center rounded-2xl border border-emerald-300/40 bg-emerald-300/10 p-8 sm:min-h-[380px] sm:p-12"
+              className="flex min-h-[320px] flex-col items-center justify-center gap-6 rounded-2xl border border-emerald-300/40 bg-emerald-300/10 p-8 text-center sm:min-h-[380px] sm:p-12"
             >
-              <p className="max-w-xl text-center text-2xl font-semibold leading-tight text-emerald-100 sm:text-3xl">
-                Thanks, your inquiry has been submitted.
+              <p className="max-w-xl text-2xl font-semibold leading-tight text-emerald-100 sm:text-3xl">
+                Thank you! Your inquiry has been submitted. We&apos;ll get back to you as soon as
+                possible.
               </p>
+              <button
+                type="button"
+                onClick={handleStartAnotherSubmission}
+                className="w-full rounded-full border border-emerald-100/70 px-8 py-3 font-semibold uppercase text-emerald-50 transition-colors hover:bg-emerald-100/15 sm:w-fit"
+              >
+                Submit another inquiry
+              </button>
             </div>
           ) : (
             <>

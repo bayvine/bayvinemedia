@@ -6,6 +6,7 @@ import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import { RxArrowTopRight } from "react-icons/rx";
+import SectionTitle from "@/components/SectionTitle";
 
 /**
  * Props for `Services`.
@@ -23,36 +24,25 @@ const Services: FC<ServicesProps> = ({ slice }) => {
       className="py-12"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      id="services"
     >
-      <div>
-        <h2 className="text-2xl font-bold uppercase">
-          {slice.primary.title || "Our services"}
-        </h2>
-        <div className="max-w-lg my-1 text-slate-200">
-          <PrismicRichText
-            field={slice.primary.description}
-            components={{
-              paragraph: ({ children }) => (
-                <p className="text-base sm:text-lg">{children}</p>
-              ),
-            }}
-          />
-        </div>
-      </div>
+      <SectionTitle
+        title={slice.primary.title || ""}
+        description={slice.primary.description}
+      />
 
-      <div className="my-12">
+      <div className="mt-8">
         {services.map((service, index) => {
-          console.log(service.link)
           const isLinked = isFilled.link(service.link);
           const content = (
             <>
-              <h3 className="z-50 text-4xl sm:text-5xl font-semibold mb-0 flex items-center group-hover:text-black md:pr-6">
-                <span className="mr-4 text-sm text-slate-50 group-hover:text-black font-extralight w-0.5 h-0.5 flex items-center justify-center border rounded-full p-3">
+              <h3 className="z-50 text-4xl sm:text-5xl font-semibold mb-0 flex items-center group-hover:text-black group-active:text-black md:pr-6">
+                <span className="mr-4 text-sm text-slate-50 group-hover:text-black group-active:text-black font-extralight w-0.5 h-0.5 flex items-center justify-center border rounded-full p-3">
                   {index + 1}
                 </span>
                 {service.title || "Service"}
               </h3>
-              <div className="max-w-sm z-50 text-slate-100/90 group-hover:text-black">
+              <div className="max-w-sm z-50 text-slate-100/90 group-hover:text-black group-active:text-black">
                 <PrismicRichText
                   field={service.service_description}
                   components={{
@@ -62,7 +52,7 @@ const Services: FC<ServicesProps> = ({ slice }) => {
               </div>
               <RxArrowTopRight
                 size={30}
-                className="relative z-50 group-hover:text-black mr-0 md:mr-8 self-end lg:self-auto justify-self-end group-hover:translate-x-0.5 group-hover:-translate-y-1 transition-all duration-300"
+                className="relative hidden z-50 group-hover:text-black lg:block mr-0 md:mr-8 self-end lg:self-auto justify-self-end group-hover:translate-x-0.5 group-hover:-translate-y-1 transition-all duration-300 group-active:text-black"
               />
             </>
           );
@@ -71,7 +61,7 @@ const Services: FC<ServicesProps> = ({ slice }) => {
             <PrismicNextLink
               key={`${service.title ?? "service"}-${index}`}
               href={`/services/${service.link.uid}`}
-              className="w-full border-t border-gray-500 px-4 py-10 sm:px-6 sm:py-12 transition-all duration-300 hover:bg-slate-50 group cursor-pointer grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_auto] lg:items-center"
+              className="w-full border-t border-gray-500 px-4 py-10 sm:px-6 sm:py-12 transition-all duration-300 active:bg-slate-50 hover:bg-slate-50 group cursor-pointer grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_auto] lg:items-center"
             >
               {content}
             </PrismicNextLink>

@@ -11,6 +11,7 @@ import { PrismicRichText } from "@prismicio/react";
 import Section from "@/components/Section";
 import Tag from "@/components/Tag";
 import Eyebrow from "@/components/Eyebrow";
+import { PHOTO_PLACEHOLDER_SRC, VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 type DetailHeroProps = {
   title: RichTextField;
@@ -26,7 +27,6 @@ type DetailHeroProps = {
 
 const DetailHero: FC<DetailHeroProps> = ({
   title,
-  subtitle,
   description,
   eyebrow,
   tags,
@@ -37,7 +37,6 @@ const DetailHero: FC<DetailHeroProps> = ({
 }) => {
   const hasVideo = isFilled.linkToMedia(backgroundVideo);
   const hasImage = Boolean(backgroundImage?.url);
-  const hasSubtitle = isFilled.richText(subtitle);
   const hasDescription = isFilled.richText(description);
   const cleanTags = (tags ?? []).filter((tag): tag is string => Boolean(tag));
 
@@ -50,25 +49,33 @@ const DetailHero: FC<DetailHeroProps> = ({
       <div className="absolute inset-0">
         {hasVideo ? (
           <video
-            className="project-detail-media absolute inset-0 h-full w-full object-cover"
+            className="project-detail-media pointer-events-none absolute inset-0 h-full w-full object-cover"
             src={backgroundVideo.url ?? undefined}
             autoPlay
             muted
             loop
             playsInline
-            poster={backgroundImage?.url || ""}
+            preload="metadata"
+            aria-hidden="true"
+            tabIndex={-1}
+            poster={VIDEO_PLACEHOLDER_SRC}
           />
         ) : hasImage ? (
           <div className="project-detail-media absolute inset-0">
             <PrismicNextImage
               field={backgroundImage}
+              fallbackAlt=""
               fill
               sizes="100vw"
+              loading="eager"
               className="object-cover"
             />
           </div>
         ) : (
-          <div className="project-detail-media absolute inset-0 bg-slate-900" />
+          <div
+            className="project-detail-media absolute inset-0 bg-slate-900 bg-center bg-cover"
+            style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+          />
         )}
         <div
           aria-hidden
@@ -94,28 +101,13 @@ const DetailHero: FC<DetailHeroProps> = ({
             />
           </div>
 
-          {hasSubtitle ? (
-            <div className="project-detail-body text-3xl">
-              <PrismicRichText
-                field={subtitle}
-                components={{
-                  paragraph: ({ children }) => (
-                    <p className="mt-2 font-semibold text-slate-100">
-                      {children}
-                    </p>
-                  ),
-                }}
-              />
-            </div>
-          ) : null}
-
           {hasDescription ? (
-            <div className="project-detail-body text-lg sm:text-xl">
+            <div className="project-detail-body my-1">
               <PrismicRichText
                 field={description}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="mt-2 font-semibold text-slate-100">
+                    <p className="text-lg">
                       {children}
                     </p>
                   ),

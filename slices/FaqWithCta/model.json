@@ -11,6 +11,13 @@
       "imageUrl": "",
       "docURL": "...",
       "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section title",
+            "placeholder": ""
+          }
+        },
         "section_subtitle": {
           "type": "StructuredText",
           "config": {
@@ -49,10 +56,10 @@
           }
         },
         "cta_title": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
-            "single": "heading4,strong",
-            "label": "CTA Title"
+            "label": "CTA Title",
+            "placeholder": ""
           }
         },
         "cta_description": {
@@ -69,13 +76,6 @@
             "allowText": true,
             "repeat": false,
             "select": null
-          }
-        },
-        "section_title": {
-          "type": "Text",
-          "config": {
-            "label": "Section title",
-            "placeholder": ""
           }
         }
       },

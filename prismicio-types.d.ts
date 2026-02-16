@@ -994,6 +994,16 @@ export interface FaqWithCtaSliceDefaultPrimaryFaqsItem {
  */
 export interface FaqWithCtaSliceDefaultPrimary {
   /**
+   * Section title field in *FaqWithCta → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq_with_cta.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
    * Section Subtitle field in *FaqWithCta → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -1026,12 +1036,12 @@ export interface FaqWithCtaSliceDefaultPrimary {
   /**
    * CTA Title field in *FaqWithCta → Default → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: faq_with_cta.default.primary.cta_title
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  cta_title: prismic.RichTextField;
+  cta_title: prismic.KeyTextField;
 
   /**
    * CTA Description field in *FaqWithCta → Default → Primary*
@@ -1058,16 +1068,6 @@ export interface FaqWithCtaSliceDefaultPrimary {
     prismic.FieldState,
     never
   >;
-
-  /**
-   * Section title field in *FaqWithCta → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: faq_with_cta.default.primary.section_title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  section_title: prismic.KeyTextField;
 }
 
 /**
@@ -2625,16 +2625,6 @@ export interface ServiceHeroSliceDefaultPrimary {
   title: prismic.RichTextField;
 
   /**
-   * Subtitle field in *ServiceHero → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: service_hero.default.primary.subtitle
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  subtitle: prismic.RichTextField;
-
-  /**
    * Description field in *ServiceHero → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -2712,12 +2702,12 @@ export interface ServiceHighlightSliceDefaultPrimary {
   /**
    * Heading field in *ServiceHighlight → Default → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: service_highlight.default.primary.heading
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  heading: prismic.RichTextField;
+  heading: prismic.KeyTextField;
 
   /**
    * Description field in *ServiceHighlight → Default → Primary*

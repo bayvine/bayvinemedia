@@ -13,43 +13,6 @@ import { GlitchText } from "@/components/GlichText";
 import { RxArrowTopRight } from "react-icons/rx";
 import { motion } from "framer-motion";
 
-function InfiniteScrollComponent({ items }) {
-  const scrollVariants = {
-    animate: {
-      x: ["0%", "-100%"], // Adjust based on content width
-      transition: {
-        repeat: Infinity,
-        ease: "linear",
-        duration: 20, // Adjust duration as needed
-      },
-    },
-  };
-  return (
-    <div className="overflow-hidden">
-      <motion.div
-        className="flex flex-nowrap"
-        animate={{
-			x: ["0%", "-100%"],
-			transition: {
-				repeat: Infinity,
-				ease: "linear",
-				duration: 20,
-			},	
-		}}
-		
-      >
-        {/* Render your items */}
-        {items.map((item, index) => (
-          <div key={index}>{item}</div>
-        ))}
-        {/* Duplicate items for seamless loop */}
-        {items.map((item, index) => (
-          <div key={`duplicate-${index}`}>{item}</div>
-        ))}
-      </motion.div>
-    </div>
-  );
-}
 
 /**
  * Props for `Hero`.
@@ -67,7 +30,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       <Section
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
-        className="flex items-center rounded-b-4xl pb-12 pt-28 sm:pt-36 lg:pt-52"
+        className="flex items-center rounded-b-4xl pb-20 pt-40 sm:pt-36 lg:pt-52"
       >
         <div className="">
           <div className="flex flex-col items-center justify-center text-center">

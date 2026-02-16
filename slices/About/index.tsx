@@ -5,6 +5,7 @@ import { asText, Content, isFilled } from "@prismicio/client"
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react"
 import { motion } from "framer-motion"
 import Eyebrow from "@/components/Eyebrow"
+import { VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders"
 
 /**
  * Props for `About`.
@@ -22,6 +23,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
 			className="relative w-full"
+			 id="about"
 		>
 			
 			{isFilled.linkToMedia(slice.primary.background_video) && (
@@ -32,7 +34,11 @@ const About: FC<AboutProps> = ({ slice }) => {
 							playsInline
 							muted
 							loop
-							className="h-full w-full object-cover"
+							preload="metadata"
+							aria-hidden="true"
+							tabIndex={-1}
+							poster={VIDEO_PLACEHOLDER_SRC}
+							className="pointer-events-none h-full w-full object-cover"
 						>
 							<source
 								src={slice.primary.background_video.url}

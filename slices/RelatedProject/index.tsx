@@ -3,6 +3,7 @@ import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
+import { PHOTO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 export type RelatedProjectProps =
   SliceComponentProps<Content.RelatedProjectSlice>;
@@ -33,14 +34,17 @@ const RelatedProject: FC<RelatedProjectProps> = ({ slice }) => {
           {slice.primary.project_image?.url ? (
             <PrismicNextImage
               field={slice.primary.project_image}
+              fallbackAlt=""
               fill
               sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover"
+              loading="lazy"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center text-sm text-white/60">
-              No image
-            </div>
+            <div
+              className="h-full w-full bg-center bg-cover"
+              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+            />
           )}
         </div>
 

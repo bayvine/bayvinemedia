@@ -3,17 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"project_title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading1",
-						"content": {
-							"text": "Finish"
-						}
-					}
-				]
-			},
 			"project_subtitle": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -96,6 +85,17 @@
 					"size": "0",
 					"text": "harbor"
 				}
+			},
+			"project_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation non cillum exercitation aute amet incididunt aliqua amet est occaecat officia aliqua esse adipisicing aliquip. Est exercitation cillum id sit voluptate dolore exercitation et."
+						}
+					}
+				]
 			}
 		},
 		"items": []

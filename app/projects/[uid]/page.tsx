@@ -1,4 +1,3 @@
-import { Content } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";

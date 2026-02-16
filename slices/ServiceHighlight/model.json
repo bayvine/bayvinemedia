@@ -12,10 +12,10 @@
       "docURL": "...",
       "primary": {
         "heading": {
-          "type": "StructuredText",
+          "type": "Text",
           "config": {
-            "single": "heading2",
-            "label": "Heading"
+            "label": "Heading",
+            "placeholder": ""
           }
         },
         "description": {
@@ -34,7 +34,8 @@
         "cta_link": {
           "type": "Link",
           "config": {
-            "label": "CTA Link"
+            "label": "CTA Link",
+            "select": null
           }
         },
         "image": {

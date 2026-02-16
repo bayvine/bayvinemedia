@@ -1,10 +1,18 @@
 "use client";
 
 import React, { FC, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  type MotionValue,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { Content } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import Section from "@/components/Section";
+import SectionTitle from "@/components/SectionTitle";
+import CardText from "@/components/CardText";
+import { VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 type RoadmapItem = Content.RoadmapSliceDefaultPrimaryRoadmapItem;
 
@@ -19,7 +27,7 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 const RoadMapCard: FC<{
   item: RoadmapItem;
-  t: any; // MotionValue<number> 0..1 collapse progress for this card
+  t: MotionValue<number>; // 0..1 collapse progress for this card
 }> = ({ item, t }) => {
   // Heights
   const cardH = useTransform(t, (v) => `${lerp(400, 150, clamp(v))}px`); // overall card height
@@ -37,28 +45,19 @@ const RoadMapCard: FC<{
     >
       <div className="flex h-full flex-col gap-4 lg:flex-row md:items-start lg:gap-6">
         <div className="min-w-0 flex-1">
-          <h3 className="text-xl font-bold uppercase leading-tight text-white sm:text-2xl">
-            {item.title || "Untitled step"}
-          </h3>
+          <CardText title={item.title} />
 
           <motion.div
             className="mt-3 origin-top overflow-hidden"
             style={{ opacity: descOpacity, scaleY: descScaleY }}
           >
-            <div className="space-y-3 text-sm leading-relaxed text-slate-200 sm:text-base">
-              <PrismicRichText
-                field={item.description}
-                components={{
-                  paragraph: ({ children }) => <p className="leading-relaxed">{children}</p>,
-                }}
-              />
-            </div>
+            <CardText description={item.description} />
           </motion.div>
         </div>
 
         {item.media?.url ? (
           <motion.div
-            className="relative mt-4 w-full overflow-hidden rounded-2xl bg-slate-900/40 shadow-lg md:mt-0 md:w-[360px] lg:w-[520px] xl:w-[620px]"
+            className="relative mt-4 w-full overflow-hidden rounded-lg bg-slate-900/40 shadow-lg md:mt-0 md:w-[360px] lg:w-[520px] xl:w-[620px]"
             style={{ height: mediaH }}
           >
             <video
@@ -67,6 +66,8 @@ const RoadMapCard: FC<{
               loop
               muted
               playsInline
+              preload="metadata"
+              poster={VIDEO_PLACEHOLDER_SRC}
               className="h-full w-full object-cover object-center"
             />
           </motion.div>
@@ -74,6 +75,24 @@ const RoadMapCard: FC<{
       </div>
     </motion.article>
   );
+};
+
+const StickyRoadMapCard: FC<{
+  item: RoadmapItem;
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}> = ({ item, index, total, progress }) => {
+  const start = index / total;
+  const end = (index + 1) / total;
+
+  const t = useTransform(progress, (p) => {
+    if (p <= start) return 0;
+    if (p >= end) return 1;
+    return (p - start) / (end - start);
+  });
+
+  return <RoadMapCard item={item} t={t} />;
 };
 
 const RoadmapCardStatic: FC<{ item: RoadmapItem }> = ({ item }) => {
@@ -89,7 +108,9 @@ const RoadmapCardStatic: FC<{ item: RoadmapItem }> = ({ item }) => {
               <PrismicRichText
                 field={item.description}
                 components={{
-                  paragraph: ({ children }) => <p className="leading-relaxed">{children}</p>,
+                  paragraph: ({ children }) => (
+                    <p className="leading-relaxed">{children}</p>
+                  ),
                 }}
               />
             </div>
@@ -97,13 +118,15 @@ const RoadmapCardStatic: FC<{ item: RoadmapItem }> = ({ item }) => {
         </div>
 
         {item.media?.url ? (
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-900/40 shadow-lg">
+          <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-slate-900/40 shadow-lg">
             <video
               src={item.media.url}
               autoPlay
               loop
               muted
               playsInline
+              preload="metadata"
+              poster={VIDEO_PLACEHOLDER_SRC}
               className="h-full w-full object-cover object-center"
             />
           </div>
@@ -129,24 +152,23 @@ export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
   const sectionMinH = `${Math.max(140, n * 90)}vh`;
 
   return (
-    <div ref={sectionRef} className="relative my-12" style={{ minHeight: sectionMinH }}>
+    <div
+      ref={sectionRef}
+      className="relative my-12"
+      style={{ minHeight: sectionMinH }}
+    >
       {/* ONE sticky wrapper for the whole stack (like dpdk) */}
-      <div className="sticky" style={{ top: navbarHeight  }}>
+      <div className="sticky" style={{ top: navbarHeight }}>
         <div className="h-fit">
-          {items.map((item, i) => {
-            // Each card collapses in its own slice of the scroll timeline.
-            // Card i collapses during [i/n, (i+1)/n]
-            const start = i / n;
-            const end = (i + 1) / n;
-
-            const t = useTransform(scrollYProgress, (p) => {
-              if (p <= start) return 0;
-              if (p >= end) return 1;
-              return (p - start) / (end - start);
-            });
-
-            return <RoadMapCard key={`${item.title ?? "step"}-${i}`} item={item} t={t} />;
-          })}
+          {items.map((item, i) => (
+            <StickyRoadMapCard
+              key={`${item.title ?? "step"}-${i}`}
+              item={item}
+              index={i}
+              total={n}
+              progress={scrollYProgress}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -161,23 +183,15 @@ const Roadmap: FC<RoadmapProps> = ({ slice }) => {
 
   return (
     <Section
+      id="roadmap"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="py-12"
     >
-      <div className="max-w-xl">
-        <h2 className="text-2xl font-bold uppercase sm:text-3xl">{slice.primary.title}</h2>
-        <div className="my-1 max-w-lg">
-          <PrismicRichText
-            field={slice.primary.subtitel}
-            components={{
-              paragraph: ({ children }) => (
-                <p className="text-base leading-relaxed sm:text-lg">{children}</p>
-              ),
-            }}
-          />
-        </div>
-      </div>
+      <SectionTitle
+        title={slice.primary.title || ""}
+        description={slice.primary.subtitel}
+      />
 
       <div className="mt-8 md:hidden">
         {roadmapItems.map((item, i) => (

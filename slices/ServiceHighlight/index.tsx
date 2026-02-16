@@ -1,9 +1,14 @@
 import { FC } from "react";
 import { Content, isFilled, type LinkToMediaField } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
+import SectionTitle from "@/components/SectionTitle";
+import {
+  PHOTO_PLACEHOLDER_SRC,
+  VIDEO_PLACEHOLDER_SRC,
+} from "@/utils/mediaPlaceholders";
 
 export type ServiceHighlightProps =
   SliceComponentProps<Content.ServiceHighlightSlice>;
@@ -24,24 +29,10 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
     >
       <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
-          <PrismicRichText
-            field={slice.primary.heading}
-            components={{
-              heading2: ({ children }) => (
-                <h2 className="text-2xl font-bold uppercase sm:text-3xl">
-                  {children}
-                </h2>
-              ),
-            }}
+          <SectionTitle
+            title={slice.primary.heading}
+            description={slice.primary.description}
           />
-          <div className="my-1 text-xl max-w-2xl">
-            <PrismicRichText
-              field={slice.primary.description}
-              components={{
-                paragraph: ({ children }) => <p className="mt-5 max-w-xl">{children}</p>,
-              }}
-            />
-          </div>
           {hasCta ? (
             <PrismicNextLink
               field={slice.primary.cta_link}
@@ -50,17 +41,18 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
                 : {})}
               className="mt-6 inline-flex w-fit"
             >
-              <CTAButton className="">
+              <CTAButton as="span" className="">
                 {slice.primary.cta_label || "Contact us"}
               </CTAButton>
             </PrismicNextLink>
           ) : null}
         </div>
 
-        <div className="relative aspect-video overflow-hidden">
+        <div className="relative aspect-video overflow-hidden rounded-lg">
           {hasImage ? (
             <PrismicNextImage
               field={slice.primary.image}
+              fallbackAlt=""
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-contain"
@@ -68,17 +60,22 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
           ) : null}
           {hasVideo ? (
             <video
-              className="absolute inset-0 z-10 h-full w-full object-contain rounded-lg"
+              className="pointer-events-none absolute inset-0 z-10 h-full w-full object-contain"
               src={videoField.url ?? undefined}
               preload="metadata"
               autoPlay
               muted
               loop
               playsInline
-              poster={hasImage ? slice.primary.image.url ?? undefined : undefined}
+              poster={VIDEO_PLACEHOLDER_SRC}
             />
           ) : null}
-          {!hasImage && !hasVideo && null}
+          {!hasImage && !hasVideo ? (
+            <div
+              className="absolute inset-0 bg-center bg-cover"
+              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+            />
+          ) : null}
         </div>
       </div>
     </Section>

@@ -46,17 +46,6 @@
 					}
 				]
 			},
-			"cta_title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading4",
-						"content": {
-							"text": "Slight"
-						}
-					}
-				]
-			},
 			"cta_description": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -93,6 +82,11 @@
 			"section_title": {
 				"__TYPE__": "FieldContent",
 				"value": "eye",
+				"type": "Text"
+			},
+			"cta_title": {
+				"__TYPE__": "FieldContent",
+				"value": "lower",
 				"type": "Text"
 			}
 		},
