@@ -127,8 +127,10 @@
         "disclaimer": {
           "type": "StructuredText",
           "config": {
-            "multi": "paragraph,strong,em",
-            "label": "Disclaimer"
+            "label": "Disclaimer",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
           }
         },
         "hero_background": {

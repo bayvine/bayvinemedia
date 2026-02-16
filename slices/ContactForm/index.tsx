@@ -1,10 +1,16 @@
 'use client';
 
 import { FC, useState, type ChangeEvent, type FormEvent } from "react";
-import { Content } from "@prismicio/client";
+import {
+  asLink,
+  Content,
+  type LinkField,
+  type LinkResolverFunction,
+} from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import { PrismicNextLink } from "@prismicio/next";
+import Link from "next/link";
 
 /**
  * Props for `ContactForm`.
@@ -321,6 +327,20 @@ const getContactTargetProps = (href?: string | null) =>
     ? { target: "_self" }
     : {};
 
+const richTextLinkResolver: LinkResolverFunction<string> = (doc) => {
+  if (doc.type === "home") return "/";
+  if (doc.type === "contact") return "/contact";
+  if (doc.type === "service" && doc.uid) return `/services/${doc.uid}`;
+  if (doc.type === "project" && doc.uid) return `/projects/${doc.uid}`;
+  if (doc.type === "privacy_policy") return "/privacy-policy";
+  if (doc.type === "terms_and_conditions") return "/terms-and-conditions";
+  return null;
+};
+
+const getRichTextLinkHref = (field: LinkField) =>
+  asLink(field, { linkResolver: richTextLinkResolver }) ||
+  (field.link_type === "Web" ? field.url ?? "#" : "#");
+
 const ContactOptions: FC<ContactOptionsProps> = ({ options }) => (
   <div className="flex flex-col gap-2">
     {options.map((option, index) => {
@@ -540,14 +560,31 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
             error={hasSubmitted ? errors.description : undefined}
           />
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-8">
             <button
               type="submit"
-              className="w-fit cursor-pointer rounded-full bg-white px-8 py-3 font-semibold text-black"
+              className="w-full sm:w-fit cursor-pointer rounded-full bg-white px-20 py-3 font-semibold text-black uppercase"
             >
               {submitLabel}
             </button>
-            <PrismicRichText field={slice.primary.disclaimer} />
+            <PrismicRichText
+              field={slice.primary.disclaimer}
+              components={{
+                hyperlink: ({ node, children }) => {
+                  const href = getRichTextLinkHref(node.data as LinkField);
+
+                  return (
+                    <Link
+                      href={href}
+                      className="underline!  text-white"
+                      {...getContactTargetProps(href)}
+                    >
+                      {children}
+                    </Link>
+                  );
+                },
+              }}
+            />
           </div>
         </form>
       </Section>
