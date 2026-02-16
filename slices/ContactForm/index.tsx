@@ -598,15 +598,15 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
         >
           <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
 
-          {isSuccess ? (
+          {!isSuccess ? (
             <div
               ref={successMessageRef}
               role="status"
               aria-live="polite"
-              className="flex min-h-[320px] items-center justify-center rounded-2xl border border-emerald-300/40 bg-emerald-300/10 p-8 sm:min-h-[380px] sm:p-12"
+              className="w-fit rounded-lg border border-emerald-300/40 bg-emerald-300/10 p-4"
             >
-              <p className="max-w-xl text-center text-2xl font-semibold leading-tight text-emerald-100 sm:text-3xl">
-                Thanks, your inquiry has been submitted.
+              <p className="text-emerald-100">
+                Thank you! Your inquiry has been submitted. We'll get back to you as soon as possible.
               </p>
             </div>
           ) : (
