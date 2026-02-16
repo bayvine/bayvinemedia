@@ -23,8 +23,7 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
 
   const cardContent = (
     <>
-      <div className="z-20 py-2 px-4 lg:p-10 w-full flex flex-col">
-        
+      <div className="z-20 pt-40 px-4 lg:p-10 w-full flex flex-col">
         
         <PrismicRichText
           field={slice.primary.project_title}
@@ -95,7 +94,7 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
         href={projectHref}
         // field={slice.primary.project_link}
         aria-label="View project details"
-        className="mt-8  group relative overflow-hidden duration-300 ease-in-out isolate lg:rounded-lg aspect-4/3 lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
+        className="mt-8  group relative overflow-hidden duration-300 ease-in-out isolate lg:rounded-lg aspect-3/4 lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
       >
         {cardContent}
       </PrismicNextLink>
