@@ -1,6 +1,5 @@
-import { Content } from "@prismicio/client";
+import { Content, type LinkField } from "@prismicio/client";
 import {
-  PrismicLink,
   PrismicRichText,
   SliceComponentProps,
 } from "@prismicio/react";
@@ -31,6 +30,12 @@ const FooterCtaNavigationBranding = async ({
   const ctaHref = slice.primary.cta_button.url ?? "#";
   const isContactLink = isContactHref(ctaHref);
   const navGroups = slice.primary.page_nav_links || [];
+  const footerData = (footerDoc?.data ??
+    {}) as {
+    trademark?: string | null;
+    privacy_policy?: LinkField;
+    terms_and_conditions?: LinkField;
+  };
   const navMap = navGroups.reduce<
     Record<string, (typeof navGroups)[number]["nav_item"]>
   >((acc, section) => {
@@ -38,7 +43,7 @@ const FooterCtaNavigationBranding = async ({
     return acc;
   }, {});
 
-  const trademark = footerDoc?.data?.trademark || "Bayvine Digital";
+  const trademark = footerData.trademark || "Bayvine Digital";
 	const ctaLabel = slice.primary.cta_button?.text;
 
   return (
@@ -114,15 +119,28 @@ const FooterCtaNavigationBranding = async ({
 					<div className="flex flex-col gap-2 lg:flex-row md:gap-0 justify-between">
 						<div className="flex items-center gap-4">
 							{trademark}
-							<PrismicNextLink
-								className="hover:underline!"
-								field={footerDoc?.data.privacy_policy}
-								{...(isContactHref(footerDoc?.data.privacy_policy?.url)
-									? { target: "_self" }
-									: {})}
-							>
-								{footerDoc?.data.privacy_policy.text}
-							</PrismicNextLink>
+							{footerData.privacy_policy ? (
+								<PrismicNextLink
+									className="hover:underline!"
+									field={footerData.privacy_policy}
+									{...(isContactHref(footerData.privacy_policy?.url)
+										? { target: "_self" }
+										: {})}
+								>
+									{footerData.privacy_policy.text}
+								</PrismicNextLink>
+							) : null}
+							{footerData.terms_and_conditions ? (
+								<PrismicNextLink
+									className="hover:underline!"
+									field={footerData.terms_and_conditions}
+									{...(isContactHref(footerData.terms_and_conditions?.url)
+										? { target: "_self" }
+										: {})}
+								>
+									{footerData.terms_and_conditions.text}
+								</PrismicNextLink>
+							) : null}
 						</div>
 						<div className="text-lg font-bold pr-4">
 							<PrismicRichText field={slice.primary.motto} />
@@ -132,6 +150,7 @@ const FooterCtaNavigationBranding = async ({
 					<div>
 						<img
 							src={slice.primary.branding.url}
+							alt=""
 							className="w-full"
 							draggable={false}
 						/>

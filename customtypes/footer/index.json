@@ -17,6 +17,17 @@
           "repeat": false
         }
       },
+      "terms_and_conditions": {
+        "type": "Link",
+        "config": {
+          "label": "Terms and Conditions",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
       "trademark": {
         "type": "Text",
         "config": {

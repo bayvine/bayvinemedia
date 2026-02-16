@@ -1,9 +1,10 @@
 "use client"
 
 import { FC } from "react"
-import { Content, isFilled } from "@prismicio/client"
+import { asText, Content, isFilled } from "@prismicio/client"
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react"
 import { motion } from "framer-motion"
+import Eyebrow from "@/components/Eyebrow"
 
 /**
  * Props for `About`.
@@ -14,6 +15,8 @@ export type AboutProps = SliceComponentProps<Content.AboutSlice>
  * Component for "About" Slices.
  */
 const About: FC<AboutProps> = ({ slice }) => {
+	const eyebrowText = asText(slice.primary.title)
+
 	return (
 		<section
 			data-slice-type={slice.slice_type}
@@ -39,9 +42,9 @@ const About: FC<AboutProps> = ({ slice }) => {
 					</div>
 					<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/80" />
 					<motion.div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 py-16 text-center">
-						<span className="inline-flex text-lg items-center justify-center rounded-full px-6 py-2 border">
-							<PrismicRichText field={slice.primary.title} />
-						</span>
+						{eyebrowText ? (
+							<Eyebrow>{eyebrowText}</Eyebrow>
+						) : null}
 						
 						<div className="mt-6 max-w-4xl text-3xl  uppercase sm:text-4xl md:text-5xl">
 							<PrismicRichText field={slice.primary.subtitle} />

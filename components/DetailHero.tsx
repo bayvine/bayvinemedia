@@ -10,6 +10,7 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import Section from "@/components/Section";
 import Tag from "@/components/Tag";
+import Eyebrow from "@/components/Eyebrow";
 
 type DetailHeroProps = {
   title: RichTextField;
@@ -78,9 +79,7 @@ const DetailHero: FC<DetailHeroProps> = ({
       <Section className="relative z-10 flex min-h-[340px] items-end">
         <div className="max-w-3xl">
           {eyebrow ? (
-            <p className="inline-flex text-lg items-center justify-center rounded-full px-6 py-2 border mb-4">
-              {eyebrow}
-            </p>
+            <Eyebrow className="mb-4">{eyebrow}</Eyebrow>
           ) : null}
           <div className="project-detail-title">
             <PrismicRichText
