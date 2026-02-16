@@ -1,0 +1,80 @@
+{
+  "id": "hero",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "Hero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "call_to_action": {
+          "type": "Link",
+          "config": {
+            "label": "Call to action",
+            "placeholder": "https://bayvine.digital",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": false,
+            "repeat": false
+          }
+        },
+        "call_to_action_label": {
+          "type": "Text",
+          "config": {
+            "label": "Call to action label",
+            "placeholder": "SCHEDULE YOUR FREE INTRO"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "subtitle",
+            "placeholder": "Web and App development  •  E-Commerce  •  Web and UX/UI Design",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "title_action": {
+          "type": "Group",
+          "config": {
+            "label": "Title action",
+            "repeat": true,
+            "fields": {
+              "action": {
+                "type": "Text",
+                "config": {
+                  "label": "action",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "banner": {
+          "type": "Link",
+          "config": {
+            "label": "banner",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

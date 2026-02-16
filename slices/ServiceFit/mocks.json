@@ -1,0 +1,83 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Is this service for you?",
+        "type": "Text"
+      },
+      "for_you_heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Best for you if",
+        "type": "Text"
+      },
+      "not_for_you_heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Not a fit if",
+        "type": "Text"
+      },
+      "not_for_you_intro": {
+        "__TYPE__": "FieldContent",
+        "value": "This might not be the right fit if:",
+        "type": "Text"
+      },
+      "for_you_items": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "icon",
+                {
+                  "__TYPE__": "ImageContent",
+                  "url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+                  "width": 120,
+                  "height": 120,
+                  "alt": "Handshake icon"
+                }
+              ],
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "You want consistent inbound leads",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Ideal if you want a steady pipeline without constant manual outreach.",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "not_for_you_items": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "text",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "You need immediate results in 24 hours",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  }
+]

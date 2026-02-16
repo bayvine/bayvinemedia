@@ -1,0 +1,149 @@
+{
+  "type": "SharedSlice",
+  "id": "contact_form",
+  "name": "ContactForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard contact and inquiry form with service selection and direct contact options.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1"
+          }
+        },
+        "subheading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading3",
+            "label": "Subheading"
+          }
+        },
+        "questions_link": {
+          "type": "Link",
+          "config": {
+            "label": "'Got questions?' Link",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        },
+        "contact_options": {
+          "type": "Group",
+          "config": {
+            "label": "Contact Options",
+            "fields": {
+              "option_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label"
+                }
+              },
+              "option_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link or action (email, phone, calendar)",
+                  "placeholder": "",
+                  "allowText": true,
+                  "repeat": true,
+                  "select": null
+                }
+              }
+            }
+          }
+        },
+        "interest_services": {
+          "type": "Group",
+          "config": {
+            "label": "Interest Services",
+            "fields": {
+              "service": {
+                "type": "Text",
+                "config": {
+                  "label": "Service"
+                }
+              }
+            }
+          }
+        },
+        "name_label": {
+          "type": "Text",
+          "config": {
+            "label": "Name Label"
+          }
+        },
+        "email_label": {
+          "type": "Text",
+          "config": {
+            "label": "Email Label"
+          }
+        },
+        "phone_label": {
+          "type": "Text",
+          "config": {
+            "label": "Phone Label"
+          }
+        },
+        "budget_options": {
+          "type": "Group",
+          "config": {
+            "label": "Budget Options",
+            "fields": {
+              "budget_label": {
+                "type": "Text",
+                "config": {
+                  "label": "Budget Option"
+                }
+              }
+            }
+          }
+        },
+        "about_project_label": {
+          "type": "Text",
+          "config": {
+            "label": "Project Description Label"
+          }
+        },
+        "about_project_placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Project Description Placeholder"
+          }
+        },
+        "submit_label": {
+          "type": "Text",
+          "config": {
+            "label": "Button Label"
+          }
+        },
+        "disclaimer": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Disclaimer",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "hero_background": {
+          "type": "Link",
+          "config": {
+            "label": "Hero background",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

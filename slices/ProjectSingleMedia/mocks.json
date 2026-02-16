@@ -1,0 +1,33 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "image": {
+        "__TYPE__": "ImageContent",
+        "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+        "width": 1600,
+        "height": 900,
+        "alt": "Full bleed"
+      },
+      "video": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "FileLink",
+          "id": "mock_media",
+          "kind": "file",
+          "name": "mock_video",
+          "url": "https://source.unsplash.com/random",
+          "size": "0",
+          "text": "video"
+        }
+      },
+      "caption": {
+        "__TYPE__": "FieldContent",
+        "value": "Homepage hero",
+        "type": "Text"
+      }
+    },
+    "items": []
+  }
+]

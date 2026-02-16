@@ -1,0 +1,16 @@
+.word-veil {
+  position: relative;
+  display: inline-flex;
+  min-height: 1em;
+  min-width: 1ch;
+  overflow: hidden;
+}
+
+.word-veil__text {
+  display: inline-flex;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  color: currentColor;
+  font-weight: inherit;
+  will-change: transform, opacity, filter;
+}

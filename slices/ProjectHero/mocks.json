@@ -1,0 +1,103 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"project_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Finish"
+						}
+					}
+				]
+			},
+			"project_subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Aute occaecat quis ad aliqua aliquip aute cillum id deserunt officia aliquip. Cupidatat ex velit officia pariatur. Excepteur est exercitation nostrud reprehenderit occaecat ea eiusmod minim esse proident ullamco."
+						}
+					}
+				]
+			},
+			"project_tags": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"tag",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "label",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"project_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cupidatat irure proident enim reprehenderit incididunt."
+						}
+					}
+				]
+			},
+			"project_link": {
+				"key": "8f65d5c8-8d6a-4d94-b2d2-fd2e01c6b79d",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "/projects/finish"
+				}
+			},
+			"mockup_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+					"width": 4172,
+					"height": 4000
+				},
+				"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+				"width": 4172,
+				"height": 4000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "mood",
+				"credits": null,
+				"__TYPE__": "ImageContent"
+			},
+			"background_video": {
+				"key": "fcd2f95c-5679-4fc8-aff1-8b9d2a35d220",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "harbor"
+				}
+			}
+		},
+		"items": []
+	}
+]

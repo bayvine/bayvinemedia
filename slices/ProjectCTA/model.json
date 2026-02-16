@@ -1,0 +1,66 @@
+{
+  "type": "SharedSlice",
+  "id": "project_cta",
+  "name": "ProjectCTA",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "CTA block with up to two buttons.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Body"
+          }
+        },
+        "primary_cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Primary CTA Label"
+          }
+        },
+        "primary_cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Primary CTA Link",
+            "select": null
+          }
+        },
+        "secondary_cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "Secondary CTA Label"
+          }
+        },
+        "secondary_cta_link": {
+          "type": "Link",
+          "config": {
+            "label": "Secondary CTA Link",
+            "select": null
+          }
+        },
+        "background": {
+          "type": "Link",
+          "config": {
+            "label": "Background",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

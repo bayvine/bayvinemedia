@@ -1,0 +1,73 @@
+{
+  "type": "SharedSlice",
+  "id": "service_hero",
+  "name": "ServiceHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Service hero with background media, title, tags, and description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph",
+            "label": "Subtitle"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "tags": {
+          "type": "Group",
+          "config": {
+            "label": "Tags",
+            "fields": {
+              "tag": {
+                "type": "Text",
+                "config": {
+                  "label": "Tag"
+                }
+              }
+            }
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image"
+          }
+        },
+        "background_video": {
+          "type": "Link",
+          "config": {
+            "label": "Background Video",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

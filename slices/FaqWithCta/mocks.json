@@ -1,0 +1,101 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"section_subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nostrud laboris veniam minim officia pariatur ea nulla non ut. Culpa et Lorem pariatur cupidatat commodo ex sit tempor. Proident duis exercitation veniam exercitation cupidatat consectetur mollit reprehenderit occaecat elit eiusmod deserunt ipsum non irure."
+						}
+					}
+				]
+			},
+			"faqs": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"question",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "detail",
+									"type": "Text"
+								}
+							],
+							[
+								"answer",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Consectetur laboris dolore deserunt veniam occaecat adipisicing aliquip velit ipsum proident. Pariatur ut mollit et. Non laboris qui consequat."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"cta_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Slight"
+						}
+					}
+				]
+			},
+			"cta_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Duis nostrud adipisicing anim quis eu et irure officia."
+						}
+					}
+				]
+			},
+			"cta_button": {
+				"key": "ed026347-5225-4598-9cc1-9a21b53565f6",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "seldom"
+				}
+			},
+			"cta_media": {
+				"key": "e94298b9-6619-4c3f-98a8-a44ccd84b2f9",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "meant"
+				}
+			},
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "eye",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

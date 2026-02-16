@@ -1,0 +1,57 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Media grid",
+        "type": "Text"
+      },
+      "items": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "image",
+                {
+                  "__TYPE__": "ImageContent",
+                  "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+                  "width": 1600,
+                  "height": 900,
+                  "alt": "Preview"
+                }
+              ],
+              [
+                "video",
+                {
+                  "__TYPE__": "LinkContent",
+                  "value": {
+                    "__TYPE__": "FileLink",
+                    "id": "mock_media",
+                    "kind": "file",
+                    "name": "mock_video",
+                    "url": "https://source.unsplash.com/random",
+                    "size": "0",
+                    "text": "video"
+                  }
+                }
+              ],
+              [
+                "caption",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Landing page",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  }
+]

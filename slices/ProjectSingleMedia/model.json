@@ -1,0 +1,37 @@
+{
+  "type": "SharedSlice",
+  "id": "project_single_media",
+  "name": "ProjectSingleMedia",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Full-bleed image or video.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image"
+          }
+        },
+        "video": {
+          "type": "Link",
+          "config": {
+            "label": "Video",
+            "select": "media"
+          }
+        },
+        "caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

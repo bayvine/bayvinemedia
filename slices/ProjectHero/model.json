@@ -1,0 +1,78 @@
+{
+  "type": "SharedSlice",
+  "id": "project_hero",
+  "name": "ProjectHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard hero layout with prominent left-aligned content and right visual mockup.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "project_title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Project Title"
+          }
+        },
+        "project_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph",
+            "label": "Project Subtitle"
+          }
+        },
+        "project_tags": {
+          "type": "Group",
+          "config": {
+            "label": "Project Tags",
+            "fields": {
+              "tag": {
+                "type": "Text",
+                "config": {
+                  "label": "Tag"
+                }
+              }
+            }
+          }
+        },
+        "project_description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Project Description"
+          }
+        },
+        "project_link": {
+          "type": "Link",
+          "config": {
+            "label": "Project Link",
+            "select": "document",
+            "customtypes": [
+              "project"
+            ]
+          }
+        },
+        "mockup_image": {
+          "type": "Image",
+          "config": {
+            "label": "Mockup Image"
+          }
+        },
+        "background_video": {
+          "type": "Link",
+          "config": {
+            "label": "Background video",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

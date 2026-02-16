@@ -1,0 +1,166 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Exactly"
+						}
+					}
+				]
+			},
+			"subheading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading3",
+						"content": {
+							"text": "Troops"
+						}
+					}
+				]
+			},
+			"questions_link": {
+				"key": "3459e7f1-c616-4582-8f48-83f2763d1340",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev",
+					"text": "hundred"
+				}
+			},
+			"contact_options": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"option_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "fell",
+									"type": "Text"
+								}
+							],
+							[
+								"option_link",
+								{
+									"__TYPE__": "RepeatableContent",
+									"type": "Link",
+									"value": [
+										{
+											"key": "7df11525-b3e7-40b8-adc3-968184b74dfb",
+											"__TYPE__": "LinkContent",
+											"value": {
+												"__TYPE__": "ExternalLink",
+												"url": "http://twitter.com",
+												"text": "claws"
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"interest_services": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"service",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "guide",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"name_label": {
+				"__TYPE__": "FieldContent",
+				"value": "memory",
+				"type": "Text"
+			},
+			"email_label": {
+				"__TYPE__": "FieldContent",
+				"value": "share",
+				"type": "Text"
+			},
+			"phone_label": {
+				"__TYPE__": "FieldContent",
+				"value": "accident",
+				"type": "Text"
+			},
+			"budget_options": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"budget_label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "want",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"about_project_label": {
+				"__TYPE__": "FieldContent",
+				"value": "couple",
+				"type": "Text"
+			},
+			"about_project_placeholder": {
+				"__TYPE__": "FieldContent",
+				"value": "raw",
+				"type": "Text"
+			},
+			"submit_label": {
+				"__TYPE__": "FieldContent",
+				"value": "wide",
+				"type": "Text"
+			},
+			"disclaimer": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Fugiat adipisicing aute adipisicing eiusmod do nisi enim in. Laborum aliqua ullamco officia exercitation eiusmod aute veniam laborum tempor nostrud ut eiusmod esse incididunt."
+						}
+					}
+				]
+			},
+			"hero_background": {
+				"key": "77dd97eb-cf8f-4e6e-81e3-04b4f9fc51c9",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "common"
+				}
+			}
+		},
+		"items": []
+	}
+]

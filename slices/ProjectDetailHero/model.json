@@ -1,0 +1,60 @@
+{
+  "type": "SharedSlice",
+  "id": "project_detail_hero",
+  "name": "ProjectDetailHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Hero with background media, title, tags, and description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "tags": {
+          "type": "Group",
+          "config": {
+            "label": "Tags",
+            "fields": {
+              "tag": {
+                "type": "Text",
+                "config": {
+                  "label": "Tag"
+                }
+              }
+            }
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image"
+          }
+        },
+        "background_video": {
+          "type": "Link",
+          "config": {
+            "label": "Background Video",
+            "select": "media",
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
