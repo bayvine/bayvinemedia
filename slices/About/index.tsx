@@ -32,7 +32,10 @@ const About: FC<AboutProps> = ({ slice }) => {
 							playsInline
 							muted
 							loop
-							className="h-full w-full object-cover"
+							preload="metadata"
+							aria-hidden="true"
+							tabIndex={-1}
+							className="pointer-events-none h-full w-full object-cover"
 						>
 							<source
 								src={slice.primary.background_video.url}

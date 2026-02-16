@@ -69,12 +69,15 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
           className="pointer-events-none absolute inset-0 z-10 bg-linear-to-t from-black/75 via-black/50 to-transparent"
         />
         <video
-          className="absolute inset-0 z-0 h-full w-full object-bottom object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1]"
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-bottom object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1]"
           src={slice.primary.background_video?.url}
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
+          aria-hidden="true"
+          tabIndex={-1}
           poster={slice.primary.mockup_image.url || ""}
         />
       </div>

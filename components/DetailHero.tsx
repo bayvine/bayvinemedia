@@ -48,12 +48,15 @@ const DetailHero: FC<DetailHeroProps> = ({
       <div className="absolute inset-0">
         {hasVideo ? (
           <video
-            className="project-detail-media absolute inset-0 h-full w-full object-cover"
+            className="project-detail-media pointer-events-none absolute inset-0 h-full w-full object-cover"
             src={backgroundVideo.url ?? undefined}
             autoPlay
             muted
             loop
             playsInline
+            preload="metadata"
+            aria-hidden="true"
+            tabIndex={-1}
             poster={backgroundImage?.url || ""}
           />
         ) : hasImage ? (

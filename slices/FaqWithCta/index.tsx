@@ -82,7 +82,12 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
             src={mediaUrl}
             autoPlay
             loop
-            className="absolute rounded-lg inset-0 h-full w-full object-cover"
+            muted
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            tabIndex={-1}
+            className="pointer-events-none absolute rounded-lg inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/90" />
         </>
