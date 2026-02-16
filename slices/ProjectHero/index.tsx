@@ -95,7 +95,7 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
         href={projectHref}
         // field={slice.primary.project_link}
         aria-label="View project details"
-        className="mt-8  group relative overflow-hidden duration-300 ease-in-out isolate lg:rounded-lg aspect-square lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
+        className="mt-8  group relative overflow-hidden duration-300 ease-in-out isolate lg:rounded-lg aspect-4/3 lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
       >
         {cardContent}
       </PrismicNextLink>
