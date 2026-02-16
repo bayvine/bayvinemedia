@@ -284,7 +284,7 @@ const ServicesField: FC<ServicesFieldProps> = ({
         <PillOption
           key={option}
           id={createOptionId("service", option)}
-          name="services"
+          name="requested_services"
           type="checkbox"
           label={option}
           selected={selected.includes(option)}
@@ -488,7 +488,7 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch("/__forms.html", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -570,21 +570,14 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
       
       </Section>
       <Section className="pt-10 pb-20">
-          <form
+        <form
           name={NETLIFY_FORM_NAME}
+          action="/__forms.html"
           method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
           className="flex flex-col gap-8 max-w-4xl"
           onSubmit={handleSubmit}
         >
           <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
-          <p className="hidden" aria-hidden>
-            <label>
-              Do not fill this out:
-              <input name="bot-field" />
-            </label>
-          </p>
 
           {isSuccess ? (
             <p className="rounded-lg border border-emerald-300/40 bg-emerald-300/10 p-4 text-emerald-200">
