@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState, type ChangeEvent, type FormEvent } from "react";
+import { FC, useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import {
   asLink,
   Content,
@@ -396,6 +396,24 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  const successMessageRef = useRef<HTMLDivElement>(null);
+  const errorMessageRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const target = isSuccess
+      ? successMessageRef.current
+      : formError
+        ? errorMessageRef.current
+        : null;
+
+    if (!target) {
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }, [isSuccess, formError]);
 
   const updateValue = <Key extends keyof ContactFormValues>(
     key: Key,
@@ -576,95 +594,113 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
           method="POST"
           className="flex flex-col gap-8 max-w-4xl"
           onSubmit={handleSubmit}
+          aria-busy={isSubmitting}
         >
           <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
 
           {isSuccess ? (
-            <p className="rounded-lg border border-emerald-300/40 bg-emerald-300/10 p-4 text-emerald-200">
-              Thanks, your inquiry has been submitted.
-            </p>
-          ) : null}
-          {formError ? (
-            <p className="rounded-lg border border-red-300/40 bg-red-300/10 p-4 text-red-200">
-              {formError}
-            </p>
-          ) : null}
-
-          <ServicesField
-            label="Interested in (Select all that apply)"
-            options={serviceOptions}
-            selected={values.requestedServices}
-            onToggle={toggleService}
-            error={hasSubmitted ? errors.requestedServices : undefined}
-          />
-
-          <div className="grid gap-6 lg:grid-cols-3">
-            <NameInput
-              label={nameLabel}
-              value={values.name}
-              placeholder={namePlaceholder}
-              onChange={(value) => updateValue("name", value)}
-              error={hasSubmitted ? errors.name : undefined}
-            />
-            <EmailInput
-              label={emailLabel}
-              value={values.email}
-              placeholder={emailPlaceholder}
-              onChange={(value) => updateValue("email", value)}
-              error={hasSubmitted ? errors.email : undefined}
-            />
-            <PhoneInput
-              label={phoneLabel}
-              value={values.phone}
-              placeholder={phonePlaceholder}
-              onChange={(value) => updateValue("phone", value)}
-              error={hasSubmitted ? errors.phone : undefined}
-            />
-          </div>
-
-          <BudgetField
-            label="Project budget"
-            options={budgetOptions}
-            selected={values.budget}
-            onSelect={(value) => updateValue("budget", value)}
-            error={hasSubmitted ? errors.budget : undefined}
-          />
-
-          <DescriptionInput
-            label={aboutLabel}
-            placeholder={aboutPlaceholder}
-            value={values.description}
-            onChange={(value) => updateValue("description", value)}
-            error={hasSubmitted ? errors.description : undefined}
-          />
-
-          <div className="flex flex-col gap-8">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full sm:w-fit cursor-pointer rounded-full bg-white px-20 py-3 font-semibold text-black uppercase"
+            <div
+              ref={successMessageRef}
+              role="status"
+              aria-live="polite"
+              className="flex min-h-[320px] items-center justify-center rounded-2xl border border-emerald-300/40 bg-emerald-300/10 p-8 sm:min-h-[380px] sm:p-12"
             >
-              {isSubmitting ? "Sending..." : submitLabel}
-            </button>
-            <PrismicRichText
-              field={slice.primary.disclaimer}
-              components={{
-                hyperlink: ({ node, children }) => {
-                  const href = getRichTextLinkHref(node.data as LinkField);
+              <p className="max-w-xl text-center text-2xl font-semibold leading-tight text-emerald-100 sm:text-3xl">
+                Thanks, your inquiry has been submitted.
+              </p>
+            </div>
+          ) : (
+            <>
+              {formError ? (
+                <p
+                  ref={errorMessageRef}
+                  className="rounded-lg border border-red-300/40 bg-red-300/10 p-4 text-red-200"
+                >
+                  {formError}
+                </p>
+              ) : null}
 
-                  return (
-                    <Link
-                      href={href}
-                      className="underline!  text-white"
-                      {...getContactTargetProps(href)}
-                    >
-                      {children}
-                    </Link>
-                  );
-                },
-              }}
-            />
-          </div>
+              <ServicesField
+                label="Interested in (Select all that apply)"
+                options={serviceOptions}
+                selected={values.requestedServices}
+                onToggle={toggleService}
+                error={hasSubmitted ? errors.requestedServices : undefined}
+              />
+
+              <div className="grid gap-6 lg:grid-cols-3">
+                <NameInput
+                  label={nameLabel}
+                  value={values.name}
+                  placeholder={namePlaceholder}
+                  onChange={(value) => updateValue("name", value)}
+                  error={hasSubmitted ? errors.name : undefined}
+                />
+                <EmailInput
+                  label={emailLabel}
+                  value={values.email}
+                  placeholder={emailPlaceholder}
+                  onChange={(value) => updateValue("email", value)}
+                  error={hasSubmitted ? errors.email : undefined}
+                />
+                <PhoneInput
+                  label={phoneLabel}
+                  value={values.phone}
+                  placeholder={phonePlaceholder}
+                  onChange={(value) => updateValue("phone", value)}
+                  error={hasSubmitted ? errors.phone : undefined}
+                />
+              </div>
+
+              <BudgetField
+                label="Project budget"
+                options={budgetOptions}
+                selected={values.budget}
+                onSelect={(value) => updateValue("budget", value)}
+                error={hasSubmitted ? errors.budget : undefined}
+              />
+
+              <DescriptionInput
+                label={aboutLabel}
+                placeholder={aboutPlaceholder}
+                value={values.description}
+                onChange={(value) => updateValue("description", value)}
+                error={hasSubmitted ? errors.description : undefined}
+              />
+
+              <div className="flex flex-col gap-8">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full rounded-full px-20 py-3 font-semibold uppercase transition-colors sm:w-fit ${
+                    isSubmitting
+                      ? "cursor-not-allowed bg-white/40 text-black/70"
+                      : "cursor-pointer bg-white text-black hover:bg-white/90"
+                  }`}
+                >
+                  {isSubmitting ? "Sending..." : submitLabel}
+                </button>
+                <PrismicRichText
+                  field={slice.primary.disclaimer}
+                  components={{
+                    hyperlink: ({ node, children }) => {
+                      const href = getRichTextLinkHref(node.data as LinkField);
+
+                      return (
+                        <Link
+                          href={href}
+                          className="underline!  text-white"
+                          {...getContactTargetProps(href)}
+                        >
+                          {children}
+                        </Link>
+                      );
+                    },
+                  }}
+                />
+              </div>
+            </>
+          )}
         </form>
       </Section>
     
