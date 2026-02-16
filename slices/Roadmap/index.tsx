@@ -1,7 +1,12 @@
 "use client";
 
 import React, { FC, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  type MotionValue,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { Content } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import Section from "@/components/Section";
@@ -22,7 +27,7 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 const RoadMapCard: FC<{
   item: RoadmapItem;
-  t: any; // MotionValue<number> 0..1 collapse progress for this card
+  t: MotionValue<number>; // 0..1 collapse progress for this card
 }> = ({ item, t }) => {
   // Heights
   const cardH = useTransform(t, (v) => `${lerp(400, 150, clamp(v))}px`); // overall card height
@@ -70,6 +75,24 @@ const RoadMapCard: FC<{
       </div>
     </motion.article>
   );
+};
+
+const StickyRoadMapCard: FC<{
+  item: RoadmapItem;
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}> = ({ item, index, total, progress }) => {
+  const start = index / total;
+  const end = (index + 1) / total;
+
+  const t = useTransform(progress, (p) => {
+    if (p <= start) return 0;
+    if (p >= end) return 1;
+    return (p - start) / (end - start);
+  });
+
+  return <RoadMapCard item={item} t={t} />;
 };
 
 const RoadmapCardStatic: FC<{ item: RoadmapItem }> = ({ item }) => {
@@ -137,26 +160,15 @@ export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
       {/* ONE sticky wrapper for the whole stack (like dpdk) */}
       <div className="sticky" style={{ top: navbarHeight }}>
         <div className="h-fit">
-          {items.map((item, i) => {
-            // Each card collapses in its own slice of the scroll timeline.
-            // Card i collapses during [i/n, (i+1)/n]
-            const start = i / n;
-            const end = (i + 1) / n;
-
-            const t = useTransform(scrollYProgress, (p) => {
-              if (p <= start) return 0;
-              if (p >= end) return 1;
-              return (p - start) / (end - start);
-            });
-
-            return (
-              <RoadMapCard
-                key={`${item.title ?? "step"}-${i}`}
-                item={item}
-                t={t}
-              />
-            );
-          })}
+          {items.map((item, i) => (
+            <StickyRoadMapCard
+              key={`${item.title ?? "step"}-${i}`}
+              item={item}
+              index={i}
+              total={n}
+              progress={scrollYProgress}
+            />
+          ))}
         </div>
       </div>
     </div>

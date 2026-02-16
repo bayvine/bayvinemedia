@@ -120,7 +120,10 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
               rel={isContactLink ? undefined : "noreferrer"}
               className="mt-4 w-fit inline-flex items-center"
             >
-              <CTAButton className="w-full inline-flex gap-2 whitespace-nowrap">
+              <CTAButton
+                as="span"
+                className="w-full inline-flex gap-2 whitespace-nowrap"
+              >
                 {ctaLabel} <RxArrowTopRight />
               </CTAButton>
             </Link>

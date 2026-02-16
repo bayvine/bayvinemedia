@@ -32,10 +32,6 @@ export const GlitchText = ({
 	const wordsLength = safeWords.length
 
 	useEffect(() => {
-		setCurrentIndex(0)
-	}, [wordsKey])
-
-	useEffect(() => {
 		if (wordsLength <= 1) {
 			return
 		}
@@ -47,23 +43,23 @@ export const GlitchText = ({
 		return () => clearInterval(id)
 	}, [intervalMs, wordsLength, wordsKey])
 
-	
+	const activeIndex = currentIndex % wordsLength
 
 	return (
 		<span className="word-veil tracking-tighter" aria-live="polite" aria-atomic="true">
 			<AnimatePresence mode="wait" initial={false}>
 				<motion.span
-					key={`${wordsKey}-${currentIndex}`}
+					key={`${wordsKey}-${activeIndex}`}
 					className="word-veil__text"
 					initial={{ y: "70%", opacity: 0, filter: "blur(30px)" }}
 					animate={{ y: "0%", opacity: 1, filter: "blur(0)" }}
 					exit={{ y: "-70%", opacity: 0, filter: "blur(50px)" }}
                          transition={{
                               type: "tween",
-                              duration: 0.2
+                              duration: Math.max(0.05, transitionMs / 1000)
 					}}
 				>
-					{safeWords[currentIndex]}
+					{safeWords[activeIndex]}
 				</motion.span>
 			</AnimatePresence>
 		</span>

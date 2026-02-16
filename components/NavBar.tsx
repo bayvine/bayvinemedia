@@ -29,11 +29,11 @@ const NavBar = () => {
   const lastScrollY = useRef(0);
   const isMobile = useIsMobile();
   const navItems = [
-    { id: 1, label: "About us", href: "#about" },
-    { id: 2, label: "Services", href: "#services" },
-    { id: 3, label: "Our work", href: "#work" },
-    { id: 4, label: "Roadmap", href: "#roadmap" },
-    { id: 5, label: "FAQ", href: "#faq" },
+    { id: 1, label: "About us", href: "/#about" },
+    { id: 2, label: "Services", href: "/#services" },
+    { id: 3, label: "Our work", href: "/#work" },
+    { id: 4, label: "Roadmap", href: "/#roadmap" },
+    { id: 5, label: "FAQ", href: "/#faq" },
   ];
 
   const listVariants = {
@@ -76,6 +76,7 @@ const NavBar = () => {
       >
         <Link
           href={item.href}
+          onClick={isMobileMenu ? () => setIsOpen(false) : undefined}
           className={
             isMobileMenu
               ? "group block w-full rounded-lg border border-white/15 bg-black/25 px-4 py-3 text-left font-medium text-white transition-all duration-300 hover:bg-white hover:text-black active:bg-white active:text-black"

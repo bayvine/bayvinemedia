@@ -41,7 +41,7 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
                 : {})}
               className="mt-6 inline-flex w-fit"
             >
-              <CTAButton className="">
+              <CTAButton as="span" className="">
                 {slice.primary.cta_label || "Contact us"}
               </CTAButton>
             </PrismicNextLink>
@@ -52,6 +52,7 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
           {hasImage ? (
             <PrismicNextImage
               field={slice.primary.image}
+              fallbackAlt=""
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-contain"

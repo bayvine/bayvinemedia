@@ -64,6 +64,7 @@ const DetailHero: FC<DetailHeroProps> = ({
           <div className="project-detail-media absolute inset-0">
             <PrismicNextImage
               field={backgroundImage}
+              fallbackAlt=""
               fill
               sizes="100vw"
               loading="eager"

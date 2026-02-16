@@ -33,6 +33,7 @@ const ProjectTestimonial: FC<ProjectTestimonialProps> = ({ slice }) => {
             <div className="relative h-14 w-14 overflow-hidden rounded-full border border-white">
               <PrismicNextImage
                 field={slice.primary.author_image}
+                fallbackAlt=""
                 fill
                 sizes="56px"
                 className="object-cover"

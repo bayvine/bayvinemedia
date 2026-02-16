@@ -35,6 +35,7 @@ const ServiceFit: FC<ServiceFitProps> = ({ slice }) => {
               {item.icon?.url ? (
                 <PrismicNextImage
                   field={item.icon}
+                  fallbackAlt=""
                   className="h-full w-full"
                   loading="lazy"
                 />

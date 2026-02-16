@@ -36,6 +36,7 @@ const ProjectSingleMedia: FC<ProjectSingleMediaProps> = ({ slice }) => {
           ) : hasImage ? (
             <PrismicNextImage
               field={slice.primary.image}
+              fallbackAlt=""
               fill
               sizes="100vw"
               className="object-cover"

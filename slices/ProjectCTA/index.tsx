@@ -54,7 +54,7 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
                 field={primaryLink}
                 {...(isContactHref(primaryLink.url) ? { target: "_self" } : {})}
               >
-                <CTAButton>
+                <CTAButton as="span">
                   {slice.primary.primary_cta_label || "Contact us"}
                 </CTAButton>
               </PrismicNextLink>

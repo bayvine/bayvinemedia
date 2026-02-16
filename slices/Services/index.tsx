@@ -33,7 +33,6 @@ const Services: FC<ServicesProps> = ({ slice }) => {
 
       <div className="mt-8">
         {services.map((service, index) => {
-          console.log(service.link);
           const isLinked = isFilled.link(service.link);
           const content = (
             <>

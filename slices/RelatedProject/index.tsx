@@ -34,6 +34,7 @@ const RelatedProject: FC<RelatedProjectProps> = ({ slice }) => {
           {slice.primary.project_image?.url ? (
             <PrismicNextImage
               field={slice.primary.project_image}
+              fallbackAlt=""
               fill
               sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover"

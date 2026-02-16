@@ -69,7 +69,7 @@
 
 @font-face {
   font-family: Satoshi;
-  src: url("/fonts/Satoshi/Satoshi-Italic.otff") format("opentype");
+  src: url("/fonts/Satoshi/Satoshi-Italic.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

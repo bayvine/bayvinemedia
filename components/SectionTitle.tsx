@@ -4,17 +4,43 @@ import clsx from "clsx";
 
 type SectionTitleProps = {
   titleClassName?: string;
-  title?: string;
-  description?: RichTextField | string;
+  title?: RichTextField | string | null;
+  description?: RichTextField | string | null;
   noUpperCase?: boolean;
 };
 
-const SectionTitle = ({ description, titleClassName, title, noUpperCase }: SectionTitleProps) => {
+const isRichTextField = (value: unknown): value is RichTextField =>
+  Array.isArray(value);
+
+const SectionTitle = ({
+  description,
+  titleClassName,
+  title,
+  noUpperCase,
+}: SectionTitleProps) => {
+  const titleClasses = clsx(
+    "text-2xl font-bold sm:text-3xl",
+    !noUpperCase && "uppercase",
+    titleClassName
+  );
+
   return (
     <div className="max-w-xl">
-      <h2 className={clsx(["text-2xl font-bold sm:text-3xl"],  !noUpperCase && 'uppercase', titleClassName)}>{title}</h2>
+      {typeof title === "string" ? (
+        <h2 className={titleClasses}>{title}</h2>
+      ) : isRichTextField(title) ? (
+        <PrismicRichText
+          field={title}
+          components={{
+            heading1: ({ children }) => <h2 className={titleClasses}>{children}</h2>,
+            heading2: ({ children }) => <h2 className={titleClasses}>{children}</h2>,
+            heading3: ({ children }) => <h2 className={titleClasses}>{children}</h2>,
+            paragraph: ({ children }) => <h2 className={titleClasses}>{children}</h2>,
+          }}
+        />
+      ) : null}
       <div className="my-1 max-w-lg">
-        {(!description && null) || typeof description === "string" ? (
+        {!description ? null : typeof description === "string" ? (
           <p className="text-lg">{description}</p>
         ) : (
           <PrismicRichText
