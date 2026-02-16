@@ -4,9 +4,9 @@ import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import Image from "next/image";
 import Section from "@/components/Section";
+import SectionTitle from "@/components/SectionTitle";
 
-export type ProjectStatsProps =
-  SliceComponentProps<Content.ProjectStatsSlice>;
+export type ProjectStatsProps = SliceComponentProps<Content.ProjectStatsSlice>;
 
 const ProjectStats: FC<ProjectStatsProps> = ({ slice }) => {
   const stats = slice.primary.stats?.slice(0, 3) ?? [];
@@ -22,11 +22,9 @@ const ProjectStats: FC<ProjectStatsProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       {slice.primary.heading ? (
-        <p className="text-2xl font-bold uppercase sm:text-3xl mb-6">
-          {slice.primary.heading}
-        </p>
+        <SectionTitle title={slice.primary.heading} />
       ) : null}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
         {stats.map((stat, index) => {
           const hasIcon = isFilled.image(stat.icon);
           return (
@@ -34,7 +32,7 @@ const ProjectStats: FC<ProjectStatsProps> = ({ slice }) => {
               key={`${stat.value ?? "stat"}-${index}`}
               className="rounded-lg border border-emerald-300/30 bg-white/2 p-6"
             >
-              <div className="flex h-12 w-12 items-center justify-center">
+              <div className="flex h-12 w-12 items-center justify-center mb-2">
                 {hasIcon ? (
                   <PrismicNextImage
                     field={stat.icon}
@@ -52,12 +50,9 @@ const ProjectStats: FC<ProjectStatsProps> = ({ slice }) => {
                   />
                 )}
               </div>
-              <div className="mt-4 text-3xl font-black text-emerald-300">
-                {stat.value || "0"}
-              </div>
-              <div className="mt-2 text-md font-semibold">
-                {stat.description || "Result"}
-              </div>
+
+              <SectionTitle title={stat.value} description={stat.description} noUpperCase titleClassName="text-emerald-300" />
+            
             </div>
           );
         })}

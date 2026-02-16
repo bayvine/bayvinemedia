@@ -7,6 +7,7 @@ import Link from "next/link";
 import CTAButton from "@/components/CTAButton";
 import { RxArrowTopRight } from "react-icons/rx";
 import Tag from "@/components/Tag";
+import SectionTitle from "@/components/SectionTitle";
 
 /**
  * Props for `ProjectHero`.
@@ -34,6 +35,8 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
   const cardContent = (
     <>
       <div className="z-20 py-2 px-4 lg:p-10 w-full flex flex-col">
+        
+        
         <PrismicRichText
           field={slice.primary.project_title}
           components={{
@@ -89,20 +92,16 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="max-w-xl text-slate-200">
-        <h2 className="text-2xl font-bold uppercase sm:text-3xl">
-          Our latest work
-        </h2>
-        <div className="my-1 max-w-lg">
-          <p>Businesses who joined the digital revolution</p>
-        </div>
-      </div>
+      <SectionTitle
+        title={"Our latest work"}
+        description={"Businesses who joined the digital revolution"}
+      />
 
       <PrismicNextLink
         href={`/projects/${slice.primary.project_link.uid}`}
         // field={slice.primary.project_link}
         aria-label="View project details"
-        className="mt-12  group relative overflow-hidden duration-300 ease-in-out isolate lg:rounded-lg aspect-square lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
+        className="mt-8  group relative overflow-hidden duration-300 ease-in-out isolate lg:rounded-lg aspect-square lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
       >
         {cardContent}
       </PrismicNextLink>

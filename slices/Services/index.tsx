@@ -6,6 +6,7 @@ import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import { RxArrowTopRight } from "react-icons/rx";
+import SectionTitle from "@/components/SectionTitle";
 
 /**
  * Props for `Services`.
@@ -24,23 +25,13 @@ const Services: FC<ServicesProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div>
-        <h2 className="text-2xl font-bold uppercase">
-          {slice.primary.title || "Our services"}
-        </h2>
-        <div className="max-w-lg my-1 text-slate-200">
-          <PrismicRichText
-            field={slice.primary.description}
-            components={{
-              paragraph: ({ children }) => (
-                <p className="text-base sm:text-lg">{children}</p>
-              ),
-            }}
-          />
-        </div>
-      </div>
 
-      <div className="my-12">
+      <SectionTitle
+        title={slice.primary.title || ""}
+        description={slice.primary.description}
+      />
+
+      <div className="mt-8">
         {services.map((service, index) => {
           console.log(service.link)
           const isLinked = isFilled.link(service.link);

@@ -5,6 +5,7 @@ import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
+import SectionTitle from "@/components/SectionTitle";
 
 export type ProjectCTAProps = SliceComponentProps<Content.ProjectCtaSlice>;
 
@@ -26,7 +27,7 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       <div
-        className="relative isolate overflow-hidden rounded-lg px-25 pb-15 pt-20"
+        className="relative isolate overflow-hidden rounded-lg p-8 pt-15 lg:px-15 lg:pb-15 lg:pt-20"
         style={
           hasBackground && slice.primary.background.url
             ? {
@@ -44,29 +45,10 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
           />
         ) : null}
         <div className="relative z-10">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl font-bold uppercase ">
-              {slice.primary.heading || "Ready to bring your product to life?"}
-            </h2>
-            {isFilled.richText(slice.primary.body) ? (
-              <div className="mt-3">
-                <PrismicRichText
-                  field={slice.primary.body}
-                  components={{
-                    paragraph: ({ children }) => (
-                      <p className="text-2xl">{children}</p>
-                    ),
-                  }}
-                />
-              </div>
-            ) : (
-              <p className="mt-3">
-                Tell us about your next launch or request a quick walkthrough.
-              </p>
-            )}
-          </div>
 
-          <div className="mt-5 flex flex-wrap gap-4">
+          <SectionTitle title={slice.primary.heading} description={slice.primary.body}/>
+        
+          <div className="mt-4 flex flex-wrap gap-4">
             {primaryLink && (
               <PrismicNextLink
                 field={primaryLink}

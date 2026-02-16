@@ -14,7 +14,6 @@ const ServiceHero: FC<ServiceHeroProps> = ({ slice }) => {
     <DetailHero
       eyebrow={slice.primary.eyebrow}
       title={slice.primary.title}
-      subtitle={slice.primary.subtitle}
       description={slice.primary.description}
       tags={tags}
       backgroundImage={slice.primary.background_image}

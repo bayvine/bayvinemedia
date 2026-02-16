@@ -26,7 +26,6 @@ type DetailHeroProps = {
 
 const DetailHero: FC<DetailHeroProps> = ({
   title,
-  subtitle,
   description,
   eyebrow,
   tags,
@@ -37,7 +36,6 @@ const DetailHero: FC<DetailHeroProps> = ({
 }) => {
   const hasVideo = isFilled.linkToMedia(backgroundVideo);
   const hasImage = Boolean(backgroundImage?.url);
-  const hasSubtitle = isFilled.richText(subtitle);
   const hasDescription = isFilled.richText(description);
   const cleanTags = (tags ?? []).filter((tag): tag is string => Boolean(tag));
 
@@ -94,28 +92,13 @@ const DetailHero: FC<DetailHeroProps> = ({
             />
           </div>
 
-          {hasSubtitle ? (
-            <div className="project-detail-body text-3xl">
-              <PrismicRichText
-                field={subtitle}
-                components={{
-                  paragraph: ({ children }) => (
-                    <p className="mt-2 font-semibold text-slate-100">
-                      {children}
-                    </p>
-                  ),
-                }}
-              />
-            </div>
-          ) : null}
-
           {hasDescription ? (
-            <div className="project-detail-body text-lg sm:text-xl">
+            <div className="project-detail-body">
               <PrismicRichText
                 field={description}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="mt-2 font-semibold text-slate-100">
+                    <p className="text-base mt-1 leading-relaxed sm:text-lg">
                       {children}
                     </p>
                   ),

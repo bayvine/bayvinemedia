@@ -3,6 +3,7 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import Section from "@/components/Section";
+import SectionTitle from "@/components/SectionTitle";
 
 export type ProjectTestimonialProps =
   SliceComponentProps<Content.ProjectTestimonialSlice>;
@@ -19,7 +20,7 @@ const ProjectTestimonial: FC<ProjectTestimonialProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       <div className="flex flex-col items-center justify-center mx-auto w-full">
-        <div className="text-6xl uppercase font-bold sm:text-4xl">
+        <div className="text-3xl uppercase text-center font-bold sm:text-4xl">
           <PrismicRichText
             field={slice.primary.quote}
             components={{
@@ -29,7 +30,7 @@ const ProjectTestimonial: FC<ProjectTestimonialProps> = ({ slice }) => {
         </div>
         <div className="mt-6 flex flex-col justify-center items-center gap-2">
           {slice.primary.author_image?.url ? (
-            <div className="relative h-14 w-14 overflow-hidden rounded-full border border-white/10">
+            <div className="relative h-14 w-14 overflow-hidden rounded-full border border-white">
               <PrismicNextImage
                 field={slice.primary.author_image}
                 fill
@@ -39,12 +40,8 @@ const ProjectTestimonial: FC<ProjectTestimonialProps> = ({ slice }) => {
             </div>
           ) : null}
           <div className="text-center">
-            <p className="text-xl font-bold uppercase ">
-              {slice.primary.author_name || "Client"}
-            </p>
-            {authorMeta ? (
-              <p className="text-lg">{authorMeta}</p>
-            ) : null}
+            <SectionTitle title={slice.primary.author_name || ""} description={authorMeta} />
+          
           </div>
         </div>
       </div>

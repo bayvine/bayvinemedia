@@ -539,6 +539,14 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
     }
   };
 
+  const handleStartAnotherSubmission = () => {
+    setFormError(null);
+    setErrors({});
+    setHasSubmitted(false);
+    setValues(getInitialFormValues());
+    setIsSuccess(false);
+  };
+
   return (
     <>
     <Section
@@ -598,16 +606,24 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
         >
           <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
 
-          {!isSuccess ? (
+          {isSuccess ? (
             <div
               ref={successMessageRef}
               role="status"
               aria-live="polite"
-              className="w-fit rounded-lg border border-emerald-300/40 bg-emerald-300/10 p-4"
+              className="flex min-h-[320px] flex-col items-center justify-center gap-6 rounded-2xl border border-emerald-300/40 bg-emerald-300/10 p-8 text-center sm:min-h-[380px] sm:p-12"
             >
-              <p className="text-emerald-100">
-                Thank you! Your inquiry has been submitted. We'll get back to you as soon as possible.
+              <p className="max-w-xl text-2xl font-semibold leading-tight text-emerald-100 sm:text-3xl">
+                Thank you! Your inquiry has been submitted. We&apos;ll get back to you as soon as
+                possible.
               </p>
+              <button
+                type="button"
+                onClick={handleStartAnotherSubmission}
+                className="w-full rounded-full border border-emerald-100/70 px-8 py-3 font-semibold uppercase text-emerald-50 transition-colors hover:bg-emerald-100/15 sm:w-fit"
+              >
+                Submit another inquiry
+              </button>
             </div>
           ) : (
             <>

@@ -24,13 +24,6 @@
             "label": "Title"
           }
         },
-        "subtitle": {
-          "type": "StructuredText",
-          "config": {
-            "single": "paragraph",
-            "label": "Subtitle"
-          }
-        },
         "description": {
           "type": "StructuredText",
           "config": {

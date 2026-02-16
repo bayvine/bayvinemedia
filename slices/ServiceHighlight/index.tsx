@@ -4,6 +4,7 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
+import SectionTitle from "@/components/SectionTitle";
 
 export type ServiceHighlightProps =
   SliceComponentProps<Content.ServiceHighlightSlice>;
@@ -24,24 +25,10 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
     >
       <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
-          <PrismicRichText
-            field={slice.primary.heading}
-            components={{
-              heading2: ({ children }) => (
-                <h2 className="text-2xl font-bold uppercase sm:text-3xl">
-                  {children}
-                </h2>
-              ),
-            }}
+          <SectionTitle
+            title={slice.primary.heading}
+            description={slice.primary.description}
           />
-          <div className="my-1 text-xl max-w-2xl">
-            <PrismicRichText
-              field={slice.primary.description}
-              components={{
-                paragraph: ({ children }) => <p className="mt-5 max-w-xl">{children}</p>,
-              }}
-            />
-          </div>
           {hasCta ? (
             <PrismicNextLink
               field={slice.primary.cta_link}
@@ -60,6 +47,7 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
         <div className="relative aspect-video overflow-hidden">
           {hasImage ? (
             <PrismicNextImage
+              alt="HELLO"
               field={slice.primary.image}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -75,7 +63,9 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
               muted
               loop
               playsInline
-              poster={hasImage ? slice.primary.image.url ?? undefined : undefined}
+              poster={
+                hasImage ? (slice.primary.image.url ?? undefined) : undefined
+              }
             />
           ) : null}
           {!hasImage && !hasVideo && null}
