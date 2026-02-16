@@ -38,12 +38,30 @@ export type ContactFormValues = {
 };
 
 type ContactFormErrors = Partial<Record<keyof ContactFormValues, string>>;
+const NETLIFY_FORM_NAME = "contact";
+
+const getInitialFormValues = (): ContactFormValues => ({
+  name: "",
+  email: "",
+  phone: "",
+  requestedServices: [],
+  budget: "",
+  description: "",
+});
+
+const encodeFormData = (data: Record<string, string>) =>
+  Object.keys(data)
+    .map(
+      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+    )
+    .join("&");
 
 const createOptionId = (prefix: string, value: string) =>
   `${prefix}-${value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
 
 type BaseInputProps = {
   id: string;
+  name?: string;
   label: string;
   value: string;
   placeholder?: string;
@@ -55,6 +73,7 @@ type BaseInputProps = {
 
 const InputField: FC<BaseInputProps> = ({
   id,
+  name,
   label,
   value,
   placeholder,
@@ -70,6 +89,7 @@ const InputField: FC<BaseInputProps> = ({
     </span>
     <input
       id={id}
+      name={name || id}
       type={type}
       value={value}
       onChange={(event) => onChange(event.target.value)}
@@ -104,6 +124,7 @@ const NameInput: FC<NameInputProps> = ({
 }) => (
   <InputField
     id="contact-name"
+    name="name"
     label={label}
     value={value}
     placeholder={placeholder}
@@ -130,6 +151,7 @@ const EmailInput: FC<EmailInputProps> = ({
 }) => (
   <InputField
     id="contact-email"
+    name="email"
     label={label}
     value={value}
     placeholder={placeholder}
@@ -157,6 +179,7 @@ const PhoneInput: FC<PhoneInputProps> = ({
 }) => (
   <InputField
     id="contact-phone"
+    name="phone"
     label={label}
     value={value}
     placeholder={placeholder}
@@ -185,6 +208,7 @@ const DescriptionInput: FC<DescriptionInputProps> = ({
     <span className="font-medium">{label}</span>
     <textarea 
       id="contact-description"
+      name="description"
       value={value}
       onChange={(event) => onChange(event.target.value)}
       placeholder={placeholder}
@@ -366,16 +390,12 @@ const ContactOptions: FC<ContactOptionsProps> = ({ options }) => (
  * Component for "ContactForm" Slices.
  */
 const ContactForm: FC<ContactFormProps> = ({ slice }) => {
-  const [values, setValues] = useState<ContactFormValues>({
-    name: "",
-    email: "",
-    phone: "",
-    requestedServices: [],
-    budget: "",
-    description: "",
-  });
+  const [values, setValues] = useState<ContactFormValues>(getInitialFormValues);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const updateValue = <Key extends keyof ContactFormValues>(
     key: Key,
@@ -452,11 +472,53 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
     return nextErrors;
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    setFormError(null);
+    setIsSuccess(false);
     setHasSubmitted(true);
+
     const nextErrors = validateForm(values);
     setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: encodeFormData({
+          "form-name": NETLIFY_FORM_NAME,
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          requested_services: values.requestedServices.join(", "),
+          budget: values.budget,
+          description: values.description,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to submit your form right now.");
+      }
+
+      setValues(getInitialFormValues());
+      setErrors({});
+      setHasSubmitted(false);
+      setIsSuccess(true);
+    } catch {
+      setFormError(
+        "Something went wrong while sending your message. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -509,9 +571,32 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
       </Section>
       <Section className="pt-10 pb-20">
           <form
+          name={NETLIFY_FORM_NAME}
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
           className="flex flex-col gap-8 max-w-4xl"
           onSubmit={handleSubmit}
         >
+          <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
+          <p className="hidden" aria-hidden>
+            <label>
+              Do not fill this out:
+              <input name="bot-field" />
+            </label>
+          </p>
+
+          {isSuccess ? (
+            <p className="rounded-lg border border-emerald-300/40 bg-emerald-300/10 p-4 text-emerald-200">
+              Thanks, your inquiry has been submitted.
+            </p>
+          ) : null}
+          {formError ? (
+            <p className="rounded-lg border border-red-300/40 bg-red-300/10 p-4 text-red-200">
+              {formError}
+            </p>
+          ) : null}
+
           <ServicesField
             label="Interested in (Select all that apply)"
             options={serviceOptions}
@@ -563,9 +648,10 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
           <div className="flex flex-col gap-8">
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-full sm:w-fit cursor-pointer rounded-full bg-white px-20 py-3 font-semibold text-black uppercase"
             >
-              {submitLabel}
+              {isSubmitting ? "Sending..." : submitLabel}
             </button>
             <PrismicRichText
               field={slice.primary.disclaimer}
