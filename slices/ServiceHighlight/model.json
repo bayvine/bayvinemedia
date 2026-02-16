@@ -42,6 +42,14 @@
           "config": {
             "label": "Image"
           }
+        },
+        "video": {
+          "type": "Link",
+          "config": {
+            "label": "Video",
+            "select": "media",
+            "allowText": true
+          }
         }
       },
       "items": {}

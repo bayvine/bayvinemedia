@@ -43,6 +43,17 @@
         "width": 1600,
         "height": 900,
         "alt": "Service highlight"
+      },
+      "video": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "FileLink",
+          "id": "mock_Media_link",
+          "kind": "file",
+          "name": "service-highlight-video",
+          "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+          "size": "0"
+        }
       }
     },
     "items": []
