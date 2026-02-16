@@ -23,6 +23,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
 			className="relative w-full"
+			 id="about"
 		>
 			
 			{isFilled.linkToMedia(slice.primary.background_video) && (

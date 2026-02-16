@@ -81,6 +81,7 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
 
   return (
     <Section
+      id="work"
       className="py-12"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}

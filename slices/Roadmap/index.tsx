@@ -52,7 +52,7 @@ const RoadMapCard: FC<{
 
         {item.media?.url ? (
           <motion.div
-            className="relative mt-4 w-full overflow-hidden rounded-2xl bg-slate-900/40 shadow-lg md:mt-0 md:w-[360px] lg:w-[520px] xl:w-[620px]"
+            className="relative mt-4 w-full overflow-hidden rounded-lg bg-slate-900/40 shadow-lg md:mt-0 md:w-[360px] lg:w-[520px] xl:w-[620px]"
             style={{ height: mediaH }}
           >
             <video
@@ -95,7 +95,7 @@ const RoadmapCardStatic: FC<{ item: RoadmapItem }> = ({ item }) => {
         </div>
 
         {item.media?.url ? (
-          <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-900/40 shadow-lg">
+          <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-slate-900/40 shadow-lg">
             <video
               src={item.media.url}
               autoPlay
@@ -171,6 +171,7 @@ const Roadmap: FC<RoadmapProps> = ({ slice }) => {
 
   return (
     <Section
+      id="roadmap"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="py-12"
