@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, spring } from "framer-motion";
 import CTAButton from "./CTAButton";
 import { RxArrowTopRight } from "react-icons/rx";
 import { Icon } from "./icons/Icon";
@@ -70,10 +70,7 @@ const NavBar = () => {
 
   const renderNavItems = (isMobileMenu = false) =>
     navItems.map((item) => (
-      <li
-        key={item.id}
-        className={isMobileMenu ? "w-full" : "inline-block"}
-      >
+      <li key={item.id} className={isMobileMenu ? "w-full" : "inline-block"}>
         <Link
           href={item.href}
           onClick={isMobileMenu ? () => setIsOpen(false) : undefined}
@@ -97,7 +94,7 @@ const NavBar = () => {
 
   return (
     <header
-      className={`fixed z-[100] w-full top-5 left-0 transition-transform duration-300 ${
+      className={`fixed z-[100] w-full top-2 left-0 transition-transform duration-300 ${
         isMobile || isVisible
           ? "translate-y-0 lg:pointer-events-auto"
           : "translate-y-0 lg:-translate-y-full lg:pointer-events-none"
@@ -119,12 +116,12 @@ const NavBar = () => {
         }
       >
         <div className="flex items-center justify-between px-4 py-3 sm:px-5 sm:py-4 lg:px-0 lg:py-6">
-          <Link href="/" className="text-white text-lg flex items-center gap-3">
+          <Link onClick={() => setIsOpen(false)}  href="/" className="text-white text-lg flex items-center gap-3">
             <Icon size="38" name="logo" />
             <span className="hidden xl:inline">Bayvine Digital Agency</span>
           </Link>
 
-          <nav className="hidden lg:flex shrink-0 items-center justify-center rounded-full border border-white/50 bg-[linear-gradient(135deg,rgba(255,255,255,0.15),rgba(255,255,255,0.06)_45%,rgba(0,0,0,0.35)_100%)] px-2 py-2 text-white shadow-[0_16px_38px_rgba(0,0,0,0.42)] backdrop-blur-2xl">
+          <nav className="hidden lg:flex shrink-0 items-center justify-center rounded-full border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.15),rgba(255,255,255,0.06)_45%,rgba(0,0,0,0.35)_100%)] px-2 py-2 text-white shadow-[0_16px_38px_rgba(0,0,0,0.42)] backdrop-blur-2xl">
             <motion.ul
               className="flex gap-4 shrink-0 text-center"
               variants={listVariants}
@@ -136,11 +133,14 @@ const NavBar = () => {
           </nav>
 
           <div className="hidden lg:block shrink-0">
-            <CTAButton>
+            <Link href={"/contact"}  onClick={() => setIsOpen(false)}>
+                 <CTAButton>
               <span className="flex items-center gap-1">
                 Let&apos;s Chat <RxArrowTopRight strokeWidth={0.5} />
               </span>
             </CTAButton>
+            </Link>
+         
           </div>
 
           <button
@@ -190,11 +190,13 @@ const NavBar = () => {
               >
                 {renderNavItems(true)}
                 <li className="pt-2">
-                  <CTAButton className="w-full justify-center">
-                    <span className="flex items-center gap-1">
-                      Let&apos;s Chat <RxArrowTopRight strokeWidth={0.5} />
-                    </span>
-                  </CTAButton>
+                  <Link href={"/contact"} className="w-full" onClick={() => setIsOpen(false)}>
+                    <CTAButton className="w-full justify-center">
+                      <span className="flex items-center gap-1">
+                        Let&apos;s Chat <RxArrowTopRight strokeWidth={0.5} />
+                      </span>
+                    </CTAButton>
+                  </Link>
                 </li>
               </motion.ul>
             </motion.div>
