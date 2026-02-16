@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, spring } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import CTAButton from "./CTAButton";
 import { RxArrowTopRight } from "react-icons/rx";
 import { Icon } from "./icons/Icon";
@@ -51,22 +51,34 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    if (isMobile) {
-      return undefined;
-    }
+    lastScrollY.current = window.scrollY;
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const isNearTop = currentScrollY < 20;
-      const isScrollingUp = currentScrollY < lastScrollY.current;
+      const scrollDelta = currentScrollY - lastScrollY.current;
+      const isNearTop = currentScrollY < 24;
+      const isScrollingUp = scrollDelta < -8;
+      const isScrollingDown = scrollDelta > 8;
 
-      setIsVisible(isNearTop || isScrollingUp);
+      if (isOpen) {
+        setIsVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      if (isNearTop || isScrollingUp) {
+        setIsVisible(true);
+      } else if (isScrollingDown) {
+        setIsVisible(false);
+      }
       lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobile]);
+  }, [isOpen]);
+
+  const shouldShowHeader = isVisible || isOpen;
 
   const renderNavItems = (isMobileMenu = false) =>
     navItems.map((item) => (
@@ -94,14 +106,19 @@ const NavBar = () => {
 
   return (
     <header
-      className={`fixed z-[100] w-full top-2 left-0 transition-transform duration-300 ${
-        isMobile || isVisible
-          ? "translate-y-0 lg:pointer-events-auto"
-          : "translate-y-0 lg:-translate-y-full lg:pointer-events-none"
+      className={`fixed inset-x-0 top-0 z-[100] transition-transform duration-300 lg:top-5 ${
+        shouldShowHeader
+          ? "translate-y-0 pointer-events-auto"
+          : "-translate-y-full pointer-events-none"
       }`}
+      style={
+        isMobile
+          ? { paddingTop: "max(4px, env(safe-area-inset-top))" }
+          : undefined
+      }
     >
       <div
-        className={`mx-3 sm:mx-6 lg:mx-10 ${
+        className={`mx-3 mt-1 sm:mx-6 lg:mx-10 lg:mt-0 ${
           isMobile
             ? "overflow-hidden rounded-[32px] border border-white/20 shadow-[0_14px_45px_rgba(0,0,0,0.42)] backdrop-blur-2xl"
             : "rounded-none border-none bg-transparent shadow-none backdrop-blur-0"
@@ -133,14 +150,13 @@ const NavBar = () => {
           </nav>
 
           <div className="hidden lg:block shrink-0">
-            <Link href={"/contact"}  onClick={() => setIsOpen(false)}>
-                 <CTAButton>
-              <span className="flex items-center gap-1">
-                Let&apos;s Chat <RxArrowTopRight strokeWidth={0.5} />
-              </span>
-            </CTAButton>
+            <Link href={"/contact"} onClick={() => setIsOpen(false)}>
+              <CTAButton as="span">
+                <span className="flex items-center gap-1">
+                  Let&apos;s Chat <RxArrowTopRight strokeWidth={0.5} />
+                </span>
+              </CTAButton>
             </Link>
-         
           </div>
 
           <button
@@ -190,8 +206,12 @@ const NavBar = () => {
               >
                 {renderNavItems(true)}
                 <li className="pt-2">
-                  <Link href={"/contact"} className="w-full" onClick={() => setIsOpen(false)}>
-                    <CTAButton className="w-full justify-center">
+                  <Link
+                    href={"/contact"}
+                    className="w-full"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <CTAButton as="span" className="w-full justify-center">
                       <span className="flex items-center gap-1">
                         Let&apos;s Chat <RxArrowTopRight strokeWidth={0.5} />
                       </span>
