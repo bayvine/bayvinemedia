@@ -4,7 +4,6 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
-import { PHOTO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 export type ProjectTestimonialProps =
   SliceComponentProps<Content.ProjectTestimonialSlice>;
@@ -36,8 +35,7 @@ const ProjectTestimonial: FC<ProjectTestimonialProps> = ({ slice }) => {
                 field={slice.primary.author_image}
                 fill
                 sizes="56px"
-                className="bg-center bg-cover object-cover"
-                style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+                className="object-cover"
                 loading="lazy"
               />
             </div>

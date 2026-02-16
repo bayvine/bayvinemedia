@@ -37,8 +37,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 							aria-hidden="true"
 							tabIndex={-1}
 							poster={VIDEO_PLACEHOLDER_SRC}
-							className="pointer-events-none h-full w-full bg-center bg-cover object-cover"
-							style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
+							className="pointer-events-none h-full w-full object-cover"
 						>
 							<source
 								src={slice.primary.background_video.url}

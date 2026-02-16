@@ -31,16 +31,14 @@ const ProjectSingleMedia: FC<ProjectSingleMediaProps> = ({ slice }) => {
               playsInline
               preload="metadata"
               poster={VIDEO_PLACEHOLDER_SRC}
-              className="h-full w-full bg-center bg-cover object-cover"
-              style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
+              className="h-full w-full object-cover"
             />
           ) : hasImage ? (
             <PrismicNextImage
               field={slice.primary.image}
               fill
               sizes="100vw"
-              className="bg-center bg-cover object-cover"
-              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+              className="object-cover"
             />
           ) : (
             <div

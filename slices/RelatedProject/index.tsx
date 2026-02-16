@@ -36,8 +36,7 @@ const RelatedProject: FC<RelatedProjectProps> = ({ slice }) => {
               field={slice.primary.project_image}
               fill
               sizes="(max-width: 1024px) 100vw, 55vw"
-              className="bg-center bg-cover object-cover"
-              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+              className="object-cover"
               loading="lazy"
             />
           ) : (

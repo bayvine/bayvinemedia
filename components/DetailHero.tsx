@@ -49,7 +49,7 @@ const DetailHero: FC<DetailHeroProps> = ({
       <div className="absolute inset-0">
         {hasVideo ? (
           <video
-            className="project-detail-media pointer-events-none absolute inset-0 h-full w-full bg-center bg-cover object-cover"
+            className="project-detail-media pointer-events-none absolute inset-0 h-full w-full object-cover"
             src={backgroundVideo.url ?? undefined}
             autoPlay
             muted
@@ -59,7 +59,6 @@ const DetailHero: FC<DetailHeroProps> = ({
             aria-hidden="true"
             tabIndex={-1}
             poster={VIDEO_PLACEHOLDER_SRC}
-            style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
           />
         ) : hasImage ? (
           <div className="project-detail-media absolute inset-0">
@@ -68,8 +67,7 @@ const DetailHero: FC<DetailHeroProps> = ({
               fill
               sizes="100vw"
               loading="eager"
-              className="bg-center bg-cover object-cover"
-              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+              className="object-cover"
             />
           </div>
         ) : (
@@ -103,12 +101,12 @@ const DetailHero: FC<DetailHeroProps> = ({
           </div>
 
           {hasDescription ? (
-            <div className="project-detail-body">
+            <div className="project-detail-body my-1">
               <PrismicRichText
                 field={description}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="text-base mt-1 leading-relaxed sm:text-lg">
+                    <p className="text-lg">
                       {children}
                     </p>
                   ),

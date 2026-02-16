@@ -30,7 +30,7 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
           field={slice.primary.project_title}
           components={{
             heading1: ({ children }) => (
-              <h3 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+              <h3 className="text-4xl font-black uppercase sm:text-5xl lg:text-6xl">
                 {children}
               </h3>
             ),
@@ -40,7 +40,7 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
           field={slice.primary.project_subtitle}
           components={{
             paragraph: ({ children }) => (
-              <p className="mt-2 font-semibold text-slate-100">{children}</p>
+              <p className="mt-1 text-lg">{children}</p>
             ),
           }}
         />
@@ -52,13 +52,13 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
         </div>
       </div>
 
-      <div className="h-full w-full group-hover:blur-md absolute left-0 top-0">
+      <div className="h-full w-full group-hover:blur-md group-active:blur-md absolute left-0 top-0">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-10 bg-linear-to-t from-black/75 via-black/50 to-transparent"
         />
         <video
-          className="pointer-events-none absolute inset-0 z-0 h-full w-full bg-center bg-cover object-bottom object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1]"
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-bottom object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1] group-active:scale-[1.1]"
           src={slice.primary.background_video?.url}
           autoPlay
           muted
@@ -68,11 +68,11 @@ const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
           aria-hidden="true"
           tabIndex={-1}
           poster={VIDEO_PLACEHOLDER_SRC}
-          style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
         />
       </div>
 
-      <span className="pointer-events-none absolute right-6 top-6 lg:top-auto lg:bottom-6 z-30 inline-flex items-center justify-center gap-1 rounded-full bg-white px-4 py-2 text-sm font-bold uppercase text-black opacity-100 transition duration-300 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-visible:translate-y-0 md:group-focus-visible:opacity-100">
+      <span className="pointer-events-none absolute right-6 top-6 lg:top-auto lg:bottom-6 z-30 inline-flex items-center justify-center gap-1 rounded-full bg-white px-4 py-2 text-sm font-bold uppercase text-black opacity-100 transition duration-300 md:translate-y-2 md:opacity-0 
+      md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-visible:translate-y-0 md:group-focus-visible:opacity-100">
         Click to view more
         <RxArrowTopRight strokeWidth={0.5} />
       </span>

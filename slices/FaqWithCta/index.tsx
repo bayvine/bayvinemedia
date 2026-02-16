@@ -87,8 +87,7 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
           aria-hidden="true"
           tabIndex={-1}
           poster={VIDEO_PLACEHOLDER_SRC}
-          className="pointer-events-none absolute rounded-lg inset-0 h-full w-full bg-center bg-cover object-cover"
-          style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
+          className="pointer-events-none absolute rounded-lg inset-0 h-full w-full object-cover"
         />
       ) : (
         <div

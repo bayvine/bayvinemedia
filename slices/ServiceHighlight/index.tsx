@@ -48,19 +48,18 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
           ) : null}
         </div>
 
-        <div className="relative aspect-video overflow-hidden">
+        <div className="relative aspect-video overflow-hidden rounded-lg">
           {hasImage ? (
             <PrismicNextImage
               field={slice.primary.image}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="bg-center bg-cover object-contain"
-              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+              className="object-contain"
             />
           ) : null}
           {hasVideo ? (
             <video
-              className="pointer-events-none absolute inset-0 z-10 h-full w-full rounded-lg bg-center bg-cover object-contain"
+              className="pointer-events-none absolute inset-0 z-10 h-full w-full object-contain"
               src={videoField.url ?? undefined}
               preload="metadata"
               autoPlay
@@ -68,7 +67,6 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
               loop
               playsInline
               poster={VIDEO_PLACEHOLDER_SRC}
-              style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
             />
           ) : null}
           {!hasImage && !hasVideo ? (

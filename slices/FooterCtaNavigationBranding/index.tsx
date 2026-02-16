@@ -10,7 +10,6 @@ import Section from "@/components/Section";
 import Link from "next/link";
 import { PrismicNextLink } from "@prismicio/next";
 import CTAButton from "@/components/CTAButton";
-import { PHOTO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 /**
  * Props for `FooterCtaNavigationBranding`.
@@ -46,15 +45,21 @@ const FooterCtaNavigationBranding = async ({
 
   const trademark = footerData.trademark || "Bayvine Digital";
 	const ctaLabel = slice.primary.cta_button?.text;
+  const footerBackgroundStyle = {
+    backgroundColor: "#020617",
+    backgroundImage: [
+      "radial-gradient(120% 90% at 8% 0%, rgba(34, 197, 94, 0.16) 0%, rgba(34, 197, 94, 0) 55%)",
+      "radial-gradient(90% 70% at 92% 18%, rgba(56, 189, 248, 0.18) 0%, rgba(56, 189, 248, 0) 60%)",
+      "radial-gradient(100% 100% at 50% 100%, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0) 70%)",
+      "linear-gradient(180deg, #111827 0%, #020617 55%, #000000 100%)",
+    ].join(", "),
+    backgroundBlendMode: "screen, screen, normal, normal",
+  } as const;
 
   return (
 		<Section
 			className="relative isolate overflow-hidden mt-20"
-			style={{
-				backgroundImage: "url(/images/Footer-background.webp)",
-				backgroundSize: "cover",
-				backgroundPosition: "center",
-			}}
+			style={footerBackgroundStyle}
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
 		>
@@ -150,13 +155,13 @@ const FooterCtaNavigationBranding = async ({
 					{/* Bottom of bottom section */}
 					<div>
 						<img
-							src={slice.primary.branding.url || PHOTO_PLACEHOLDER_SRC}
+							src={'/images/logo-text.svg'}
 							alt=""
 							className="w-full"
 							draggable={false}
               loading="lazy"
               decoding="async"
-              style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})`, backgroundSize: "cover", backgroundPosition: "center" }}
+            
 						/>
 					</div>
 				</div>

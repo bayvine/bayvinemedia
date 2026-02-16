@@ -63,8 +63,7 @@ const RoadMapCard: FC<{
               playsInline
               preload="metadata"
               poster={VIDEO_PLACEHOLDER_SRC}
-              className="h-full w-full bg-center bg-cover object-cover object-center"
-              style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
+              className="h-full w-full object-cover object-center"
             />
           </motion.div>
         ) : null}
@@ -105,8 +104,7 @@ const RoadmapCardStatic: FC<{ item: RoadmapItem }> = ({ item }) => {
               playsInline
               preload="metadata"
               poster={VIDEO_PLACEHOLDER_SRC}
-              className="h-full w-full bg-center bg-cover object-cover object-center"
-              style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
+              className="h-full w-full object-cover object-center"
             />
           </div>
         ) : null}

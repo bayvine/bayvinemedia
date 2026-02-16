@@ -64,16 +64,14 @@ const ProjectMediaGrid: FC<ProjectMediaGridProps> = ({ slice }) => {
                     playsInline
                     preload="metadata"
                     poster={VIDEO_PLACEHOLDER_SRC}
-                    className="h-full w-full bg-center bg-cover object-cover"
-                    style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
+                    className="h-full w-full object-cover"
                   />
                 ) : hasImage ? (
                   <PrismicNextImage
                     field={item.image}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="bg-center bg-cover object-cover"
-                    style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+                    className="object-cover"
                   />
                 ) : (
                   <div
