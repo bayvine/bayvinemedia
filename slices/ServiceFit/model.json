@@ -51,6 +51,12 @@
                 "config": {
                   "label": "Text"
                 }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description"
+                }
               }
             }
           }

@@ -46,6 +46,14 @@
                   "value": "You want consistent inbound leads",
                   "type": "Text"
                 }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Ideal if you want a steady pipeline without constant manual outreach.",
+                  "type": "Text"
+                }
               ]
             ]
           }

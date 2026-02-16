@@ -17,49 +17,56 @@ const ServiceFit: FC<ServiceFitProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <h2 className="text-xs font-semibold uppercase tracking-[0.5em] text-white/60">
+        {slice.primary.for_you_heading ? (
+        <p className="text-2xl font-bold uppercase sm:text-3xl">
+          {slice.primary.for_you_heading}
+        </p>
+      ) : null}
+
+      <div className="flex flex-wrap items-center justify-between my-1 max-w-lg">
+        <h2 className="text-base sm:text-lg">
           {slice.primary.heading || "Is this for you?"}
         </h2>
       </div>
 
-      {slice.primary.for_you_heading ? (
-        <p className="mt-3 text-sm font-semibold uppercase tracking-[0.3em] text-white/50">
-          {slice.primary.for_you_heading}
-        </p>
-      ) : null}
+    
 
       <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {forYou.map((item, index) => (
           <div
             key={`for-${index}`}
-            className="flex min-h-[180px] flex-col gap-4 rounded-lg border border-white/10 bg-blue-950/50 p-6 backdrop-blur"
+            className="flex min-h-[180px] flex-col rounded-lg  bg-[#0C0E1D] p-8 backdrop-blur"
           >
-            <span className="flex w-30 aspect-video items-center justify-center  ">
+            <span className="flex w-12 aspect-video items-center justify-center mb-3">
               {item.icon?.url ? (
                 <PrismicNextImage
                   field={item.icon}
                   className="h-full w-full"
                 />
               ) : (
-                <RxCheck className="text-2xl" />
+                <RxCheck className="text-3xl" />
               )}
             </span>
-            <p className="text-base text-white/80 sm:text-lg">
+            <p className="text-lg font-bold">
               {item.text || "Benefit"}
             </p>
+            
+              <p className="text-lg">
+                {item.description || ""}
+              </p>
+   
           </div>
         ))}
       </div>
 
-      <div className="my-10 h-px w-full bg-white/10" />
+      <div className="my-10 h-px w-full bg-white" />
 
       <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.5em] text-white/60">
+        <p className="text-lg font-bold">
           {slice.primary.not_for_you_heading ||
             "When this might not be the right fit"}
         </p>
-        <p className="mt-2 text-sm text-white/60">
+        <p className="mt-2 text-lg">
           {slice.primary.not_for_you_intro ||
             "This might not be the right fit if:"}
         </p>
@@ -67,12 +74,12 @@ const ServiceFit: FC<ServiceFitProps> = ({ slice }) => {
           {notForYou.map((item, index) => (
             <li
               key={`not-${index}`}
-              className="flex items-start gap-4 text-white/85"
+              className="flex items-center gap-4 "
             >
-              <span className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-white/70">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-400/40 ">
                 <RxCross2 />
               </span>
-              <span className="text-base sm:text-lg">
+              <span className="text-lg font-medium">
                 {item.text || "Constraint"}
               </span>
             </li>
