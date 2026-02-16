@@ -78,7 +78,7 @@ const DetailHero: FC<DetailHeroProps> = ({
       <Section className="relative z-10 flex min-h-[340px] items-end">
         <div className="max-w-3xl">
           {eyebrow ? (
-            <p className="text-lg font-semibold uppercase mb-2">
+            <p className="inline-flex text-lg items-center justify-center rounded-full px-6 py-2 border mb-4">
               {eyebrow}
             </p>
           ) : null}
@@ -96,7 +96,7 @@ const DetailHero: FC<DetailHeroProps> = ({
           </div>
 
           {hasSubtitle ? (
-            <div className="project-detail-body text-lg sm:text-xl">
+            <div className="project-detail-body text-3xl">
               <PrismicRichText
                 field={subtitle}
                 components={{

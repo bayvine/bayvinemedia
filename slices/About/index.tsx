@@ -39,7 +39,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 					</div>
 					<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/80" />
 					<motion.div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 py-16 text-center">
-						<span className="inline-flex text-lg items-center justify-center rounded-full px-5 py-2 border">
+						<span className="inline-flex text-lg items-center justify-center rounded-full px-6 py-2 border">
 							<PrismicRichText field={slice.primary.title} />
 						</span>
 						

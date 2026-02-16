@@ -14,6 +14,7 @@ const ProjectDetailHero: FC<ProjectDetailHeroProps> = ({ slice }) => {
   return (
     <DetailHero
       title={slice.primary.title}
+      eyebrow={"PROJECT"}
       description={slice.primary.description}
       tags={tags}
       backgroundImage={slice.primary.background_image}

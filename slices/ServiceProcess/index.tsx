@@ -29,15 +29,15 @@ const ServiceProcess: FC<ServiceProcessProps> = ({ slice }) => {
         {steps.map((step, index) => (
           <div
             key={`${step.title ?? "step"}-${index}`}
-            className="rounded-3xl border border-white/10 bg-white/5 p-6"
+            className="rounded-lg bg-[#0C0E1D] p-6"
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/50">
+            <p className="text-md font-semibold uppercase text-white">
               Step {index + 1}
             </p>
-            <h3 className="mt-3 text-xl font-semibold uppercase">
+            <h3 className="mt-3 text-2xl font-bold uppercase">
               {step.title || "Step title"}
             </h3>
-            <div className="mt-3 text-sm text-slate-200 sm:text-base">
+            <div className="mt-3 text-lg">
               <PrismicRichText
                 field={step.description}
                 components={{

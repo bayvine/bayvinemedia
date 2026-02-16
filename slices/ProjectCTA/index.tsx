@@ -26,7 +26,7 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       <div
-        className="relative isolate overflow-hidden rounded-lg px-25 py-20"
+        className="relative isolate overflow-hidden rounded-lg px-25 pb-15 pt-20"
         style={
           hasBackground && slice.primary.background.url
             ? {
@@ -39,7 +39,7 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
       >
         {hasBackground ? (
           <div
-            className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/20 via-black/55 to-black/70"
+            className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/30 via-black/55 to-black/90"
             aria-hidden
           />
         ) : null}
@@ -66,31 +66,23 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
             )}
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            {primaryLink ? (
+          <div className="mt-5 flex flex-wrap gap-4">
+            {primaryLink && (
               <PrismicNextLink
                 field={primaryLink}
                 {...(isContactHref(primaryLink.url) ? { target: "_self" } : {})}
               >
                 <CTAButton>
-                  {" "}
                   {slice.primary.primary_cta_label || "Contact us"}
                 </CTAButton>
               </PrismicNextLink>
-            ) : (
-              <Link
-                href="/contact"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-black transition hover:translate-y-[-2px]"
-              >
-                Contact us
-              </Link>
             )}
 
             {secondaryLink ? (
               <PrismicNextLink
                 field={secondaryLink}
                 {...(isContactHref(secondaryLink.url) ? { target: "_self" } : {})}
-                className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:border-white hover:text-white"
+                className="rounded-full border border-white py-3 px-8 font-semibold uppercase text-white transition "
               >
                 {slice.primary.secondary_cta_label || "Schedule a call"}
               </PrismicNextLink>
