@@ -22,6 +22,8 @@ type TermsAndConditionsData = {
   meta_image?: ImageField;
 };
 
+export const revalidate = 7776000; // 90 days
+
 const getTermsAndConditions = async () => {
   const client = await createClient(repositoryName);
   return client.getSingle("terms_and_conditions");

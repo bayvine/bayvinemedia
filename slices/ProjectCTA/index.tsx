@@ -5,7 +5,6 @@ import { PrismicNextLink } from "@prismicio/next";
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
 import SectionTitle from "@/components/SectionTitle";
-import { withPhotoPlaceholderBackground } from "@/utils/mediaPlaceholders";
 
 export type ProjectCTAProps = SliceComponentProps<Content.ProjectCtaSlice>;
 
@@ -16,7 +15,6 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
   const secondaryLink = isFilled.link(slice.primary.secondary_cta_link)
     ? slice.primary.secondary_cta_link
     : null;
-  const hasBackground = isFilled.linkToMedia(slice.primary.background);
   const isContactHref = (href?: string | null) =>
     typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href);
 
@@ -26,24 +24,22 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div
-        className="relative isolate overflow-hidden rounded-lg p-8 pt-15 lg:px-15 lg:pb-15 lg:pt-20"
-        style={
-          {
-            backgroundImage: withPhotoPlaceholderBackground(
-              hasBackground ? slice.primary.background.url : null
-            ),
-            backgroundSize: "cover",
-            backgroundPosition: "top",
-          }
-        }
-      >
-        {hasBackground ? (
+      <div className="relative isolate overflow-hidden rounded-lg p-8 pt-15 lg:px-15 lg:pb-15 lg:pt-20">
+        <video
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden
+        >
+          <source src="/images/faq.mp4" type="video/mp4" />
+        </video>
           <div
             className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/30 via-black/55 to-black/90"
             aria-hidden
           />
-        ) : null}
+
         <div className="relative z-10">
 
           <SectionTitle title={slice.primary.heading} description={slice.primary.body}/>

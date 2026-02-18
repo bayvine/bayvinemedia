@@ -1,12 +1,10 @@
-import { FC } from "react";
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
-import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { RxArrowTopRight } from "react-icons/rx";
 import Tag from "@/components/Tag";
-import SectionTitle from "@/components/SectionTitle";
-import { VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
+import { createClient } from "@/prismicio";
 
 /**
  * Props for `ProjectHero`.
@@ -16,85 +14,127 @@ export type ProjectHeroProps = SliceComponentProps<Content.ProjectHeroSlice>;
 /**
  * Component for "ProjectHero" Slices.
  */
-const ProjectHero: FC<ProjectHeroProps> = ({ slice }) => {
-  const projectHref = slice.primary.project_link?.uid
-    ? `/projects/${slice.primary.project_link.uid}`
+const ProjectHero = async ({ slice }: ProjectHeroProps) => {
+  const projectLink = slice.primary.project_link;
+  const hasProjectLink = isFilled.contentRelationship(projectLink);
+  const client = createClient();
+  const project = hasProjectLink
+    ? await client.getByID(projectLink.id).catch(() => null)
+    : null;
+
+  const projectSlices = project?.data?.slices ?? [];
+  const detailSlice = projectSlices.find(
+    (item) => item.slice_type === "project_detail_hero"
+  ) as Content.ProjectDetailHeroSlice | undefined;
+
+  const titleField = detailSlice?.primary?.title ?? slice.primary.project_title;
+  const subtitleField =
+    detailSlice?.primary?.description ?? slice.primary.project_subtitle;
+  const tagItems =
+    detailSlice?.primary?.tags ?? slice.primary.project_tags ?? [];
+  const tags = tagItems
+    .map((item) => item.tag)
+    .filter((tag): tag is string => Boolean(tag));
+  const backgroundVideo =
+    detailSlice?.primary?.background_video ?? slice.primary.background_video;
+  const backgroundImage =
+    detailSlice?.primary?.background_image ?? slice.primary.mockup_image;
+  const hasVideo = isFilled.linkToMedia(backgroundVideo);
+  const hasImage = Boolean(backgroundImage?.url);
+  const projectTitleText = titleField
+    ?.map((block) => ("text" in block ? block.text : ""))
+    .join(" ")
+    .trim();
+  const fallbackHref = projectTitleText
+    ? `/projects/${projectTitleText
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "")}`
     : "#";
 
   const cardContent = (
     <>
-      <div className="z-20 pt-40 px-4 lg:p-10 w-full flex flex-col">
-        
+      <div className="z-20 py-2 px-4 lg:p-10 w-full flex flex-col">
         <PrismicRichText
-          field={slice.primary.project_title}
+          field={titleField}
           components={{
             heading1: ({ children }) => (
-              <h3 className="text-4xl font-black uppercase sm:text-5xl lg:text-6xl">
+              <h3 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl uppercase">
                 {children}
               </h3>
             ),
           }}
         />
         <PrismicRichText
-          field={slice.primary.project_subtitle}
+          field={subtitleField}
           components={{
             paragraph: ({ children }) => (
-              <p className="mt-1 text-lg">{children}</p>
+              <p className="mt-2 font-semibold text-slate-100">{children}</p>
             ),
           }}
         />
 
         <div className="my-4 flex items-center gap-4 flex-wrap">
-          {slice.primary.project_tags.map((tag, index) => (
-            <Tag key={`${tag.tag}-${index}`}>{tag.tag}</Tag>
+          {tags.map((tag, index) => (
+            <Tag key={`${tag}-${index}`}>{tag}</Tag>
           ))}
         </div>
+
+           <span className="z-50 inline-flex w-fit items-center gap-1 rounded-full border border-white/50 lg:hidden px-3 py-1 text-md font-semibold uppercase text-white">
+                    View project
+                    <RxArrowTopRight size={20} />
+                  </span>
       </div>
 
-      <div className="h-full w-full group-hover:blur-md group-active:blur-md absolute left-0 top-0">
+      <div className="h-full w-full group-hover:blur-md absolute left-0 top-0">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-10 bg-linear-to-t from-black/75 via-black/50 to-transparent"
         />
-        <video
-          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-bottom object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1] group-active:scale-[1.1]"
-          src={slice.primary.background_video?.url}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          tabIndex={-1}
-          poster={VIDEO_PLACEHOLDER_SRC}
-        />
+        {hasVideo ? (
+          <video
+            className="absolute inset-0 z-0 h-full w-full object-bottom object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1]"
+            src={backgroundVideo.url ?? undefined}
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={backgroundImage?.url || ""}
+          />
+        ) : hasImage ? (
+          <PrismicNextImage
+            field={backgroundImage}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="absolute inset-0 z-0 h-full w-full object-bottom object-cover transition-transform duration-500 ease-out group-hover:scale-[1.1]"
+          />
+        ) : null}
       </div>
 
-      <span className="pointer-events-none absolute right-6 top-6 lg:top-auto lg:bottom-6 z-30 inline-flex items-center justify-center gap-1 rounded-full bg-white px-4 py-2 text-sm font-bold uppercase text-black opacity-100 transition duration-300 md:translate-y-2 md:opacity-0 
-      md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-visible:translate-y-0 md:group-focus-visible:opacity-100">
-        Click to view more
-        <RxArrowTopRight strokeWidth={0.5} />
-      </span>
+    
     </>
   );
 
   return (
     <Section
-      id="work"
       className="py-12"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <SectionTitle
-        title={"Our latest work"}
-        description={"Businesses who joined the digital revolution"}
-      />
+      <div className="max-w-xl text-slate-200">
+        <h2 className="text-2xl font-bold uppercase sm:text-3xl">
+          Our latest work
+        </h2>
+        <div className="my-1 max-w-lg">
+          <p>Businesses who joined the digital revolution</p>
+        </div>
+      </div>
 
       <PrismicNextLink
-        href={projectHref}
-        // field={slice.primary.project_link}
+        field={projectLink}
+        href={project?.url || fallbackHref}
         aria-label="View project details"
-        className="mt-8  group relative overflow-hidden duration-300 ease-in-out isolate lg:rounded-lg aspect-3/4 lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
+        className="mt-12  group relative overflow-hidden duration-300 ease-in-out isolate rounded-lg aspect-3/4 lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
       >
         {cardContent}
       </PrismicNextLink>

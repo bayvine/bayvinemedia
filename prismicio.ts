@@ -40,7 +40,7 @@ export const createClient = (config: ClientConfig = {}) => {
     routes,
     fetchOptions:
       process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+        ? { next: { tags: ["prismic"], revalidate: 86400 }, cache: "force-cache" }
         : { next: { revalidate: 5 } },
     ...config,
   });

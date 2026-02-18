@@ -22,6 +22,8 @@ type PrivacyPolicyData = {
   meta_image?: ImageField;
 };
 
+export const revalidate = 7776000; // 90 days
+
 const getPrivacyPolicy = async () => {
   const client = createClient(repositoryName);
   return client.getSingle("privacy_policy").catch(() => null);

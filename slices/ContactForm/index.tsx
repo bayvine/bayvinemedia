@@ -554,10 +554,10 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
       className="relative isolate overflow-hidden min-h-[500px] flex items-end pb-10"
       style={{
         backgroundImage: withPhotoPlaceholderBackground(
-          slice.primary.hero_background.url
+          'images/contact-page.webp'
         ),
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "top",
       }}
     >
       <div className="relative z-50 flex flex-col gap-12">

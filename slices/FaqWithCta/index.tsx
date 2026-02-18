@@ -11,7 +11,7 @@ import { Icon } from "@/components/icons/Icon";
 import CTAButton from "@/components/CTAButton";
 import SectionTitle from "@/components/SectionTitle";
 import CardText from "@/components/CardText";
-import { VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
+import { PHOTO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 /**
  * Props for `FaqWithCta`.
@@ -67,7 +67,7 @@ type CtaCardProps = {
 
 const CtaCard: FC<CtaCardProps> = ({ primary }) => {
   const hasMedia = isFilled.linkToMedia(primary.cta_media);
-  const mediaUrl = hasMedia ? primary.cta_media.url : null;
+  const mediaUrl = '/images/faq.mp4'
   const hasCtaLink = isFilled.link(primary.cta_button);
   const ctaHref = hasCtaLink ? (primary.cta_button.url ?? "#") : null;
   const isContactLink =
@@ -86,13 +86,13 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
           preload="metadata"
           aria-hidden="true"
           tabIndex={-1}
-          poster={VIDEO_PLACEHOLDER_SRC}
+          poster={PHOTO_PLACEHOLDER_SRC}
           className="pointer-events-none absolute rounded-lg inset-0 h-full w-full object-cover"
         />
       ) : (
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${VIDEO_PLACEHOLDER_SRC})` }}
+          style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/90" />
@@ -148,7 +148,7 @@ const FaqWithCta: FC<FaqWithCtaProps> = ({ slice }) => {
       id="faq"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="py-16 lg:py-24"
+      className="py-12"
     >
       <div className="grid gap-10 lg:grid-cols-[1.15fr_0.95fr] xl:gap-16 h-full">
         <div className="space-y-8">
