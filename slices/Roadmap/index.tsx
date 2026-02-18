@@ -1,9 +1,10 @@
 "use client"
 
-import React, { FC, useRef } from "react"
+import React, { FC, useEffect, useRef, useState } from "react"
 import {
 	type MotionValue,
 	motion,
+	useMotionValue,
 	useScroll,
 	useTransform,
 } from "framer-motion"
@@ -33,6 +34,32 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
 const VIDEO_FILE_PATTERN = /\.(mp4|webm|ogg|m4v|mov)(\?|#|$)/i
 const IMAGE_FILE_PATTERN = /\.(png|jpe?g|gif|webp|avif|bmp|svg|ico)(\?|#|$)/i
+const SHORT_VIEWPORT_MEDIA_QUERY = "(max-height: 560px)"
+
+const useMediaQuery = (query: string) => {
+	const [matches, setMatches] = useState(false)
+
+	useEffect(() => {
+		if (typeof window === "undefined") return
+
+		const mediaQueryList = window.matchMedia(query)
+		const updateMatch = () => setMatches(mediaQueryList.matches)
+
+		updateMatch()
+
+		if (typeof mediaQueryList.addEventListener === "function") {
+			mediaQueryList.addEventListener("change", updateMatch)
+
+			return () => mediaQueryList.removeEventListener("change", updateMatch)
+		}
+
+		mediaQueryList.addListener(updateMatch)
+
+		return () => mediaQueryList.removeListener(updateMatch)
+	}, [query])
+
+	return matches
+}
 
 const getRoadmapMediaType = (item: RoadmapItem) => {
 	if (!isFilled.linkToMedia(item.media) || !item.media.url) {
@@ -284,7 +311,7 @@ const MobileRoadmapShuffleCard: FC<{
 	const end = (index + 1) / total
 	const isFirstCard = index === 0
 	const stackDepth = total - 1 - index
-	const finalOffsetY = -Math.min(stackDepth * 12, 72)
+	const finalOffsetY = -Math.min(stackDepth * 10, 48)
 	const finalScale = Math.max(0.9, 1 - stackDepth * 0.02)
 	const finalOpacity = Math.max(0.45, 1 - stackDepth * 0.12)
 
@@ -332,7 +359,7 @@ const MobileRoadmapShuffleCtaCard: FC<{
 	const start = index / total
 	const end = (index + 1) / total
 	const stackDepth = total - 1 - index
-	const finalOffsetY = -Math.min(stackDepth * 12, 72)
+	const finalOffsetY = -Math.min(stackDepth * 10, 48)
 	const finalScale = Math.max(0.9, 1 - stackDepth * 0.02)
 	const finalOpacity = Math.max(0.45, 1 - stackDepth * 0.12)
 
@@ -375,47 +402,46 @@ const MobileRoadmapShuffleStack: FC<{
 	description?: Content.RoadmapSliceDefaultPrimary["subtitel"]
 	navbarHeight?: number
 }> = ({ items, primary, title, description, navbarHeight = 20 }) => {
-	const sectionRef = useRef<HTMLDivElement | null>(null)
+	const stackRef = useRef<HTMLDivElement | null>(null)
+	const isShortViewport = useMediaQuery(SHORT_VIEWPORT_MEDIA_QUERY)
 
 	const { scrollYProgress } = useScroll({
-		target: sectionRef,
-		offset: ["start start", "end end"],
+		target: stackRef,
+		offset: ["start center", "end end"],
 	})
 
 	const n = Math.max(1, items.length)
 	const totalCards = n + 1
-	const sectionMinH = `${Math.max(120, totalCards * 84)}vh`
+	const sectionMinH = `${Math.max(110, totalCards * 82)}vh`
 	const stickyTop = Math.max(navbarHeight + 8, 56)
-	const stickyHeight = `calc(100svh - ${stickyTop}px)`
-	const introEnd = 0.22
-	const headingOpacity = useTransform(scrollYProgress, [0, 0.1, introEnd], [1, 1, 0])
-	const headingY = useTransform(scrollYProgress, [0, introEnd], [0, -24])
-	const cardIntroY = useTransform(scrollYProgress, [0, introEnd], [-40, 0])
-	const stackProgress = useTransform(scrollYProgress, (p) => {
-		if (p <= introEnd) return 0
-		return clamp((p - introEnd) / (1 - introEnd))
-	})
+	const centeredStickyTop = `max(${stickyTop}px, calc(50svh - clamp(170px, 32svh, 230px)))`
+	const stackProgress = useTransform(scrollYProgress, (p) => clamp(p))
+
+	if (isShortViewport) {
+		return (
+			<div className="space-y-4">
+				<SectionTitle title={title || ""} description={description} />
+				<div className="space-y-3">
+					{items.map((item, i) => (
+						<RoadmapCardStatic key={`${item.title ?? "step"}-${i}`} item={item} />
+					))}
+					<RoadmapMobileCtaCard primary={primary} />
+				</div>
+			</div>
+		)
+	}
 
 	return (
-		<div
-			ref={sectionRef}
-			className="relative"
-			style={{ minHeight: sectionMinH }}
-		>
-				<div className="sticky" style={{ top: stickyTop, height: stickyHeight }}>
-					<div className="relative h-full">
-					<motion.div
-						className="pointer-events-none absolute inset-x-0 top-0 z-20"
-						style={{ opacity: headingOpacity, y: headingY }}
-					>
-						<SectionTitle
-							title={title || ""}
-							description={description}
-						/>
-					</motion.div>
-					<div className="flex h-full items-center">
-						<motion.div className="w-full" style={{ y: cardIntroY }}>
-							<div className="relative h-[64vh] max-h-[460px] min-h-[340px] w-full">
+		<div>
+			<SectionTitle title={title || ""} description={description} />
+			<div
+				ref={stackRef}
+				className="relative mt-4"
+				style={{ minHeight: sectionMinH }}
+			>
+				<div className="sticky" style={{ top: centeredStickyTop }}>
+					<motion.div className="w-full">
+						<div className="relative h-[64svh] max-h-[460px] min-h-[340px] w-full">
 							{items.map((item, i) => (
 								<MobileRoadmapShuffleCard
 									key={`${item.title ?? "step"}-${i}`}
@@ -431,23 +457,38 @@ const MobileRoadmapShuffleStack: FC<{
 								total={totalCards}
 								progress={stackProgress}
 							/>
-							</div>
-						</motion.div>
-					</div>
-					</div>
+						</div>
+					</motion.div>
 				</div>
 			</div>
-			)
-		}
+		</div>
+	)
+}
 
 export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
 	const sectionRef = useRef<HTMLDivElement | null>(null)
+	const isShortViewport = useMediaQuery(SHORT_VIEWPORT_MEDIA_QUERY)
+	const staticCardProgress = useMotionValue(0)
 
 	// Scroll progress for THIS section only
 	const { scrollYProgress } = useScroll({
 		target: sectionRef,
 		offset: ["start start", "end end"],
 	})
+
+	if (isShortViewport) {
+		return (
+			<div className="my-12">
+				{items.map((item, i) => (
+					<RoadMapCard
+						key={`${item.title ?? "step"}-${i}`}
+						item={item}
+						t={staticCardProgress}
+					/>
+				))}
+			</div>
+		)
+	}
 
 	const n = Math.max(1, items.length)
 

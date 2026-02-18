@@ -551,13 +551,13 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
   return (
     <>
     <Section
-      className="relative isolate overflow-hidden min-h-[500px] flex items-end pb-10"
+      className="relative isolate overflow-hidden min-h-[500px] flex items-end pb-10 bg-top"
       style={{
         backgroundImage: withPhotoPlaceholderBackground(
           'images/contact-page.webp'
         ),
         backgroundSize: "cover",
-        backgroundPosition: "top",
+ 
       }}
     >
       <div className="relative z-50 flex flex-col gap-12">
