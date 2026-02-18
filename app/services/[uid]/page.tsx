@@ -8,7 +8,7 @@ type ServicePageProps = {
   params: { uid: string };
 };
 
-
+// 1 day
 export const revalidate = 86400;
 
 export default async function ServicePage({ params }: ServicePageProps) {
