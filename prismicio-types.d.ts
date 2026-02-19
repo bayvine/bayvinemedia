@@ -203,6 +203,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomeDocumentDataSlicesSlice =
+  | ServiceHighlightSlice
   | FooterCtaNavigationBrandingSlice
   | FaqWithCtaSlice
   | ProjectHeroSlice

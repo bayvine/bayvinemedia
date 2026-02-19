@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "service_highlight": {
+              "type": "SharedSlice"
+            },
             "footer_cta_navigation_branding": {
               "type": "SharedSlice"
             },

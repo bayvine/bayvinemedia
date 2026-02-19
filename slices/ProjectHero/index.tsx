@@ -5,6 +5,7 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { RxArrowTopRight } from "react-icons/rx";
 import Tag from "@/components/Tag";
 import { createClient } from "@/prismicio";
+import SectionTitle from "@/components/SectionTitle";
 
 /**
  * Props for `ProjectHero`.
@@ -80,8 +81,8 @@ const ProjectHero = async ({ slice }: ProjectHeroProps) => {
           ))}
         </div>
 
-           <span className="z-50 inline-flex w-fit items-center gap-1 rounded-full border border-white/50 lg:hidden px-3 py-1 text-md font-semibold uppercase text-white">
-                    View project
+           <span className="z-50 inline-flex w-fit items-center gap-1 rounded-full border border-white/50 px-3 py-1 text-md font-semibold uppercase text-white mt-2">
+                    View case study
                     <RxArrowTopRight size={20} />
                   </span>
       </div>
@@ -121,23 +122,19 @@ const ProjectHero = async ({ slice }: ProjectHeroProps) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="max-w-xl text-slate-200">
-        <h2 className="text-2xl font-bold uppercase sm:text-3xl">
-          Our latest work
-        </h2>
-        <div className="my-1 max-w-lg">
-          <p>Businesses who joined the digital revolution</p>
-        </div>
-      </div>
+
+      <SectionTitle title="Featured Work" description="Built for businesses ready to grow" />
+     
 
       <PrismicNextLink
         field={projectLink}
         href={project?.url || fallbackHref}
         aria-label="View project details"
-        className="mt-12  group relative overflow-hidden duration-300 ease-in-out isolate rounded-lg aspect-3/4 lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
+        className="mt-12  group relative overflow-hidden duration-300 ease-in-out isolate rounded-lg min-h-[650px] lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
       >
         {cardContent}
       </PrismicNextLink>
+
     </Section>
   );
 };

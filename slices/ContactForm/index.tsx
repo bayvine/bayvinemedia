@@ -12,6 +12,7 @@ import Section from "@/components/Section";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import { withPhotoPlaceholderBackground } from "@/utils/mediaPlaceholders";
+import { RxArrowRight } from "react-icons/rx";
 
 /**
  * Props for `ContactForm`.
@@ -367,7 +368,7 @@ const getRichTextLinkHref = (field: LinkField) =>
   (field.link_type === "Web" ? field.url ?? "#" : "#");
 
 const ContactOptions: FC<ContactOptionsProps> = ({ options }) => (
-  <div className="flex flex-col gap-2">
+  <div className="flex flex-col gap-3">
     {options.map((option, index) => {
       if (!option.option_link) {
         return null;
@@ -377,11 +378,15 @@ const ContactOptions: FC<ContactOptionsProps> = ({ options }) => (
         <PrismicNextLink
           key={`${option.option_label ?? "option"}-${index}`}
           field={option.option_link}
+        className="w-fit hover:underline! group"
           {...getContactTargetProps(option.option_link?.url)}
         >
-          <span className="text-lg font-semibold hover:underline">
+          <span className="text-xl font-semibold  max-w-fit flex items-center gap-1">
             {option.option_label || option.option_link.text || option.option_link.url}
+                 <RxArrowRight className="group-hover:translate-x-0.5 "/>
+           
           </span>
+      
         </PrismicNextLink>
       );
     })}
@@ -566,7 +571,7 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
             <PrismicRichText
               components={{
                 heading1: ({ children }) => (
-                  <h1 className="text-4xl font-semibold">{children}</h1>
+                  <h1 className="text-4xl font-semibold max-w-xl mb-5">{children}</h1>
                 ),
               }}
               field={slice.primary.heading}
@@ -575,17 +580,18 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
               field={slice.primary.questions_link}
               {...getContactTargetProps(slice.primary.questions_link?.url)}
             >
-              <span className="hover:underline text-lg font-medium">
-                {slice.primary.questions_link.text}
+              <span className="hover:underline font-medium underline! text-xl">
+                  {slice.primary.questions_link.text}
+                
               </span>
             </PrismicNextLink>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
             <PrismicRichText
               field={slice.primary.subheading}
               components={{
                 heading3: ({ children }) => (
-                  <h3 className="text-md font-semibold">{children}</h3>
+                  <h3 className="text-2xl font-semibold mb-2">{children}</h3>
                 ),
               }}
             />
@@ -640,7 +646,7 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
               ) : null}
 
               <ServicesField
-                label="Interested in (Select all that apply)"
+                label="What are you looking for help with? (Select all that apply)"
                 options={serviceOptions}
                 selected={values.requestedServices}
                 onToggle={toggleService}
@@ -672,7 +678,7 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
               </div>
 
               <BudgetField
-                label="Project budget"
+                label="Estimated investment range"
                 options={budgetOptions}
                 selected={values.budget}
                 onSelect={(value) => updateValue("budget", value)}

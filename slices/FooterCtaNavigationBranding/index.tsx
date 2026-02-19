@@ -60,18 +60,21 @@ const FooterCtaNavigationBranding = async ({
       data-slice-variation={slice.variation}
     >
       <div className="relative z-50">
+
+        
         {/* top */}
         <div className="mb-10 lg:mb-20 flex flex-col gap-10 lg:flex-row lg:gap-0 justify-between">
+        
           <div>
-            <h2 className="text-xl font-bold uppercase">
+            <h2 className="text-lg font-black uppercase">
               {slice.primary.cta_heading}
             </h2>
-            <div className="my-1">
+            <div className="my-1 max-w-lg">
               <PrismicRichText
                 field={slice.primary.cta_text}
                 components={{
                   paragraph: ({ children }) => (
-                    <p className="text-2xl font-semibold">{children}</p>
+                    <p className="text-xl font-semibold">{children}</p>
                   ),
                 }}
               />

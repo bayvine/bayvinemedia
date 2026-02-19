@@ -52,7 +52,7 @@ const FaqItem: FC<FaqItemProps> = ({ item, isOpen, onToggle }) => {
           isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
         )}
       >
-        <div className="overflow-hidden mt-2">
+        <div className="overflow-hidden mt-2 font-semibold">
           <CardText description={item.answer} />
          
         </div>
@@ -75,7 +75,7 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
   const ctaLabel = primary.cta_button?.text || "Schedule free intro chat";
 
   return (
-    <aside className="relative isolate overflow-hidden bg-slate-900/60 shrink-0 h-[600px] min-h-[600px]">
+    <aside className="relative isolate overflow-hidden bg-slate-900/80 shrink-0 h-[500px] min-h-[500px] lg:h-[750px] lg:min-h-[750px]">
       {mediaUrl ? (
         <video
           src={mediaUrl}
@@ -95,7 +95,7 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
           style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/100" />
 
       <div className="relative flex h-full flex-col justify-between gap-6 p-8">
         <div className="flex items-center gap-1 text-sm font-semibold text-white/80">
@@ -111,7 +111,7 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
 
         <div className="space-y-3">
 
-          <SectionTitle noUpperCase title={primary.cta_title}  description={primary.cta_description}/>
+          <SectionTitle noUpperCase title={primary.cta_title}  description={primary.cta_description} paragraphClassNames="max-w-full text-xl"/>
         
           {hasCtaLink ? (
             <Link

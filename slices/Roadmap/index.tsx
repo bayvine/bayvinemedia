@@ -20,6 +20,8 @@ import {
 	PHOTO_PLACEHOLDER_SRC,
 	VIDEO_PLACEHOLDER_SRC,
 } from "@/utils/mediaPlaceholders"
+import ProjectHero from "../ProjectHero"
+import { RxArrowTopRight } from "react-icons/rx"
 
 type RoadmapItem = Content.RoadmapSliceDefaultPrimaryRoadmapItem
 
@@ -35,6 +37,9 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 const VIDEO_FILE_PATTERN = /\.(mp4|webm|ogg|m4v|mov)(\?|#|$)/i
 const IMAGE_FILE_PATTERN = /\.(png|jpe?g|gif|webp|avif|bmp|svg|ico)(\?|#|$)/i
 const SHORT_VIEWPORT_MEDIA_QUERY = "(max-height: 560px)"
+const MOBILE_STACK_FADE_START = 0.82
+const MOBILE_STACK_MIN_OPACITY = 0.88
+const MOBILE_STACK_OPACITY_STEP = 0.03
 
 const useMediaQuery = (query: string) => {
 	const [matches, setMatches] = useState(false)
@@ -110,7 +115,7 @@ const RoadMapCard: FC<{
 					<CardText title={item.title} />
 
 					<motion.div
-						className="origin-top overflow-hidden"
+						className="origin-top overflow-hidden text-lg font-semibold"
 						style={{ opacity: descOpacity, scaleY: descScaleY }}
 					>
 						<CardText description={item.description} />
@@ -222,6 +227,10 @@ const RoadmapCardStatic: FC<{ item: RoadmapItem }> = ({ item }) => {
 	)
 }
 
+const CTA_TITLE = "Ready to move forward with clarity?"
+const CTA_DESCRIPTION = "Whether you’re starting from scratch or refining what you already have, the first step is a simple conversation. We’ll learn about your business, your goals, and where you want to grow, and determine the right path forward together."
+const CTA_LABEL = "Schedule a call"
+
 const RoadmapMobileCtaCard: FC<{
 	primary: Content.RoadmapSliceDefaultPrimary
 }> = ({ primary }) => {
@@ -230,7 +239,7 @@ const RoadmapMobileCtaCard: FC<{
 	const hasBackgroundMedia = isFilled.linkToMedia(primary.background_cta)
 	const backgroundUrl = hasBackgroundMedia
 		? primary.background_cta.url
-		: undefined
+		: "/images/cta-background.webp"
 	const { isVideo, isImage } = getMediaType(
 		backgroundUrl,
 		primary.background_cta?.kind,
@@ -239,12 +248,12 @@ const RoadmapMobileCtaCard: FC<{
 		typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
 	const ctaTitle = hasCtaTitle
 		? primary.cta_title
-		: "Confident yet? Let's partner up."
-	const ctaLabel = primary.cta_label || primary.cta_link.text || "Contact us"
+		: "Ready to start your roadmap?"
+	const ctaLabel = primary.cta_label || primary.cta_link.text || "Schedule free call"
 
 	return (
 		<article className="h-full">
-			<div className="relative isolate h-full min-h-[340px] w-full overflow-hidden rounded-lg bg-slate-900/60 shadow-lg ring-1 ring-white/20">
+			<div className="relative isolate h-full min-h-[340px] w-full overflow-hidden rounded-lg bg-slate-900/60 shadow-lg ">
 			{isVideo ? (
 				<video
 					src={backgroundUrl}
@@ -263,7 +272,7 @@ const RoadmapMobileCtaCard: FC<{
 					fill
 					unoptimized
 					sizes="100vw"
-					className="object-cover object-center"
+					className="object-cover object-top"
 				/>
 			) : (
 				<div
@@ -276,8 +285,12 @@ const RoadmapMobileCtaCard: FC<{
 				className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/45 to-black/90"
 			/>
 
-			<div className="absolute inset-0 z-10 flex flex-col justify-end p-6">
-				<SectionTitle noUpperCase title={ctaTitle} />
+			<div className="absolute inset-0 z-10 flex flex-col items-center justify-end pb-15 px-3">
+					<SectionTitle noUpperCase title={CTA_TITLE} titleClassName="text-center"/>
+					<p className="text-lg font-semibold text-center ">
+						{CTA_DESCRIPTION}
+				</p>	
+				
 				{hasCtaLink ? (
 					<PrismicNextLink
 						field={primary.cta_link}
@@ -287,17 +300,96 @@ const RoadmapMobileCtaCard: FC<{
 						className="mt-4 inline-flex w-fit"
 					>
 						<CTAButton as="span">
-							{ctaLabel}
+							{CTA_LABEL}
 						</CTAButton>
 					</PrismicNextLink>
 				) : (
 					<Link href="/contact" className="mt-4 inline-flex w-fit">
-						<CTAButton as="span">{ctaLabel}</CTAButton>
+						<CTAButton as="span">{CTA_LABEL} <RxArrowTopRight size={20} /></CTAButton>
 					</Link>
 					)}
 				</div>
 			</div>
 		</article>
+	)
+}
+
+const RoadmapDesktopCtaCard: FC<{
+	primary: Content.RoadmapSliceDefaultPrimary
+}> = ({ primary }) => {
+	const hasCtaLink = isFilled.link(primary.cta_link)
+	const hasCtaTitle = isFilled.richText(primary.cta_title)
+	const hasBackgroundMedia = isFilled.linkToMedia(primary.background_cta)
+	const backgroundUrl = hasBackgroundMedia
+		? primary.background_cta.url
+		: "/images/cta-background.webp"
+	const { isVideo, isImage } = getMediaType(
+		backgroundUrl,
+		primary.background_cta?.kind,
+	)
+	const isContactHref = (href?: string | null) =>
+		typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
+	const ctaTitle = hasCtaTitle
+		? primary.cta_title
+		: "Ready to start your roadmap?"
+	const ctaLabel = primary.cta_label || primary.cta_link.text || "Schedule free call"
+
+	return (
+		<div className="relative isolate w-full overflow-hidden rounded-lg p-8 pt-10 lg:px-15 lg:pb-15 lg:pt-20">
+			{isVideo ? (
+				<video
+					src={backgroundUrl}
+					autoPlay
+					loop
+					muted
+					playsInline
+					preload="metadata"
+					poster={VIDEO_PLACEHOLDER_SRC}
+					className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
+				/>
+			) : isImage ? (
+				<Image
+					src={backgroundUrl ?? PHOTO_PLACEHOLDER_SRC}
+					alt={primary.background_cta?.name ?? ""}
+					fill
+					unoptimized
+					sizes="90vw"
+					className="object-cover object-center"
+				/>
+			) : (
+				<div
+					className="absolute inset-0 bg-center bg-cover"
+					style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+				/>
+			)}
+			<div
+				aria-hidden
+				className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/30 via-black/55 to-black/90"
+			/>
+
+			<div className="relative z-10 max-w-full flex items-center flex-col text-center justify-center">
+				<SectionTitle noUpperCase title={CTA_TITLE} titleClassName="text-center"/>
+				<p className="text-xl text-center max-w-2xl font-semibold mt-1 ">
+					{CTA_DESCRIPTION}
+
+				</p>				{hasCtaLink ? (
+					<PrismicNextLink
+						field={primary.cta_link}
+						{...(isContactHref(primary.cta_link.url)
+							? { target: "_self" }
+							: {})}
+						className="mt-4 inline-flex w-fit"
+					>
+						<CTAButton as="span">{CTA_LABEL}   <RxArrowTopRight size={20} /></CTAButton>
+						
+					</PrismicNextLink>
+				) : (
+					<Link href="/contact" className="mt-4 inline-flex w-fit">
+						<CTAButton as="span">{CTA_LABEL } <RxArrowTopRight size={20} /></CTAButton>
+					</Link>
+				)}
+			</div>
+		</div>
 	)
 }
 
@@ -313,7 +405,10 @@ const MobileRoadmapShuffleCard: FC<{
 	const stackDepth = total - 1 - index
 	const finalOffsetY = -Math.min(stackDepth * 10, 48)
 	const finalScale = Math.max(0.9, 1 - stackDepth * 0.02)
-	const finalOpacity = Math.max(0.45, 1 - stackDepth * 0.12)
+	const finalOpacity = Math.max(
+		MOBILE_STACK_MIN_OPACITY,
+		1 - stackDepth * MOBILE_STACK_OPACITY_STEP,
+	)
 
 	const t = useTransform(progress, (p) => {
 		if (p <= start) return 0
@@ -325,7 +420,12 @@ const MobileRoadmapShuffleCard: FC<{
 		const p = clamp(v)
 		if (isFirstCard && p <= 0.12) return 1
 		if (p <= 0.12) return lerp(0, 1, p / 0.12)
-		return lerp(1, finalOpacity, (p - 0.12) / 0.88)
+		if (p <= MOBILE_STACK_FADE_START) return 1
+		return lerp(
+			1,
+			finalOpacity,
+			(p - MOBILE_STACK_FADE_START) / (1 - MOBILE_STACK_FADE_START),
+		)
 	})
 	const y = useTransform(t, (v) => {
 		const p = clamp(v)
@@ -361,7 +461,10 @@ const MobileRoadmapShuffleCtaCard: FC<{
 	const stackDepth = total - 1 - index
 	const finalOffsetY = -Math.min(stackDepth * 10, 48)
 	const finalScale = Math.max(0.9, 1 - stackDepth * 0.02)
-	const finalOpacity = Math.max(0.45, 1 - stackDepth * 0.12)
+	const finalOpacity = Math.max(
+		MOBILE_STACK_MIN_OPACITY,
+		1 - stackDepth * MOBILE_STACK_OPACITY_STEP,
+	)
 
 	const t = useTransform(progress, (p) => {
 		if (p <= start) return 0
@@ -372,7 +475,12 @@ const MobileRoadmapShuffleCtaCard: FC<{
 	const opacity = useTransform(t, (v) => {
 		const p = clamp(v)
 		if (p <= 0.12) return lerp(0, 1, p / 0.12)
-		return lerp(1, finalOpacity, (p - 0.12) / 0.88)
+		if (p <= MOBILE_STACK_FADE_START) return 1
+		return lerp(
+			1,
+			finalOpacity,
+			(p - MOBILE_STACK_FADE_START) / (1 - MOBILE_STACK_FADE_START),
+		)
 	})
 	const y = useTransform(t, (v) => {
 		const p = clamp(v)
@@ -570,6 +678,9 @@ const Roadmap: FC<RoadmapProps> = ({ slice }) => {
 
 			<div className="hidden md:block">
 				<StickyRoadmapStack items={roadmapItems} />
+				<div className="mt-8">
+					<RoadmapDesktopCtaCard primary={slice.primary} />
+				</div>
 			</div>
 		</Section>
 	)

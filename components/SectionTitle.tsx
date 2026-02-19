@@ -4,6 +4,7 @@ import clsx from "clsx";
 
 type SectionTitleProps = {
   titleClassName?: string;
+  paragraphClassNames?: string;
   title?: RichTextField | string | null;
   description?: RichTextField | string | null;
   noUpperCase?: boolean;
@@ -17,6 +18,7 @@ const SectionTitle = ({
   titleClassName,
   title,
   noUpperCase,
+  paragraphClassNames
 }: SectionTitleProps) => {
   const titleClasses = clsx(
     "text-2xl font-bold sm:text-3xl",
@@ -39,7 +41,7 @@ const SectionTitle = ({
           }}
         />
       ) : null}
-      <div className="my-1 max-w-lg">
+      <div className={clsx(["my-1 max-w-lg", paragraphClassNames])}>
         {!description ? null : typeof description === "string" ? (
           <p className="text-lg">{description}</p>
         ) : (

@@ -91,11 +91,11 @@ const Services: FC<ServicesProps> = ({ slice }) => {
                 aria-hidden
                 className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/45 to-black/90"
               />
-              <div className="absolute inset-0 z-10 flex flex-col justify-end gap-3 p-6">
-                <h3 className="z-50 text-4xl sm:text-5xl font-semibold mb-0">
+              <div className="absolute inset-0 z-10 flex flex-col justify-end gap-1 p-6">
+                <h3 className="z-50 text-4xl sm:text-5xl font-black uppercase mb-0">
                   {service.title || "Service"}
                 </h3>
-                <div className="max-w-sm z-50 text-slate-100/90">
+                <div className="max-w-sm z-50 text-lg">
                   <PrismicRichText
                     field={service.service_description}
                     components={{
@@ -104,7 +104,7 @@ const Services: FC<ServicesProps> = ({ slice }) => {
                   />
                 </div>
                 {isLinked ? (
-                  <span className="z-50 inline-flex w-fit items-center gap-1 rounded-full border border-white/55 bg-black/25 px-3 py-1 text-xs font-semibold uppercase text-white backdrop-blur-[1px]">
+                  <span className="z-50 inline-flex w-fit items-center gap-1 rounded-full border border-white/50 lg:hidden px-3 py-1 text-md font-semibold uppercase text-white mt-3">
                     View service
                     <RxArrowTopRight size={14} />
                   </span>
@@ -117,14 +117,14 @@ const Services: FC<ServicesProps> = ({ slice }) => {
             <PrismicNextLink
               key={`${service.title ?? "service"}-${index}`}
               href={`/services/${service.link.uid}`}
-              className="group relative isolate block min-h-[340px] overflow-hidden rounded-lg bg-slate-900/60 shadow-lg ring-1 ring-white/30 transition-transform active:scale-[0.99]"
+              className="group relative isolate block min-h-[500px] overflow-hidden rounded-lg bg-gradient-to-b from-black/15 via-black/45 to-black/100 shadow-lg transition-transform active:scale-[0.99]"
             >
               {content}
             </PrismicNextLink>
           ) : (
             <div
               key={`${service.title ?? "service"}-${index}`}
-              className="group relative isolate min-h-[340px] overflow-hidden rounded-lg bg-slate-900/60 shadow-lg ring-1 ring-white/15"
+              className="group relative isolate min-h-[500px] overflow-hidden rounded-lg bg-gradient-to-b from-black/15 via-black/45 to-black/100 shadow-lg"
             >
               {content}
             </div>
@@ -135,6 +135,46 @@ const Services: FC<ServicesProps> = ({ slice }) => {
       <div className="mt-8 hidden md:block">
         {services.map((service, index) => {
           const isLinked = isFilled.link(service.link);
+          const { isVideo, isImage, mediaUrl } = getServiceMediaType(service);
+          const hasHoverMedia = Boolean(mediaUrl);
+
+          const hoverPreview = hasHoverMedia ? (
+            <div className="pointer-events-none absolute right-3 top-1/2 z-[60] hidden -translate-y-1/2 lg:block">
+              <div className="relative h-[260px] w-[220px] origin-bottom-right overflow-hidden rounded-2xl  bg-black shadow-[0_24px_60px_rgba(0,0,0,0.5)] opacity-0 translate-x-8 rotate-6 skew-y-3 scale-90 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-hover:translate-x-0 group-hover:-translate-y-2 group-hover:rotate-2 group-hover:skew-y-0 group-hover:scale-100 group-active:opacity-100 group-active:translate-x-0 group-active:rotate-2 group-active:skew-y-0 group-active:scale-100">
+                {isVideo ? (
+                  <video
+                    src={mediaUrl}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    poster={VIDEO_PLACEHOLDER_SRC}
+                    className="h-full w-full object-cover object-center"
+                  />
+                ) : isImage ? (
+                  <Image
+                    src={mediaUrl ?? PHOTO_PLACEHOLDER_SRC}
+                    alt={service.hover_image.name ?? service.title ?? "Service preview"}
+                    fill
+                    unoptimized
+                    sizes="160px"
+                    className="object-cover object-center"
+                  />
+                ) : (
+                  <div
+                    className="h-full w-full bg-center bg-cover"
+                    style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
+                  />
+                )}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/35"
+                />
+              </div>
+            </div>
+          ) : null;
+
           const content = (
             <>
               <h3 className="z-50 text-4xl sm:text-5xl font-semibold mb-0 flex items-center group-hover:text-black group-active:text-black md:pr-6">
@@ -153,8 +193,9 @@ const Services: FC<ServicesProps> = ({ slice }) => {
               </div>
               <RxArrowTopRight
                 size={30}
-                className="relative hidden z-50 group-hover:text-black lg:block mr-0 md:mr-8 self-end lg:self-auto justify-self-end group-hover:translate-x-0.5 group-hover:-translate-y-1 transition-all duration-300 group-active:text-black"
+                className="relative hidden z-20 group-hover:text-black lg:block mr-0 md:mr-8 self-end lg:self-auto justify-self-end group-hover:translate-x-0.5 group-hover:-translate-y-1 transition-all duration-300 group-active:text-black"
               />
+              {hoverPreview}
             </>
           );
 
@@ -162,14 +203,14 @@ const Services: FC<ServicesProps> = ({ slice }) => {
             <PrismicNextLink
               key={`${service.title ?? "service"}-${index}`}
               href={`/services/${service.link.uid}`}
-              className="w-full border-t border-gray-500 px-4 py-10 sm:px-6 sm:py-12 transition-all duration-300 active:bg-slate-50 hover:bg-slate-50 group cursor-pointer grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_auto] lg:items-center"
+              className="relative isolate z-0 w-full overflow-visible border-t border-gray-500 px-4 py-10 sm:px-6 sm:py-12 transition-all duration-300 active:bg-slate-50 hover:bg-slate-50 hover:z-30 active:z-30 focus-visible:z-30 group cursor-pointer grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_auto] lg:items-center"
             >
               {content}
             </PrismicNextLink>
           ) : (
             <div
               key={`${service.title ?? "service"}-${index}`}
-              className="w-full border-t border-gray-500 px-4 py-10 sm:px-6 sm:py-12 transition-all duration-300 hover:bg-slate-50 group grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_auto] lg:items-center"
+              className="relative isolate z-0 w-full overflow-visible border-t border-gray-500 px-4 py-10 sm:px-6 sm:py-12 transition-all duration-300 hover:bg-slate-50 hover:z-30 group grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_auto] lg:items-center"
             >
               {content}
             </div>

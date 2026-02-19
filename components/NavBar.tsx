@@ -29,10 +29,10 @@ const NavBar = () => {
   const lastScrollY = useRef(0);
   const isMobile = useIsMobile();
   const navItems = [
-    { id: 1, label: "About us", href: "/#about" },
+    { id: 1, label: "About", href: "/#about" },
     { id: 2, label: "Services", href: "/#services" },
-    { id: 3, label: "Our work", href: "/#work" },
-    { id: 4, label: "Roadmap", href: "/#roadmap" },
+    { id: 3, label: "Work", href: "/#work" },
+    { id: 4, label: "Process", href: "/#roadmap" },
     { id: 5, label: "FAQ", href: "/#faq" },
   ];
 
@@ -153,7 +153,7 @@ const NavBar = () => {
             <Link href={"/contact"} onClick={() => setIsOpen(false)}>
               <CTAButton as="span">
                 <span className="flex items-center gap-1">
-                  Let&apos;s Chat <RxArrowTopRight strokeWidth={0.5} />
+                  Let&apos;s talk <RxArrowTopRight strokeWidth={0.5} />
                 </span>
               </CTAButton>
             </Link>
@@ -213,7 +213,7 @@ const NavBar = () => {
                   >
                     <CTAButton as="span" className="w-full justify-center">
                       <span className="flex items-center gap-1">
-                        Let&apos;s Chat <RxArrowTopRight strokeWidth={0.5} />
+                        Let&apos;s talk <RxArrowTopRight strokeWidth={0.5} />
                       </span>
                     </CTAButton>
                   </Link>

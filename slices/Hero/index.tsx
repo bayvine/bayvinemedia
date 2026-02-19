@@ -12,6 +12,7 @@ import CTAButton from "@/components/CTAButton";
 import { GlitchText } from "@/components/GlichText";
 import { RxArrowTopRight } from "react-icons/rx";
 import { motion } from "framer-motion";
+import Eyebrow from "@/components/Eyebrow";
 
 
 /**
@@ -32,8 +33,11 @@ const Hero: FC<HeroProps> = ({ slice }) => {
         data-slice-variation={slice.variation}
         className="flex items-center rounded-b-4xl pb-20 pt-40 sm:pt-36 lg:pt-52"
       >
-        <div className="">
-          <div className="flex flex-col items-center justify-center text-center">
+       
+        <div className="flex flex-col items-center justify-center text-center">
+          <Eyebrow className="mb-3" invert >
+           🇺🇸 Based in USA
+          </Eyebrow>
             <div
               className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight sm:leading-[1.05] lg:leading-[1.1] tracking-normal sm:tracking-tight lg:tracking-[-0.04em] uppercase"
             >
@@ -43,7 +47,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               </span>{" "}
             </div>
 
-            <p className="text-sm sm:text-base lg:text-lg text-center max-w-[650px] my-4">
+            <p className="text-lg text-center max-w-[650px] lg:text-xl font-medium my-4">
               <PrismicText field={slice.primary.subtitle} />
             </p>
           </div>
@@ -60,7 +64,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           {/* <InfiniteScrollComponent
             items={["hi", "hqwe", "qweklqwj", "askdljq"]}
           /> */}
-        </div>
+      
       </Section>
 
   );
