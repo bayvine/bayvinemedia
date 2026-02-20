@@ -556,7 +556,7 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
   return (
     <>
     <Section
-      className="relative isolate overflow-hidden min-h-[500px] flex items-end pb-10 bg-top"
+      className="relative isolate overflow-hidden min-h-[500px] flex items-end pb-10 bg-top pt-40 lg:pt-0"
       style={{
         backgroundImage: withPhotoPlaceholderBackground(
           'images/contact-page.webp'
@@ -697,7 +697,7 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full rounded-full px-20 py-3 font-semibold uppercase transition-colors sm:w-fit ${
+                  className={`w-full rounded-full px-5 font-bold lg:px-20 py-3  uppercase transition-colors sm:w-fit ${
                     isSubmitting
                       ? "cursor-not-allowed bg-white/40 text-black/70"
                       : "cursor-pointer bg-white text-black hover:bg-white/90"

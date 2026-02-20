@@ -35,11 +35,11 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       >
        
         <div className="flex flex-col items-center justify-center text-center">
-          <Eyebrow className="mb-3" invert >
+          <Eyebrow className="mb-5" invert >
            🇺🇸 Based in USA
           </Eyebrow>
             <div
-              className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight sm:leading-[1.05] lg:leading-[1.1] tracking-normal sm:tracking-tight lg:tracking-[-0.04em] uppercase"
+              className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase"
             >
               <PrismicRichText field={slice.primary.title}></PrismicRichText>
               <span className="inline-block">

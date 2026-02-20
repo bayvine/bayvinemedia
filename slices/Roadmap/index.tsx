@@ -36,7 +36,8 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
 const VIDEO_FILE_PATTERN = /\.(mp4|webm|ogg|m4v|mov)(\?|#|$)/i
 const IMAGE_FILE_PATTERN = /\.(png|jpe?g|gif|webp|avif|bmp|svg|ico)(\?|#|$)/i
-const SHORT_VIEWPORT_MEDIA_QUERY = "(max-height: 560px)"
+const SHORT_MOBILE_VIEWPORT_MEDIA_QUERY = "(max-width: 767px) and (max-height: 560px)"
+const SHORT_DESKTOP_VIEWPORT_MEDIA_QUERY = "(min-width: 768px) and (max-height: 820px)"
 const MOBILE_STACK_FADE_START = 0.82
 const MOBILE_STACK_MIN_OPACITY = 0.88
 const MOBILE_STACK_OPACITY_STEP = 0.03
@@ -95,8 +96,8 @@ const RoadMapCard: FC<{
 	t: MotionValue<number> // 0..1 collapse progress for this card
 }> = ({ item, t }) => {
 	// Heights
-	const cardH = useTransform(t, (v) => `${lerp(400, 150, clamp(v))}px`) // overall card height
-	const mediaH = useTransform(t, (v) => `${lerp(320, 100, clamp(v))}px`) // video height (your ask)
+	const cardH = useTransform(t, (v) => `${lerp(380, 135, clamp(v))}px`) // overall card height
+	const mediaH = useTransform(t, (v) => `${lerp(300, 100, clamp(v))}px`) // video height (your ask)
 	const mediaUrl = isFilled.linkToMedia(item.media) ? item.media.url : undefined
 	const { hasMedia, isVideo, isImage } = getRoadmapMediaType(item)
 
@@ -511,7 +512,7 @@ const MobileRoadmapShuffleStack: FC<{
 	navbarHeight?: number
 }> = ({ items, primary, title, description, navbarHeight = 20 }) => {
 	const stackRef = useRef<HTMLDivElement | null>(null)
-	const isShortViewport = useMediaQuery(SHORT_VIEWPORT_MEDIA_QUERY)
+	const isShortViewport = useMediaQuery(SHORT_MOBILE_VIEWPORT_MEDIA_QUERY)
 
 	const { scrollYProgress } = useScroll({
 		target: stackRef,
@@ -575,7 +576,7 @@ const MobileRoadmapShuffleStack: FC<{
 
 export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
 	const sectionRef = useRef<HTMLDivElement | null>(null)
-	const isShortViewport = useMediaQuery(SHORT_VIEWPORT_MEDIA_QUERY)
+	const isShortViewport = useMediaQuery(SHORT_DESKTOP_VIEWPORT_MEDIA_QUERY)
 	const staticCardProgress = useMotionValue(0)
 
 	// Scroll progress for THIS section only
