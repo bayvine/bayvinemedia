@@ -604,7 +604,7 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
       <div className="absolute z-0 bg-linear-to-b from-black w-full inset-0  h-full  to-black/20" />
       
       </Section>
-      <Section className="pt-10 pb-20">
+      <Section className="pt-10 lg:pb-20">
         <form
           name={NETLIFY_FORM_NAME}
           action="/__forms.html"
