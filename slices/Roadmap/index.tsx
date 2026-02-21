@@ -6,6 +6,7 @@ import {
 	motion,
 	useMotionValue,
 	useScroll,
+	useSpring,
 	useTransform,
 } from "framer-motion"
 import { Content, isFilled } from "@prismicio/client"
@@ -38,9 +39,40 @@ const VIDEO_FILE_PATTERN = /\.(mp4|webm|ogg|m4v|mov)(\?|#|$)/i
 const IMAGE_FILE_PATTERN = /\.(png|jpe?g|gif|webp|avif|bmp|svg|ico)(\?|#|$)/i
 const SHORT_MOBILE_VIEWPORT_MEDIA_QUERY = "(max-width: 767px) and (max-height: 560px)"
 const SHORT_DESKTOP_VIEWPORT_MEDIA_QUERY = "(min-width: 768px) and (max-height: 820px)"
-const MOBILE_STACK_FADE_START = 0.82
-const MOBILE_STACK_MIN_OPACITY = 0.88
-const MOBILE_STACK_OPACITY_STEP = 0.03
+const MOBILE_STACK_ENTRY_FADE_WINDOW = 0.06
+const ROADMAP_STEP_TRIGGER_THRESHOLD = 0.5
+
+const useSteppedScrollProgress = (
+	progress: MotionValue<number>,
+	steps: number,
+	threshold = ROADMAP_STEP_TRIGGER_THRESHOLD,
+) => {
+	const steppedProgress = useTransform(progress, (value) => {
+		const p = clamp(value)
+
+		if (steps <= 1) return p
+
+		const scaled = p * steps
+
+		if (scaled >= steps) return 1
+
+		const currentStep = Math.floor(scaled)
+		const localStepProgress = scaled - currentStep
+		const currentStepStart = currentStep / steps
+
+		if (localStepProgress < threshold) return currentStepStart
+
+		return (currentStep + 1) / steps
+	})
+
+	return useSpring(steppedProgress, {
+		stiffness: 260,
+		damping: 32,
+		mass: 0.35,
+		restDelta: 0.0008,
+		restSpeed: 0.0008,
+	})
+}
 
 const useMediaQuery = (query: string) => {
 	const [matches, setMatches] = useState(false)
@@ -96,8 +128,8 @@ const RoadMapCard: FC<{
 	t: MotionValue<number> // 0..1 collapse progress for this card
 }> = ({ item, t }) => {
 	// Heights
-	const cardH = useTransform(t, (v) => `${lerp(380, 135, clamp(v))}px`) // overall card height
-	const mediaH = useTransform(t, (v) => `${lerp(300, 100, clamp(v))}px`) // video height (your ask)
+	const cardH = useTransform(t, (v) => `${lerp(380, 140, clamp(v))}px`) // overall card height
+	const mediaH = useTransform(t, (v) => `${lerp(300, 90, clamp(v))}px`) // video height (your ask)
 	const mediaUrl = isFilled.linkToMedia(item.media) ? item.media.url : undefined
 	const { hasMedia, isVideo, isImage } = getRoadmapMediaType(item)
 
@@ -406,10 +438,6 @@ const MobileRoadmapShuffleCard: FC<{
 	const stackDepth = total - 1 - index
 	const finalOffsetY = -Math.min(stackDepth * 10, 48)
 	const finalScale = Math.max(0.9, 1 - stackDepth * 0.02)
-	const finalOpacity = Math.max(
-		MOBILE_STACK_MIN_OPACITY,
-		1 - stackDepth * MOBILE_STACK_OPACITY_STEP,
-	)
 
 	const t = useTransform(progress, (p) => {
 		if (p <= start) return 0
@@ -419,14 +447,11 @@ const MobileRoadmapShuffleCard: FC<{
 
 	const opacity = useTransform(t, (v) => {
 		const p = clamp(v)
-		if (isFirstCard && p <= 0.12) return 1
-		if (p <= 0.12) return lerp(0, 1, p / 0.12)
-		if (p <= MOBILE_STACK_FADE_START) return 1
-		return lerp(
-			1,
-			finalOpacity,
-			(p - MOBILE_STACK_FADE_START) / (1 - MOBILE_STACK_FADE_START),
-		)
+		if (isFirstCard) return 1
+		if (p <= MOBILE_STACK_ENTRY_FADE_WINDOW) {
+			return lerp(0, 1, p / MOBILE_STACK_ENTRY_FADE_WINDOW)
+		}
+		return 1
 	})
 	const y = useTransform(t, (v) => {
 		const p = clamp(v)
@@ -462,10 +487,6 @@ const MobileRoadmapShuffleCtaCard: FC<{
 	const stackDepth = total - 1 - index
 	const finalOffsetY = -Math.min(stackDepth * 10, 48)
 	const finalScale = Math.max(0.9, 1 - stackDepth * 0.02)
-	const finalOpacity = Math.max(
-		MOBILE_STACK_MIN_OPACITY,
-		1 - stackDepth * MOBILE_STACK_OPACITY_STEP,
-	)
 
 	const t = useTransform(progress, (p) => {
 		if (p <= start) return 0
@@ -475,13 +496,10 @@ const MobileRoadmapShuffleCtaCard: FC<{
 
 	const opacity = useTransform(t, (v) => {
 		const p = clamp(v)
-		if (p <= 0.12) return lerp(0, 1, p / 0.12)
-		if (p <= MOBILE_STACK_FADE_START) return 1
-		return lerp(
-			1,
-			finalOpacity,
-			(p - MOBILE_STACK_FADE_START) / (1 - MOBILE_STACK_FADE_START),
-		)
+		if (p <= MOBILE_STACK_ENTRY_FADE_WINDOW) {
+			return lerp(0, 1, p / MOBILE_STACK_ENTRY_FADE_WINDOW)
+		}
+		return 1
 	})
 	const y = useTransform(t, (v) => {
 		const p = clamp(v)
@@ -524,7 +542,8 @@ const MobileRoadmapShuffleStack: FC<{
 	const sectionMinH = `${Math.max(110, totalCards * 82)}vh`
 	const stickyTop = Math.max(navbarHeight + 8, 56)
 	const centeredStickyTop = `max(${stickyTop}px, calc(50svh - clamp(170px, 32svh, 230px)))`
-	const stackProgress = useTransform(scrollYProgress, (p) => clamp(p))
+	const clampedStackProgress = useTransform(scrollYProgress, (p) => clamp(p))
+	const stackProgress = useSteppedScrollProgress(clampedStackProgress, totalCards)
 
 	if (isShortViewport) {
 		return (
@@ -585,6 +604,9 @@ export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
 		offset: ["start start", "end end"],
 	})
 
+	const n = Math.max(1, items.length)
+	const steppedScrollYProgress = useSteppedScrollProgress(scrollYProgress, n)
+
 	if (isShortViewport) {
 		return (
 			<div className="my-12">
@@ -598,8 +620,6 @@ export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
 			</div>
 		)
 	}
-
-	const n = Math.max(1, items.length)
 
 	// This creates the “you can’t leave until all collapse” runway
 	// Tune multiplier if you want more/less scroll time per card
@@ -620,7 +640,7 @@ export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
 							item={item}
 							index={i}
 							total={n}
-							progress={scrollYProgress}
+							progress={steppedScrollYProgress}
 						/>
 					))}
 				</div>

@@ -140,7 +140,7 @@ const CtaCard: FC<CtaCardProps> = ({ primary }) => {
 const FaqWithCta: FC<FaqWithCtaProps> = ({ slice }) => {
   const faqs = slice.primary.faqs || [];
   const [openIndex, setOpenIndex] = useState<number | null>(
-    faqs.length ? 0 : null,
+    null,
   );
 
   return (
