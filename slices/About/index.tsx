@@ -2,9 +2,18 @@
 
 import { FC, Fragment } from "react"
 import { asText, Content, isFilled } from "@prismicio/client"
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react"
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { SliceComponentProps } from "@prismicio/react"
+import { motion, useReducedMotion } from "framer-motion"
+import { IconType } from "react-icons"
+import {
+	FaBolt,
+	FaBullhorn,
+	FaCode,
+	FaCompass,
+	FaPenNib,
+	FaRocket,
+	FaWandMagicSparkles,
+} from "react-icons/fa6"
 import Eyebrow from "@/components/Eyebrow"
 import { VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders"
 import Section from "@/components/Section"
@@ -15,17 +24,65 @@ import Section from "@/components/Section"
 export type AboutProps = SliceComponentProps<Content.AboutSlice>
 
 const PHOTO_PLACEHOLDER_TOKEN = "[PHOTO]"
-const FOUNDER_LABEL = "Brainilio Rodrigues, Founder"
+const ABOUT_VIDEO_FALLBACK = "/images/about-us.mp4"
+
+type KeywordIconConfig = {
+	icon: IconType
+	className: string
+}
+
+const KEYWORD_ICON_MAP: Record<string, KeywordIconConfig> = {
+	strategy: { icon: FaCompass, className: "text-cyan-200" },
+	strategic: { icon: FaCompass, className: "text-cyan-200" },
+	design: { icon: FaPenNib, className: "text-pink-200" },
+	branding: { icon: FaPenNib, className: "text-pink-200" },
+	brand: { icon: FaPenNib, className: "text-pink-200" },
+	creative: { icon: FaWandMagicSparkles, className: "text-amber-200" },
+	creativity: { icon: FaWandMagicSparkles, className: "text-amber-200" },
+	digital: { icon: FaBolt, className: "text-yellow-200" },
+	growth: { icon: FaRocket, className: "text-violet-200" },
+	scale: { icon: FaRocket, className: "text-violet-200" },
+	scaling: { icon: FaRocket, className: "text-violet-200" },
+	launch: { icon: FaRocket, className: "text-violet-200" },
+	web: { icon: FaCode, className: "text-emerald-200" },
+	website: { icon: FaCode, className: "text-emerald-200" },
+	product: { icon: FaCode, className: "text-emerald-200" },
+	content: { icon: FaBullhorn, className: "text-orange-200" },
+	marketing: { icon: FaBullhorn, className: "text-orange-200" },
+}
+
+const normalizeWord = (word: string) =>
+	word.toLowerCase().replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, "")
+
+const resolveKeywordIcon = (word: string) => {
+	const normalizedWord = normalizeWord(word)
+
+	if (!normalizedWord) return null
+	if (KEYWORD_ICON_MAP[normalizedWord]) return KEYWORD_ICON_MAP[normalizedWord]
+
+	if (normalizedWord.endsWith("s")) {
+		return KEYWORD_ICON_MAP[normalizedWord.slice(0, -1)] ?? null
+	}
+
+	return null
+}
 
 /**
  * Component for "About" Slices.
  */
 const About: FC<AboutProps> = ({ slice }) => {
 	const eyebrowText = asText(slice.primary.title)
-	const firstPhoto = slice.primary.photos[0]?.city
-	const founderPhoto = isFilled.linkToMedia(firstPhoto) ? firstPhoto : null
-	const founderPhotoUrl = founderPhoto?.url ?? null
-	const founderPhotoAlt = founderPhoto?.name || "Founder portrait"
+	const shouldReduceMotion = useReducedMotion()
+	const aboutCopy =
+		asText(slice.primary.subtitle).replaceAll(PHOTO_PLACEHOLDER_TOKEN, "").trim() ||
+		"Creative digital work built to drive meaningful growth."
+	const words = aboutCopy
+		.split(/\s+/)
+		.map((word) => word.trim())
+		.filter(Boolean)
+	const backgroundVideoUrl = isFilled.linkToMedia(slice.primary.background_video)
+		? slice.primary.background_video.url
+		: ABOUT_VIDEO_FALLBACK
 
 	return (
 		<Section
@@ -34,9 +91,9 @@ const About: FC<AboutProps> = ({ slice }) => {
 			className="relative w-full rounded-lg"
 			id="about"
 		>
-			<div className="rounded-lg relative flex min-h-[50svh] lg:min-h-[60svh] w-full items-center justify-center overflow-hidden">
+			<div className="relative flex min-h-[56svh] w-full items-center justify-center overflow-hidden rounded-lg px-6 py-20 lg:min-h-[68svh] sm:px-10">
 				<div className="absolute inset-0">
-					<motion.video
+					<video
 						autoPlay
 						playsInline
 						muted
@@ -46,66 +103,62 @@ const About: FC<AboutProps> = ({ slice }) => {
 						tabIndex={-1}
 						poster={VIDEO_PLACEHOLDER_SRC}
 						className="pointer-events-none h-full w-full object-cover"
+						src={backgroundVideoUrl ?? ABOUT_VIDEO_FALLBACK}
 					>
-						<source src={'images/about-us.mp4'} type="video/mp4" />
-					</motion.video>
+						<source src={backgroundVideoUrl ?? ABOUT_VIDEO_FALLBACK} type="video/mp4" />
+					</video>
 				</div>
-				<div className="absolute inset-0 bg-linear-to-b from-black/30 via-black/60 to-black/90" />
-				<motion.div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center px-6 py-16">
+				<div className="absolute inset-0 bg-linear-to-b from-black/35 via-black/68 to-black/92" />
+				<motion.div
+					initial={shouldReduceMotion ? undefined : { opacity: 0, y: 14 }}
+					whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+					transition={{ duration: 0.7, ease: "easeOut" }}
+					viewport={{ once: true, amount: 0.2 }}
+					className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-2 py-8 text-center"
+				>
 					{eyebrowText ? <Eyebrow>{eyebrowText}</Eyebrow> : null}
 
-					<div className="mt-6 max-w-4xl text-2xl sm:text-4xl md:text-3xl">
-						<PrismicRichText
-							field={slice.primary.subtitle}
-							components={{
-								paragraph: ({ node, children, key }) => {
-									const text = node.text || ""
+					<p className="mt-8 max-w-5xl text-4xl font-black leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+						{words.map((word, index) => {
+							const iconConfig = resolveKeywordIcon(word)
+							const Icon = iconConfig?.icon
+							const hasIcon = Boolean(Icon)
 
-									if (!text.includes(PHOTO_PLACEHOLDER_TOKEN)) {
-										return <p key={key}>{children}</p>
-									}
-
-									const parts = text.split(PHOTO_PLACEHOLDER_TOKEN)
-
-									if (!founderPhotoUrl) {
-										return <p key={key}>{parts.join("")}</p>
-									}
-
-									return (
-										<p key={key} className="whitespace-pre-wrap">
-											{parts.map((part, index) => {
-												const isLastPart = index === parts.length - 1
-
-												return (
-													<Fragment key={`${key}-photo-part-${index}`}>
-														{part}
-														{isLastPart ? null : (
-															<span className="mx-auto mt-10 block w-fit text-center align-middle">
-																<span className="relative mx-auto block h-28 w-28 overflow-hidden rounded-full shadow-lg">
-																	<Image
-																		src={founderPhotoUrl}
-																		alt={founderPhotoAlt}
-																		fill
-																		
-																		unoptimized
-																		sizes="500px"
-																		className="object-cover object-center grayscale-25 scale-150"
-																	/>
-																</span>
-																<span className="mt-2 block text-sm opacity-90 italic font-medium">
-																	{FOUNDER_LABEL}
-																</span>
-															</span>
-														)}
-													</Fragment>
-												)
-											})}
-										</p>
-									)
-								},
-							}}
-						/>
-					</div>
+							return (
+								<Fragment key={`about-word-${index}`}>
+									<span>{word}</span>
+									{hasIcon ? (
+										<motion.span
+											aria-hidden="true"
+											className={`mx-[0.22em] inline-flex translate-y-[-0.05em] items-center justify-center rounded-full border border-white/45 bg-black/45 p-[0.2em] text-[0.52em] shadow-[0_0_24px_rgba(255,255,255,0.16)] ${iconConfig?.className || ""}`}
+											animate={
+												shouldReduceMotion
+													? undefined
+													: {
+															y: [0, -3, 0],
+															rotate: [0, -4, 3, 0],
+															scale: [1, 1.05, 1],
+														}
+											}
+											transition={
+												shouldReduceMotion
+													? undefined
+													: {
+															duration: 3.4,
+															delay: (index % 6) * 0.18,
+															ease: "easeInOut",
+															repeat: Infinity,
+														}
+											}
+										>
+											{Icon ? <Icon /> : null}
+										</motion.span>
+									) : null}
+									{index < words.length - 1 ? " " : null}
+								</Fragment>
+							)
+						})}
+					</p>
 				</motion.div>
 			</div>
 		</Section>

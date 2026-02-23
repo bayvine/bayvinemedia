@@ -11,8 +11,8 @@ import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
 import { GlitchText } from "@/components/GlichText";
 import { RxArrowTopRight } from "react-icons/rx";
-import { motion } from "framer-motion";
 import Eyebrow from "@/components/Eyebrow";
+import { VIDEO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
 
 /**
@@ -27,46 +27,54 @@ const Hero: FC<HeroProps> = ({ slice }) => {
   const array = slice.primary.title_action.map((text) => text.action as string);
 
   return (
+    <Section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+      className="relative isolate rounded-b-4xl pb-20 pt-40 sm:pt-36 lg:pt-52"
+    >
+      <video
+        src="/images/about-us.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        poster={VIDEO_PLACEHOLDER_SRC}
+        aria-hidden="true"
+        tabIndex={-1}
+        className="pointer-events-none absolute inset-0 -z-20 h-full w-full rounded-b-4xl object-cover"
+      />
+      <div className="absolute inset-0 -z-10 rounded-b-4xl bg-gradient-to-b from-black/35 via-black/70 to-black/85" />
 
-      <Section
-        data-slice-type={slice.slice_type}
-        data-slice-variation={slice.variation}
-        className="flex items-center rounded-b-4xl pb-20 pt-40 sm:pt-36 lg:pt-52"
-      >
-       
-        <div className="flex flex-col items-center justify-center text-center">
-          <Eyebrow className="mb-5" invert >
-           🇺🇸 Based in USA
-          </Eyebrow>
-            <div
-              className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase"
-            >
-              <PrismicRichText field={slice.primary.title}></PrismicRichText>
-              <span className="inline-block">
-                <GlitchText words={array} />
-              </span>{" "}
-            </div>
+      <div className="flex flex-col items-center justify-center text-center">
+        <Eyebrow className="mb-5" invert>
+          🇺🇸 Based in USA
+        </Eyebrow>
+        <div className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl uppercase">
+          <PrismicRichText field={slice.primary.title}></PrismicRichText>
+          <span className="inline-block">
+            <GlitchText words={array} />
+          </span>{" "}
+        </div>
 
-            <p className="text-lg text-center max-w-[650px] lg:text-xl font-medium my-4">
-              <PrismicText field={slice.primary.subtitle} />
-            </p>
-          </div>
+        <p className="my-4 max-w-[650px] text-center text-lg font-medium lg:text-xl">
+          <PrismicText field={slice.primary.subtitle} />
+        </p>
+      </div>
 
-          <div className="flex items-center gap-4 justify-center my-2">
-            <CTAButton>
-              <span className="flex gap-1 items-center">
-                {slice.primary.call_to_action_label}{" "}
-                <RxArrowTopRight strokeWidth={0.5} />
-              </span>
-            </CTAButton>
-          </div>
+      <div className="my-2 flex items-center justify-center gap-4">
+        <CTAButton>
+          <span className="flex items-center gap-1">
+            {slice.primary.call_to_action_label}{" "}
+            <RxArrowTopRight strokeWidth={0.5} />
+          </span>
+        </CTAButton>
+      </div>
 
-          {/* <InfiniteScrollComponent
-            items={["hi", "hqwe", "qweklqwj", "askdljq"]}
-          /> */}
-      
-      </Section>
-
+      {/* <InfiniteScrollComponent
+        items={["hi", "hqwe", "qweklqwj", "askdljq"]}
+      /> */}
+    </Section>
   );
 };
 
