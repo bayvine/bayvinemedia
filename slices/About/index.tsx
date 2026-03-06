@@ -91,8 +91,8 @@ const About: FC<AboutProps> = ({ slice }) => {
 			className="relative w-full rounded-lg"
 			id="about"
 		>
-			<div className="relative flex min-h-[56svh] w-full items-center justify-center overflow-hidden rounded-lg px-6 py-20 lg:min-h-[68svh] sm:px-10">
-				<div className="absolute inset-0">
+			<div className="relative flex  w-full items-center justify-center overflow-hidden rounded-lg px-6 py-20 sm:px-10">
+				{/* <div className="absolute inset-0">
 					<video
 						autoPlay
 						playsInline
@@ -107,7 +107,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 					>
 						<source src={backgroundVideoUrl ?? ABOUT_VIDEO_FALLBACK} type="video/mp4" />
 					</video>
-				</div>
+				</div> */}
 				<div className="absolute inset-0 bg-linear-to-b from-black/35 via-black/68 to-black/92" />
 				<motion.div
 					initial={shouldReduceMotion ? undefined : { opacity: 0, y: 14 }}
@@ -118,7 +118,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 				>
 					{eyebrowText ? <Eyebrow>{eyebrowText}</Eyebrow> : null}
 
-					<p className="mt-8 max-w-5xl text-4xl font-black leading-[1.02] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+					<p className="mt-8 max-w-5xl text-4xl font-black uppercase ">
 						{words.map((word, index) => {
 							const iconConfig = resolveKeywordIcon(word)
 							const Icon = iconConfig?.icon
@@ -130,7 +130,7 @@ const About: FC<AboutProps> = ({ slice }) => {
 									{hasIcon ? (
 										<motion.span
 											aria-hidden="true"
-											className={`mx-[0.22em] inline-flex translate-y-[-0.05em] items-center justify-center rounded-full border border-white/45 bg-black/45 p-[0.2em] text-[0.52em] shadow-[0_0_24px_rgba(255,255,255,0.16)] ${iconConfig?.className || ""}`}
+											className={`mx-[1em] inline-flex items-center justify-center rounded-full border border-white bg-black/45 p-[0.5em] text-[0.52em] shadow-[0_0_24px_rgba(255,255,255,0.16)] ${iconConfig?.className || ""}`}
 											animate={
 												shouldReduceMotion
 													? undefined
