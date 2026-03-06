@@ -41,6 +41,8 @@ const SHORT_MOBILE_VIEWPORT_MEDIA_QUERY = "(max-width: 767px) and (max-height: 5
 const SHORT_DESKTOP_VIEWPORT_MEDIA_QUERY = "(min-width: 768px) and (max-height: 820px)"
 const MOBILE_STACK_ENTRY_FADE_WINDOW = 0.06
 const ROADMAP_STEP_TRIGGER_THRESHOLD = 0.5
+const MOBILE_ROADMAP_STEP_TRIGGER_THRESHOLD = 0.12
+const MOBILE_ROADMAP_SCROLL_RUNWAY_MULTIPLIER = 60
 
 const useSteppedScrollProgress = (
 	progress: MotionValue<number>,
@@ -539,11 +541,15 @@ const MobileRoadmapShuffleStack: FC<{
 
 	const n = Math.max(1, items.length)
 	const totalCards = n + 1
-	const sectionMinH = `${Math.max(110, totalCards * 82)}vh`
+	const sectionMinH = `${Math.max(95, totalCards * MOBILE_ROADMAP_SCROLL_RUNWAY_MULTIPLIER)}vh`
 	const stickyTop = Math.max(navbarHeight + 8, 56)
 	const centeredStickyTop = `max(${stickyTop}px, calc(50svh - clamp(170px, 32svh, 230px)))`
 	const clampedStackProgress = useTransform(scrollYProgress, (p) => clamp(p))
-	const stackProgress = useSteppedScrollProgress(clampedStackProgress, totalCards)
+	const stackProgress = useSteppedScrollProgress(
+		clampedStackProgress,
+		totalCards,
+		MOBILE_ROADMAP_STEP_TRIGGER_THRESHOLD,
+	)
 
 	if (isShortViewport) {
 		return (
@@ -561,10 +567,12 @@ const MobileRoadmapShuffleStack: FC<{
 
 	return (
 		<div>
-			<SectionTitle title={title || ""} description={description} />
+			<div className="relative z-30">
+				<SectionTitle title={title || ""} description={description} />
+			</div>
 			<div
 				ref={stackRef}
-				className="relative mt-4"
+				className="relative z-10 mt-4"
 				style={{ minHeight: sectionMinH }}
 			>
 				<div className="sticky" style={{ top: centeredStickyTop }}>
@@ -605,7 +613,6 @@ export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
 	})
 
 	const n = Math.max(1, items.length)
-	const steppedScrollYProgress = useSteppedScrollProgress(scrollYProgress, n)
 
 	if (isShortViewport) {
 		return (
@@ -640,7 +647,7 @@ export const StickyRoadmapStack: FC<Props> = ({ items, navbarHeight = 20 }) => {
 							item={item}
 							index={i}
 							total={n}
-							progress={steppedScrollYProgress}
+							progress={scrollYProgress}
 						/>
 					))}
 				</div>
