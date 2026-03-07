@@ -39,10 +39,12 @@ const VIDEO_FILE_PATTERN = /\.(mp4|webm|ogg|m4v|mov)(\?|#|$)/i
 const IMAGE_FILE_PATTERN = /\.(png|jpe?g|gif|webp|avif|bmp|svg|ico)(\?|#|$)/i
 const SHORT_MOBILE_VIEWPORT_MEDIA_QUERY = "(max-width: 767px) and (max-height: 560px)"
 const SHORT_DESKTOP_VIEWPORT_MEDIA_QUERY = "(min-width: 768px) and (max-height: 820px)"
-const MOBILE_STACK_ENTRY_FADE_WINDOW = 0.06
-const ROADMAP_STEP_TRIGGER_THRESHOLD = 0.5
-const MOBILE_ROADMAP_STEP_TRIGGER_THRESHOLD = 0.12
-const MOBILE_ROADMAP_SCROLL_RUNWAY_MULTIPLIER = 60
+const MOBILE_STACK_ENTRY_FADE_WINDOW = 0.15
+const MOBILE_STACK_OFFSET_MAX = 48
+const MOBILE_STACK_HEADING_SAFE_GAP = 24
+const ROADMAP_STEP_TRIGGER_THRESHOLD = 10
+const MOBILE_ROADMAP_STEP_TRIGGER_THRESHOLD = 0.15
+const MOBILE_ROADMAP_SCROLL_RUNWAY_MULTIPLIER = 80
 
 const useSteppedScrollProgress = (
 	progress: MotionValue<number>,
@@ -136,8 +138,8 @@ const RoadMapCard: FC<{
 	const { hasMedia, isVideo, isImage } = getRoadmapMediaType(item)
 
 	// “Snap” description (not progressive): stays visible until ~70%, then disappears.
-	const descOpacity = useTransform(t, [0, 0.68, 0.69, 1], [1, 1, 0, 0])
-	const descScaleY = useTransform(t, [0, 0.68, 0.69, 1], [1, 1, 0, 0])
+	const descOpacity = useTransform(t, [0, 0.4, 0.3, 1], [1, 1, 0, 0])
+	const descScaleY = useTransform(t, [0, 0.5, 0.4, 1], [1, 1, 0, 0])
 
 	return (
 		<motion.article
@@ -531,8 +533,43 @@ const MobileRoadmapShuffleStack: FC<{
 	description?: Content.RoadmapSliceDefaultPrimary["subtitel"]
 	navbarHeight?: number
 }> = ({ items, primary, title, description, navbarHeight = 20 }) => {
+	const headingRef = useRef<HTMLDivElement | null>(null)
 	const stackRef = useRef<HTMLDivElement | null>(null)
 	const isShortViewport = useMediaQuery(SHORT_MOBILE_VIEWPORT_MEDIA_QUERY)
+	const [headingHeight, setHeadingHeight] = useState(160)
+	const [viewportHeight, setViewportHeight] = useState(780)
+
+	useEffect(() => {
+		const updateViewportHeight = () => setViewportHeight(window.innerHeight)
+		const updateHeadingHeight = () => {
+			if (!headingRef.current) return
+			setHeadingHeight(Math.ceil(headingRef.current.getBoundingClientRect().height))
+		}
+
+		updateViewportHeight()
+		updateHeadingHeight()
+
+		const resizeHandler = () => {
+			updateViewportHeight()
+			updateHeadingHeight()
+		}
+
+		window.addEventListener("resize", resizeHandler)
+
+		if (typeof ResizeObserver !== "undefined" && headingRef.current) {
+			const observer = new ResizeObserver(updateHeadingHeight)
+			observer.observe(headingRef.current)
+
+			return () => {
+				window.removeEventListener("resize", resizeHandler)
+				observer.disconnect()
+			}
+		}
+
+		return () => {
+			window.removeEventListener("resize", resizeHandler)
+		}
+	}, [])
 
 	const { scrollYProgress } = useScroll({
 		target: stackRef,
@@ -543,7 +580,11 @@ const MobileRoadmapShuffleStack: FC<{
 	const totalCards = n + 1
 	const sectionMinH = `${Math.max(95, totalCards * MOBILE_ROADMAP_SCROLL_RUNWAY_MULTIPLIER)}vh`
 	const stickyTop = Math.max(navbarHeight + 8, 56)
-	const centeredStickyTop = `max(${stickyTop}px, calc(50svh - clamp(170px, 32svh, 230px)))`
+	const cardHeight = Math.min(460, Math.max(340, viewportHeight * 0.64))
+	const centeredStickyTop = Math.round(viewportHeight * 0.5 - cardHeight / 2)
+	const headingSafeTop =
+		headingHeight + MOBILE_STACK_HEADING_SAFE_GAP + MOBILE_STACK_OFFSET_MAX
+	const mobileStickyTop = Math.max(stickyTop, centeredStickyTop, headingSafeTop)
 	const clampedStackProgress = useTransform(scrollYProgress, (p) => clamp(p))
 	const stackProgress = useSteppedScrollProgress(
 		clampedStackProgress,
@@ -567,7 +608,7 @@ const MobileRoadmapShuffleStack: FC<{
 
 	return (
 		<div>
-			<div className="relative z-30">
+			<div ref={headingRef} className="relative z-30">
 				<SectionTitle title={title || ""} description={description} />
 			</div>
 			<div
@@ -575,7 +616,7 @@ const MobileRoadmapShuffleStack: FC<{
 				className="relative z-10 mt-4"
 				style={{ minHeight: sectionMinH }}
 			>
-				<div className="sticky" style={{ top: centeredStickyTop }}>
+				<div className="sticky" style={{ top: mobileStickyTop }}>
 					<motion.div className="w-full">
 						<div className="relative h-[64svh] max-h-[460px] min-h-[340px] w-full">
 							{items.map((item, i) => (

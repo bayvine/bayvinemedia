@@ -17,6 +17,7 @@ const ProjectTitleParagraph: FC<ProjectTitleParagraphProps> = ({ slice }) => {
       <SectionTitle
         title={asText(slice.primary.title)}
         description={slice.primary.body}
+        fullWidthParagraph
       />
     </Section>
   );

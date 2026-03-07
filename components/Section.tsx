@@ -11,7 +11,7 @@ const Section = ({ className, children,  ...props }: SectionProps) => {
     <section {...props} className={clsx("lg:mx-auto", className)}>
       <div
         className={clsx([
-          "px-4 w-full md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-screen-2xl mx-auto",
+          "px-4 w-full md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1200px] 2xl:max-w-[1400px] mx-auto",
         ])}
       >
         {children}

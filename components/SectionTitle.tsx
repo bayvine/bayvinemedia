@@ -8,6 +8,7 @@ type SectionTitleProps = {
   title?: RichTextField | string | null;
   description?: RichTextField | string | null;
   noUpperCase?: boolean;
+  fullWidthParagraph?: boolean;
 };
 
 const isRichTextField = (value: unknown): value is RichTextField =>
@@ -18,7 +19,8 @@ const SectionTitle = ({
   titleClassName,
   title,
   noUpperCase,
-  paragraphClassNames
+  paragraphClassNames,
+  fullWidthParagraph
 }: SectionTitleProps) => {
   const titleClasses = clsx(
     "text-2xl font-bold sm:text-3xl",
@@ -27,7 +29,7 @@ const SectionTitle = ({
   );
 
   return (
-    <div className="max-w-xl">
+    <div className={fullWidthParagraph ? "max-w-full" : "max-w-xl"}>
       {typeof title === "string" ? (
         <h2 className={titleClasses}>{title}</h2>
       ) : isRichTextField(title) ? (
@@ -41,7 +43,7 @@ const SectionTitle = ({
           }}
         />
       ) : null}
-      <div className={clsx(["my-1 max-w-lg", paragraphClassNames])}>
+      <div className={clsx(["my-1", fullWidthParagraph ? "max-w-full" : "max-w-lg", paragraphClassNames])}>
         {!description ? null : typeof description === "string" ? (
           <p className="text-lg">{description}</p>
         ) : (
