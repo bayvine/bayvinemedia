@@ -31,12 +31,12 @@ const ServiceFit: FC<ServiceFitProps> = ({ slice }) => {
             key={`for-${index}`}
             className="flex min-h-[180px] flex-col rounded-lg  bg-[#0C0E1D] p-8 backdrop-blur"
           >
-            <span className="flex w-12 aspect-video items-center justify-center mb-3">
+            <span className="flex w-12 aspect-square  mb-3">
               {item.icon?.url ? (
                 <PrismicNextImage
                   field={item.icon}
                   fallbackAlt=""
-                  className="h-full w-full"
+                  className="h-full w-full "
                   loading="lazy"
                 />
               ) : (

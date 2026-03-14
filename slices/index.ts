@@ -24,6 +24,7 @@ export const components = {
   related_project: dynamic(() => import("./RelatedProject")),
   roadmap: dynamic(() => import("./Roadmap")),
   service_fit: dynamic(() => import("./ServiceFit")),
+  service_capabilities_grid: dynamic(() => import("./ServiceCapabilitiesGrid")),
   service_hero: dynamic(() => import("./ServiceHero")),
   service_highlight: dynamic(() => import("./ServiceHighlight")),
   service_process: dynamic(() => import("./ServiceProcess")),

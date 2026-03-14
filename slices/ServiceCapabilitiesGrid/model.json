@@ -1,0 +1,96 @@
+{
+  "type": "SharedSlice",
+  "id": "service_capabilities_grid",
+  "name": "ServiceCapabilitiesGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Capabilities grid with a tools row for service pages.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow"
+          }
+        },
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "single": "heading2,strong,em"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "capabilities": {
+          "type": "Group",
+          "config": {
+            "label": "Capabilities",
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon"
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title"
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description"
+                }
+              }
+            }
+          }
+        },
+        "tools_heading": {
+          "type": "Text",
+          "config": {
+            "label": "Tools Heading"
+          }
+        },
+        "tools": {
+          "type": "Group",
+          "config": {
+            "label": "Tools",
+            "fields": {
+              "logo": {
+                "type": "Image",
+                "config": {
+                  "label": "Logo"
+                }
+              },
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name"
+                }
+              },
+              "detail": {
+                "type": "Text",
+                "config": {
+                  "label": "Detail"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

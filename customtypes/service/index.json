@@ -35,6 +35,9 @@
             "service_fit": {
               "type": "SharedSlice"
             },
+            "service_capabilities_grid": {
+              "type": "SharedSlice"
+            },
             "service_process": {
               "type": "SharedSlice"
             },

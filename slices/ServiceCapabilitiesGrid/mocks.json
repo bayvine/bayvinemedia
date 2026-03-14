@@ -1,0 +1,261 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "eyebrow": {
+        "__TYPE__": "FieldContent",
+        "value": "What goes into it",
+        "type": "Text"
+      },
+      "heading": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading2",
+            "content": {
+              "text": "Built for real-world functionality"
+            }
+          }
+        ]
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Use this section to show the key systems, workflows, and delivery details that make a service valuable in practice."
+            }
+          }
+        ]
+      },
+      "capabilities": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Authentication",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Email/password, OAuth, and secure user flows.",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Payments",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Subscriptions, checkout, and platform-specific billing logic.",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Backend Integration",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "APIs, user data, automations, and dynamic content delivery.",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Notifications",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Reminders, lifecycle messaging, and engagement touchpoints.",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "User Experience",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Responsive, polished interfaces designed around real user behavior.",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Launch Readiness",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Testing, deployment, analytics, and iteration planning.",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "tools_heading": {
+        "__TYPE__": "FieldContent",
+        "value": "Common technologies and tools",
+        "type": "Text"
+      },
+      "tools": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "name",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "React",
+                  "type": "Text"
+                }
+              ],
+              [
+                "detail",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "UI architecture",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "name",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Next.js",
+                  "type": "Text"
+                }
+              ],
+              [
+                "detail",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "App routing",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "name",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "TypeScript",
+                  "type": "Text"
+                }
+              ],
+              [
+                "detail",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Type safety",
+                  "type": "Text"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "name",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Supabase",
+                  "type": "Text"
+                }
+              ],
+              [
+                "detail",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Data and auth",
+                  "type": "Text"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  }
+]
