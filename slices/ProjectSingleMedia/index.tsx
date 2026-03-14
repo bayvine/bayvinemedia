@@ -6,6 +6,7 @@ import {
   PHOTO_PLACEHOLDER_SRC,
   VIDEO_PLACEHOLDER_SRC,
 } from "@/utils/mediaPlaceholders";
+import Section from "@/components/Section";
 
 export type ProjectSingleMediaProps =
   SliceComponentProps<Content.ProjectSingleMediaSlice>;
@@ -13,15 +14,16 @@ export type ProjectSingleMediaProps =
 const ProjectSingleMedia: FC<ProjectSingleMediaProps> = ({ slice }) => {
   const hasVideo = isFilled.linkToMedia(slice.primary.video);
   const hasImage = Boolean(slice.primary.image?.url);
+  const mediaClassName = "h-full w-full origin-center object-cover scale-[1.02] transform-gpu";
 
   return (
-    <section
-      className="py-12"
+    <Section
+    
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="relative w-screen max-w-none ml-[calc(50%-50vw)]">
-        <div className="relative aspect-video w-full overflow-hidden bg-black/60">
+      <div className="relative">
+        <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-[#0C0E1D]">
           {hasVideo ? (
             <video
               src={slice.primary.video.url ?? undefined}
@@ -31,7 +33,7 @@ const ProjectSingleMedia: FC<ProjectSingleMediaProps> = ({ slice }) => {
               playsInline
               preload="metadata"
               poster={VIDEO_PLACEHOLDER_SRC}
-              className="h-full w-full object-cover"
+              className={mediaClassName}
             />
           ) : hasImage ? (
             <PrismicNextImage
@@ -39,11 +41,11 @@ const ProjectSingleMedia: FC<ProjectSingleMediaProps> = ({ slice }) => {
               fallbackAlt=""
               fill
               sizes="100vw"
-              className="object-cover"
+              className={mediaClassName}
             />
           ) : (
             <div
-              className="h-full w-full bg-center bg-cover"
+              className={mediaClassName + " bg-center bg-cover"}
               style={{ backgroundImage: `url(${PHOTO_PLACEHOLDER_SRC})` }}
             />
           )}
@@ -54,7 +56,7 @@ const ProjectSingleMedia: FC<ProjectSingleMediaProps> = ({ slice }) => {
           {slice.primary.caption}
         </div>
       ) : null}
-    </section>
+    </Section>
   );
 };
 

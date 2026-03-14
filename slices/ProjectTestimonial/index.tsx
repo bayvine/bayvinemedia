@@ -20,7 +20,7 @@ const ProjectTestimonial: FC<ProjectTestimonialProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
     >
       <div className="flex flex-col items-center justify-center mx-auto w-full">
-        <div className="text-3xl uppercase text-center font-bold sm:text-4xl">
+        <div className="text-3xl text-center font-medium sm:text-5xl">
           <PrismicRichText
             field={slice.primary.quote}
             components={{
@@ -28,20 +28,19 @@ const ProjectTestimonial: FC<ProjectTestimonialProps> = ({ slice }) => {
             }}
           />
         </div>
-        <div className="mt-6 flex flex-col justify-center items-center gap-2">
+        <div className="mt-5 lg:mt-12 flex flex-col justify-center items-center gap-2">
           {slice.primary.author_image?.url ? (
-            <div className="relative h-14 w-14 overflow-hidden rounded-full border border-white">
+            <div className="relative h-25 w-25 overflow-hidden rounded-full">
               <PrismicNextImage
                 field={slice.primary.author_image}
                 fallbackAlt=""
                 fill
-                sizes="56px"
                 className="object-cover"
                 loading="lazy"
               />
             </div>
           ) : null}
-          <div className="text-center">
+          <div className="text-center mt-5">
             <SectionTitle title={slice.primary.author_name || ""} description={authorMeta} />
           
           </div>

@@ -67,7 +67,7 @@ const DetailHero: FC<DetailHeroProps> = ({
               fallbackAlt=""
               fill
               sizes="100vw"
-              loading="eager"
+              loading="lazy"
               className="object-cover"
             />
           </div>

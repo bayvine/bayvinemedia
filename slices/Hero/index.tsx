@@ -1,7 +1,8 @@
 "use client";
 
 import { FC } from "react";
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicRichText,
   PrismicText,
@@ -11,7 +12,6 @@ import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
 import { GlitchText } from "@/components/GlichText";
 import { RxArrowTopRight } from "react-icons/rx";
-import { motion } from "framer-motion";
 import Eyebrow from "@/components/Eyebrow";
 
 
@@ -25,6 +25,10 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero: FC<HeroProps> = ({ slice }) => {
   const array = slice.primary.title_action.map((text) => text.action as string);
+  const getContactTargetProps = (href?: string | null) =>
+    typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
+      ? { target: "_self" as const }
+      : {};
 
   return (
 
@@ -53,12 +57,26 @@ const Hero: FC<HeroProps> = ({ slice }) => {
           </div>
 
           <div className="flex items-center gap-4 justify-center my-2">
-            <CTAButton>
-              <span className="flex gap-1 items-center">
-                {slice.primary.call_to_action_label}{" "}
-                <RxArrowTopRight strokeWidth={0.5} />
-              </span>
-            </CTAButton>
+            {isFilled.link(slice.primary.call_to_action) ? (
+              <PrismicNextLink
+                field={slice.primary.call_to_action}
+                {...getContactTargetProps(slice.primary.call_to_action.url)}
+              >
+                <CTAButton as="span">
+                  <span className="flex gap-1 items-center">
+                    {slice.primary.call_to_action_label || slice.primary.call_to_action.text || "Learn more"}{" "}
+                    <RxArrowTopRight strokeWidth={0.5} />
+                  </span>
+                </CTAButton>
+              </PrismicNextLink>
+            ) : (
+              <CTAButton>
+                <span className="flex gap-1 items-center">
+                  {slice.primary.call_to_action_label || "Learn more"}{" "}
+                  <RxArrowTopRight strokeWidth={0.5} />
+                </span>
+              </CTAButton>
+            )}
           </div>
 
           {/* <InfiniteScrollComponent

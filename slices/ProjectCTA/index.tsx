@@ -15,8 +15,10 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
   const secondaryLink = isFilled.link(slice.primary.secondary_cta_link)
     ? slice.primary.secondary_cta_link
     : null;
-  const isContactHref = (href?: string | null) =>
-    typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href);
+  const getContactTargetProps = (href?: string | null) =>
+    typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
+      ? { target: "_self" as const }
+      : {};
 
   return (
     <Section
@@ -45,24 +47,24 @@ const ProjectCTA: FC<ProjectCTAProps> = ({ slice }) => {
           <SectionTitle title={slice.primary.heading} description={slice.primary.body}/>
         
           <div className="mt-4 flex flex-wrap gap-4">
-            {primaryLink && (
+            {primaryLink ? (
               <PrismicNextLink
                 field={primaryLink}
-                {...(isContactHref(primaryLink.url) ? { target: "_self" } : {})}
+                {...getContactTargetProps(primaryLink.url)}
               >
                 <CTAButton as="span">
-                  {slice.primary.primary_cta_label || "Contact us"}
+                  {slice.primary.primary_cta_label || primaryLink.text || "Contact us"}
                 </CTAButton>
               </PrismicNextLink>
-            )}
+            ) : null}
 
             {secondaryLink ? (
               <PrismicNextLink
                 field={secondaryLink}
-                {...(isContactHref(secondaryLink.url) ? { target: "_self" } : {})}
+                {...getContactTargetProps(secondaryLink.url)}
                 className="rounded-full border border-white py-3 px-8 font-semibold uppercase text-white transition "
               >
-                {slice.primary.secondary_cta_label || "Schedule a call"}
+                {slice.primary.secondary_cta_label || secondaryLink.text || "Schedule a call"}
               </PrismicNextLink>
             ) : null}
           </div>

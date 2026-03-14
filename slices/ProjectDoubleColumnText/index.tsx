@@ -18,10 +18,11 @@ const ProjectDoubleColumnText: FC<ProjectDoubleColumnTextProps> = ({
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <div className="grid gap-20 lg:grid-cols-[1.2fr_0.8fr] items-center">
+      <div className="grid gap-20 lg:grid-cols-[1.2fr_0.8fr] items-start">
         <SectionTitle
           title={asText(slice.primary.title)}
           description={slice.primary.body}
+          paragraphClassNames="max-w-xl"
         />
 
         <ul className="space-y-4">
