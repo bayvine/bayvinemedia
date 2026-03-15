@@ -79,7 +79,7 @@ const DetailHero: FC<DetailHeroProps> = ({
         )}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black"
+          className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/70 to-black/80"
         />
       </div>
 

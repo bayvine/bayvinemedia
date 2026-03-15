@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 import CardText from "@/components/CardText";

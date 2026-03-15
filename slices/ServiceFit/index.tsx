@@ -29,7 +29,7 @@ const ServiceFit: FC<ServiceFitProps> = ({ slice }) => {
         {forYou.map((item, index) => (
           <div
             key={`for-${index}`}
-            className="flex min-h-[180px] flex-col rounded-lg  bg-[#0C0E1D] p-8 backdrop-blur"
+            className="flex min-h-[180px] flex-col rounded-lg bg-[#0C0E1D] p-8 backdrop-blur"
           >
             <span className="flex w-12 aspect-square  mb-3">
               {item.icon?.url ? (

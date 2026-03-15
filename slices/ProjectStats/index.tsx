@@ -17,7 +17,7 @@ const ProjectStats: FC<ProjectStatsProps> = ({ slice }) => {
 
   return (
     <Section
-      className="py-6"
+      className="py-12"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

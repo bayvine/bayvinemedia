@@ -50,7 +50,7 @@ const ProjectMediaGrid: FC<ProjectMediaGridProps> = ({ slice }) => {
           return (
             <div
               key={`${item.caption ?? "media"}-${index}`}
-              className={`rounded-3xl  p-3 ${
+              className={`rounded-3xl  py-3 ${
                 spanFull ? "sm:col-span-2" : ""
               }`}
             >
@@ -64,7 +64,7 @@ const ProjectMediaGrid: FC<ProjectMediaGridProps> = ({ slice }) => {
                     playsInline
                     preload="metadata"
                     poster={VIDEO_PLACEHOLDER_SRC}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover scale-[1.02]"
                   />
                 ) : hasImage ? (
                   <PrismicNextImage
@@ -72,7 +72,7 @@ const ProjectMediaGrid: FC<ProjectMediaGridProps> = ({ slice }) => {
                     fallbackAlt=""
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
+                    className="object-cover scale-[1.02]"
                   />
                 ) : (
                   <div
