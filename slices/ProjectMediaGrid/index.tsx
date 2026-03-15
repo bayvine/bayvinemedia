@@ -50,7 +50,7 @@ const ProjectMediaGrid: FC<ProjectMediaGridProps> = ({ slice }) => {
           return (
             <div
               key={`${item.caption ?? "media"}-${index}`}
-              className={`rounded-3xl  py-3 ${
+              className={`rounded-lg ${
                 spanFull ? "sm:col-span-2" : ""
               }`}
             >
