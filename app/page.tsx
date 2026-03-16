@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     pageSeo: page.data as HomePageData,
     seoSettings: seoSettingsDoc?.data,
     fallbackDescription:
-      "Creative digital solutions for modern brands in Colorado Springs and across the USA.",
+      "We design and build professional websites and digital experiences that move your business forward. Founded in the Bay Area. Now based in Colorado. Serving businesses nationwide.",
   });
 }
 

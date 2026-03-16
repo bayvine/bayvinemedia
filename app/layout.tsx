@@ -17,9 +17,6 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-
-  title: "© BAYVINE DIGITAL",
-  description: "CREATIVE DIGITAL SOLUTIONS FOR YOU.",
   icons: {
     icon: [
       { url: "/favicon.ico", type: "image/svg+xml" },
