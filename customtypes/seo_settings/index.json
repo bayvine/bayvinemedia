@@ -1,0 +1,154 @@
+{
+  "format": "custom",
+  "id": "seo_settings",
+  "label": "SEO Settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "General": {
+      "site_name": {
+        "type": "Text",
+        "config": {
+          "label": "Site Name"
+        }
+      },
+      "business_name": {
+        "type": "Text",
+        "config": {
+          "label": "Business Name"
+        }
+      },
+      "legal_name": {
+        "type": "Text",
+        "config": {
+          "label": "Legal Name"
+        }
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo"
+        }
+      },
+      "business_phone": {
+        "type": "Text",
+        "config": {
+          "label": "Business Phone"
+        }
+      },
+      "business_email": {
+        "type": "Text",
+        "config": {
+          "label": "Business Email"
+        }
+      },
+      "default_meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Default Meta Title"
+        }
+      },
+      "default_meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Default Meta Description"
+        }
+      },
+      "default_meta_image": {
+        "type": "Image",
+        "config": {
+          "label": "Default Meta Image",
+          "constraint": {
+            "width": 2400,
+            "height": 1260
+          },
+          "thumbnails": []
+        }
+      }
+    },
+    "Schema": {
+      "use_local_business_schema": {
+        "type": "Boolean",
+        "config": {
+          "label": "Use LocalBusiness Schema"
+        }
+      },
+      "street_address": {
+        "type": "Text",
+        "config": {
+          "label": "Street Address"
+        }
+      },
+      "address_locality": {
+        "type": "Text",
+        "config": {
+          "label": "City"
+        }
+      },
+      "address_region": {
+        "type": "Text",
+        "config": {
+          "label": "State / Region"
+        }
+      },
+      "postal_code": {
+        "type": "Text",
+        "config": {
+          "label": "Postal Code"
+        }
+      },
+      "address_country": {
+        "type": "Text",
+        "config": {
+          "label": "Country"
+        }
+      },
+      "latitude": {
+        "type": "Text",
+        "config": {
+          "label": "Latitude"
+        }
+      },
+      "longitude": {
+        "type": "Text",
+        "config": {
+          "label": "Longitude"
+        }
+      },
+      "price_range": {
+        "type": "Text",
+        "config": {
+          "label": "Price Range"
+        }
+      },
+      "service_areas": {
+        "type": "Group",
+        "config": {
+          "label": "Service Areas",
+          "fields": {
+            "area": {
+              "type": "Text",
+              "config": {
+                "label": "Area"
+              }
+            }
+          }
+        }
+      },
+      "social_profiles": {
+        "type": "Group",
+        "config": {
+          "label": "Social Profiles",
+          "fields": {
+            "url": {
+              "type": "Text",
+              "config": {
+                "label": "URL"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

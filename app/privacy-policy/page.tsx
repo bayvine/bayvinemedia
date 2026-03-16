@@ -11,6 +11,7 @@ import { notFound } from "next/navigation";
 import LegalDocumentContent from "@/components/LegalDocumentContent";
 import { repositoryName } from "@/prismicio";
 import { components } from "@/slices";
+import { openGraphLocale } from "@/utils/seo";
 
 type PrivacyPolicyData = {
   eyebrow?: KeyTextField;
@@ -39,6 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
       data.meta_description || "Privacy Policy for Bayvine Digital Agency.",
     openGraph: data.meta_image?.url
       ? {
+          locale: openGraphLocale,
           images: [
             {
               url: data.meta_image.url,

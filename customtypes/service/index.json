@@ -94,6 +94,19 @@
           "thumbnails": []
         },
         "type": "Image"
+      },
+      "canonical_url": {
+        "config": {
+          "label": "Canonical URL",
+          "placeholder": "https://example.com/services/web-design"
+        },
+        "type": "Text"
+      },
+      "noindex": {
+        "config": {
+          "label": "Noindex"
+        },
+        "type": "Boolean"
       }
     }
   }

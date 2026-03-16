@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { htmlLang, openGraphLocale, siteUrl } from "@/utils/seo";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import PageTransition from "@/components/PageTransition";
@@ -15,6 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+
   title: "© BAYVINE DIGITAL",
   description: "CREATIVE DIGITAL SOLUTIONS FOR YOU.",
   icons: {
@@ -24,6 +27,11 @@ export const metadata: Metadata = {
     ],
     shortcut: [{ url: "/favicon.ico", type: "image/svg+xml" }],
   },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    locale: openGraphLocale,
+  },
 };
 
 export default function RootLayout({
@@ -32,13 +40,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-		<html lang="en">
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
-				<NavBar />
+    <html lang={htmlLang}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <NavBar />
         <PageTransition>{children}</PageTransition>
-			</body>
-		</html>
-	)
+      </body>
+    </html>
+  );
 }
