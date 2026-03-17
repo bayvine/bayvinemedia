@@ -348,6 +348,55 @@ type ContactOptionsProps = {
   options: Content.ContactFormSliceDefaultPrimaryContactOptionsItem[];
 };
 
+const getFirstLinkField = (
+  field?:
+    | Content.ContactFormSliceDefaultPrimaryContactOptionsItem["option_link"]
+    | LinkField
+    | null,
+) => {
+  if (!field) {
+    return null;
+  }
+
+  if (Array.isArray(field)) {
+    return field.find((item): item is LinkField => Boolean(item)) ?? null;
+  }
+
+  return field;
+};
+
+const normalizeActionHref = (href?: string | null) => {
+  if (!href) {
+    return null;
+  }
+
+  const trimmedHref = href.trim();
+
+  if (!trimmedHref) {
+    return null;
+  }
+
+  if (
+    trimmedHref.startsWith("/") ||
+    trimmedHref.startsWith("#") ||
+    /^(mailto:|tel:|https?:\/\/|\/\/)/i.test(trimmedHref)
+  ) {
+    return trimmedHref;
+  }
+
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedHref)) {
+    return `mailto:${trimmedHref}`;
+  }
+
+  if (/^\+?[0-9().\-\s]+$/.test(trimmedHref)) {
+    const normalizedPhone = trimmedHref.replace(/[^\d+]/g, "");
+
+    return normalizedPhone ? `tel:${normalizedPhone}` : null;
+  }
+
+  return `https://${trimmedHref}`;
+};
+
 const getContactTargetProps = (href?: string | null) =>
   typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
     ? { target: "_self" }
@@ -367,27 +416,38 @@ const getRichTextLinkHref = (field: LinkField) =>
   asLink(field, { linkResolver: richTextLinkResolver }) ||
   (field.link_type === "Web" ? field.url ?? "#" : "#");
 
+const getActionLinkHref = (field?: LinkField | null) =>
+  normalizeActionHref(
+    field
+      ? asLink(field, { linkResolver: richTextLinkResolver }) ||
+          (field.link_type === "Web" ? field.url ?? null : null)
+      : null
+  );
+
 const ContactOptions: FC<ContactOptionsProps> = ({ options }) => (
   <div className="flex flex-col gap-3">
     {options.map((option, index) => {
-      if (!option.option_link) {
+      const optionLink = getFirstLinkField(option.option_link);
+      const href = getActionLinkHref(optionLink);
+
+      if (!optionLink || !href) {
         return null;
       }
 
       return (
-        <PrismicNextLink
+        <a
           key={`${option.option_label ?? "option"}-${index}`}
-          field={option.option_link}
-        className="w-fit hover:underline! group"
-          {...getContactTargetProps(option.option_link?.url)}
+          href={href}
+          className="w-fit hover:underline! group"
+          {...getContactTargetProps(href)}
         >
           <span className="text-xl font-semibold  max-w-fit flex items-center gap-1">
-            {option.option_label || option.option_link.text || option.option_link.url}
+            {option.option_label || optionLink.text || href}
                  <RxArrowRight className="group-hover:translate-x-0.5 "/>
            
           </span>
       
-        </PrismicNextLink>
+        </a>
       );
     })}
   </div>
