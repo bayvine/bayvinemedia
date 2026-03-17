@@ -151,7 +151,7 @@ const FooterCtaNavigationBranding = async ({
               ) : null}
             </div>
             <div className="text-lg font-bold pr-4">
-              <PrismicRichText field={slice.primary.motto} />
+              {"Digital experiences for growing businesses."}
             </div>
           </div>
           {/* Bottom of bottom section */}
