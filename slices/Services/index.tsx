@@ -158,7 +158,7 @@ const Services: FC<ServicesProps> = ({ slice }) => {
                     alt={service.hover_image.name ?? service.title ?? "Service preview"}
                     fill
                     unoptimized
-                    sizes="160px"
+                  
                     className="object-cover object-center"
                   />
                 ) : (
