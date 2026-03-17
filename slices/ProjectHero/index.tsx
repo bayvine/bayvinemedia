@@ -121,6 +121,7 @@ const ProjectHero = async ({ slice }: ProjectHeroProps) => {
       className="py-12"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      id="work"
     >
 
       <SectionTitle title="Featured Work" description="Built for businesses ready to grow" />
