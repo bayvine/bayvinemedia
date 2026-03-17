@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { Content, isFilled, type LinkToMediaField } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
+import PrismicLink from "@/components/PrismicLink";
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
 import SectionTitle from "@/components/SectionTitle";
@@ -9,6 +10,7 @@ import {
   PHOTO_PLACEHOLDER_SRC,
   VIDEO_PLACEHOLDER_SRC,
 } from "@/utils/mediaPlaceholders";
+import { isContactHref } from "@/utils/links";
 
 export type ServiceHighlightProps =
   SliceComponentProps<Content.ServiceHighlightSlice>;
@@ -18,8 +20,6 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
   const videoField = (slice.primary as { video?: LinkToMediaField }).video;
   const hasVideo = videoField ? isFilled.linkToMedia(videoField) : false;
   const hasImage = Boolean(slice.primary.image?.url);
-  const isContactHref = (href?: string | null) =>
-    typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href);
 
   return (
     <Section
@@ -34,7 +34,7 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
             description={slice.primary.description}
           />
           {hasCta ? (
-            <PrismicNextLink
+            <PrismicLink
               field={slice.primary.cta_link}
               {...(isContactHref(slice.primary.cta_link.url)
                 ? { target: "_self" }
@@ -44,7 +44,7 @@ const ServiceHighlight: FC<ServiceHighlightProps> = ({ slice }) => {
               <CTAButton as="span" className="">
                 {slice.primary.cta_label || "Contact us"}
               </CTAButton>
-            </PrismicNextLink>
+            </PrismicLink>
           ) : null}
         </div>
 

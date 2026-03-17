@@ -2,17 +2,18 @@
 
 import { FC } from "react";
 import { Content, isFilled } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
 import {
   PrismicRichText,
   PrismicText,
   SliceComponentProps,
 } from "@prismicio/react";
+import PrismicLink from "@/components/PrismicLink";
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
 import { GlitchText } from "@/components/GlichText";
 import { RxArrowTopRight } from "react-icons/rx";
 import Eyebrow from "@/components/Eyebrow";
+import { isContactHref } from "@/utils/links";
 
 
 /**
@@ -25,10 +26,6 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero: FC<HeroProps> = ({ slice }) => {
   const array = slice.primary.title_action.map((text) => text.action as string);
-  const getContactTargetProps = (href?: string | null) =>
-    typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
-      ? { target: "_self" as const }
-      : {};
 
   return (
 
@@ -58,9 +55,11 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 
           <div className="flex items-center gap-4 justify-center my-2">
             {isFilled.link(slice.primary.call_to_action) ? (
-              <PrismicNextLink
+              <PrismicLink
                 field={slice.primary.call_to_action}
-                {...getContactTargetProps(slice.primary.call_to_action.url)}
+                {...(isContactHref(slice.primary.call_to_action.url)
+                  ? { target: "_self" as const }
+                  : {})}
               >
                 <CTAButton as="span">
                   <span className="flex gap-1 items-center">
@@ -68,7 +67,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
                     <RxArrowTopRight strokeWidth={0.5} />
                   </span>
                 </CTAButton>
-              </PrismicNextLink>
+              </PrismicLink>
             ) : (
               <CTAButton>
                 <span className="flex gap-1 items-center">

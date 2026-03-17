@@ -12,6 +12,7 @@ import CTAButton from "@/components/CTAButton";
 import SectionTitle from "@/components/SectionTitle";
 import CardText from "@/components/CardText";
 import { PHOTO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
+import { isContactHref, normalizeHref } from "@/utils/links";
 
 /**
  * Props for `FaqWithCta`.
@@ -66,12 +67,10 @@ type CtaCardProps = {
 };
 
 const CtaCard: FC<CtaCardProps> = ({ primary }) => {
-  const hasMedia = isFilled.linkToMedia(primary.cta_media);
   const mediaUrl = '/images/faq.mp4'
   const hasCtaLink = isFilled.link(primary.cta_button);
-  const ctaHref = hasCtaLink ? (primary.cta_button.url ?? "#") : null;
-  const isContactLink =
-    typeof ctaHref === "string" && /\/contact(\/|$|\?|#)/.test(ctaHref);
+  const ctaHref = hasCtaLink ? (normalizeHref(primary.cta_button.url) ?? "#") : null;
+  const isContactLink = isContactHref(ctaHref);
   const ctaLabel = primary.cta_button?.text || "Schedule free intro chat";
 
   return (

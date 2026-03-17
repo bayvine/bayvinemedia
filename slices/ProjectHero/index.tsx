@@ -1,11 +1,12 @@
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage } from "@prismicio/next";
 import { RxArrowTopRight } from "react-icons/rx";
 import Tag from "@/components/Tag";
 import { createClient } from "@/prismicio";
 import SectionTitle from "@/components/SectionTitle";
+import PrismicLink from "@/components/PrismicLink";
 
 /**
  * Props for `ProjectHero`.
@@ -127,14 +128,14 @@ const ProjectHero = async ({ slice }: ProjectHeroProps) => {
       <SectionTitle title="Featured Work" description="Built for businesses ready to grow" />
      
 
-      <PrismicNextLink
+      <PrismicLink
         field={projectLink}
         href={project?.url || fallbackHref}
         aria-label="View project details"
         className="mt-12  group relative overflow-hidden duration-300 ease-in-out isolate rounded-lg min-h-[650px] lg:aspect-video flex items-end focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
       >
         {cardContent}
-      </PrismicNextLink>
+      </PrismicLink>
 
     </Section>
   );

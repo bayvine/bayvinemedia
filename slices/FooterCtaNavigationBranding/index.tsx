@@ -1,12 +1,12 @@
-import { Content, type LinkField } from "@prismicio/client";
+import { Content, isFilled, type LinkField } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { RxArrowTopRight } from "react-icons/rx";
 
 import { createClient } from "@/prismicio";
 import Section from "@/components/Section";
-import Link from "next/link";
-import { PrismicNextLink } from "@prismicio/next";
 import CTAButton from "@/components/CTAButton";
+import PrismicLink from "@/components/PrismicLink";
+import { isContactHref, normalizeHref } from "@/utils/links";
 
 /**
  * Props for `FooterCtaNavigationBranding`.
@@ -22,9 +22,8 @@ const FooterCtaNavigationBranding = async ({
 }: FooterCtaNavigationBrandingProps) => {
   const client = createClient();
   const footerDoc = await client.getSingle("footer").catch(() => null);
-  const isContactHref = (href?: string | null) =>
-    typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href);
-  const ctaHref = slice.primary.cta_button.url ?? "#";
+  const hasCtaLink = isFilled.link(slice.primary.cta_button);
+  const ctaHref = normalizeHref(slice.primary.cta_button.url) ?? "#";
   const isContactLink = isContactHref(ctaHref);
   const navGroups = slice.primary.page_nav_links || [];
   const footerData = (footerDoc?.data ?? {}) as {
@@ -80,8 +79,9 @@ const FooterCtaNavigationBranding = async ({
               />
             </div>
 
-            {ctaLabel && (
-              <Link
+            {ctaLabel && hasCtaLink ? (
+              <PrismicLink
+                field={slice.primary.cta_button}
                 href={ctaHref}
                 target={isContactLink ? undefined : "_blank"}
                 rel={isContactLink ? undefined : "noreferrer"}
@@ -93,8 +93,8 @@ const FooterCtaNavigationBranding = async ({
                 >
                   {ctaLabel} <RxArrowTopRight />
                 </CTAButton>
-              </Link>
-            )}
+              </PrismicLink>
+            ) : null}
           </div>
           <div className="flex gap-10">
             {Object.entries(navMap).map(([heading, items], key) => (
@@ -102,16 +102,20 @@ const FooterCtaNavigationBranding = async ({
                 <h3 className="font-bold mb-2 text-lg">{heading}</h3>
                 <ul className="flex flex-col gap-2">
                   {items.map((i, key) => {
+                    if (!isFilled.link(i)) {
+                      return null;
+                    }
+
                     const navIsContact = isContactHref(i.url ?? "");
                     return (
                       <li key={key}>
-                        <PrismicNextLink
+                        <PrismicLink
                           className="hover:underline! text-lg"
                           field={i}
                           {...(navIsContact ? { target: "_self" } : {})}
                         >
                           {i.text}
-                        </PrismicNextLink>
+                        </PrismicLink>
                       </li>
                     );
                   })}
@@ -128,7 +132,7 @@ const FooterCtaNavigationBranding = async ({
             <div className="flex items-center gap-4 flex-wrap mb-8 md:mb-2">
               {trademark}
               {footerData.privacy_policy ? (
-                <PrismicNextLink
+                <PrismicLink
                   className="hover:underline! underline!"
                   field={footerData.privacy_policy}
                   {...(isContactHref(footerData.privacy_policy?.url)
@@ -136,10 +140,10 @@ const FooterCtaNavigationBranding = async ({
                     : {})}
                 >
                   {footerData.privacy_policy.text}
-                </PrismicNextLink>
+                </PrismicLink>
               ) : null}
               {footerData.terms_and_conditions ? (
-                <PrismicNextLink
+                <PrismicLink
                   className="hover:underline! underline!"
                   field={footerData.terms_and_conditions}
                   {...(isContactHref(footerData.terms_and_conditions?.url)
@@ -147,7 +151,7 @@ const FooterCtaNavigationBranding = async ({
                     : {})}
                 >
                   {footerData.terms_and_conditions.text}
-                </PrismicNextLink>
+                </PrismicLink>
               ) : null}
             </div>
             <div className="text-lg font-bold pr-4">

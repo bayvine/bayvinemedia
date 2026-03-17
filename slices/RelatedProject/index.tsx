@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { Content, isFilled } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import PrismicLink from "@/components/PrismicLink";
 import Section from "@/components/Section";
 import { PHOTO_PLACEHOLDER_SRC } from "@/utils/mediaPlaceholders";
 
@@ -74,12 +75,12 @@ const RelatedProject: FC<RelatedProjectProps> = ({ slice }) => {
             ))}
           </div>
           {linkField ? (
-            <PrismicNextLink
+            <PrismicLink
               field={linkField}
               className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/80 transition hover:border-white hover:text-white"
             >
               View project
-            </PrismicNextLink>
+            </PrismicLink>
           ) : null}
         </div>
       </div>

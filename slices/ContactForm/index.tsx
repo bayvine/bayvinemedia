@@ -9,10 +9,11 @@ import {
 } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Section from "@/components/Section";
-import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
+import PrismicLink from "@/components/PrismicLink";
 import { withPhotoPlaceholderBackground } from "@/utils/mediaPlaceholders";
 import { RxArrowRight } from "react-icons/rx";
+import { isContactHref, normalizeHref } from "@/utils/links";
 
 /**
  * Props for `ContactForm`.
@@ -365,40 +366,8 @@ const getFirstLinkField = (
   return field;
 };
 
-const normalizeActionHref = (href?: string | null) => {
-  if (!href) {
-    return null;
-  }
-
-  const trimmedHref = href.trim();
-
-  if (!trimmedHref) {
-    return null;
-  }
-
-  if (
-    trimmedHref.startsWith("/") ||
-    trimmedHref.startsWith("#") ||
-    /^(mailto:|tel:|https?:\/\/|\/\/)/i.test(trimmedHref)
-  ) {
-    return trimmedHref;
-  }
-
-  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedHref)) {
-    return `mailto:${trimmedHref}`;
-  }
-
-  if (/^\+?[0-9().\-\s]+$/.test(trimmedHref)) {
-    const normalizedPhone = trimmedHref.replace(/[^\d+]/g, "");
-
-    return normalizedPhone ? `tel:${normalizedPhone}` : null;
-  }
-
-  return `https://${trimmedHref}`;
-};
-
 const getContactTargetProps = (href?: string | null) =>
-  typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
+  isContactHref(href)
     ? { target: "_self" }
     : {};
 
@@ -413,11 +382,13 @@ const richTextLinkResolver: LinkResolverFunction<string> = (doc) => {
 };
 
 const getRichTextLinkHref = (field: LinkField) =>
-  asLink(field, { linkResolver: richTextLinkResolver }) ||
-  (field.link_type === "Web" ? field.url ?? "#" : "#");
+  normalizeHref(
+    asLink(field, { linkResolver: richTextLinkResolver }) ||
+      (field.link_type === "Web" ? field.url ?? "#" : "#")
+  ) || "#";
 
 const getActionLinkHref = (field?: LinkField | null) =>
-  normalizeActionHref(
+  normalizeHref(
     field
       ? asLink(field, { linkResolver: richTextLinkResolver }) ||
           (field.link_type === "Web" ? field.url ?? null : null)
@@ -636,7 +607,7 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
               }}
               field={slice.primary.heading}
             ></PrismicRichText>
-            <PrismicNextLink
+            <PrismicLink
               field={slice.primary.questions_link}
               {...getContactTargetProps(slice.primary.questions_link?.url)}
             >
@@ -644,7 +615,7 @@ const ContactForm: FC<ContactFormProps> = ({ slice }) => {
                   {slice.primary.questions_link.text}
                 
               </span>
-            </PrismicNextLink>
+            </PrismicLink>
           </div>
           <div className="flex flex-col gap-2">
             <PrismicRichText

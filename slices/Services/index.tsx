@@ -2,9 +2,9 @@
 
 import { FC } from "react";
 import { Content, isFilled } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import Image from "next/image";
+import PrismicLink from "@/components/PrismicLink";
 import Section from "@/components/Section";
 import { RxArrowTopRight } from "react-icons/rx";
 import SectionTitle from "@/components/SectionTitle";
@@ -114,13 +114,13 @@ const Services: FC<ServicesProps> = ({ slice }) => {
           );
 
           return isLinked ? (
-            <PrismicNextLink
+            <PrismicLink
               key={`${service.title ?? "service"}-${index}`}
               href={`/services/${service.link.uid}`}
               className="group relative isolate block min-h-[500px] overflow-hidden rounded-lg bg-gradient-to-b from-black/15 via-black/45 to-black/100 shadow-lg transition-transform active:scale-[0.99]"
             >
               {content}
-            </PrismicNextLink>
+            </PrismicLink>
           ) : (
             <div
               key={`${service.title ?? "service"}-${index}`}
@@ -200,13 +200,13 @@ const Services: FC<ServicesProps> = ({ slice }) => {
           );
 
           return isLinked ? (
-            <PrismicNextLink
+            <PrismicLink
               key={`${service.title ?? "service"}-${index}`}
               href={`/services/${service.link.uid}`}
               className="relative isolate z-0 w-full overflow-visible border-t border-gray-500 px-4 py-10 sm:px-6 sm:py-12 transition-all duration-300 active:bg-slate-50 hover:bg-slate-50 hover:z-30 active:z-30 focus-visible:z-30 group cursor-pointer grid gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_auto] lg:items-center"
             >
               {content}
-            </PrismicNextLink>
+            </PrismicLink>
           ) : (
             <div
               key={`${service.title ?? "service"}-${index}`}

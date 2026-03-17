@@ -40,7 +40,6 @@ const ProjectSingleMedia: FC<ProjectSingleMediaProps> = ({ slice }) => {
               field={slice.primary.image}
               fallbackAlt=""
               fill
-              sizes="100vw"
               className={mediaClassName}
             />
           ) : (

@@ -10,9 +10,9 @@ import {
 	useTransform,
 } from "framer-motion"
 import { Content, isFilled } from "@prismicio/client"
-import { PrismicNextLink } from "@prismicio/next"
 import Image from "next/image"
 import Link from "next/link"
+import PrismicLink from "@/components/PrismicLink"
 import Section from "@/components/Section"
 import SectionTitle from "@/components/SectionTitle"
 import CardText from "@/components/CardText"
@@ -23,6 +23,7 @@ import {
 } from "@/utils/mediaPlaceholders"
 import ProjectHero from "../ProjectHero"
 import { RxArrowTopRight } from "react-icons/rx"
+import { isContactHref } from "@/utils/links"
 
 type RoadmapItem = Content.RoadmapSliceDefaultPrimaryRoadmapItem
 
@@ -281,8 +282,6 @@ const RoadmapMobileCtaCard: FC<{
 		backgroundUrl,
 		primary.background_cta?.kind,
 	)
-	const isContactHref = (href?: string | null) =>
-		typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
 	const ctaTitle = hasCtaTitle
 		? primary.cta_title
 		: "Ready to start your roadmap?"
@@ -329,7 +328,7 @@ const RoadmapMobileCtaCard: FC<{
 				</p>	
 				
 				{hasCtaLink ? (
-					<PrismicNextLink
+					<PrismicLink
 						field={primary.cta_link}
 						{...(isContactHref(primary.cta_link.url)
 							? { target: "_self" }
@@ -339,7 +338,7 @@ const RoadmapMobileCtaCard: FC<{
 						<CTAButton as="span">
 							{CTA_LABEL}
 						</CTAButton>
-					</PrismicNextLink>
+					</PrismicLink>
 				) : (
 					<Link href="/contact" className="mt-4 inline-flex w-fit">
 						<CTAButton as="span">{CTA_LABEL} <RxArrowTopRight size={20} /></CTAButton>
@@ -364,8 +363,6 @@ const RoadmapDesktopCtaCard: FC<{
 		backgroundUrl,
 		primary.background_cta?.kind,
 	)
-	const isContactHref = (href?: string | null) =>
-		typeof href === "string" && /\/contact(\/|$|\?|#)/.test(href)
 	const ctaTitle = hasCtaTitle
 		? primary.cta_title
 		: "Ready to start your roadmap?"
@@ -410,7 +407,7 @@ const RoadmapDesktopCtaCard: FC<{
 					{CTA_DESCRIPTION}
 
 				</p>				{hasCtaLink ? (
-					<PrismicNextLink
+					<PrismicLink
 						field={primary.cta_link}
 						{...(isContactHref(primary.cta_link.url)
 							? { target: "_self" }
@@ -419,7 +416,7 @@ const RoadmapDesktopCtaCard: FC<{
 					>
 						<CTAButton as="span">{CTA_LABEL}   <RxArrowTopRight size={20} /></CTAButton>
 						
-					</PrismicNextLink>
+					</PrismicLink>
 				) : (
 					<Link href="/contact" className="mt-4 inline-flex w-fit">
 						<CTAButton as="span">{CTA_LABEL } <RxArrowTopRight size={20} /></CTAButton>
